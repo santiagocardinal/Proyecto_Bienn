@@ -42,6 +42,4 @@ public class Interaction
     {
         this.Note.Add(note);
     }
-    
-    
 }
