@@ -43,5 +43,8 @@ public class Interaction
         this.Note.Add(note);
     }
     
-    
+    public override string ToString()
+    {
+        return $"Date: {this.date}, Topic: {this.Topic}, Type: {this.Type}";
+    }
 }

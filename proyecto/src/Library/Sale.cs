@@ -3,7 +3,6 @@
 public class Sale : Interaction
 {
    private string product;
-   private string date;
    private Quote amount;
 
    public string Product
@@ -12,22 +11,16 @@ public class Sale : Interaction
       set { product = value; }
    }
 
-   public string Date
-   {
-      get { return date; }
-      set { date = value; }
-   }
-
    public Quote Amount
    {
       get { return amount; }
       set { amount = value; }
    }
 
-   public Sale(string id, Client client, string product, string date, decimal amount)
+   public Sale(string id, Customer customer, string product, decimal amount, DateTime date, string topic, ExchangeType type) 
+      : base( date, topic, type)
    {
       this.product = product;
-      this.Date = date;
 //      this.Amount = new Quote(id, client, date, amount, $"Quote for {product}");
    }
    /*

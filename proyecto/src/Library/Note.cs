@@ -11,9 +11,9 @@ public class Note
     private string theme;
     private string date;
     private SentReceived sentReceived;
-    private Call[] calls;
+    /*private Call[] calls;
     private Meeting[] meetings;
-    private Message[] message;
+    private Message[] message;*/
     
     public string Theme
     {
@@ -33,7 +33,7 @@ public class Note
         set { sentReceived = value; }
     }
 
-    public Call[] Calls
+    /*public Call[] Calls
     {
         get { return calls; }
         set { calls = value; }
@@ -49,15 +49,15 @@ public class Note
     {
         get { return message; }
         set { message = value; }
-    }
+    }*/
     
     public void Notes(string theme, string date)
     {
         this.theme = theme;
         this.date = date;
-        this.calls = new Call[0];
+        /*this.calls = new Call[0];
         this.meetings = new Meeting[0];
-        this.message = new Message[0];
+        this.message = new Message[0];*/
     }
     
     public override string ToString()

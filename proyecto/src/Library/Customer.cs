@@ -90,4 +90,9 @@ public class Customer
     {
         this.Tags.Remove(tag);
     }
-}
+    
+    public override string ToString()
+    {
+        return $"Id: {this.Id}, Name: {this.Name}, Family Name: {this.FamilyName}, Mail: {this.Mail}, Phone: {this.Phone},  Gender: {this.Gender}, BirthDate: {this.BirthDate}, Tags: {this.Tags.Count}";
+    }
+} 

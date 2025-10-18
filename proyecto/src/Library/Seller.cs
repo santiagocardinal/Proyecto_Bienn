@@ -1,14 +1,16 @@
-﻿namespace Program;
+﻿using Library;
+
+namespace Library;
 
 public class Seller
 {
-    private List<Client> clients;
+    private List<Customer> customer;
     private List<Interaction> interactions;
 
-    public List<Client> Clients
+    public List<Customer> Custumer
     {
-        get { return clients; }
-        set { clients = value; }
+        get { return customer; }
+        set { customer = value; }
     }
 
     public List<Interaction> Interactions
@@ -17,17 +19,17 @@ public class Seller
         set { interactions = value; }
     }
 
-    public Seller(List<client> clients, List<interacton> interactions)
+    public Seller(List<Customer> clients, List<Interaction> interactions)
     {
-        this.clients = clients;
-        this.interactions = interactions;
+        this.Custumer = clients;
+        this.Interactions = interactions;
     }
     
     public void addInteraction(Interaction interaction)
     {
         if (interaction != null)
         {
-            interactions.Add(interaction);
+            this.Interactions.Add(interaction);
         }
     }
 }
