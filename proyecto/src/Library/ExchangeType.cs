@@ -1,6 +1,6 @@
 namespace Library;
 
-public enum ExchangeType
+public enum ExchangeType //"LISTA" DE OPCIONES -COLECCIONES-
 {
     Sent,
     Received
