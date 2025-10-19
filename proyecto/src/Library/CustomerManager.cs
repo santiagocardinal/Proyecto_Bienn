@@ -144,21 +144,22 @@ public class CustomerManager
         return interactions.GetRange(interactions.Count - limit, limit);
     }
 
-    public List<Meeting> GetUpcomingMeeting()
+    public List<Meeting> GetUpcomingMeetings()
     {
         List<Meeting> upcomingMeetings = new List<Meeting>();
         DateTime now = DateTime.Now;
 
-        foreach (Meeting meeting in meetings)
+        foreach (Interaction inter in interactions) // Iteramos sobre la lista de Interactions
         {
-            if (meeting.Date > now)
+            if (inter is Meeting meeting && meeting.Date > now) // Filtramos solo Meeting
             {
                 upcomingMeetings.Add(meeting);
             }
         }
+
         return upcomingMeetings;
     }
-
+/*
     public List<Customer> GetInactiveCustomers(int days)
     {
         List<Customer> inactiveCustomers = new List<Customer>();
@@ -188,12 +189,12 @@ public class CustomerManager
         }
         return unansweredCustomers;
     }
-
+*/
     public void AssignCustomerToSeller(Customer customer, Seller seller)
     {
         if (customer != null && seller != null)
         {
-            customer.AssignedSeller = seller;
+            seller.Customer.Add(customer);
             Console.WriteLine($"Cliente {customer.Name} asignado al vendedor {seller.Name}.");
         }
         else
@@ -202,11 +203,11 @@ public class CustomerManager
         }
     }
 
-    public void AddInteraction(Interaction interaction)
+    public void AddInteraction(Interaction interaction,Seller seller)
     {
         if (interaction != null)
         {
-            interactions.Add(interaction);
+            seller.addInteraction(interaction);
             Console.WriteLine("Interacción agregada exitosamente.");
         }
     }
