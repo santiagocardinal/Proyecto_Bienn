@@ -14,7 +14,7 @@ public class Seller : User
         set { isSuspended = value; }
     }
     
-    public List<Customer> Custumer
+    public List<Customer> Customer
     {
         get { return customer; }
         set { customer = value; }
@@ -28,7 +28,7 @@ public class Seller : User
 
     public Seller( string name, string mail, string phone, string id) : base (name,mail,phone,id)
     {
-        this.Custumer = new List<Customer> ();
+        this.Customer = new List<Customer> ();
         this.Interactions = new List<Interaction>();
     }
     

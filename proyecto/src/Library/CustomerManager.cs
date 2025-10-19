@@ -17,38 +17,14 @@ public class CustomerManager
     {
         foreach (Customer customer in customers)
         {
-            if (customer.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+            if (customer.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) //NO SEA SENSIBLE A LAS MAYUSCULAS Y MINUSCULAS EL StringComparison
             {
                 return customer;
             }
         }
         return null;
     }
-
-    public Customer SearchByDate(string date)
-    {
-        foreach (Customer customer in customers)
-        {
-            if (customer.RegistrationDate == date)
-            {
-                return customer;
-            }
-        }
-        return null;
-    }
-
-    public Customer SearchById(string id)
-    {
-        foreach (Customer customer in customers)
-        {
-            if (customer.Id == id)
-            {
-                return customer;
-            }
-        }
-        return null;
-    }
-
+    
     public Customer SearchByMail(string mail)
     {
         foreach (Customer customer in customers)
@@ -61,11 +37,22 @@ public class CustomerManager
         return null;
     }
 
+    public Customer SearchByFamilyName(string familyname)
+    {
+        foreach (Customer customer in customers)
+        {
+            if (customer.FamilyName.Equals(familyname, StringComparison.OrdinalIgnoreCase))
+            {
+                return customer;
+            }
+        }
+        return null;
+    }
     public Customer SearchByPhone(string phone)
     {
         foreach (Customer customer in customers)
         {
-            if (customer.Phone == phone)
+            if (customer.Phone.Equals(phone, StringComparison.OrdinalIgnoreCase))
             {
                 return customer;
             }
@@ -73,12 +60,30 @@ public class CustomerManager
         return null;
     }
 
-    public void AddCustomer(Customer customer)
+    public Customer SearchById(string id)
+    {
+        foreach (Customer customer in customers)
+        {
+            if (customer.Id.Equals( id, StringComparison.OrdinalIgnoreCase))
+            {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    public void AddCustomer(Customer customer, Seller seller)
     {
         if (customer != null && SearchById(customer.Id) == null)
         {
+            
+            // Agregamos el cliente a la lista del vendedor
+            seller.Customer.Add(customer);
+
+            // Agregamos el cliente a la lista global
             customers.Add(customer);
-            Console.WriteLine($"Cliente {customer.Name} agregado exitosamente.");
+
+            Console.WriteLine($"Cliente {customer.Name} agregado exitosamente con vendedor {seller.Name}.");
         }
         else
         {
@@ -146,7 +151,7 @@ public class CustomerManager
 
         foreach (Meeting meeting in meetings)
         {
-            if (meeting.MeetingDate > now)
+            if (meeting.Date > now)
             {
                 upcomingMeetings.Add(meeting);
             }

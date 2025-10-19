@@ -98,6 +98,47 @@ public class Customer
     {
         this.Tags.Remove(tag);
     }
+
+    public void AddInteraction(Interaction interaction)
+    {
+        this.Interactions.Add(interaction);
+    }
+    
+    public List<Interaction> GetInteraction()
+    {
+        return this.Interactions;
+    }
+
+    public List<T> GetInteractionsByType<T>() where T : Interaction //Utiliza las interacciones y busca a partir de ellas.
+    {
+        List<T> result = new List<T>();
+
+        foreach (var interaction in _interactions)
+        {
+            if (interaction is T typedInteraction)
+            {
+                result.Add(typedInteraction);
+            }
+        }
+
+        return result;
+    }
+    
+    public List<Interaction> GetInteractionsByDate(DateTime date)
+    {
+        List<Interaction> result = new List<Interaction>();
+
+        foreach (var interaction in _interactions)
+        {
+            if (interaction.Date.Date == date.Date) // Solo día, ignorando hora
+            {
+                result.Add(interaction);
+            }
+        }
+
+        return result;
+    }
+    
     
     public override string ToString()
     {
