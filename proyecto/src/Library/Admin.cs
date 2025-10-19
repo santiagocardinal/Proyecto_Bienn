@@ -4,6 +4,15 @@ public class Admin : User
 {
     private List<Seller> sellers;
 
+    public List<Seller> Sellers
+    {
+        get
+        {
+            return sellers;
+        }
+        set { sellers = value; }
+    }
+
     public Admin(string name, string mail, string phone, string id) 
         : base(name, mail, phone, id)
     {
@@ -16,7 +25,7 @@ public class Admin : User
             return false;
         }
 
-        foreach (Seller person in sellers)
+        foreach (var person in sellers)
         {
             if (person.Id == user.Id)
             {
@@ -24,14 +33,14 @@ public class Admin : User
             }
         }
         //INTENTO DE USAR EL CREATOR QSY, REVISARLO EN UN FUTURO :(
-        Seller newSeller = new Seller(user.Id, user.Name);
+        Seller newSeller = new Seller(user.Name, user.Mail, user.Phone,user.Id);
         sellers.Add(newSeller);
         return true;
     }
 
     public bool SuspendSeller(string userId)
     {
-        foreach (Seller person in sellers)
+        foreach (var person in sellers)
         {
             if (person.Id == userId)
             {
@@ -45,9 +54,10 @@ public class Admin : User
         return false;
     }
 
-    public bool DeleteSeller(string userId)
+    //HABLAR CON MARCELO POR LO DE DELATESELLER
+    /*public bool DeleteSeller(string userId)
     {
-        foreach (Seller person in sellers)
+        foreach (var person in sellers)
         {
             if (person.Id == userId)
             {
@@ -59,5 +69,5 @@ public class Admin : User
 
         Console.WriteLine("No se encontró al vendedor.");
         return false;
-    }
+    }*/
 }

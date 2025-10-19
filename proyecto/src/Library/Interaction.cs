@@ -1,11 +1,12 @@
 namespace Library;
 
-public class Interaction
+public class Interaction 
 {
     private DateTime date;
     private string topic;
     private ExchangeType type;
     private List<Note> note;
+    private Customer _customer;
 
     public DateTime Date
     {
@@ -31,11 +32,19 @@ public class Interaction
         set { note = value; }
     }
 
-    public Interaction(DateTime date, string topic, ExchangeType type)
+    public Customer Customer
+    {
+        get { return _customer; }
+        set { _customer = value; }
+    }
+
+    public Interaction(DateTime date, string topic, ExchangeType type, Customer _customer)
     {
         this.Date = date;
         this.Topic = topic;
         this.Type = type;
+        this.Note = new List<Note>();
+        this.Customer = _customer;
     }
 
     public void AddNote(Note note)
@@ -47,4 +56,5 @@ public class Interaction
     {
         return $"Date: {this.date}, Topic: {this.Topic}, Type: {this.Type}";
     }
+    
 }

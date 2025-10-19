@@ -17,39 +17,17 @@ public class Sale : Interaction
       set { amount = value; }
    }
 
-   public Sale(string id, Customer customer, string product, decimal amount, DateTime date, string topic, ExchangeType type) 
-      : base( date, topic, type)
+   public Sale(string id, Customer customer, string product, Quote amount, DateTime date, string topic, ExchangeType type, Customer _customer) 
+      : base( date, topic, type, _customer)
    {
       this.product = product;
-//      this.Amount = new Quote(id, client, date, amount, $"Quote for {product}");
+      this.Amount = amount;
    }
-   /*
-   // Método que devuelve el total de ventas en un rango de fechas
-   public decimal getTotalSales(string startDate, string endDate)
-   {
-      // Esto es un ejemplo: normalmente usarías una lista de ventas o una base de datos
-      DateTime start = DateTime.Parse(startDate);
-      DateTime end = DateTime.Parse(endDate);
-
-      if (DateTime.Parse(this.Date) >= start && DateTime.Parse(this.Date) <= end)
-      {
-         return Amount.Amount;
-      }
-      return 0;
-   }
-
-   // Método que devuelve las ventas de un cliente específico
-   public List<Sale> getSalesByClient(string clientId)
-   {
-      // En una implementación real, este método buscaría en una colección global o base de datos.
-      // Por ahora devuelve una lista vacía como estructura base.
-      return new List<Sale>();
-   }
-
+   
    // Sobrescribe ToString() de Interaction
    public override string ToString()
    {
       return $"Product: {Product}, Date: {Date}, Amount: {Amount.Amount}";
    }
-   */
+   
 }

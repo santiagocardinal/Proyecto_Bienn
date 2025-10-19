@@ -6,15 +6,8 @@ public class Meeting : Interaction
 
     public string Place { get { return place; } set { place = value; } }
 
-    public Meeting(string place, DateTime date, string topic, ExchangeType type) : base(date, topic, type)
+    public Meeting(string place, DateTime date, string topic, ExchangeType type, Customer _customer) : base(date, topic, type,_customer)
     {
         this.Place = place;
-    }
-    
-    public void Sale(string place, DateTime date, string topic)
-    {
-        this.Place = place;
-        this.Date = date;
-        this.Topic = topic;
     }
 }

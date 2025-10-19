@@ -10,6 +10,7 @@ public class Customer
     private string gender;
     private DateTime birthDate;
     private List<Tag> tags;
+    private List<Interaction> _interactions;
 
     public string Id
     {
@@ -57,16 +58,23 @@ public class Customer
         get { return this.tags; }
         set { this.tags = value; }
     }
+    public List<Interaction> Interactions
+    {
+        get { return this._interactions; }
+        set { this._interactions = value; }
+    }
 
     public Customer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
     {
-        this.id = id;
-        this.name = name;
-        this.familyName = familyName;
-        this.mail = mail;
-        this.phone = phone;
-        this.gender = gender;
-        this.birthDate = birthDate;
+        this.Id = id;
+        this.Name = name;
+        this.FamilyName = familyName;
+        this.Mail = mail;
+        this.Phone = phone;
+        this.Gender = gender;
+        this.BirthDate = birthDate;
+        this.Interactions = new List<Interaction>();
+        this.Tags = new List<Tag>();
     }
 
     public bool IsValidMail(string mail)

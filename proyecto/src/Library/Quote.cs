@@ -10,18 +10,14 @@ public class Quote : Interaction
     public double Amount { get { return amount; } set { amount = value; } }
     public string Description { get { return description; } set { description = value; } }
 
-    public Quote(DateTime date, string topic, ExchangeType type, double amount, string description) : base (date, topic, type)
+    public Quote(DateTime date, string topic, ExchangeType type,Customer _customer, double amount, string description) : base (date, topic, type, _customer)
     {
         this.Amount = amount;
         this.Description = description;
     }
     
-    public void Sale(DateTime date, string topic, ExchangeType type, double amount, string description)
+    public override string ToString()
     {
-        this.Date = date;
-        this.Topic = topic;
-        this.Type = type;
-        this.Amount = amount;
-        this.Description = description;
+        return $"Amount: {this.amount}, Description: {this.description}.";
     }
 }
