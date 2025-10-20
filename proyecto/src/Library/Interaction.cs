@@ -7,6 +7,7 @@ public class Interaction
     private ExchangeType type;
     private List<Note> note;
     private Customer _customer;
+    private bool hasResponse;
 
     public DateTime Date
     {
@@ -37,6 +38,12 @@ public class Interaction
         get { return _customer; }
         set { _customer = value; }
     }
+    
+    public bool HasResponse
+    {
+        get { return hasResponse; }
+        set { hasResponse = value; }
+    }
 
     public Interaction(DateTime date, string topic, ExchangeType type, Customer _customer)
     {
@@ -44,12 +51,19 @@ public class Interaction
         this.Topic = topic;
         this.Type = type;
         this.Note = new List<Note>();
-        this.Customer = _customer;
+        this.Customer = _customer; // Por defecto sin respuesta
+        this.HasResponse = false;
     }
 
     public void AddNote(Note note)
     {
         this.Note.Add(note);
+    }
+    
+    // Método para marcar como respondida
+    public void MarkAsResponded()
+    {
+        this.HasResponse = true;
     }
     
     public override string ToString()

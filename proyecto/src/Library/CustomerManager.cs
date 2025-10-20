@@ -177,22 +177,33 @@ public class CustomerManager
 
         return new DashboardSummary(recentInteractions, upcomingMeetings, totalCustomers);
     }
-/*
+
     public List<Customer> GetInactiveCustomers(int days)
     {
+        TimeSpan lapso = TimeSpan.FromDays(days);
         List<Customer> inactiveCustomers = new List<Customer>();
-        DateTime threshold = DateTime.Now.AddDays(-days);
+        DateTime now = DateTime.Now;
 
-        foreach (Customer customer in customers)
+        foreach (var customer in this.customers) // recorremos todos los clientes
         {
-            if (customer.LastInteractionDate < threshold)
+            if (!customer.CheckIsActive()) // ya está desactivado
             {
                 inactiveCustomers.Add(customer);
             }
+            else
+            {
+                DateTime lastInteraction = customer.GetLastInteraction();
+                if (lastInteraction < now - lapso)
+                {
+                    customer.Deactivate(); // desactivamos al cliente
+                    inactiveCustomers.Add(customer);
+                }
+            }
         }
+
         return inactiveCustomers;
     }
-
+    
     public List<Customer> GetUnansweredCustomers(int days)
     {
         List<Customer> unansweredCustomers = new List<Customer>();
@@ -200,14 +211,33 @@ public class CustomerManager
 
         foreach (Customer customer in customers)
         {
-            if (customer.HasPendingQuery && customer.LastQueryDate < threshold)
+            // Verificar si el cliente tiene interacciones sin respuesta
+            bool hasUnanswered = false;
+        
+            foreach (Interaction interaction in customer.Interactions)
+            {
+                // Verificar si:
+                // 1. Fue iniciada por el cliente
+                // 2. No tiene respuesta
+                // 3. Está dentro del rango de días
+                if (interaction.Type == ExchangeType.Received && 
+                    !interaction.HasResponse && 
+                    interaction.Date >= threshold)
+                {
+                    hasUnanswered = true;
+                    break;
+                }
+            }
+        
+            if (hasUnanswered)
             {
                 unansweredCustomers.Add(customer);
             }
         }
+    
         return unansweredCustomers;
     }
-*/
+
     public void AssignCustomerToSeller(Customer customer, Seller seller)
     {
         if (customer != null && seller != null)
@@ -221,11 +251,13 @@ public class CustomerManager
         }
     }
 
-    public void AddInteraction(Interaction interaction,Seller seller)
+    public void AddInteraction(Interaction interaction,Seller seller, Customer customer)
     {
         if (interaction != null)
         {
             seller.addInteraction(interaction);
+            customer.AddInteraction(interaction);
+            customer.Activate();
             Console.WriteLine("Interacción agregada exitosamente.");
         }
     }

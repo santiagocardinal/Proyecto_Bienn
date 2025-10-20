@@ -12,6 +12,7 @@ public class Customer
     private List<Tag> tags;
     private List<Interaction> _interactions;
     private Seller _seller;
+    private bool isActive;
 
     public string Id
     {
@@ -70,6 +71,12 @@ public class Customer
         get{return this._seller; }
         set { this._seller = value; }
     }
+    
+    public bool IsActive
+    {
+        get{return isActive; }
+        set { isActive = value; }
+    }
 
     public Customer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
     {
@@ -82,6 +89,7 @@ public class Customer
         this.BirthDate = birthDate;
         this.Interactions = new List<Interaction>();
         this.Tags = new List<Tag>();
+        this.IsActive = true;
     }
 
     public bool IsValidMail(string mail)
@@ -167,6 +175,37 @@ public class Customer
         }
 
         return last_interaction;
+    }
+    
+    public void Deactivate()
+    {
+        this.isActive = false;
+    }
+
+    public void Activate()
+    {
+        this.isActive = true;
+    }
+
+    // Método para consultar si está activo
+    public bool CheckIsActive()
+    {
+        return this.isActive;
+    }
+    
+    public List<Interaction> GetUnansweredInteractions()
+    {
+        List<Interaction> unanswered = new List<Interaction>();
+    
+        foreach (Interaction interaction in _interactions)
+        {
+            if (interaction.Type == ExchangeType.Received && !interaction.HasResponse)
+            {
+                unanswered.Add(interaction);
+            }
+        }
+    
+        return unanswered;
     }
     
     public override string ToString()
