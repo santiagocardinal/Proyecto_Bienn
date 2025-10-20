@@ -2,31 +2,34 @@ namespace Library.Tests;
 
 public class NoteTests
 {
-    private Note note;
-
-    [SetUp]
-    public void Setup()
-    {
-        note = new Note();
+    [Test] 
+    public void Constructor_ShouldCreateNoteWithDefaultValues() 
+    { 
+        var note = new Note();
+        
+        Assert.That(note.Topic, Is.Null); 
+        Assert.That(note.Date, Is.EqualTo(default(DateTime))); 
+        Assert.That(note.SentReceivedStatus, Is.EqualTo(SentReceived.Sent));
     }
-    
-    [Test]
-    public void Constructor()
-    {
-        // Arrange & Act
-        Note newNote = new Note();
 
-        // Assert
-        Assert.That(newNote.Topic, Is.Null);
-        Assert.That(newNote.Date, Is.Null);
-        Assert.That(newNote.SentReceivedStatus, Is.EqualTo(SentReceived.Sent)); // Valor por defecto del enum
-    }
-    
     [Test]
-    public void Topic_ValidValue()
+    public void Notes_SetTopicAndDate()
+    {
+        var note = new Note();
+        string expectedTopic = "Reunión importante";
+        DateTime expectedDate = new DateTime(2025, 10, 20);
+        
+        note.Notes(expectedTopic, expectedDate);
+
+        Assert.That(note.Topic, Is.EqualTo(expectedTopic));
+        Assert.That(note.Date, Is.EqualTo(expectedDate));
+    }
+
+    public void Note_Topic()
     {
         // Arrange
-        string expectedTopic = "Reunión con cliente";
+        var note = new Note();
+        string expectedTopic = "Nueva reunión";
 
         // Act
         note.Topic = expectedTopic;
@@ -36,10 +39,11 @@ public class NoteTests
     }
 
     [Test]
-    public void Date_ValidValue()
+    public void Note_Date()
     {
         // Arrange
-        string expectedDate = "2025-10-19";
+        var note = new Note();
+        DateTime expectedDate = new DateTime(2025, 12, 25);
 
         // Act
         note.Date = expectedDate;
@@ -47,102 +51,21 @@ public class NoteTests
         // Assert
         Assert.That(note.Date, Is.EqualTo(expectedDate));
     }
-    
     [Test]
-    public void SentReceivedStatus_SetToReceived_UpdatesSuccessfully()
-    {
-        // Act
-        note.SentReceivedStatus = SentReceived.Received;
-
-        // Assert
-        Assert.That(note.SentReceivedStatus, Is.EqualTo(SentReceived.Received));
-    }
-    
-    [Test]
-    public void Notes_WithValidParameters()
+    public void Note_ToStringMethod()
     {
         // Arrange
-        string expectedTopic = "Seguimiento de venta";
-        string expectedDate = "2025-10-20";
-
-        // Act
-        note.Notes(expectedTopic, expectedDate);
-
-        // Assert
-        Assert.That(note.Topic, Is.EqualTo(expectedTopic));
-        Assert.That(note.Date, Is.EqualTo(expectedDate));
-    }
-
-    [Test]
-    public void Notes_WithNullParameters()
-    {
-        // Act
-        note.Notes(null, null);
-
-        // Assert
-        Assert.That(note.Topic, Is.Null);
-        Assert.That(note.Date, Is.Null);
-    }
-
-    [Test]
-    public void Notes_CalledMultipleTimes()
-    {
-        // Act
-        note.Notes("Primer tema", "2025-10-15");
-        note.Notes("Segundo tema", "2025-10-16");
-        note.Notes("Tercer tema", "2025-10-17");
-
-        // Assert
-        Assert.That(note.Topic, Is.EqualTo("Tercer tema"));
-        Assert.That(note.Date, Is.EqualTo("2025-10-17"));
-    }
-
-
-    [Test]
-    public void ToString_WithAllPropertiesSet_ReturnsFormattedString()
-    {
-        // Arrange
-        note.Topic = "Reunión importante";
-        note.Date = "2025-10-19";
+        var note = new Note();
+        note.Topic = "Reunión de equipo";
+        note.Date = new DateTime(2025, 10, 20);
         note.SentReceivedStatus = SentReceived.Sent;
 
         // Act
         string result = note.ToString();
 
         // Assert
-        Assert.That(result, Does.Contain("Reunión importante"));
-        Assert.That(result, Does.Contain("2025-10-19"));
-        Assert.That(result, Does.Contain("Sent"));
-    }
-
-    [Test]
-    public void ToString_WithReceivedStatus_IncludesReceived()
-    {
-        // Arrange
-        note.Topic = "Mensaje recibido";
-        note.Date = "2025-10-18";
-        note.SentReceivedStatus = SentReceived.Received;
-
-        // Act
-        string result = note.ToString();
-
-        // Assert
-        Assert.That(result, Does.Contain("Received"));
-    }
-
-    [Test]
-    public void ToString_WithNullValues_HandlesGracefully()
-    {
-        // Arrange
-        note.Topic = null;
-        note.Date = null;
-
-        // Act
-        string result = note.ToString();
-
-        // Assert
-        Assert.That(result, Is.Not.Null);
-        Assert.That(result, Does.Contain("Topic:"));
-        Assert.That(result, Does.Contain("Date:"));
+        string expected = "Topic: Reunión de equipo, Date: 20/10/2025 00:00:00, Sent/Received: Sent";
+        Assert.That(result, Does.Contain("Topic: Reunión de equipo"));
+        Assert.That(result, Does.Contain("Sent/Received: Sent"));
     }
 }

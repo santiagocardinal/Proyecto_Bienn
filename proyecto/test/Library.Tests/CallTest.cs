@@ -14,7 +14,7 @@ public class CallTests
     
 
     [Test]
-    public void Constructor_WithValidParameters_CreatesCallSuccessfully()
+    public void Constructor_ValidParameters()
     {
         // Arrange
         string expectedTopic = "Consulta sobre producto";
@@ -97,7 +97,7 @@ public class CallTests
         Call call = new Call(testDate, "Llamada", ExchangeType.Sent, customer);
         Note note = new Note();
         note.Topic = "Cliente interesado";
-        note.Date = "2025-10-19";
+        note.Date = new DateTime(2025,10,20);
 
         // Act
         call.Note.Add(note);

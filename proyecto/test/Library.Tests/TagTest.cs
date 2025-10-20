@@ -29,7 +29,7 @@ public class TagTest
         Assert.That(tag.Name,Is.EqualTo(name));
         Assert.That(tag.Description,Is.EqualTo(descripcion));
     }
-
+    [Test]
     public void Tag_NullId()
     {
         string id = null;
@@ -42,6 +42,7 @@ public class TagTest
         Assert.That(tag.Name,Is.EqualTo(name));
         Assert.That(tag.Description,Is.EqualTo(descripcion));
     }
+    [Test]
     public void Tag_NullDescription()
     {
         string id = "12345678";
@@ -54,6 +55,7 @@ public class TagTest
         Assert.That(tag.Name,Is.EqualTo(name));
         Assert.That(tag.Description,Is.EqualTo(null));
     }
+    [Test]
     public void Tag_NullName()
     {
         string id = "12345678";
@@ -66,6 +68,7 @@ public class TagTest
         Assert.That(tag.Name,Is.EqualTo(null));
         Assert.That(tag.Description,Is.EqualTo(descripcion));
     }
+    [Test]
     public void Tag_ParameterNotNull()
     {
         string id = "12345678";
@@ -78,7 +81,7 @@ public class TagTest
         Assert.That(tag.Name,Is.Not.EqualTo(null));
         Assert.That(tag.Description,Is.Not.EqualTo(null));
     }
-
+    [Test]
     public void Tag_ToStringMethod()
     {
         string id = "12345678";

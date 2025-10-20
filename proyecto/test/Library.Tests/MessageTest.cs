@@ -111,7 +111,7 @@ public class MessageTests
         Message message = new Message(testDate, "Mensaje", ExchangeType.Received, customer);
         Note note = new Note();
         note.Topic = "Respuesta enviada";
-        note.Date = "2025-10-19";
+        note.Date = new DateTime(2025,10,20);
 
         // Act
         message.Note.Add(note);
