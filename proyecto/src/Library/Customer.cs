@@ -11,6 +11,7 @@ public class Customer
     private DateTime birthDate;
     private List<Tag> tags;
     private List<Interaction> _interactions;
+    private Seller _seller;
 
     public string Id
     {
@@ -62,6 +63,12 @@ public class Customer
     {
         get { return this._interactions; }
         set { this._interactions = value; }
+    }
+
+    public Seller Seller
+    {
+        get{return this._seller; }
+        set { this._seller = value; }
     }
 
     public Customer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
@@ -138,7 +145,29 @@ public class Customer
 
         return result;
     }
-    
+
+    public DateTime GetLastInteraction()
+    {
+        // Verificamos que haya al menos una interacción
+        if (this._interactions == null || this._interactions.Count == 0)
+        {
+            throw new InvalidOperationException("No hay interacciones registradas.");
+        }
+
+        // Inicializamos con la fecha de la primera interacción
+        DateTime last_interaction = this._interactions[0].Date;
+
+        // Recorremos todas las interacciones
+        foreach (var otraInteraccion in _interactions)
+        {
+            if (otraInteraccion.Date > last_interaction)
+            {
+                last_interaction = otraInteraccion.Date;
+            }
+        }
+
+        return last_interaction;
+    }
     
     public override string ToString()
     {

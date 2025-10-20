@@ -3,14 +3,10 @@ namespace Library;
 public class CustomerManager
 {
     private List<Customer> customers;
-    private List<Interaction> interactions;
-    private List<Meeting> meetings;
-
+    
     public CustomerManager()
     {
         customers = new List<Customer>();
-        interactions = new List<Interaction>();
-        meetings = new List<Meeting>();
     }
 
     public Customer SearchByName(string name)
@@ -117,47 +113,69 @@ public class CustomerManager
             Console.WriteLine("Cliente no encontrado.");
         }
     }
-
-    public bool Register(Customer customer)
-    {
-        if (customer != null && SearchById(customer.Id) == null)
-        {
-            customers.Add(customer);
-            Console.WriteLine($"Cliente {customer.Name} registrado exitosamente.");
-            return true;
-        }
-        Console.WriteLine("No se pudo registrar el cliente (ya existe o es nulo).");
-        return false;
-    }
-
-    public int GetTotalCustomer()
+    private int GetTotalCustomer()
     {
         return customers.Count;
     }
 
-    public List<Interaction> GetRecentInteractions(int limit)
+    private List<Customer> GetRecentInteraction(TimeSpan lapso)
     {
-        if (limit <= 0 || limit > interactions.Count)
+        List<Customer> list = new List<Customer>();
+        DateTime ahora = DateTime.Now;
+
+        foreach (Customer customer in this.customers)
         {
-            return new List<Interaction>(interactions);
+            DateTime lastinteraction = customer.GetLastInteraction();
+
+            if (lastinteraction < ahora - lapso)
+            {
+                list.Add(customer);
+            }
         }
-        return interactions.GetRange(interactions.Count - limit, limit);
+
+        return list;
     }
-
-    public List<Meeting> GetUpcomingMeetings()
+    private List<Meeting> GetUpcomingMeetings(Customer customer)
     {
-        List<Meeting> upcomingMeetings = new List<Meeting>();
         DateTime now = DateTime.Now;
+        List<Meeting> upcomingMeetings = new List<Meeting>();
 
-        foreach (Interaction inter in interactions) // Iteramos sobre la lista de Interactions
+        // Buscar el cliente en la lista local (_customers)
+        Customer existingCustomer = customers.FirstOrDefault(c => c.Id == customer.Id);
+
+        // Si no existe, devolvemos una lista vacía
+        if (existingCustomer == null)
         {
-            if (inter is Meeting meeting && meeting.Date > now) // Filtramos solo Meeting
+            return upcomingMeetings;
+        }
+
+        // Recorremos las interacciones del cliente encontrado
+        foreach (var inter in existingCustomer.Interactions)
+        {
+            if (inter is Meeting meeting && meeting.Date > now)
             {
                 upcomingMeetings.Add(meeting);
             }
         }
 
         return upcomingMeetings;
+    }
+    public DashboardSummary GetDashboard()
+    {
+        int totalCustomers = GetTotalCustomer();
+
+        // Definimos el lapso para "recientes", por ejemplo los últimos 7 días
+        TimeSpan lapso = TimeSpan.FromDays(7);
+        List<Customer> recentInteractions = GetRecentInteraction(lapso);
+
+        // Obtenemos todas las reuniones próximas de todos los clientes
+        List<Meeting> upcomingMeetings = new List<Meeting>();
+        foreach (var customer in customers)
+        {
+            upcomingMeetings.AddRange(GetUpcomingMeetings(customer));
+        }
+
+        return new DashboardSummary(recentInteractions, upcomingMeetings, totalCustomers);
     }
 /*
     public List<Customer> GetInactiveCustomers(int days)

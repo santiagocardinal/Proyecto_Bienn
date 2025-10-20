@@ -56,7 +56,7 @@ public class Seller : User
     }
 
     // Método que devuelve las ventas de un cliente específico
-    public List<Sale> getSalesByClient(Customer _customer)
+    public List<Sale> getSalesByCustomer(Customer _customer)
     {
         List<Sale> salesByClient = new List<Sale>();
 
