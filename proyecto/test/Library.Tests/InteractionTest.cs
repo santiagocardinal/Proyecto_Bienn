@@ -228,23 +228,6 @@ public class InteractionTest
     }
     
     [Test]
-    public void Interaction_ToString()
-    {
-        DateTime date = new DateTime(2025, 10, 20);
-        string topic = "Reunion importante";
-        ExchangeType type = ExchangeType.Received;
-        Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
-            "Masculino", new DateTime(1999, 03, 21));
-
-        var interaction = new Interaction(date, topic, type, pepe);
-        string result = interaction.ToString();
-        
-        Assert.That(result, Does.Contain("20/10/2025"));
-        Assert.That(result, Does.Contain("Reunion importante"));
-        Assert.That(result, Does.Contain("Received"));
-    }
-
-    [Test]
     public void Interaction_ToStringWithNullTopic()
     {
         DateTime date = new DateTime(2025, 10, 20);

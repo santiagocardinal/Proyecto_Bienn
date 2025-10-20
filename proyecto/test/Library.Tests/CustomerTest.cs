@@ -426,7 +426,7 @@ public class CustomerTest
 
         Assert.Throws<InvalidOperationException>(() => customer.GetLastInteraction());
     }
-/*
+
     [Test]
     public void Customer_GetUnansweredInteractions()
     {
@@ -455,7 +455,7 @@ public class CustomerTest
 
         Assert.That(unanswered.Count, Is.EqualTo(1));
         Assert.That(unanswered[0], Is.EqualTo(interaction3));
-    }*/
+    }
 
     [Test]
     public void Customer_SellerMutable()
