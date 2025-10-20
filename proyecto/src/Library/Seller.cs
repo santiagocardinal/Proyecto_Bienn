@@ -71,4 +71,12 @@ public class Seller : User
 
         return salesByClient;
     }
+    
+    public void RespondToInteraction(Interaction interaction)
+    {
+        if (interaction != null && !interaction.HasResponse)
+        {
+            interaction.MarkAsResponded();
+        }
+    }
 }

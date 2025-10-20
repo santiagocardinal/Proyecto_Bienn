@@ -9,7 +9,7 @@ public enum SentReceived
 public class Note
 {
     private string topic;
-    private string date;
+    private DateTime date;
     private SentReceived sentReceived;
     
     public string Topic
@@ -18,7 +18,7 @@ public class Note
         set { topic = value; }
     }
 
-    public string Date
+    public DateTime Date
     {
         get { return date; }
         set { date = value; }
@@ -30,7 +30,7 @@ public class Note
         set { sentReceived = value; }
     }
     
-    public void Notes(string topic, string date)
+    public void Notes(string topic, DateTime date)
     {
         this.Topic = topic;
         this.Date = date;
