@@ -4,18 +4,18 @@
 
 **Desafíos Técnicos**
 
-Arquitectura y asignación de responsabilidades
-Definir las relaciones entre `Customer`, `Interaction`, `Meeting`, `Sale` y demás clases requirió aplicar correctamente guías de diseño como Expert. La asignación de responsabilidades fue iterativa, con varios ajustes hasta lograr una estructura coherente y mantenible.
-Adherencia a principios y patrones de diseño
-Mantener las buenas prácticas de programación mientras buscábamos soluciones fue un desafío constante. La presión de resolver problemas nos generaba el temor de incumplir algún principio `SOLID`, patrón de diseño o guía establecida. En momentos de bloqueo, había que frenar y asegurarnos de no sacrificar calidad por velocidad.
-Polimorfismo para tipos de interacciones
-Implementamos polimorfismo para manejar diferentes tipos de interacciones, lo que permitió extender funcionalidades sin modificar código existente y facilitó la escalabilidad del sistema.
-Detección de clientes inactivos
-La lógica para identificar clientes sin actividad reciente implicó trabajar con `DateTime` y `TimeSpan`. Métodos como `GetInactiveCustomers` y `GetRecentInteraction` requirieron varias iteraciones hasta quedar robustos y reutilizables.
-Cobertura de pruebas unitarias con `NUnit`
-Implementamos tests para todas las clases y métodos del sistema. Este proceso tomó tiempo considerable pero resultó fundamental para validar comportamientos y detectar errores tempranamente, estableciendo una base sólida para el desarrollo futuro.
-Control de versiones y trabajo colaborativo
-El uso de GitHub como herramienta de gestión nos obligó a aprender manejo de ramas, resolución de conflictos y coordinación de tareas simultáneas. La curva de aprendizaje fue pronunciada pero necesaria.
+- Arquitectura y asignación de responsabilidades
+- Definir las relaciones entre `Customer`, `Interaction`, `Meeting`, `Sale` y demás clases requirió aplicar correctamente guías de diseño como Expert. La asignación de responsabilidades fue iterativa, con varios ajustes hasta lograr una estructura coherente y mantenible.
+- Adherencia a principios y patrones de diseño
+- Mantener las buenas prácticas de programación mientras buscábamos soluciones fue un desafío constante. La presión de resolver problemas nos generaba el temor de incumplir algún principio `SOLID`, patrón de diseño o guía establecida. En momentos de bloqueo, había que frenar y asegurarnos de no sacrificar calidad por velocidad.
+- Polimorfismo para tipos de interacciones
+- Implementamos polimorfismo para manejar diferentes tipos de interacciones, lo que permitió extender funcionalidades sin modificar código existente y facilitó la escalabilidad del sistema.
+- Detección de clientes inactivos
+- La lógica para identificar clientes sin actividad reciente implicó trabajar con `DateTime` y `TimeSpan`. Métodos como `GetInactiveCustomers` y `GetRecentInteraction` requirieron varias iteraciones hasta quedar robustos y reutilizables.
+- Cobertura de pruebas unitarias con `NUnit`
+- Implementamos tests para todas las clases y métodos del sistema. Este proceso tomó tiempo considerable pero resultó fundamental para validar comportamientos y detectar errores tempranamente, estableciendo una base sólida para el desarrollo futuro.
+- Control de versiones y trabajo colaborativo
+- El uso de GitHub como herramienta de gestión nos obligó a aprender manejo de ramas, resolución de conflictos y coordinación de tareas simultáneas. La curva de aprendizaje fue pronunciada pero necesaria.
 
 **Aprendizajes Clave**
 Aplicación práctica de principios OO y su impacto directo en mantenibilidad y escalabilidad del código.
