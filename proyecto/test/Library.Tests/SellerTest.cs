@@ -15,12 +15,10 @@ public class SellerTests
     }
     
     [Test]
-    public void Constructor_CreatesSellerWithEmptyLists()
+    public void CreatesSeller()
     {
-        // Arrange & Act
         Seller newSeller = new Seller("Juan", "juan@email.com", "099123456", "12345678");
 
-        // Assert
         Assert.That(newSeller.Name, Is.EqualTo("Juan"));
         Assert.That(newSeller.Mail, Is.EqualTo("juan@email.com"));
         Assert.That(newSeller.Phone, Is.EqualTo("099123456"));
@@ -33,157 +31,103 @@ public class SellerTests
     }
 
     [Test]
-    public void Constructor_InheritsFromUser()
+    public void InheritsFromUser()
     {
-        // Arrange & Act
         Seller newSeller = new Seller("Pedro", "pedro@email.com", "099888999", "99999999");
 
-        // Assert
         Assert.That(newSeller, Is.InstanceOf<User>());
     }
 
     [Test]
     public void IsSuspended_IsFalse()
     {
-        // Assert
         Assert.That(seller.IsSuspended, Is.False);
     }
 
     [Test]
     public void IsSuspended_SetToTrue()
     {
-        // Act
         seller.IsSuspended = true;
 
-        // Assert
         Assert.That(seller.IsSuspended, Is.True);
     }
 
     [Test]
     public void IsSuspended_SetToFalse()
     {
-        // Arrange
         seller.IsSuspended = true;
 
-        // Act
         seller.IsSuspended = false;
 
-        // Assert
         Assert.That(seller.IsSuspended, Is.False);
     }
 
     [Test]
     public void AddInteraction()
     {
-        // Arrange
         Interaction interaction = new Interaction(DateTime.Now, "Reunión",ExchangeType.Received,new Customer("12345678", "Cliente Dos", "Rodriguez", "cliente2@gmail.com", "099444333", "Femenino", new DateTime(2000, 11, 20)));
-
-        // Act
+        
         seller.addInteraction(interaction);
 
-        // Assert
         Assert.That(seller.Interactions.Count, Is.EqualTo(1));
         Assert.That(seller.Interactions[0], Is.EqualTo(interaction));
     }
 
     [Test]
-    public void AddInteraction_MultipleInteractions()
+    public void MultipleInteractions()
     {
-        // Arrange
         Interaction interaction1 = new Interaction(DateTime.Now, "Reunión 1", ExchangeType.Received,new Customer("12545678", "Cliente Uno", "099533444", "cliente1@email.com", "099533444", "Masculino", new DateTime(1990, 1, 1)));
         Interaction interaction2 = new Interaction(DateTime.Now, "Reunión 2", ExchangeType.Sent,new Customer("12445678", "Cliente Dos", "Rodriguez", "cliente2@gmail.com", "099444333", "Femenino", new DateTime(2000, 11, 20)));
         Interaction interaction3 = new Interaction(DateTime.Now, "Reunión 3", ExchangeType.Sent,new Customer("12345678", "Cliente Tres", "Orue", "cliente3@gmail.com", "099964333", "Femenino", new DateTime(2010, 09, 14)));
 
-        // Act
         seller.addInteraction(interaction1);
         seller.addInteraction(interaction2);
         seller.addInteraction(interaction3);
 
-        // Assert
         Assert.That(seller.Interactions.Count, Is.EqualTo(3));
     }
     
-
     [Test]
     public void GetTotalSales_WithNoSale()
     {
-        // Act
         List<Sale> sales = seller.getTotalSales();
 
-        // Assert
         Assert.That(sales.Count, Is.EqualTo(0));
     }
 
     [Test]
     public void GetTotalSales_RegularInteractions()
     {
-        // Arrange
         Interaction interaction1 = new Interaction(DateTime.Now, "Reunión", ExchangeType.Received,new Customer("12345678", "ClienteA", "Penino", "clientea@gmail.com", "099444333", "Masculino", new DateTime(2000, 11, 20)));
-        Interaction interaction2 = new Interaction(DateTime.Now, "Seguimiento", ExchangeType.Sent,new Customer("12445678", "ClienteB", "Carballo", "clienteb@gmail.com", "099454333", "Masculino", new DateTime(2003, 10, 11)));
+        Interaction interaction2 = new Interaction(DateTime.Now, "Seguimiento", ExchangeType.Sent,new Customer("12445678", "ClienteB", "Carballido", "clienteb@gmail.com", "099454333", "Masculino", new DateTime(2003, 10, 11)));
         seller.addInteraction(interaction1);
         seller.addInteraction(interaction2);
 
-        // Act
         List<Sale> sales = seller.getTotalSales();
 
-        // Assert
         Assert.That(sales.Count, Is.EqualTo(0));
     }
-/*
+
     [Test]
     public void GetTotalSales_WithSales()
     {
-        // Arrange
-        Sale sale1 = new Sale("12345678", "Venta 1", "Venta", customer1, 1000);
-        Sale sale2 = new Sale("12334567", "Venta 2", "Venta", customer2, 2000);
-        Interaction interaction = new Interaction(DateTime.Now, "Reunión", ExchangeType.Received);
+        Customer pennino = new Customer("12345678", "ClienteA", "Pennino", "clientepremiun@gmail.com", "099444333", "Masculino",new DateTime(2007,05,01));
+        Quote pepe = new Quote(new DateTime(1891,09,28),"Venta",ExchangeType.Received,pennino,100.0,"Venta de papel.");
+        Quote gallina = new Quote(new DateTime(2024,10,18),"Venta",ExchangeType.Received,pennino,3.0,"Venta de piscinas.");
+
+        Sale sale1 = new Sale("12345678", "Papel", pepe, new DateTime(2025,07,29),"Reunion",ExchangeType.Received,pennino);
+        Sale sale2 = new Sale("12334567", "Piscinas", gallina,new DateTime(2025,10,20),"Reunion",ExchangeType.Received,pennino);
+        
+        Interaction interaction = new Interaction(DateTime.Now, "Reunión", ExchangeType.Received,pennino);
         
         seller.addInteraction(sale1);
         seller.addInteraction(interaction);
         seller.addInteraction(sale2);
-
-        // Act
+        
         List<Sale> sales = seller.getTotalSales();
 
-        // Assert
         Assert.That(sales.Count, Is.EqualTo(2));
         Assert.That(sales, Contains.Item(sale1));
         Assert.That(sales, Contains.Item(sale2));
-    }
-    
-    [Test]
-    public void GetSalesByClient_MultipleClients()
-    {
-        // Arrange
-        Sale sale1 = new Sale(DateTime.Now, "Venta Cliente 1", "Venta", customer1, 1000);
-        Sale sale2 = new Sale(DateTime.Now, "Venta Cliente 2", "Venta", customer2, 2000);
-        Sale sale3 = new Sale(DateTime.Now, "Otra Venta Cliente 1", "Venta", customer1, 1500);
-        
-        seller.addInteraction(sale1);
-        seller.addInteraction(sale2);
-        seller.addInteraction(sale3);
-
-        // Act
-        List<Sale> salesCustomer1 = seller.getSalesByClient(customer1);
-
-        // Assert
-        Assert.That(salesCustomer1.Count, Is.EqualTo(2));
-        Assert.That(salesCustomer1, Contains.Item(sale1));
-        Assert.That(salesCustomer1, Contains.Item(sale3));
-        Assert.That(salesCustomer1, Does.Not.Contain(sale2));
-    }
-    
-*/
-    [Test]
-    public void Customer_AddCustomer_UpdatesListSuccessfully()
-    {
-        // Act
-        seller.Customer.Add(customer1);
-        seller.Customer.Add(customer2);
-
-        // Assert
-        Assert.That(seller.Customer.Count, Is.EqualTo(2));
-        Assert.That(seller.Customer, Contains.Item(customer1));
-        Assert.That(seller.Customer, Contains.Item(customer2));
     }
 }

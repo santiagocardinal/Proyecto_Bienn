@@ -17,7 +17,7 @@ public class Sale : Interaction
       set { amount = value; }
    }
 
-   public Sale(string id, Customer customer, string product, Quote amount, DateTime date, string topic, ExchangeType type, Customer _customer) 
+   public Sale(string id, string product, Quote amount, DateTime date, string topic, ExchangeType type, Customer _customer) 
       : base( date, topic, type, _customer)
    {
       this.product = product;
