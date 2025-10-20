@@ -1,66 +1,88 @@
 using NUnit.Framework;
 using Library;
 
-namespace Library.Tests
+namespace Library.Tests;
+
+[TestFixture]
+public class AdminTests
 {
-    public class AdminTests
+    [Test]
+    public void Constructor_Creator()
     {
-        private Admin admin;
-        private User testUser;
+        string name = "Juan Pérez";
+        string mail = "juan.perez@example.com";
+        string phone = "59899123456";
+        string id = "12345678";
+        
+        var admin = new Admin(name, mail, phone, id);
 
-        [SetUp]
-        public void Setup()
-        {
-            admin = new Admin("Camila", "camila@example.com", "099123456", "123");
-            testUser = new User("Sebastián", "sebastian@example.com", "099987654", "456");
-        }
+        Assert.That(admin.Name, Is.EqualTo(name));
+        Assert.That(admin.Mail, Is.EqualTo(mail));
+        Assert.That(admin.Phone, Is.EqualTo(phone));
+        Assert.That(admin.Id, Is.EqualTo(id));
+    }
+    
+    [Test]
+    public void Constructor_CanHandleNullName()
+    {
+        string name = null;
+        string mail = "agustooo@gmail.com";
+        string phone = "098284444";
+        string id = "12345678";
+        
+        var admin = new Admin(name, mail, phone, id);
+        
+        Assert.That(admin.Name, Is.EqualTo(name));
+    }
 
-        [Test]
-        public void CreateSeller_ShouldReturnTrue_WhenUserIsValidAndNotExists()
-        {
-            bool result = admin.CreateSeller(testUser);
+    [Test]
+    public void Constructor_CanHandleNullMail()
+    {
+        string name = "Jose Luis";
+        string mail = null;
+        string phone = "987777333";
+        string id = "21345678";
+        
+        var admin = new Admin(name, mail, phone, id);
+        
+        Assert.That(admin.Mail, Is.EqualTo(mail));
+    }
 
-            Assert.That(result, Is.True);
-            Assert.That(admin.Sellers.Count, Is.EqualTo(1));
-            Assert.That(admin.Sellers[0].Name, Is.EqualTo("Sebastián"));
-        }
+    [Test]
+    public void Constructor_CanNullPhone()
+    {
+        string name = "Juan Pedro";
+        string mail = "josepedro1@gmail.com";
+        string phone = null;
+        string id = "32145678";
+        
+        var admin = new Admin(name, mail, phone, id);
 
-        [Test]
-        public void CreateSeller_ShouldReturnFalse_WhenUserIsNull()
-        {
-            bool result = admin.CreateSeller(null);
+        Assert.That(admin.Phone, Is.EqualTo(phone));
+    }
 
-            Assert.That(result, Is.False);
-            Assert.That(admin.Sellers.Count, Is.EqualTo(0));
-        }
+    [Test]
+    public void Constructor_CanNullId()
+    {
+        string name = "Maria Pia";
+        string mail = "mariapiaa@gmailc.com";
+        string phone = "98774463";
+        string id = null;
+        
+        var admin = new Admin(name, mail, phone, id);
+        
+        Assert.That(admin.Id, Is.EqualTo(id));
+    }
 
-        [Test]
-        public void CreateSeller_ShouldReturnFalse_WhenUserAlreadyExists()
-        {
-            admin.CreateSeller(testUser);
-            bool result = admin.CreateSeller(testUser);
+    [Test]
+    public void Admin_CanBeCompared()
+    {
+        // Arrange & Act
+        var admin1 = new Admin("Admin 1", "admin1@test.com", "111", "1");
+        var admin2 = new Admin("Admin 2", "admin2@test.com", "222", "2");
 
-            Assert.That(result, Is.False);
-            Assert.That(admin.Sellers.Count, Is.EqualTo(1));
-        }
-
-        [Test]
-        public void SuspendSeller_ShouldReturnTrue_WhenSellerExists()
-        {
-            admin.CreateSeller(testUser);
-
-            bool result = admin.SuspendSeller("456");
-
-            Assert.That(result, Is.True);
-            Assert.That(admin.Sellers[0].IsSuspended, Is.True);
-        }
-
-        [Test]
-        public void SuspendSeller_ShouldReturnFalse_WhenSellerDoesNotExist()
-        {
-            bool result = admin.SuspendSeller("999");
-
-            Assert.That(result, Is.False);
-        }
+        // Assert
+        Assert.That(admin1, Is.Not.EqualTo(admin2));
+        Assert.That(admin1, Is.Not.SameAs(admin2));
     }
 }
