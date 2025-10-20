@@ -99,7 +99,7 @@ public class MailTests
         Mail mail = new Mail(testDate, "Correo", ExchangeType.Sent, customer);
         Note note = new Note();
         note.Topic = "Mail enviado al cliente";
-        note.Date = "2025-10-19";
+        note.Date = new DateTime(2025,10,20);
 
         // Act
         mail.Note.Add(note);
