@@ -229,4 +229,9 @@ public class CustomerManager
             Console.WriteLine("Interacción agregada exitosamente.");
         }
     }
+
+    public List<Interaction> GetCustomerInteractions(Customer customer)
+    {
+        return customer.GetInteraction();
+    }
 }
