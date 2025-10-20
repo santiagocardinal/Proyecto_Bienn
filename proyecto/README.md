@@ -18,13 +18,13 @@
 - El uso de GitHub como herramienta de gestión nos obligó a aprender manejo de ramas, resolución de conflictos y coordinación de tareas simultáneas. La curva de aprendizaje fue pronunciada pero necesaria.
 
 **Aprendizajes Clave**
-Aplicación práctica de principios OO y su impacto directo en mantenibilidad y escalabilidad del código.
-Integración de herramientas de testing como parte esencial del flujo de desarrollo, no como paso opcional.
-Uso de GitHub no solo como repositorio sino como plataforma de coordinación y documentación del proyecto.
-Importancia de las retrospectivas para identificar puntos de mejora en planificación y comunicación interna.
+- Aplicación práctica de principios OO y su impacto directo en mantenibilidad y escalabilidad del código.
+- Integración de herramientas de testing como parte esencial del flujo de desarrollo, no como paso opcional.
+- Uso de GitHub no solo como repositorio sino como plataforma de coordinación y documentación del proyecto.
+- Importancia de las retrospectivas para identificar puntos de mejora en planificación y comunicación interna.
 
-**Balance del Equipo**
+**Balance del Equipo**<br/>
 Llegamos a una solución final para esta primera entrega, pero como en todo proyecto, hay cosas que podemos mejorar. El punto más claro que salió en las retrospectivas fue la organización y coordinación. Si bien hubo organización, nos faltó tomarnos más tiempo al principio para definir bien las tareas y dividirlas entre todos. Pensar un poco más a futuro nos habría dado más margen para estar disponibles ante imprevistos o correcciones de último momento.
 En cuanto a comunicación, somos un equipo donde todos tienen voz. Le damos rienda suelta al debate y valoramos la opinión de cada integrante, lo que genera un ambiente de trabajo colaborativo y sin trabas para expresar ideas o dudas. Eso fue un punto fuerte que queremos mantener.
-Para las próximas entregas, el objetivo es claro: más tiempo en la planificación inicial, definir tareas más específicas desde el arranque, y tener una visión un poco más a largo plazo para anticiparnos a los baches del camino.
-En resumen: esta etapa puso los cimientos de algo sólido. Cada uno metió lo suyo, aprendimos un montón tanto de código como de trabajo en equipo, y el CRC está tomando forma. Ahora, a aplicar lo aprendido en la siguiente entrega.
+Para las próximas entregas, el objetivo es claro: más tiempo en la planificación inicial, definir tareas más específicas desde el arranque, y tener una visión un poco más a largo plazo para anticiparnos a los baches del camino.<br/>
+**En resumen: esta etapa puso los cimientos de algo sólido. Cada uno metió lo suyo, aprendimos un montón tanto de código como de trabajo en equipo, y el CRC está tomando forma. Ahora, a aplicar lo aprendido en la siguiente entrega.**
