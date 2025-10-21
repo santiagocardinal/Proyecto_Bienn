@@ -12,10 +12,6 @@ public class MailTests
         customer = new Customer("12345678", "Juan", "Pérez", "juan@email.com", "099123456", "Masculino", new DateTime(1990, 5, 15));
     }
 
-    // ============================================
-    // PRUEBAS DEL CONSTRUCTOR
-    // ============================================
-
     [Test]
     public void Constructor_WithValidParameters_CreatesMailSuccessfully()
     {
@@ -45,10 +41,7 @@ public class MailTests
         Assert.That(mail.Note, Is.Not.Null);
         Assert.That(mail.Note, Is.Empty);
     }
-
-    // ============================================
-    // PRUEBAS DE HERENCIA
-    // ============================================
+    
 
     [Test]
     public void Mail_InheritsFromInteraction()
@@ -73,10 +66,7 @@ public class MailTests
         Assert.That(interaction, Is.Not.Null);
         Assert.That(interaction, Is.InstanceOf<Mail>());
     }
-
-    // ============================================
-    // PRUEBAS CON EXCHANGETYPE
-    // ============================================
+    
 
     [Test]
     public void Constructor_WithEmailType_CreatesSuccessfully()
@@ -87,24 +77,19 @@ public class MailTests
         // Assert
         Assert.That(mail.Type, Is.EqualTo(ExchangeType.Sent));
     }
-
-    // ============================================
-    // PRUEBAS DE NOTAS
-    // ============================================
+    
 
     [Test]
     public void Note_AddNote_AddsSuccessfully()
     {
-        // Arrange
+        
         Mail mail = new Mail(testDate, "Correo", ExchangeType.Sent, customer);
-        Note note = new Note();
+        Note note = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note.Topic = "Mail enviado al cliente";
         note.Date = new DateTime(2025,10,20);
 
-        // Act
         mail.Note.Add(note);
 
-        // Assert
         Assert.That(mail.Note.Count, Is.EqualTo(1));
         Assert.That(mail.Note[0], Is.EqualTo(note));
     }
@@ -114,9 +99,9 @@ public class MailTests
     {
         // Arrange
         Mail mail = new Mail(testDate, "Correo", ExchangeType.Sent, customer);
-        Note note1 = new Note();
+        Note note1 = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note1.Topic = "Nota 1";
-        Note note2 = new Note();
+        Note note2 = new Note("Venta",new DateTime(2025, 12, 25),ExchangeType.Received);
         note2.Topic = "Nota 2";
 
         // Act
@@ -128,10 +113,7 @@ public class MailTests
         Assert.That(mail.Note, Contains.Item(note1));
         Assert.That(mail.Note, Contains.Item(note2));
     }
-
-    // ============================================
-    // PRUEBAS CON VALORES NULL
-    // ============================================
+    
 
     [Test]
     public void Constructor_WithNullTopic_CreatesMail()
@@ -154,10 +136,7 @@ public class MailTests
         Assert.That(mail.Customer, Is.Null);
         Assert.That(mail.Note, Is.Not.Null);
     }
-
-    // ============================================
-    // COMPARACIÓN CON OTRAS CLASES
-    // ============================================
+    
 
     [Test]
     public void Mail_IsDifferentFromCallAndMessage()

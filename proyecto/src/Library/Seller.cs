@@ -2,6 +2,9 @@
 
 namespace Library;
 
+// LSP: Seller es un User y puede sustituirlo en cualquier contexto.
+// SRP: Seller tiene la responsabilidad de gestionar las interacciones
+// y relaciones comerciales de un vendedor.
 public class Seller : User
 {
     private bool isSuspended;
@@ -26,6 +29,7 @@ public class Seller : User
         set { interactions = value; }
     }
 
+    // Patrón EXPERT: User es experto en inicializar datos de usuario,
     public Seller( string name, string mail, string phone, string id) : base (name,mail,phone,id)
     {
         this.Customer = new List<Customer> ();
@@ -40,7 +44,8 @@ public class Seller : User
         }
     }
     
-    // Método que devuelve el total de ventas en un rango de fechas
+    // Patrón EXPERT: Seller es el experto en conocer y filtrar sus propias ventas
+
     public List<Sale> getTotalSales()
     {
         List<Sale> sales = new List<Sale>();
@@ -55,14 +60,14 @@ public class Seller : User
         return sales;
     }
 
-    // Método que devuelve las ventas de un cliente específico
+    // Patrón EXPERT: Seller es el experto en consultar sus ventas por cliente
+
     public List<Sale> getSalesByCustomer(Customer _customer)
     {
         List<Sale> salesByClient = new List<Sale>();
 
         foreach (Interaction inter in interactions)
         {
-            // Verificamos que sea Sale y que pertenezca al cliente
             if (inter is Sale sale && sale.Customer == _customer)
             {
                 salesByClient.Add(sale);
@@ -72,6 +77,8 @@ public class Seller : User
         return salesByClient;
     }
     
+    // Patrón EXPERT: Seller es el experto en responder sus propias interacciones
+
     public void RespondToInteraction(Interaction interaction)
     {
         if (interaction != null && !interaction.HasResponse)

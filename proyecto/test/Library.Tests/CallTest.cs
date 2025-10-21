@@ -95,7 +95,7 @@ public class CallTests
     {
         // Arrange
         Call call = new Call(testDate, "Llamada", ExchangeType.Sent, customer);
-        Note note = new Note();
+        Note note = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note.Topic = "Cliente interesado";
         note.Date = new DateTime(2025,10,20);
 
@@ -112,11 +112,11 @@ public class CallTests
     {
         // Arrange
         Call call = new Call(testDate, "Llamada", ExchangeType.Received, customer);
-        Note note1 = new Note();
+        Note note1 = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note1.Topic = "Nota 1";
-        Note note2 = new Note();
+        Note note2 = new Note("Venta",new DateTime(2025, 12, 25),ExchangeType.Received);
         note2.Topic = "Nota 2";
-        Note note3 = new Note();
+        Note note3 = new Note("Permutacion",new DateTime(2025, 12, 25),ExchangeType.Received);
         note3.Topic = "Nota 3";
 
         // Act
@@ -136,7 +136,7 @@ public class CallTests
     {
         // Arrange
         Call call = new Call(testDate, "Llamada", ExchangeType.Sent, customer);
-        Note note = new Note();
+        Note note = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note.Topic = "Nota a eliminar";
         call.Note.Add(note);
 
@@ -147,9 +147,7 @@ public class CallTests
         Assert.That(call.Note.Count, Is.EqualTo(0));
     }
 
-    // ============================================
-    // PRUEBAS CON DIFERENTES CUSTOMERS
-    // ============================================
+
 
     [Test]
     public void Constructor_WithDifferentCustomers_CreatesIndependentCalls()

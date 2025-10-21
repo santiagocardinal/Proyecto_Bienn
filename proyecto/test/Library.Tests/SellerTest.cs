@@ -115,8 +115,8 @@ public class SellerTests
         Quote pepe = new Quote(new DateTime(1891,09,28),"Venta",ExchangeType.Received,pennino,100.0,"Venta de papel.");
         Quote gallina = new Quote(new DateTime(2024,10,18),"Venta",ExchangeType.Received,pennino,3.0,"Venta de piscinas.");
 
-        Sale sale1 = new Sale("12345678", "Papel", pepe, new DateTime(2025,07,29),"Reunion",ExchangeType.Received,pennino);
-        Sale sale2 = new Sale("12334567", "Piscinas", gallina,new DateTime(2025,10,20),"Reunion",ExchangeType.Received,pennino);
+        Sale sale1 = new Sale( "Papel", pepe, new DateTime(2025,07,29),"Reunion",ExchangeType.Received,pennino);
+        Sale sale2 = new Sale( "Piscinas", gallina,new DateTime(2025,10,20),"Reunion",ExchangeType.Received,pennino);
         
         Interaction interaction = new Interaction(DateTime.Now, "Reunión", ExchangeType.Received,pennino);
         

@@ -18,7 +18,7 @@ public class SaleTest
         Customer customer = new Customer("12345678", "Jose Jose", "Vazquez", "josejosee@gmail.com", "98234234",
             "Masculino", new DateTime(1999, 03, 04));
         
-        var sale = new Sale(id, product, amount, date,topic,type,customer);
+        var sale = new Sale( product, amount, date,topic,type,customer);
 
         Assert.That(sale.Product, Is.EqualTo(product));
         Assert.That(sale.Amount, Is.EqualTo(amount));
@@ -44,7 +44,7 @@ public class SaleTest
         Customer customer = new Customer("12345678", "Jose Jose", "Vazquez", "josejosee@gmail.com", "98234234",
             "Masculino", new DateTime(1999, 03, 04));
         
-        var sale = new Sale(id, product, amount, date,topic,type,customer);
+        var sale = new Sale(product, amount, date,topic,type,customer);
 
         Assert.That(sale.Product, Is.EqualTo(null));
         Assert.That(sale.Amount, Is.EqualTo(amount));
@@ -68,7 +68,7 @@ public class SaleTest
         Customer customer = new Customer("12345678", "Jose Jose", "Vazquez", "josejosee@gmail.com", "98234234",
             "Masculino", new DateTime(1999, 03, 04));
         
-        var sale = new Sale(id, product, amount, date,topic,type,customer);
+        var sale = new Sale(product, amount, date,topic,type,customer);
 
         Assert.That(sale.Product, Is.EqualTo(product));
         Assert.That(sale.Amount, Is.EqualTo(null));
@@ -94,7 +94,7 @@ public class SaleTest
         Customer customer = new Customer("12345678", "Jose Jose", "Vazquez", "josejosee@gmail.com", "98234234",
             "Masculino", new DateTime(1999, 03, 04));
         
-        var sale = new Sale(id, product, amount, date,topic,type,customer);
+        var sale = new Sale(product, amount, date,topic,type,customer);
 
         Assert.That(sale.Product, Is.EqualTo(product));
         Assert.That(sale.Amount, Is.EqualTo(amount));
@@ -118,7 +118,7 @@ public class SaleTest
         ExchangeType type = ExchangeType.Received;
         Customer customer = null;
         
-        var sale = new Sale(id, product, amount, date,topic,type,customer);
+        var sale = new Sale(product, amount, date,topic,type,customer);
 
         Assert.That(sale.Product, Is.EqualTo(product));
         Assert.That(sale.Amount, Is.EqualTo(amount));
@@ -144,7 +144,7 @@ public class SaleTest
         Customer customer = new Customer("12345678", "Jose Jose", "Vazquez", "josejosee@gmail.com", "98234234",
             "Masculino", new DateTime(1999, 03, 04));
         
-        var sale = new Sale(id, product, amount, date,topic,type,customer);
+        var sale = new Sale(product, amount, date,topic,type,customer);
         
         string id2 = "12345678";
         string product2 = "Papel";
@@ -157,7 +157,7 @@ public class SaleTest
         Customer customer2 = new Customer("12345678", "Jose Jose", "Vazquez", "josejosee@gmail.com", "98234234",
             "Masculino", new DateTime(1999, 03, 04));
 
-        var sale2 = new Sale(id2, product2, amount2, date2,topic2,type2,customer2);
+        var sale2 = new Sale(product2, amount2, date2,topic2,type2,customer2);
 
         Assert.That(sale, Is.Not.EqualTo(sale2));
         Assert.That(sale2, Is.Not.EqualTo(sale));
@@ -170,7 +170,7 @@ public class SaleTest
             "123456", "Masculino", new DateTime(2000, 1, 1));
         Quote amount = new Quote(DateTime.Today, "Venta", ExchangeType.Received, 
             customer, 1500, "Producto premium");
-        var sale = new Sale("1", "Laptop", amount, DateTime.Today, 
+        var sale = new Sale( "Laptop", amount, DateTime.Today, 
             "Venta de equipos", ExchangeType.Received, customer);
 
         string result = sale.ToString();

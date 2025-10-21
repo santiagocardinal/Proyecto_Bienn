@@ -1,16 +1,16 @@
 ﻿using System;
+using Library;
 
-public enum SentReceived
-{
-    Sent,
-    Received
-}
+// Enumeración para representar si una nota fue enviada o recibida
+// SRP: Define únicamente los dos estados posibles de una nota
+// Este enum ayuda a evitar el uso de strings o booleanos que podrían
+// ser menos expresivos y propensos a errores
 
 public class Note
 {
     private string topic;
     private DateTime date;
-    private SentReceived sentReceived;
+    private ExchangeType sentReceived;
     
     public string Topic
     {
@@ -24,17 +24,17 @@ public class Note
         set { date = value; }
     }
 
-    public SentReceived SentReceivedStatus
+    public ExchangeType SentReceivedStatus
     {
         get { return sentReceived; }
         set { sentReceived = value; }
     }
     
-    public void Notes(string topic, DateTime date)
+    public Note(string topic, DateTime date,ExchangeType type)
     {
         this.Topic = topic;
         this.Date = date;
-        
+        this.SentReceivedStatus = type;
     }
     
     public override string ToString()

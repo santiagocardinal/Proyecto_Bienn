@@ -1,5 +1,15 @@
 namespace Library;
 
+// SRP: Interaction tiene la responsabilidad de representar una interacción
+// entre un vendedor y un cliente, gestionando su información básica,
+// notas asociadas y estado de respuesta.
+//
+// EXPERT: Interaction es el experto en conocer y gestionar toda la información
+// relacionada con una interacción específica.
+//
+// POLIMORFISMO: Esta clase actúa como clase base para diferentes tipos
+// de interacciones (Sale, Query, etc.). Permite que código cliente trabaje
+// con Interaction sin conocer el tipo específico de cada una.
 public class Interaction 
 {
     private DateTime date;
@@ -9,6 +19,7 @@ public class Interaction
     private Customer _customer;
     private bool hasResponse;
 
+  
     public DateTime Date
     {
         get { return date; }
@@ -44,28 +55,26 @@ public class Interaction
         get { return hasResponse; }
         set { hasResponse = value; }
     }
-
+    
     public Interaction(DateTime date, string topic, ExchangeType type, Customer _customer)
     {
         this.Date = date;
         this.Topic = topic;
         this.Type = type;
         this.Note = new List<Note>();
-        this.Customer = _customer; // Por defecto sin respuesta
+        this.Customer = _customer;
         this.HasResponse = false;
     }
-
+    
     public void AddNote(Note note)
     {
         this.Note.Add(note);
     }
-    
-    // Método para marcar como respondida
     public void MarkAsResponded()
     {
         this.HasResponse = true;
     }
-    
+  
     public override string ToString()
     {
         return $"Date: {this.date}, Topic: {this.Topic}, Type: {this.Type}";

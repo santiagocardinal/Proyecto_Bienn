@@ -190,7 +190,7 @@ public class InteractionTest
         ExchangeType type = ExchangeType.Received;
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
-        Note note1 = new Note();
+        Note note1 = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note1.Topic = "Primera nota";
         note1.Date = DateTime.Today;
 
@@ -209,11 +209,11 @@ public class InteractionTest
         ExchangeType type = ExchangeType.Received;
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
-        Note note1 = new Note();
+        Note note1 = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note1.Topic = "Primera nota";
-        Note note2 = new Note();
+        Note note2 = new Note("Venta",new DateTime(2025, 12, 25),ExchangeType.Received);
         note2.Topic = "Segunda nota";
-        Note note3 = new Note();
+        Note note3 = new Note("Permutacion",new DateTime(2025, 12, 25),ExchangeType.Received);
         note3.Topic = "Tercera nota";
 
         var interaction = new Interaction(date, topic, type, pepe);

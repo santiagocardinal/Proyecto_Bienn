@@ -109,7 +109,7 @@ public class MessageTests
     {
         // Arrange
         Message message = new Message(testDate, "Mensaje", ExchangeType.Received, customer);
-        Note note = new Note();
+        Note note = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note.Topic = "Respuesta enviada";
         note.Date = new DateTime(2025,10,20);
 
@@ -126,11 +126,11 @@ public class MessageTests
     {
         // Arrange
         Message message = new Message(testDate, "Mensaje", ExchangeType.Received, customer);
-        Note note1 = new Note();
+        Note note1 = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note1.Topic = "Nota 1";
-        Note note2 = new Note();
+        Note note2 = new Note("Venta",new DateTime(2025, 12, 25),ExchangeType.Received);
         note2.Topic = "Nota 2";
-        Note note3 = new Note();
+        Note note3 = new Note("Permutacion",new DateTime(2025, 12, 25),ExchangeType.Received);
         note3.Topic = "Nota 3";
 
         // Act
@@ -150,7 +150,7 @@ public class MessageTests
     {
         // Arrange
         Message message = new Message(testDate, "Mensaje", ExchangeType.Received, customer);
-        Note note = new Note();
+        Note note = new Note("Compra",new DateTime(2025, 12, 25),ExchangeType.Received);
         note.Topic = "Nota a eliminar";
         message.Note.Add(note);
 

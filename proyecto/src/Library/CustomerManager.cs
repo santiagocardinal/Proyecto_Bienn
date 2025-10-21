@@ -1,30 +1,42 @@
 namespace Library;
 
+// SRP: CustomerManager tiene la responsabilidad de gestionar la colección
+// de clientes del sistema y coordinar operaciones de alto nivel sobre ellos.
+// Actúa como un controlador/coordinador central para operaciones con clientes.
+//
+// EXPERT: CustomerManager es el experto en:
+// - Gestionar la colección global de clientes
+// - Buscar clientes por diferentes criterios
+// - Coordinar operaciones entre clientes y vendedores
+// - Generar reportes y análisis sobre clientes
 public class CustomerManager
 {
-    private List<Customer> customers;
     
+    private List<Customer> customers;
+   
     public CustomerManager()
     {
         customers = new List<Customer>();
     }
-
+    
     public Customer SearchByName(string name)
     {
         foreach (Customer customer in customers)
         {
-            if (customer.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) //NO SEA SENSIBLE A LAS MAYUSCULAS Y MINUSCULAS EL StringComparison
+           
+            if (customer.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
             {
                 return customer;
             }
         }
-        return null;
+        return null; 
     }
     
     public Customer SearchByMail(string mail)
     {
         foreach (Customer customer in customers)
         {
+            
             if (customer.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase))
             {
                 return customer;
@@ -44,6 +56,7 @@ public class CustomerManager
         }
         return null;
     }
+    
     public Customer SearchByPhone(string phone)
     {
         foreach (Customer customer in customers)
@@ -60,7 +73,7 @@ public class CustomerManager
     {
         foreach (Customer customer in customers)
         {
-            if (customer.Id.Equals( id, StringComparison.OrdinalIgnoreCase))
+            if (customer.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
             {
                 return customer;
             }
@@ -68,15 +81,14 @@ public class CustomerManager
         return null;
     }
 
+   
     public void AddCustomer(Customer customer, Seller seller)
     {
         if (customer != null && SearchById(customer.Id) == null)
         {
             
-            // Agregamos el cliente a la lista del vendedor
             seller.Customer.Add(customer);
-
-            // Agregamos el cliente a la lista global
+            
             customers.Add(customer);
 
             Console.WriteLine($"Cliente {customer.Name} agregado exitosamente con vendedor {seller.Name}.");
@@ -86,7 +98,7 @@ public class CustomerManager
             Console.WriteLine("No se pudo agregar el cliente.");
         }
     }
-
+    
     public bool Delete(Customer customer)
     {
         if (customer != null && customers.Contains(customer))
@@ -98,14 +110,14 @@ public class CustomerManager
         Console.WriteLine("Cliente no encontrado.");
         return false;
     }
-
+    
     public void Modify(Customer customer)
     {
         Customer existing = SearchById(customer.Id);
         if (existing != null)
         {
             int index = customers.IndexOf(existing);
-            customers[index] = customer;
+            customers[index] = customer; 
             Console.WriteLine($"Cliente {customer.Name} modificado exitosamente.");
         }
         else
@@ -113,11 +125,13 @@ public class CustomerManager
             Console.WriteLine("Cliente no encontrado.");
         }
     }
+    
+
     private int GetTotalCustomer()
     {
         return customers.Count;
     }
-
+    
     private List<Customer> GetRecentInteraction(TimeSpan lapso)
     {
         List<Customer> list = new List<Customer>();
@@ -135,23 +149,24 @@ public class CustomerManager
 
         return list;
     }
+    
+  
     private List<Meeting> GetUpcomingMeetings(Customer customer)
     {
         DateTime now = DateTime.Now;
         List<Meeting> upcomingMeetings = new List<Meeting>();
 
-        // Buscar el cliente en la lista local (_customers)
         Customer existingCustomer = customers.FirstOrDefault(c => c.Id == customer.Id);
 
-        // Si no existe, devolvemos una lista vacía
         if (existingCustomer == null)
         {
             return upcomingMeetings;
         }
 
-        // Recorremos las interacciones del cliente encontrado
+
         foreach (var inter in existingCustomer.Interactions)
         {
+ 
             if (inter is Meeting meeting && meeting.Date > now)
             {
                 upcomingMeetings.Add(meeting);
@@ -160,33 +175,35 @@ public class CustomerManager
 
         return upcomingMeetings;
     }
+    
+ 
     public DashboardSummary GetDashboard()
     {
         int totalCustomers = GetTotalCustomer();
 
-        // Definimos el lapso para "recientes", por ejemplo los últimos 7 días
         TimeSpan lapso = TimeSpan.FromDays(7);
         List<Customer> recentInteractions = GetRecentInteraction(lapso);
 
-        // Obtenemos todas las reuniones próximas de todos los clientes
         List<Meeting> upcomingMeetings = new List<Meeting>();
         foreach (var customer in customers)
         {
+    
             upcomingMeetings.AddRange(GetUpcomingMeetings(customer));
         }
 
         return new DashboardSummary(recentInteractions, upcomingMeetings, totalCustomers);
     }
 
+ 
     public List<Customer> GetInactiveCustomers(int days)
     {
         TimeSpan lapso = TimeSpan.FromDays(days);
         List<Customer> inactiveCustomers = new List<Customer>();
         DateTime now = DateTime.Now;
 
-        foreach (var customer in this.customers) // recorremos todos los clientes
+        foreach (var customer in this.customers) 
         {
-            if (!customer.CheckIsActive()) // ya está desactivado
+            if (!customer.CheckIsActive()) 
             {
                 inactiveCustomers.Add(customer);
             }
@@ -195,7 +212,7 @@ public class CustomerManager
                 DateTime lastInteraction = customer.GetLastInteraction();
                 if (lastInteraction < now - lapso)
                 {
-                    customer.Deactivate(); // desactivamos al cliente
+                    customer.Deactivate(); 
                     inactiveCustomers.Add(customer);
                 }
             }
@@ -203,7 +220,7 @@ public class CustomerManager
 
         return inactiveCustomers;
     }
-    
+ 
     public List<Customer> GetUnansweredCustomers(int days)
     {
         List<Customer> unansweredCustomers = new List<Customer>();
@@ -211,15 +228,12 @@ public class CustomerManager
 
         foreach (Customer customer in customers)
         {
-            // Verificar si el cliente tiene interacciones sin respuesta
             bool hasUnanswered = false;
         
+          
             foreach (Interaction interaction in customer.Interactions)
             {
-                // Verificar si:
-                // 1. Fue iniciada por el cliente
-                // 2. No tiene respuesta
-                // 3. Está dentro del rango de días
+                
                 if (interaction.Type == ExchangeType.Received && 
                     !interaction.HasResponse && 
                     interaction.Date >= threshold)
@@ -238,6 +252,7 @@ public class CustomerManager
         return unansweredCustomers;
     }
 
+    
     public void AssignCustomerToSeller(Customer customer, Seller seller)
     {
         if (customer != null && seller != null)
@@ -251,17 +266,22 @@ public class CustomerManager
         }
     }
 
-    public void AddInteraction(Interaction interaction,Seller seller, Customer customer)
+   
+    public void AddInteraction(Interaction interaction, Seller seller, Customer customer)
     {
         if (interaction != null)
         {
             seller.addInteraction(interaction);
+            
             customer.AddInteraction(interaction);
+            
             customer.Activate();
+            
             Console.WriteLine("Interacción agregada exitosamente.");
         }
     }
 
+   
     public List<Interaction> GetCustomerInteractions(Customer customer)
     {
         return customer.GetInteraction();

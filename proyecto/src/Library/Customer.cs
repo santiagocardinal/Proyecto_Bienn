@@ -1,5 +1,9 @@
 namespace Library;
 
+// SRP: Customer tiene la responsabilidad de representar a un cliente
+// y gestionar su información personal, sus etiquetas e interacciones.
+// EXPERT: Customer es el experto en conocer toda la información relacionada
+// con un cliente específico.
 public class Customer
 {
     private string id;
@@ -13,6 +17,7 @@ public class Customer
     private List<Interaction> _interactions;
     private Seller _seller;
     private bool isActive;
+
 
     public string Id
     {
@@ -49,6 +54,7 @@ public class Customer
         get { return this.gender; }
         set { this.gender = value; }
     }
+    
     public DateTime BirthDate
     {
         get { return this.birthDate; }
@@ -60,6 +66,7 @@ public class Customer
         get { return this.tags; }
         set { this.tags = value; }
     }
+    
     public List<Interaction> Interactions
     {
         get { return this._interactions; }
@@ -77,7 +84,7 @@ public class Customer
         get{return isActive; }
         set { isActive = value; }
     }
-
+    
     public Customer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
     {
         this.Id = id;
@@ -92,6 +99,7 @@ public class Customer
         this.IsActive = true;
     }
 
+
     public bool IsValidMail(string mail)
     {
         if (this.Mail == mail)
@@ -103,7 +111,7 @@ public class Customer
             return false;
         }
     }
-
+    
     public void AddTag(Tag tag)
     {
         this.Tags.Add(tag);
@@ -113,7 +121,7 @@ public class Customer
     {
         this.Tags.Remove(tag);
     }
-
+    
     public void AddInteraction(Interaction interaction)
     {
         this.Interactions.Add(interaction);
@@ -124,7 +132,10 @@ public class Customer
         return this.Interactions;
     }
 
-    public List<T> GetInteractionsByType<T>() where T : Interaction //Utiliza las interacciones y busca a partir de ellas.
+    // POLIMORFISMO: Utiliza genéricos y pattern matching para filtrar
+    // interacciones por tipo. Aprovecha que T debe ser un subtipo de Interaction
+    // SRP: Responsabilidad específica de filtrar interacciones por tipo
+    public List<T> GetInteractionsByType<T>() where T : Interaction
     {
         List<T> result = new List<T>();
 
@@ -153,19 +164,16 @@ public class Customer
 
         return result;
     }
-
+    
     public DateTime GetLastInteraction()
     {
-        // Verificamos que haya al menos una interacción
         if (this._interactions == null || this._interactions.Count == 0)
         {
             throw new InvalidOperationException("No hay interacciones registradas.");
         }
 
-        // Inicializamos con la fecha de la primera interacción
         DateTime last_interaction = this._interactions[0].Date;
 
-        // Recorremos todas las interacciones
         foreach (var otraInteraccion in _interactions)
         {
             if (otraInteraccion.Date > last_interaction)
@@ -181,13 +189,12 @@ public class Customer
     {
         this.isActive = false;
     }
-
+    
     public void Activate()
     {
         this.isActive = true;
     }
-
-    // Método para consultar si está activo
+    
     public bool CheckIsActive()
     {
         return this.isActive;
@@ -208,8 +215,9 @@ public class Customer
         return unanswered;
     }
     
+ 
     public override string ToString()
     {
         return $"Id: {this.Id}, Name: {this.Name}, Family Name: {this.FamilyName}, Mail: {this.Mail}, Phone: {this.Phone},  Gender: {this.Gender}, BirthDate: {this.BirthDate}, Tags: {this.Tags.Count}";
     }
-} 
+}
