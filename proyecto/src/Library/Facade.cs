@@ -1,6 +1,6 @@
 namespace Library;
 
-public interface Facade
+public class Facade
 
 {
     public static CustomerManager cm = new CustomerManager();
