@@ -17,7 +17,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchByName_CustomerExists_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchByName("Juan");
         
@@ -36,7 +36,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchByName_CaseInsensitive_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchByName("JUAN");
         
@@ -47,7 +47,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchByMail_CustomerExists_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchByMail("juan@mail.com");
         
@@ -58,7 +58,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchByMail_CaseInsensitive_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchByMail("JUAN@MAIL.COM");
         
@@ -68,7 +68,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchByFamilyName_CustomerExists_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchByFamilyName("Pérez");
         
@@ -79,7 +79,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchByPhone_CustomerExists_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchByPhone("099123456");
         
@@ -90,7 +90,7 @@ public class CustomerManagerTests
     [Test]
     public void SearchById_CustomerExists_ReturnsCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchById("1");
         
@@ -109,7 +109,7 @@ public class CustomerManagerTests
     [Test]
     public void AddCustomer_ValidCustomer_AddsSuccessfully()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         Customer result = _customerManager.SearchById("1");
         
@@ -120,10 +120,10 @@ public class CustomerManagerTests
     [Test]
     public void AddCustomer_DuplicateId_DoesNotAdd()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         Customer duplicate = new Customer("1", "Pedro", "García", "pedro@mail.com", "099999999", "male",  new DateTime(1995, 10, 05));
         
-        _customerManager.AddCustomer(duplicate, _testSeller);
+        _customerManager.AddCustomer(duplicate);
         
         Customer result = _customerManager.SearchByName("Pedro");
         Assert.That(result, Is.Null);
@@ -132,7 +132,7 @@ public class CustomerManagerTests
     [Test]
     public void AddCustomer_NullCustomer_DoesNotAdd()
     {
-        _customerManager.AddCustomer(null, _testSeller);
+        _customerManager.AddCustomer(null);
         
         Customer result = _customerManager.SearchById("1");
         
@@ -142,7 +142,7 @@ public class CustomerManagerTests
     [Test]
     public void Delete_ExistingCustomer_RemovesCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         bool result = _customerManager.Delete(_testCustomer);
         
@@ -169,7 +169,7 @@ public class CustomerManagerTests
     [Test]
     public void Modify_ExistingCustomer_UpdatesCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         Customer modified = new Customer("1", "Juan Carlos", "Pérez", "nuevoemail@mail.com", "099123456", "male", new DateTime(1985,05,01)) ;
         
         _customerManager.Modify(modified);
@@ -193,11 +193,11 @@ public class CustomerManagerTests
     public void GetDashboard_WithCompleteData_ReturnsValidSummary()
     {
         // Arrange - Agregar múltiples clientes
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         Customer customer2 = new Customer("2", "María", "González", "maria@mail.com", "098765432", "female",  new DateTime(1995, 10, 05));
-        _customerManager.AddCustomer(customer2, _testSeller);
+        _customerManager.AddCustomer(customer2);
         Customer customer3 = new Customer("3", "Pedro", "Rodríguez", "pedro@mail.com", "091234567", "male",  new DateTime(2000, 10, 05));
-        _customerManager.AddCustomer(customer3, _testSeller);
+        _customerManager.AddCustomer(customer3);
     
         // Agregar interacciones recientes (últimos 7 días) - usando Interaction regular
         Interaction interaction1 = new Interaction(DateTime.Now.AddDays(-3), "Mensaje reciente", ExchangeType.Sent, _testCustomer);
@@ -229,7 +229,7 @@ public void GetInactiveCustomers_WithOldInteraction_ReturnsInactiveCustomer()
 {
     // Arrange - Crear cliente con interacción antigua (más de 30 días)
     Customer customer = new Customer("10", "Inactivo", "Test", "inactivo@mail.com", "099999999", "M", DateTime.Now.AddYears(-30));
-    _customerManager.AddCustomer(customer, _testSeller);
+    _customerManager.AddCustomer(customer);
     
     // Agregar una interacción antigua (hace 35 días)
     Interaction oldInteraction = new Interaction(DateTime.Now.AddDays(-35), "Interacción antigua", ExchangeType.Sent, customer);
@@ -249,7 +249,7 @@ public void GetInactiveCustomers_WithRecentInteraction_DoesNotReturnCustomer()
 {
     // Arrange - Crear cliente con interacción reciente
     Customer activeCustomer = new Customer("11", "Activo", "Test", "activo@mail.com", "098888888", "F", DateTime.Now.AddYears(-25));
-    _customerManager.AddCustomer(activeCustomer, _testSeller);
+    _customerManager.AddCustomer(activeCustomer);
     
     // Agregar una interacción reciente (hace 5 días)
     Interaction recentInteraction = new Interaction(DateTime.Now.AddDays(-5), "Interacción reciente", ExchangeType.Sent, activeCustomer);
@@ -269,7 +269,7 @@ public void GetInactiveCustomers_AlreadyDeactivated_ReturnsInList()
 {
     // Arrange - Crear cliente ya desactivado
     Customer deactivatedCustomer = new Customer("12", "Desactivado", "Previo", "desact@mail.com", "097777777", "M", DateTime.Now.AddYears(-40));
-    _customerManager.AddCustomer(deactivatedCustomer, _testSeller);
+    _customerManager.AddCustomer(deactivatedCustomer);
     deactivatedCustomer.Deactivate();
     
     // Act
@@ -282,7 +282,7 @@ public void GetInactiveCustomers_AlreadyDeactivated_ReturnsInList()
     [Test]
     public void GetUnansweredCustomers_ReturnsCustomersWithUnansweredInteractions()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         Interaction interaction = new Interaction(DateTime.Now,"Compra",ExchangeType.Received, _testCustomer);
         _customerManager.AddInteraction(interaction, _testSeller, _testCustomer);
         
@@ -316,7 +316,7 @@ public void GetInactiveCustomers_AlreadyDeactivated_ReturnsInList()
     [Test]
     public void AddInteraction_ValidInteraction_AddsToCustomer()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         Interaction interaction = new Interaction(DateTime.Now,"Compra",ExchangeType.Received, _testCustomer);
         
         _customerManager.AddInteraction(interaction, _testSeller, _testCustomer);
@@ -328,7 +328,7 @@ public void GetInactiveCustomers_AlreadyDeactivated_ReturnsInList()
     [Test]
     public void AddInteraction_NullInteraction_DoesNotAdd()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         int initialCount = _testCustomer.Interactions.Count;
         
         _customerManager.AddInteraction(null, _testSeller, _testCustomer);
@@ -339,7 +339,7 @@ public void GetInactiveCustomers_AlreadyDeactivated_ReturnsInList()
     [Test]
     public void GetCustomerInteractions_ReturnsCustomerInteractionsList()
     {
-        _customerManager.AddCustomer(_testCustomer, _testSeller);
+        _customerManager.AddCustomer(_testCustomer);
         
         List<Interaction> interactions = _customerManager.GetCustomerInteractions(_testCustomer);
         
