@@ -13,6 +13,11 @@ public class CustomerManager
 {
     
     private List<Customer> customers;
+    public List<Customer> Customers
+    {
+        get{return customers;}
+        set { customers = value; }
+    }
    
     public CustomerManager()
     {
@@ -82,20 +87,16 @@ public class CustomerManager
     }
 
    
-    public void AddCustomer(Customer customer, Seller seller)
+    public void AddCustomer(Customer customer)
     {
         if (customer != null && SearchById(customer.Id) == null)
         {
             
-            seller.Customer.Add(customer);
+            //seller.Customer.Add(customer);
             
             customers.Add(customer);
 
-            Console.WriteLine($"Cliente {customer.Name} agregado exitosamente con vendedor {seller.Name}.");
-        }
-        else
-        {
-            Console.WriteLine("No se pudo agregar el cliente.");
+            //Console.WriteLine($"Cliente {customer.Name} agregado exitosamente con vendedor {seller.Name}.");
         }
     }
     
