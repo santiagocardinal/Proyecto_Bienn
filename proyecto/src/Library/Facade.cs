@@ -1,14 +1,19 @@
 namespace Library;
 
+//MI GENTE LATINO
+//MISTER WORDWIDE, FIESTA
+//DALE
+
 public class Facade
 
 {
     public static CustomerManager cm = new CustomerManager();
     public static SellerManager sm = new SellerManager();
-    
+
     //Como usuario quiero crear un nuevo cliente con su información básica: nombre, apellido,
     //teléfono y correo electrónico, para poder contactarme con ellos cuando lo necesite.
-    public static void CreateCustomer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
+    public static void CreateCustomer(string id, string name, string familyName, string mail, string phone,
+        string gender, DateTime birthDate)
     {
         Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
         cm.AddCustomer(c1);
@@ -24,7 +29,6 @@ public class Facade
             cm.Modify(customer);
         }
     }
-    
 
     // Como usuario quiero eliminar un cliente,
     // para mantener limpia la base de datos.
@@ -93,8 +97,33 @@ public class Facade
         }
         else
         {
-           return $"El cliente cuyo correo es: '{mail}' ,no se ha encontrado.";
+            return $"El cliente cuyo correo es: '{mail}' ,no se ha encontrado.";
         }
     }
+//Como usuario quiero ver una lista de todos mis clientes, para tener una vista general de mi cartera.
+
+    public static string ShowCustomers_BySellerId(string sellerId)
+    {
+        Seller seller = sm.Sellers.FirstOrDefault(s => s.Id == sellerId);
+        string result = "";
+
+        if (seller != null)
+        {
+            foreach (Customer customer in seller.Customer)
+            {
+                result += $"- {customer.Name}\n";
+            }
+            return result; 
+        }
+
+        return "Vendedor no encontrado o sin clientes.";
+    }
     
+    public static void AddCustomer(Customer customer)
+    {
+        if (customer != null)
+        {
+            cm.AddCustomer(customer); 
+        }
+    }
 }
