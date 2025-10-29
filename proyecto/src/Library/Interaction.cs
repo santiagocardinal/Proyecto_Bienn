@@ -10,7 +10,7 @@ namespace Library;
 // POLIMORFISMO: Esta clase actúa como clase base para diferentes tipos
 // de interacciones (Sale, Query, etc.). Permite que código cliente trabaje
 // con Interaction sin conocer el tipo específico de cada una.
-public class Interaction 
+public abstract class Interaction 
 {
     private DateTime date;
     private string topic;
