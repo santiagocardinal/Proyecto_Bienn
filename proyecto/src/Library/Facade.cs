@@ -11,89 +11,100 @@ public class Facade
     public static void CreateCustomer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
     {
         Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        cm.AddCustomer(c1);
+        try
+        {
+            cm.AddCustomer(c1);
+        }
+        catch (DuplicatedCustomerException)
+        {
+            
+        }
+        
     }
 
     //Como usuario quiero modificar la información de un cliente existente, para mantenerla actualizada.
-    public static void ModifyCustomer(string name)
+    public static void ModifyCustomer(string id, string field, string newValue)
     {
-        Customer customer = cm.Customers.FirstOrDefault(c => c.Name == name);
-
-        if (customer != null)
+        try
         {
-            cm.Modify(customer);
+            cm.Modify(id, field, newValue);
+        }
+        catch (NotExistingCustomerException)
+        {
+        }
+        catch (InvalidFieldException)
+        {
         }
     }
     
 
     // Como usuario quiero eliminar un cliente,
     // para mantener limpia la base de datos.
-    public static void DelateCustomer(string name)
+    public static void DeleteCustomer(string name)
     {
-        Customer customer = cm.SearchByName(name);
-
-        if (customer != null)
+        try
         {
-            bool deleted = cm.Delete(customer);
+            Customer customer = cm.SearchByName(name);
+            cm.Delete(customer);
+        }
+        catch (NotExistingCustomerException)
+        {
+            // No usamos Console.WriteLine porque la fachada no debe mostrar UI
+            // Puede quedar vacío o rethrow
+            throw;
         }
     }
+
 
     //Como usuario quiero buscar clientes por nombre, apellido,
     //teléfono o correo electrónico, para identificarlos rápidamente.
 
-    public static string SearchCostumer_ByName(string name)
+    public static Customer SearchCustomer_ByName(string name)
     {
-        Customer customer = cm.SearchByName(name);
-
-        if (customer != null)
+        try
         {
-            return customer.Name;
+            return cm.SearchByName(name);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente '{name}' no se ha encontrado.";
+            return null;
         }
     }
 
-    public static string SearchCostumer_ByFamilyName(string familyname)
-    {
-        Customer customer = cm.SearchByFamilyName(familyname);
 
-        if (customer != null)
+    public static Customer SearchCostumer_ByFamilyName(string familyname)
+    {
+        try
         {
-            return customer.FamilyName;
+            return cm.SearchByFamilyName(familyname);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente '{familyname}' no se ha encontrado.";
+            return null;
         }
     }
 
-    public static string SearchCostumer_ByPhone(string phone)
+    public static Customer SearchCostumer_ByPhone(string phone)
     {
-        Customer customer = cm.SearchByPhone(phone);
-
-        if (customer != null)
+        try
         {
-            return customer.Phone;
+            return cm.SearchByFamilyName(phone);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente cuyo numero es: '{phone}' ,no se ha encontrado.";
+            return null;
         }
     }
 
-    public static string SearchCostumer_ByMail(string mail)
+    public static Customer SearchCostumer_ByMail(string mail)
     {
-        Customer customer = cm.SearchByMail(mail);
-
-        if (customer != null)
+        try
         {
-            return customer.Mail;
+            return cm.SearchByFamilyName(mail);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-           return $"El cliente cuyo correo es: '{mail}' ,no se ha encontrado.";
+            return null;
         }
     }
 }
