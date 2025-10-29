@@ -1,14 +1,19 @@
 namespace Library;
 
+//MI GENTE LATINO
+//MISTER WORlDWIDE, FIESTA
+//DALE
+
 public class Facade
 
 {
     public static CustomerManager cm = new CustomerManager();
     public static SellerManager sm = new SellerManager();
-    
+
     //Como usuario quiero crear un nuevo cliente con su información básica: nombre, apellido,
     //teléfono y correo electrónico, para poder contactarme con ellos cuando lo necesite.
-    public static void CreateCustomer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
+    public static void CreateCustomer(string id, string name, string familyName, string mail, string phone,
+        string gender, DateTime birthDate)
     {
         Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
         try
@@ -107,4 +112,124 @@ public class Facade
             return null;
         }
     }
+//Como usuario quiero ver una lista de todos mis clientes, para tener una vista general de mi cartera.
+
+    public static string ShowCustomers_BySellerId(string sellerId)
+    {
+        Seller seller = sm.Sellers.FirstOrDefault(s => s.Id == sellerId);
+        string result = "";
+
+        if (seller != null)
+        {
+            foreach (Customer customer in seller.Customer)
+            {
+                result += $"- {customer.Name}\n";
+            }
+            return result; 
+        }
+
+        return "Vendedor no encontrado o sin clientes.";
+    }
+    
+    public static void AddCustomer(Customer customer)
+    {
+        if (customer != null)
+        {
+            cm.AddCustomer(customer); 
+        }
+    }
+    
+    //Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
+    //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
+
+    public static void CallRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Call call = new Call(date, topic, type, _customer);
+    }
+    //Como usuario quiero registrar reuniones con los clientes, incluyendo cuándo y dónde fueron,
+    //y de qué tema trataron, para poder saber mis interacciones con los clientes.
+    public static void MeetingRegister(string place, DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Meeting meet = new Meeting(place, date, topic, type,_customer);
+    }
+    //Como usuario quiero registrar mensajes enviados a o recibidos de los clientes, incluendo cuándo y de qué tema fueron,
+    //para poder saber mis interacciones con los clientes.
+    
+    public static void MessageRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Message meet = new Message(date, topic, type, _customer);
+    }
+    
+    //Como usuario quiero registrar correos electrónicos enviados a o recibidos de los clientes, incluendo cuándo y de qué
+    //tema fueron, para poder saber mis interacciones con los clientes.
+
+    public static void MailRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Mail mail = new Mail(date, topic, type, _customer);
+    }
+    
+    //Como usuario quiero agregar notas o comentarios a las llamadas, reuniones, mensajes y correos enviados o recibidos
+    //de los clientes, para tener información adicional de mis interacciones con los clientes.
+    public static void Notes(string topic, DateTime date,ExchangeType type)
+    {
+        
+        Note note = new Note(topic, date, type); //REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+        
+        
+    }
+    
+    //Como usuario quiero ver todas las interacciones de un cliente, con o sin filtro por tipo de interacción y por fecha,
+    //para entender el historial de la relación comercial.
+    
+                ///VERLO JUNTOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+    //Como usuario quiero poder definir etiquetas para poder organizar y segmentar a mis clientes.
+    public static void CustomerTag(string id, string name, string description)
+    {
+        Tag tag = new Tag(id, name, description);
+    }
+    
+    //Cómo usuario quiero saber los clientes que hace cierto tiempo que no tengo ninguna interacción con ellos, para no
+    //peder contacto con ellos.
+
+    public static Interaction LastInteraction(Customer customer) //CLAUDIO
+    {
+        if (customer.Interactions == null || customer.Interactions.Count == 0)
+        {
+            return null; 
+        }
+    
+        Interaction lastInteraction = customer.Interactions[0];
+    
+        foreach (var interaction in customer.Interactions)
+        {
+            if (interaction.Date > lastInteraction.Date)
+            {
+                lastInteraction = interaction;
+            }
+        }
+        return lastInteraction;
+    }
+    
+    //Como usuario quiero saber los clientes que se pusieron en contacto conmigo y no les contesté hace cierto tiempo,
+    //para no dejar de responder mensajes o llamadas
+
+    public static string UnansweredInteractions(Customer customer)   //CLAUDIO
+    {
+        List<Interaction> unanswered = customer.GetUnansweredInteractions();
+    
+        if (unanswered.Count == 0)
+        {
+            return "No hay interacciones sin responder.";
+        }
+    
+        string report = $"Interacciones sin responder ({unanswered.Count}):\n";
+        foreach (var interaction in unanswered)
+        {
+            report += $"- {interaction.ToString()}\n"; // Concatenar al report
+        }
+
+        return report;
+    }
 }
+
