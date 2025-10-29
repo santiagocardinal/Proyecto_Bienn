@@ -5,7 +5,6 @@ namespace Library;
 //DALE
 
 public class Facade
-
 {
     public static CustomerManager cm = new CustomerManager();
     public static SellerManager sm = new SellerManager();
@@ -131,13 +130,13 @@ public class Facade
         return "Vendedor no encontrado o sin clientes.";
     }
     
-    public static void AddCustomer(Customer customer)
+    /*public static void AddCustomer(Customer customer)
     {
         if (customer != null)
         {
             cm.AddCustomer(customer); 
         }
-    }
+    }*/
     
     // Como usuario quiero agregar una etiqueta a un cliente.
     public static string AddTag_Customer(string customerName, string tagId, string tagName, string tagDescription)
@@ -212,10 +211,6 @@ public class Facade
         return result;
     }
     
-public class Admin_functions
-{
-    public static CustomerManager cm = new CustomerManager();
-    public static SellerManager sm = new SellerManager();
     private static List<User> users = new List<User>();
 
     // Como administrador quiero crear un nuevo usuario
@@ -278,11 +273,7 @@ public class Admin_functions
 
         return $"No se encontró el usuario con ID '{id}'.";
     }
-
-}
-
-}
-=======
+    
     //Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
     //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
 
@@ -375,6 +366,43 @@ public class Admin_functions
 
         return report;
     }
+
+    public static void AssignCustomer(Customer customer, Seller seller)
+    {
+        cm.AssignCustomerToSeller(customer, seller);
+    }
+    
+    public static List<Sale> SalesWithin_A_Period(Seller seller, DateTime startDate, DateTime endDate)
+    {
+        if (!sm.Sellers.Contains(seller))
+        {
+            throw new Exception("Seller does not exist in SellerManager");
+        }
+
+        if (startDate > endDate)
+        {
+            throw new ArgumentException("startDate must be before endDate");
+        }
+
+        List<Sale> result = new List<Sale>();
+
+        foreach (Interaction interaction in seller.Interactions)
+        {
+            // Filtra solo las ventas
+            if (interaction is Sale sale)
+            {
+                // Filtra dentro del período
+                if (sale.Date >= startDate && sale.Date <= endDate)
+                {
+                    result.Add(sale);
+                }
+            }
+        }
+
+        return result;
+    }
+
+
 }
 
 
