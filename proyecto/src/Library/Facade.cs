@@ -1,7 +1,7 @@
 namespace Library;
 
 //MI GENTE LATINO
-//MISTER WORDWIDE, FIESTA
+//MISTER WORlDWIDE, FIESTA
 //DALE
 
 public class Facade
@@ -16,88 +16,100 @@ public class Facade
         string gender, DateTime birthDate)
     {
         Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        cm.AddCustomer(c1);
+        try
+        {
+            cm.AddCustomer(c1);
+        }
+        catch (DuplicatedCustomerException)
+        {
+            
+        }
+        
     }
 
     //Como usuario quiero modificar la información de un cliente existente, para mantenerla actualizada.
-    public static void ModifyCustomer(string name)
+    public static void ModifyCustomer(string id, string field, string newValue)
     {
-        Customer customer = cm.Customers.FirstOrDefault(c => c.Name == name);
-
-        if (customer != null)
+        try
         {
-            cm.Modify(customer);
+            cm.Modify(id, field, newValue);
+        }
+        catch (NotExistingCustomerException)
+        {
+        }
+        catch (InvalidFieldException)
+        {
         }
     }
+    
 
     // Como usuario quiero eliminar un cliente,
     // para mantener limpia la base de datos.
-    public static void DelateCustomer(string name)
+    public static void DeleteCustomer(string name)
     {
-        Customer customer = cm.SearchByName(name);
-
-        if (customer != null)
+        try
         {
-            bool deleted = cm.Delete(customer);
+            Customer customer = cm.SearchByName(name);
+            cm.Delete(customer);
+        }
+        catch (NotExistingCustomerException)
+        {
+            // No usamos Console.WriteLine porque la fachada no debe mostrar UI
+            // Puede quedar vacío o rethrow
+            throw;
         }
     }
+
 
     //Como usuario quiero buscar clientes por nombre, apellido,
     //teléfono o correo electrónico, para identificarlos rápidamente.
 
-    public static string SearchCostumer_ByName(string name)
+    public static Customer SearchCustomer_ByName(string name)
     {
-        Customer customer = cm.SearchByName(name);
-
-        if (customer != null)
+        try
         {
-            return customer.Name;
+            return cm.SearchByName(name);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente '{name}' no se ha encontrado.";
+            return null;
         }
     }
 
-    public static string SearchCostumer_ByFamilyName(string familyname)
-    {
-        Customer customer = cm.SearchByFamilyName(familyname);
 
-        if (customer != null)
+    public static Customer SearchCostumer_ByFamilyName(string familyname)
+    {
+        try
         {
-            return customer.FamilyName;
+            return cm.SearchByFamilyName(familyname);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente '{familyname}' no se ha encontrado.";
+            return null;
         }
     }
 
-    public static string SearchCostumer_ByPhone(string phone)
+    public static Customer SearchCostumer_ByPhone(string phone)
     {
-        Customer customer = cm.SearchByPhone(phone);
-
-        if (customer != null)
+        try
         {
-            return customer.Phone;
+            return cm.SearchByFamilyName(phone);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente cuyo numero es: '{phone}' ,no se ha encontrado.";
+            return null;
         }
     }
 
-    public static string SearchCostumer_ByMail(string mail)
+    public static Customer SearchCostumer_ByMail(string mail)
     {
-        Customer customer = cm.SearchByMail(mail);
-
-        if (customer != null)
+        try
         {
-            return customer.Mail;
+            return cm.SearchByFamilyName(mail);
         }
-        else
+        catch (NotExistingCustomerException)
         {
-            return $"El cliente cuyo correo es: '{mail}' ,no se ha encontrado.";
+            return null;
         }
     }
 //Como usuario quiero ver una lista de todos mis clientes, para tener una vista general de mi cartera.
@@ -270,3 +282,99 @@ public class Admin_functions
 }
 
 }
+=======
+    //Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
+    //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
+
+    public static void CallRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Call call = new Call(date, topic, type, _customer);
+    }
+    //Como usuario quiero registrar reuniones con los clientes, incluyendo cuándo y dónde fueron,
+    //y de qué tema trataron, para poder saber mis interacciones con los clientes.
+    public static void MeetingRegister(string place, DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Meeting meet = new Meeting(place, date, topic, type,_customer);
+    }
+    //Como usuario quiero registrar mensajes enviados a o recibidos de los clientes, incluendo cuándo y de qué tema fueron,
+    //para poder saber mis interacciones con los clientes.
+    
+    public static void MessageRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Message meet = new Message(date, topic, type, _customer);
+    }
+    
+    //Como usuario quiero registrar correos electrónicos enviados a o recibidos de los clientes, incluendo cuándo y de qué
+    //tema fueron, para poder saber mis interacciones con los clientes.
+
+    public static void MailRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Mail mail = new Mail(date, topic, type, _customer);
+    }
+    
+    //Como usuario quiero agregar notas o comentarios a las llamadas, reuniones, mensajes y correos enviados o recibidos
+    //de los clientes, para tener información adicional de mis interacciones con los clientes.
+    public static void Notes(string topic, DateTime date,ExchangeType type)
+    {
+        
+        Note note = new Note(topic, date, type); //REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+        
+        
+    }
+    
+    //Como usuario quiero ver todas las interacciones de un cliente, con o sin filtro por tipo de interacción y por fecha,
+    //para entender el historial de la relación comercial.
+    
+                ///VERLO JUNTOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+    //Como usuario quiero poder definir etiquetas para poder organizar y segmentar a mis clientes.
+    public static void CustomerTag(string id, string name, string description)
+    {
+        Tag tag = new Tag(id, name, description);
+    }
+    
+    //Cómo usuario quiero saber los clientes que hace cierto tiempo que no tengo ninguna interacción con ellos, para no
+    //peder contacto con ellos.
+
+    public static Interaction LastInteraction(Customer customer) //CLAUDIO
+    {
+        if (customer.Interactions == null || customer.Interactions.Count == 0)
+        {
+            return null; 
+        }
+    
+        Interaction lastInteraction = customer.Interactions[0];
+    
+        foreach (var interaction in customer.Interactions)
+        {
+            if (interaction.Date > lastInteraction.Date)
+            {
+                lastInteraction = interaction;
+            }
+        }
+        return lastInteraction;
+    }
+    
+    //Como usuario quiero saber los clientes que se pusieron en contacto conmigo y no les contesté hace cierto tiempo,
+    //para no dejar de responder mensajes o llamadas
+
+    public static string UnansweredInteractions(Customer customer)   //CLAUDIO
+    {
+        List<Interaction> unanswered = customer.GetUnansweredInteractions();
+    
+        if (unanswered.Count == 0)
+        {
+            return "No hay interacciones sin responder.";
+        }
+    
+        string report = $"Interacciones sin responder ({unanswered.Count}):\n";
+        foreach (var interaction in unanswered)
+        {
+            report += $"- {interaction.ToString()}\n"; // Concatenar al report
+        }
+
+        return report;
+    }
+}
+
+
