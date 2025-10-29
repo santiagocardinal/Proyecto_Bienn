@@ -139,6 +139,150 @@ public class Facade
         }
     }
     
+    // Como usuario quiero agregar una etiqueta a un cliente.
+    public static string AddTag_Customer(string customerName, string tagId, string tagName, string tagDescription)
+    {
+        Customer customer = cm.SearchByName(customerName);
+
+        if (customer != null)
+        {
+            // Verificar si el cliente ya tiene una etiqueta con el mismo nombre
+            bool exists = false;
+            foreach (Tag existingTag in customer.Tags)
+            {
+                if (existingTag.Name.Equals(tagName, StringComparison.OrdinalIgnoreCase))
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (exists)
+            {
+                return $"El cliente '{customerName}' ya tiene una etiqueta llamada '{tagName}'.";
+            }
+
+            Tag tag = new Tag(tagId, tagName, tagDescription);
+            customer.AddTag(tag);
+
+            return $"Etiqueta '{tagName}' agregada al cliente '{customer.Name}'.";
+        }
+        else
+        {
+            return $"El cliente '{customerName}' no se ha encontrado.";
+        }
+    }
+    
+    // Ver panel con: clientes totales, interacciones recientes, reuniones próximas 
+    public static string ShowDashboard()
+    {
+        DashboardSummary dashboard = cm.GetDashboard();
+        string result = "";
+
+        result += "----- PANEL DE CLIENTES -----\n";
+        result += $"Clientes totales: {dashboard.TotalCustomers}\n\n";
+
+        result += "----- INTERACCIONES RECIENTES -----\n";
+        if (dashboard.RecentInteractions != null && dashboard.RecentInteractions.Count > 0)
+        {
+            foreach (Customer customer in dashboard.RecentInteractions)
+            {
+                result += $"- {customer.Name} ({customer.FamilyName})\n";
+            }
+        }
+        else
+        {
+            result += "No hay interacciones recientes.\n";
+        }
+
+        result += "\n----- REUNIONES PRÓXIMAS -----\n";
+        if (dashboard.UpcomingMeetings != null && dashboard.UpcomingMeetings.Count > 0)
+        {
+            foreach (Meeting meeting in dashboard.UpcomingMeetings)
+            {
+                string customerName = meeting.Customer != null ? meeting.Customer.Name : "Cliente desconocido";
+                result += $"- Reunión con {customerName} el {meeting.Date:dd/MM/yyyy} en {meeting.Place}\n";
+            }
+        }
+        else
+        {
+            result += "No hay reuniones próximas.\n";
+        }
+
+        return result;
+    }
+    
+public class Admin_functions
+{
+    public static CustomerManager cm = new CustomerManager();
+    public static SellerManager sm = new SellerManager();
+    private static List<User> users = new List<User>();
+
+    // Como administrador quiero crear un nuevo usuario
+    public static string CreateUser(string id, string name, string mail, string phone)
+    {
+        foreach (User existingUser in users)
+        {
+            if (existingUser.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                return $"Ya existe un usuario con el ID '{id}'.";
+            }
+        }
+
+        User user = new User(name, mail, phone, id);
+        users.Add(user);
+        return $"Usuario '{name}' creado correctamente.";
+    }
+
+    // Como administrador quiero suspender un usuario
+    public static string SuspendUser(string id)
+    {
+        User user = null;
+
+        foreach (User u in users)
+        {
+            if (u.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                user = u;
+                break;
+            }
+        }
+
+        if (user == null)
+        {
+            return $"No se encontró el usuario con ID '{id}'.";
+        }
+
+        return $"Usuario '{user.Name}' suspendido correctamente (simulado).";
+    }
+
+    // Como administrador quiero eliminar un usuario
+    public static string DeleteUser(string id)
+    {
+        User userToRemove = null;
+
+        foreach (User u in users)
+        {
+            if (u.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                userToRemove = u;
+                break;
+            }
+        }
+
+        if (userToRemove != null)
+        {
+            users.Remove(userToRemove);
+            return $"Usuario '{userToRemove.Name}' eliminado correctamente.";
+        }
+
+        return $"No se encontró el usuario con ID '{id}'.";
+    }
+
+}
+
+}
+=======
     //Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
     //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
 
@@ -232,4 +376,5 @@ public class Facade
         return report;
     }
 }
+
 
