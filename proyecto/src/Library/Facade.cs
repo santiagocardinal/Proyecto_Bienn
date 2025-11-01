@@ -1,10 +1,11 @@
 namespace Library;
 
 //MI GENTE LATINO
-//MISTER WORlDWIDE, FIESTA
+//MISTER WORDWIDE, FIESTA
 //DALE
 
 public class Facade
+
 {
     public static CustomerManager cm = new CustomerManager();
     public static SellerManager sm = new SellerManager();
@@ -15,100 +16,88 @@ public class Facade
         string gender, DateTime birthDate)
     {
         Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        try
-        {
-            cm.AddCustomer(c1);
-        }
-        catch (DuplicatedCustomerException)
-        {
-            
-        }
-        
+        cm.AddCustomer(c1);
     }
 
     //Como usuario quiero modificar la información de un cliente existente, para mantenerla actualizada.
-    public static void ModifyCustomer(string id, string field, string newValue)
+    public static void ModifyCustomer(string name)
     {
-        try
+        Customer customer = cm.Customers.FirstOrDefault(c => c.Name == name);
+
+        if (customer != null)
         {
-            cm.Modify(id, field, newValue);
-        }
-        catch (NotExistingCustomerException)
-        {
-        }
-        catch (InvalidFieldException)
-        {
+            cm.Modify(customer);
         }
     }
-    
 
     // Como usuario quiero eliminar un cliente,
     // para mantener limpia la base de datos.
-    public static void DeleteCustomer(string name)
+    public static void DelateCustomer(string name)
     {
-        try
+        Customer customer = cm.SearchByName(name);
+
+        if (customer != null)
         {
-            Customer customer = cm.SearchByName(name);
-            cm.Delete(customer);
-        }
-        catch (NotExistingCustomerException)
-        {
-            // No usamos Console.WriteLine porque la fachada no debe mostrar UI
-            // Puede quedar vacío o rethrow
-            throw;
+            bool deleted = cm.Delete(customer);
         }
     }
-
 
     //Como usuario quiero buscar clientes por nombre, apellido,
     //teléfono o correo electrónico, para identificarlos rápidamente.
 
-    public static Customer SearchCustomer_ByName(string name)
+    public static string SearchCostumer_ByName(string name)
     {
-        try
+        Customer customer = cm.SearchByName(name);
+
+        if (customer != null)
         {
-            return cm.SearchByName(name);
+            return customer.Name;
         }
-        catch (NotExistingCustomerException)
+        else
         {
-            return null;
+            return $"El cliente '{name}' no se ha encontrado.";
         }
     }
 
-
-    public static Customer SearchCostumer_ByFamilyName(string familyname)
+    public static string SearchCostumer_ByFamilyName(string familyname)
     {
-        try
+        Customer customer = cm.SearchByFamilyName(familyname);
+
+        if (customer != null)
         {
-            return cm.SearchByFamilyName(familyname);
+            return customer.FamilyName;
         }
-        catch (NotExistingCustomerException)
+        else
         {
-            return null;
+            return $"El cliente '{familyname}' no se ha encontrado.";
         }
     }
 
-    public static Customer SearchCostumer_ByPhone(string phone)
+    public static string SearchCostumer_ByPhone(string phone)
     {
-        try
+        Customer customer = cm.SearchByPhone(phone);
+
+        if (customer != null)
         {
-            return cm.SearchByFamilyName(phone);
+            return customer.Phone;
         }
-        catch (NotExistingCustomerException)
+        else
         {
-            return null;
+            return $"El cliente cuyo numero es: '{phone}' ,no se ha encontrado.";
         }
     }
 
-    public static Customer SearchCostumer_ByMail(string mail)
+    public static string SearchCostumer_ByMail(string mail)
     {
-        try
+        Customer customer = cm.SearchByMail(mail);
+
+        if (customer != null)
         {
-            return cm.SearchByFamilyName(mail);
+            return customer.Mail;
         }
-        catch (NotExistingCustomerException)
+        else
         {
-            return null;
+            return $"El cliente cuyo correo es: '{mail}' ,no se ha encontrado.";
         }
     }
 //Como usuario quiero ver una lista de todos mis clientes, para tener una vista general de mi cartera.
@@ -130,148 +119,12 @@ public class Facade
         return "Vendedor no encontrado o sin clientes.";
     }
     
-    /*public static void AddCustomer(Customer customer)
+    public static void AddCustomer(Customer customer)
     {
         if (customer != null)
         {
             cm.AddCustomer(customer); 
         }
-    }*/
-    
-    // Como usuario quiero agregar una etiqueta a un cliente.
-    public static string AddTag_Customer(string customerName, string tagId, string tagName, string tagDescription)
-    {
-        Customer customer = cm.SearchByName(customerName);
-
-        if (customer != null)
-        {
-            // Verificar si el cliente ya tiene una etiqueta con el mismo nombre
-            bool exists = false;
-            foreach (Tag existingTag in customer.Tags)
-            {
-                if (existingTag.Name.Equals(tagName, StringComparison.OrdinalIgnoreCase))
-                {
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (exists)
-            {
-                return $"El cliente '{customerName}' ya tiene una etiqueta llamada '{tagName}'.";
-            }
-
-            Tag tag = new Tag(tagId, tagName, tagDescription);
-            customer.AddTag(tag);
-
-            return $"Etiqueta '{tagName}' agregada al cliente '{customer.Name}'.";
-        }
-        else
-        {
-            return $"El cliente '{customerName}' no se ha encontrado.";
-        }
-    }
-    
-    // Ver panel con: clientes totales, interacciones recientes, reuniones próximas 
-    public static string ShowDashboard()
-    {
-        DashboardSummary dashboard = cm.GetDashboard();
-        string result = "";
-
-        result += "----- PANEL DE CLIENTES -----\n";
-        result += $"Clientes totales: {dashboard.TotalCustomers}\n\n";
-
-        result += "----- INTERACCIONES RECIENTES -----\n";
-        if (dashboard.RecentInteractions != null && dashboard.RecentInteractions.Count > 0)
-        {
-            foreach (Customer customer in dashboard.RecentInteractions)
-            {
-                result += $"- {customer.Name} ({customer.FamilyName})\n";
-            }
-        }
-        else
-        {
-            result += "No hay interacciones recientes.\n";
-        }
-
-        result += "\n----- REUNIONES PRÓXIMAS -----\n";
-        if (dashboard.UpcomingMeetings != null && dashboard.UpcomingMeetings.Count > 0)
-        {
-            foreach (Meeting meeting in dashboard.UpcomingMeetings)
-            {
-                string customerName = meeting.Customer != null ? meeting.Customer.Name : "Cliente desconocido";
-                result += $"- Reunión con {customerName} el {meeting.Date:dd/MM/yyyy} en {meeting.Place}\n";
-            }
-        }
-        else
-        {
-            result += "No hay reuniones próximas.\n";
-        }
-
-        return result;
-    }
-    
-    private static List<User> users = new List<User>();
-
-    // Como administrador quiero crear un nuevo usuario
-    public static string CreateUser(string id, string name, string mail, string phone)
-    {
-        foreach (User existingUser in users)
-        {
-            if (existingUser.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
-            {
-                return $"Ya existe un usuario con el ID '{id}'.";
-            }
-        }
-
-        User user = new User(name, mail, phone, id);
-        users.Add(user);
-        return $"Usuario '{name}' creado correctamente.";
-    }
-
-    // Como administrador quiero suspender un usuario
-    public static string SuspendUser(string id)
-    {
-        User user = null;
-
-        foreach (User u in users)
-        {
-            if (u.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
-            {
-                user = u;
-                break;
-            }
-        }
-
-        if (user == null)
-        {
-            return $"No se encontró el usuario con ID '{id}'.";
-        }
-
-        return $"Usuario '{user.Name}' suspendido correctamente (simulado).";
-    }
-
-    // Como administrador quiero eliminar un usuario
-    public static string DeleteUser(string id)
-    {
-        User userToRemove = null;
-
-        foreach (User u in users)
-        {
-            if (u.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
-            {
-                userToRemove = u;
-                break;
-            }
-        }
-
-        if (userToRemove != null)
-        {
-            users.Remove(userToRemove);
-            return $"Usuario '{userToRemove.Name}' eliminado correctamente.";
-        }
-
-        return $"No se encontró el usuario con ID '{id}'.";
     }
     
     //Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
@@ -305,29 +158,93 @@ public class Facade
     
     //Como usuario quiero agregar notas o comentarios a las llamadas, reuniones, mensajes y correos enviados o recibidos
     //de los clientes, para tener información adicional de mis interacciones con los clientes.
-    public static void Notes(string topic, DateTime date,ExchangeType type)
+    public void AddNoteToInteraction(string customerId, string interactionTopic, DateTime interactionDate, Note note)
     {
-        
-        Note note = new Note(topic, date, type); //REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-        
-        
+        // Recorrer los clientes del CustomerManager
+        for (int i = 0; i < cm.Customers.Count; i++)
+        {
+            if (cm.Customers[i].Id.Equals(customerId, StringComparison.OrdinalIgnoreCase))
+            {
+                // Encontré el cliente, ahora busco su interacción
+                for (int j = 0; j < cm.Customers[i].Interactions.Count; j++)
+                {
+                    if (cm.Customers[i].Interactions[j].Topic.Equals(interactionTopic, StringComparison.OrdinalIgnoreCase) &&
+                        cm.Customers[i].Interactions[j].Date == interactionDate)
+                    {
+                        // Se encontró la interacción, agrego la nota
+                        cm.Customers[i].Interactions[j].AddNote(note);
+                        Console.WriteLine($"Nota agregada a la interacción del cliente {cm.Customers[i].Name}");
+                        return;
+                    }
+                }
+
+                Console.WriteLine("Interacción no encontrada.");
+                return;
+            }
+        }
+
+        Console.WriteLine("Cliente no encontrado.");
     }
     
     //Como usuario quiero ver todas las interacciones de un cliente, con o sin filtro por tipo de interacción y por fecha,
     //para entender el historial de la relación comercial.
     
-                ///VERLO JUNTOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+    public List<Interaction> GetCustomerInteractions(string customerId,string interactionType = null, DateTime? date = null)
+    {
+        // Busca cliente por ID
+        Customer customer = cm.SearchById(customerId);
+
+        if (customer == null)
+        {
+            Console.WriteLine("Cliente no encontrado.");
+            return new List<Interaction>();
+        }
+
+        //Toma todas las interacciones del cliente
+        List<Interaction> interactions = customer.Interactions;
+
+        //Filtra por tipo si se especifica
+        if (!string.IsNullOrEmpty(interactionType))
+        {
+            interactions = interactions
+                .Where(i => i.GetType().Name.Equals(interactionType, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        //Filtrar por fecha si se especifica
+        if (date != null)
+        {
+            interactions = interactions
+                .Where(i => i.Date.Date == date.Value.Date)
+                .ToList();
+        }
+
+        //Retorna la lista resultante
+        return interactions;
+    }
 
     //Como usuario quiero poder definir etiquetas para poder organizar y segmentar a mis clientes.
-    public static void CustomerTag(string id, string name, string description)
+    // Como usuario quiero poder definir etiquetas para poder organizar y segmentar a mis clientes.
+    public static string AddTagToCustomer(string customerId, string tagId, string name, string description)
     {
-        Tag tag = new Tag(id, name, description);
+        for (int i = 0; i < cm.Customers.Count; i++)
+        {
+            if (cm.Customers[i].Id.Equals(customerId, StringComparison.OrdinalIgnoreCase))
+            {
+                Tag tag = new Tag(tagId, name, description);
+
+                cm.Customers[i].AddTag(tag);
+
+                return $"Etiqueta '{name}' agregada al cliente {cm.Customers[i].Name}.";
+            }
+        }
+        return $"Cliente con ID {customerId} no encontrado.";
     }
     
     //Cómo usuario quiero saber los clientes que hace cierto tiempo que no tengo ninguna interacción con ellos, para no
     //peder contacto con ellos.
 
-    public static Interaction LastInteraction(Customer customer) //CLAUDIO
+    public static Interaction LastInteraction(Customer customer) 
     {
         if (customer.Interactions == null || customer.Interactions.Count == 0)
         {
@@ -349,7 +266,7 @@ public class Facade
     //Como usuario quiero saber los clientes que se pusieron en contacto conmigo y no les contesté hace cierto tiempo,
     //para no dejar de responder mensajes o llamadas
 
-    public static string UnansweredInteractions(Customer customer)   //CLAUDIO
+    public static string UnansweredInteractions(Customer customer)  
     {
         List<Interaction> unanswered = customer.GetUnansweredInteractions();
     
@@ -366,43 +283,5 @@ public class Facade
 
         return report;
     }
-
-
-    public static void AssignCustomer(Customer customer, Seller seller)
-    {
-        cm.AssignCustomerToSeller(customer, seller);
-    }
-    
-    public static List<Sale> SalesWithin_A_Period(Seller seller, DateTime startDate, DateTime endDate)
-    {
-        if (!sm.Sellers.Contains(seller))
-        {
-            throw new Exception("Seller does not exist in SellerManager");
-        }
-
-        if (startDate > endDate)
-        {
-            throw new ArgumentException("startDate must be before endDate");
-        }
-
-        List<Sale> result = new List<Sale>();
-
-        foreach (Interaction interaction in seller.Interactions)
-        {
-            // Filtra solo las ventas
-            if (interaction is Sale sale)
-            {
-                // Filtra dentro del período
-                if (sale.Date >= startDate && sale.Date <= endDate)
-                {
-                    result.Add(sale);
-                }
-            }
-        }
-
-        return result;
-    }
-
 }
-
 
