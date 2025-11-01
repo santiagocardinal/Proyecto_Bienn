@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace Library;
 
 // SRP: CustomerManager tiene la responsabilidad de gestionar la colección
@@ -28,26 +30,26 @@ public class CustomerManager
     {
         foreach (Customer customer in customers)
         {
-           
             if (customer.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
             {
                 return customer;
             }
         }
-        return null; 
+
+        throw new NotExistingCustomerException();
     }
+
     
     public Customer SearchByMail(string mail)
     {
         foreach (Customer customer in customers)
         {
-            
-            if (customer.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase))
+            if (customer.Name.Equals(mail, StringComparison.OrdinalIgnoreCase))
             {
                 return customer;
             }
         }
-        return null;
+        throw new NotExistingCustomerException();
     }
 
     public Customer SearchByFamilyName(string familyname)
@@ -59,19 +61,21 @@ public class CustomerManager
                 return customer;
             }
         }
-        return null;
+
+        throw new NotExistingCustomerException();
     }
     
     public Customer SearchByPhone(string phone)
     {
         foreach (Customer customer in customers)
         {
-            if (customer.Phone.Equals(phone, StringComparison.OrdinalIgnoreCase))
+            if (customer.Phone.Equals(phone))
             {
                 return customer;
             }
         }
-        return null;
+
+        throw new NotExistingCustomerException();
     }
 
     public Customer SearchById(string id)
@@ -89,45 +93,75 @@ public class CustomerManager
    
     public void AddCustomer(Customer customer)
     {
-        if (customer != null && SearchById(customer.Id) == null)
+        // Verificar si ya existe
+        if (this.Customers.Contains(customer))
         {
-            
-            //seller.Customer.Add(customer);
-            
-            customers.Add(customer);
-
-            //Console.WriteLine($"Cliente {customer.Name} agregado exitosamente con vendedor {seller.Name}.");
+            throw new DuplicatedCustomerException(customer);
+        }
+        else
+        {
+            this.customers.Add(customer);
         }
     }
     
-    public bool Delete(Customer customer)
+    public void Delete(Customer customer)
     {
         if (customer != null && customers.Contains(customer))
         {
             customers.Remove(customer);
-            Console.WriteLine($"Cliente {customer.Name} eliminado.");
-            return true;
-        }
-        Console.WriteLine("Cliente no encontrado.");
-        return false;
-    }
-    
-    public void Modify(Customer customer)
-    {
-        Customer existing = SearchById(customer.Id);
-        if (existing != null)
-        {
-            int index = customers.IndexOf(existing);
-            customers[index] = customer; 
-            Console.WriteLine($"Cliente {customer.Name} modificado exitosamente.");
         }
         else
         {
-            Console.WriteLine("Cliente no encontrado.");
+            throw new NotExistingCustomerException();
         }
     }
-    
 
+    
+    public void Modify(string id, string field, string newValue)
+    {
+        Customer existing = SearchById(id);
+
+        if (existing == null)
+        {
+            throw new NotExistingCustomerException();
+        }
+        else
+        {
+            switch (field.ToLower())
+            {
+                case "name":
+                    existing.Name = newValue;
+                    break;
+
+                case "familyname":
+                    existing.FamilyName = newValue;
+                    break;
+
+                case "mail":
+                    existing.Mail = newValue;
+                    break;
+
+                case "phone":
+                    existing.Phone = newValue;
+                    break;
+
+                case "gender":
+                    existing.Gender = newValue;
+                    break;
+
+                case "birthdate":
+                    if (DateTime.TryParse(newValue, out DateTime bd))
+                        existing.BirthDate = bd;
+                    break;
+
+                default:
+                    throw new InvalidFieldException(field.ToLower());
+                    return;
+            }
+        }
+    }
+
+    
     private int GetTotalCustomer()
     {
         return customers.Count;
