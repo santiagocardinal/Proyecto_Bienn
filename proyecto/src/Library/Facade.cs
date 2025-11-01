@@ -158,29 +158,93 @@ public class Facade
     
     //Como usuario quiero agregar notas o comentarios a las llamadas, reuniones, mensajes y correos enviados o recibidos
     //de los clientes, para tener información adicional de mis interacciones con los clientes.
-    public static void Notes(string topic, DateTime date,ExchangeType type)
+    public void AddNoteToInteraction(string customerId, string interactionTopic, DateTime interactionDate, Note note)
     {
-        
-        Note note = new Note(topic, date, type); //REVISARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-        
-        
+        // Recorrer los clientes del CustomerManager
+        for (int i = 0; i < cm.Customers.Count; i++)
+        {
+            if (cm.Customers[i].Id.Equals(customerId, StringComparison.OrdinalIgnoreCase))
+            {
+                // Encontré el cliente, ahora busco su interacción
+                for (int j = 0; j < cm.Customers[i].Interactions.Count; j++)
+                {
+                    if (cm.Customers[i].Interactions[j].Topic.Equals(interactionTopic, StringComparison.OrdinalIgnoreCase) &&
+                        cm.Customers[i].Interactions[j].Date == interactionDate)
+                    {
+                        // Se encontró la interacción, agrego la nota
+                        cm.Customers[i].Interactions[j].AddNote(note);
+                        Console.WriteLine($"Nota agregada a la interacción del cliente {cm.Customers[i].Name}");
+                        return;
+                    }
+                }
+
+                Console.WriteLine("Interacción no encontrada.");
+                return;
+            }
+        }
+
+        Console.WriteLine("Cliente no encontrado.");
     }
     
     //Como usuario quiero ver todas las interacciones de un cliente, con o sin filtro por tipo de interacción y por fecha,
     //para entender el historial de la relación comercial.
     
-                ///VERLO JUNTOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+    public List<Interaction> GetCustomerInteractions(string customerId,string interactionType = null, DateTime? date = null)
+    {
+        // Busca cliente por ID
+        Customer customer = cm.SearchById(customerId);
+
+        if (customer == null)
+        {
+            Console.WriteLine("Cliente no encontrado.");
+            return new List<Interaction>();
+        }
+
+        //Toma todas las interacciones del cliente
+        List<Interaction> interactions = customer.Interactions;
+
+        //Filtra por tipo si se especifica
+        if (!string.IsNullOrEmpty(interactionType))
+        {
+            interactions = interactions
+                .Where(i => i.GetType().Name.Equals(interactionType, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        //Filtrar por fecha si se especifica
+        if (date != null)
+        {
+            interactions = interactions
+                .Where(i => i.Date.Date == date.Value.Date)
+                .ToList();
+        }
+
+        //Retorna la lista resultante
+        return interactions;
+    }
 
     //Como usuario quiero poder definir etiquetas para poder organizar y segmentar a mis clientes.
-    public static void CustomerTag(string id, string name, string description)
+    // Como usuario quiero poder definir etiquetas para poder organizar y segmentar a mis clientes.
+    public static string AddTagToCustomer(string customerId, string tagId, string name, string description)
     {
-        Tag tag = new Tag(id, name, description);
+        for (int i = 0; i < cm.Customers.Count; i++)
+        {
+            if (cm.Customers[i].Id.Equals(customerId, StringComparison.OrdinalIgnoreCase))
+            {
+                Tag tag = new Tag(tagId, name, description);
+
+                cm.Customers[i].AddTag(tag);
+
+                return $"Etiqueta '{name}' agregada al cliente {cm.Customers[i].Name}.";
+            }
+        }
+        return $"Cliente con ID {customerId} no encontrado.";
     }
     
     //Cómo usuario quiero saber los clientes que hace cierto tiempo que no tengo ninguna interacción con ellos, para no
     //peder contacto con ellos.
 
-    public static Interaction LastInteraction(Customer customer) //CLAUDIO
+    public static Interaction LastInteraction(Customer customer) 
     {
         if (customer.Interactions == null || customer.Interactions.Count == 0)
         {
@@ -202,7 +266,7 @@ public class Facade
     //Como usuario quiero saber los clientes que se pusieron en contacto conmigo y no les contesté hace cierto tiempo,
     //para no dejar de responder mensajes o llamadas
 
-    public static string UnansweredInteractions(Customer customer)   //CLAUDIO
+    public static string UnansweredInteractions(Customer customer)  
     {
         List<Interaction> unanswered = customer.GetUnansweredInteractions();
     
@@ -219,6 +283,5 @@ public class Facade
 
         return report;
     }
-    
 }
 
