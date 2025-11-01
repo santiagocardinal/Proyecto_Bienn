@@ -367,6 +367,7 @@ public class Facade
         return report;
     }
 
+
     public static void AssignCustomer(Customer customer, Seller seller)
     {
         cm.AssignCustomerToSeller(customer, seller);
@@ -401,7 +402,6 @@ public class Facade
 
         return result;
     }
-
 
 }
 
