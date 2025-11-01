@@ -274,7 +274,7 @@ public class Facade
         return $"No se encontró el usuario con ID '{id}'.";
     }
     
-    //Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
+    /*//Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
     //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
 
     public static void CallRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
@@ -293,6 +293,7 @@ public class Facade
     public static void MessageRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
     {
         Message meet = new Message(date, topic, type, _customer);
+        
     }
     
     //Como usuario quiero registrar correos electrónicos enviados a o recibidos de los clientes, incluendo cuándo y de qué
@@ -301,7 +302,7 @@ public class Facade
     public static void MailRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
     {
         Mail mail = new Mail(date, topic, type, _customer);
-    }
+    }*/
     
     //Como usuario quiero agregar notas o comentarios a las llamadas, reuniones, mensajes y correos enviados o recibidos
     //de los clientes, para tener información adicional de mis interacciones con los clientes.
@@ -402,6 +403,194 @@ public class Facade
 
         return result;
     }
+
+    /*public static void QuoteRegister(Customer customer, Seller seller, DateTime date, string topic, ExchangeType type, Customer _customer, double amount, string description)
+    {
+        // Buscar customer en cm.Customers (por Id o por referencia)
+        Customer foundCustomer = null;
+        if (customer != null)
+        {
+            // Intentar por Id (ajusta "Id" al nombre real si es otro)
+            foundCustomer = cm.Customers
+                                .FirstOrDefault(c => c.Id != null && customer.Id != null && c.Id == customer.Id)
+                            ?? cm.Customers.FirstOrDefault(c => ReferenceEquals(c, customer));
+        }
+
+        // Buscar seller en sm.Sellers (por Id o por referencia)
+        Seller foundSeller = null;
+        if (seller != null)
+        {
+            foundSeller = sm.Sellers
+                              .FirstOrDefault(s => s.Id != null && seller.Id != null && s.Id == seller.Id)
+                          ?? sm.Sellers.FirstOrDefault(s => ReferenceEquals(s, seller));
+        }
+
+        // Validaciones: decidir si lanzar excepción o simplemente salir
+        if (foundCustomer == null)
+            throw new InvalidOperationException("Customer no está registrado en cm.");
+        if (foundSeller == null)
+            throw new InvalidOperationException("Seller no está registrado en sm.");
+
+        // Crear la Quote — uso _customer si así lo requiere el constructor
+        Quote qt = new Quote(date, topic, type, _customer, amount, description);
+
+        // Añadir la quote a las interacciones de los objetos encontrados en cm y sm
+        if (foundCustomer.Interactions == null)
+            foundCustomer.Interactions = new List<Interaction>();
+        if (foundSeller.Interactions == null)
+            foundSeller.Interactions = new List<Interaction>();
+        
+        cm.AddInteraction(qt, foundSeller, foundCustomer);
+    }
+
+    public static void SaleFromQuote(
+        string sellerId,
+        string customerId,
+        DateTime date,
+        string topic,
+        ExchangeType type,
+        double amount,
+        string product)
+    {
+        Customer foundCustomer = cm.Customers.FirstOrDefault(c => c.Id == customerId);
+
+        if (foundCustomer == null)
+            throw new Exception("Customer no encontrado en cm.");
+
+        Seller foundSeller = sm.Sellers.FirstOrDefault(s => s.Id == sellerId);
+
+        if (foundSeller == null)
+            throw new Exception("Seller no encontrado en sm.");
+        
+        Quote foundQuote = null;
+
+        foreach (var interaction in foundCustomer.Interactions)
+        {
+            if (interaction is Quote qt)
+            {
+                if (qt.Date == date &&
+                    qt.Topic == topic &&
+                    qt.Type == type &&
+                    Math.Abs(qt.Amount - amount) < 0.0001)
+                {
+                    foundQuote = qt;
+                    break;
+                }
+            }
+        }
+
+        if (foundQuote == null)
+            throw new Exception("No se encontró la Quote correspondiente.");
+
+        Sale newSale = new Sale(
+            product,
+            foundQuote,
+            date,
+            topic,
+            type,
+            foundCustomer
+        );
+        
+        cm.AddInteraction(newSale, foundSeller, foundCustomer);
+    }*/
+    
+    // ----------------------------------------------------------
+    //  MÉTODO CENTRAL PARA REGISTRAR CUALQUIER INTERACCIÓN
+    // ----------------------------------------------------------
+    private static void RegisterInteraction(Interaction interaction, Customer customer, Seller seller)
+    {
+        if (interaction == null)
+            throw new ArgumentNullException(nameof(interaction));
+        if (customer == null)
+            throw new ArgumentNullException(nameof(customer));
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        cm.AddInteraction(interaction, seller, customer);
+        Console.WriteLine($"✅ Interacción registrada: {interaction.GetType().Name} -> Cliente {customer.Name}");
+    }
+    
+    
+
+    // ----------------------------------------------------------
+    //  REGISTRO DE INTERACCIONES
+    // ----------------------------------------------------------
+
+    public static void CallRegister(DateTime date, string topic, ExchangeType type, Customer customer, Seller seller)
+    {
+        Call call = new Call(date, topic, type, customer);
+        RegisterInteraction(call, customer, seller);
+    }
+
+    public static void MeetingRegister(string place, DateTime date, string topic, ExchangeType type, Customer customer, Seller seller)
+    {
+        Meeting meeting = new Meeting(place, date, topic, type, customer);
+        RegisterInteraction(meeting, customer, seller);
+    }
+
+    public static void MessageRegister(DateTime date, string topic, ExchangeType type, Customer customer, Seller seller)
+    {
+        Message message = new Message(date, topic, type, customer);
+        RegisterInteraction(message, customer, seller);
+    }
+
+    public static void MailRegister(DateTime date, string topic, ExchangeType type, Customer customer, Seller seller)
+    {
+        Mail mail = new Mail(date, topic, type, customer);
+        RegisterInteraction(mail, customer, seller);
+    }
+
+    public static void QuoteRegister(DateTime date, string topic, ExchangeType type, Customer customer, Seller seller, double amount, string description)
+    {
+        Quote quote = new Quote(date, topic, type, customer, amount, description);
+        RegisterInteraction(quote, customer, seller);
+    }
+
+    // ----------------------------------------------------------
+    //  SALE DESDE UNA QUOTE
+    // ----------------------------------------------------------
+    public static void SaleFromQuote(
+        string sellerId,
+        string customerId,
+        DateTime date,
+        string topic,
+        ExchangeType type,
+        double amount,
+        string product)
+    {
+        Customer foundCustomer = cm.Customers.FirstOrDefault(c => c.Id == customerId);
+        Seller foundSeller = sm.Sellers.FirstOrDefault(s => s.Id == sellerId);
+
+        if (foundCustomer == null)
+            throw new Exception("❌ Customer no encontrado.");
+        if (foundSeller == null)
+            throw new Exception("❌ Seller no encontrado.");
+
+        Quote foundQuote = null;
+
+        foreach (var interaction in foundCustomer.Interactions)
+        {
+            if (interaction is Quote qt)
+            {
+                if (qt.Date == date &&
+                    qt.Topic == topic &&
+                    qt.Type == type &&
+                    Math.Abs(qt.Amount - amount) < 0.0001)
+                {
+                    foundQuote = qt;
+                    break;
+                }
+            }
+        }
+
+        if (foundQuote == null)
+            throw new Exception("❌ No se encontró la Quote correspondiente.");
+
+        Sale sale = new Sale(product, foundQuote, date, topic, type, foundCustomer);
+        RegisterInteraction(sale, foundCustomer, foundSeller);
+    }
+
+
 
 }
 
