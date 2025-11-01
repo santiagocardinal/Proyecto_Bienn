@@ -312,7 +312,6 @@ public class CustomerManager
             
             customer.Activate();
             
-            Console.WriteLine("Interacción agregada exitosamente.");
         }
     }
 
