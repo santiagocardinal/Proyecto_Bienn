@@ -16,6 +16,7 @@ public class Seller : User
         get { return isSuspended; }
         set { isSuspended = value; }
     }
+
     
     public List<Customer> Customer
     {
@@ -36,7 +37,7 @@ public class Seller : User
         this.Interactions = new List<Interaction>();
     }
     
-    public void addInteraction(Interaction interaction)
+    public void AddInteraction(Interaction interaction)
     {
         if (interaction != null)
         {

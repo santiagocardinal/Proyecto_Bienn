@@ -162,6 +162,24 @@ public class CustomerManager
     }
 
     
+    // Registro centralizado de interacción
+    public void RegisterInteraction(Customer customer, Seller seller, Interaction interaction)
+    {
+        if (interaction.Type == ExchangeType.Received)
+        {
+            customer.MarkAsPending();
+        }
+        else if (interaction.Type == ExchangeType.Sent)
+        {
+            customer.MarkAsActive();
+            customer.MarkLastReceivedAsResponded();
+        }
+
+        seller.AddInteraction(interaction);
+        customer.AddInteraction(interaction);
+    }
+    
+    
     private int GetTotalCustomer()
     {
         return customers.Count;
@@ -264,11 +282,9 @@ public class CustomerManager
         foreach (Customer customer in customers)
         {
             bool hasUnanswered = false;
-        
           
             foreach (Interaction interaction in customer.Interactions)
             {
-                
                 if (interaction.Type == ExchangeType.Received && 
                     !interaction.HasResponse && 
                     interaction.Date >= threshold)
@@ -283,7 +299,6 @@ public class CustomerManager
                 unansweredCustomers.Add(customer);
             }
         }
-    
         return unansweredCustomers;
     }
 
@@ -302,22 +317,21 @@ public class CustomerManager
     }
 
    
-    public void AddInteraction(Interaction interaction, Seller seller, Customer customer)
-    {
-        if (interaction != null)
-        {
-            seller.addInteraction(interaction);
-            
-            customer.AddInteraction(interaction);
-            
-            customer.Activate();
-            
-        }
-    }
-
-   
     public List<Interaction> GetCustomerInteractions(Customer customer)
     {
         return customer.GetInteraction();
     }
+    
+    /*public void AddInteraction(Interaction interaction, Seller seller, Customer customer)
+    {
+        if (interaction != null)
+        {
+            seller.AddInteraction(interaction);
+
+            customer.AddInteraction(interaction);
+
+            customer.Activate();
+
+        }
+    }*/
 }
