@@ -85,6 +85,8 @@ public class Customer
         set { isActive = value; }
     }
     
+    public bool HasPendingCustomerReply { get; private set; }
+    
     public Customer(string id, string name, string familyName, string mail, string phone, string gender, DateTime birthDate)
     {
         this.Id = id;
@@ -199,6 +201,26 @@ public class Customer
     {
         return this.isActive;
     }
+    
+    
+    public void MarkAsPending()
+    {
+        this.HasPendingCustomerReply = true;
+        this.IsActive = false;
+    }
+
+    public void MarkAsActive()
+    {
+        this.HasPendingCustomerReply = false;
+        this.IsActive = true;
+    }
+
+    public void MarkLastReceivedAsResponded()
+    {
+        var last = Interactions.LastOrDefault(i => i.Type == ExchangeType.Received && !i.HasResponse);
+        if (last != null) last.HasResponse = true;
+    }
+    
     
     public List<Interaction> GetUnansweredInteractions()
     {

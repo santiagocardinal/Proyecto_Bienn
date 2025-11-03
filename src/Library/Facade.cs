@@ -125,37 +125,145 @@ public class Facade
         {
             cm.AddCustomer(customer); 
         }
-    }
-    
-    /*//Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
-    //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
 
-    public static void CallRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
-    {
-        Call call = new Call(date, topic, type, _customer);
-    }
-    //Como usuario quiero registrar reuniones con los clientes, incluyendo cuándo y dónde fueron,
-    //y de qué tema trataron, para poder saber mis interacciones con los clientes.
-    public static void MeetingRegister(string place, DateTime date, string topic, ExchangeType type, Customer _customer)
-    {
-        Meeting meet = new Meeting(place, date, topic, type,_customer);
-    }
-    //Como usuario quiero registrar mensajes enviados a o recibidos de los clientes, incluendo cuándo y de qué tema fueron,
-    //para poder saber mis interacciones con los clientes.
     
-    public static void MessageRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    // Como usuario quiero agregar una etiqueta a un cliente.
+    public static string AddTag_Customer(string customerName, string tagId, string tagName, string tagDescription)
     {
-        Message meet = new Message(date, topic, type, _customer);
-        
-    }
-    
-    //Como usuario quiero registrar correos electrónicos enviados a o recibidos de los clientes, incluendo cuándo y de qué
-    //tema fueron, para poder saber mis interacciones con los clientes.
+        Customer customer = cm.SearchByName(customerName);
 
-    public static void MailRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+        if (customer != null)
+        {
+            // Verificar si el cliente ya tiene una etiqueta con el mismo nombre
+            bool exists = false;
+            foreach (Tag existingTag in customer.Tags)
+            {
+                if (existingTag.Name.Equals(tagName, StringComparison.OrdinalIgnoreCase))
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (exists)
+            {
+                return $"El cliente '{customerName}' ya tiene una etiqueta llamada '{tagName}'.";
+            }
+
+            Tag tag = new Tag(tagId, tagName, tagDescription);
+            customer.AddTag(tag);
+
+            return $"Etiqueta '{tagName}' agregada al cliente '{customer.Name}'.";
+        }
+        else
+        {
+            return $"El cliente '{customerName}' no se ha encontrado.";
+        }
+    }
+    
+    // Ver panel con: clientes totales, interacciones recientes, reuniones próximas 
+    public static string ShowDashboard()
     {
-        Mail mail = new Mail(date, topic, type, _customer);
-    }*/
+        DashboardSummary dashboard = cm.GetDashboard();
+        string result = "";
+
+        result += "----- PANEL DE CLIENTES -----\n";
+        result += $"Clientes totales: {dashboard.TotalCustomers}\n\n";
+
+        result += "----- INTERACCIONES RECIENTES -----\n";
+        if (dashboard.RecentInteractions != null && dashboard.RecentInteractions.Count > 0)
+        {
+            foreach (Customer customer in dashboard.RecentInteractions)
+            {
+                result += $"- {customer.Name} ({customer.FamilyName})\n";
+            }
+        }
+        else
+        {
+            result += "No hay interacciones recientes.\n";
+        }
+
+        result += "\n----- REUNIONES PRÓXIMAS -----\n";
+        if (dashboard.UpcomingMeetings != null && dashboard.UpcomingMeetings.Count > 0)
+        {
+            foreach (Meeting meeting in dashboard.UpcomingMeetings)
+            {
+                string customerName = meeting.Customer != null ? meeting.Customer.Name : "Cliente desconocido";
+                result += $"- Reunión con {customerName} el {meeting.Date:dd/MM/yyyy} en {meeting.Place}\n";
+            }
+        }
+        else
+        {
+            result += "No hay reuniones próximas.\n";
+        }
+
+        return result;
+    }
+    
+    private static List<User> users = new List<User>();
+
+    // Como administrador quiero crear un nuevo usuario
+    public static string CreateUser(string id, string name, string mail, string phone)
+    {
+        foreach (User existingUser in users)
+        {
+            if (existingUser.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                return $"Ya existe un usuario con el ID '{id}'.";
+            }
+        }
+
+        User user = new User(name, mail, phone, id);
+        users.Add(user);
+        return $"Usuario '{name}' creado correctamente.";
+    }
+
+    // Como administrador quiero suspender un usuario
+    public static string SuspendUser(string id)
+    {
+        User user = null;
+
+        foreach (User u in users)
+        {
+            if (u.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                user = u;
+                break;
+            }
+        }
+
+        if (user == null)
+        {
+            return $"No se encontró el usuario con ID '{id}'.";
+        }
+
+        return $"Usuario '{user.Name}' suspendido correctamente (simulado).";
+    }
+
+    // Como administrador quiero eliminar un usuario
+    public static string DeleteUser(string id)
+    {
+        User userToRemove = null;
+
+        foreach (User u in users)
+        {
+            if (u.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                userToRemove = u;
+                break;
+            }
+        }
+
+        if (userToRemove != null)
+        {
+            users.Remove(userToRemove);
+            return $"Usuario '{userToRemove.Name}' eliminado correctamente.";
+        }
+
+        return $"No se encontró el usuario con ID '{id}'.";
+
+    }
+    
     
     //Como usuario quiero agregar notas o comentarios a las llamadas, reuniones, mensajes y correos enviados o recibidos
     //de los clientes, para tener información adicional de mis interacciones con los clientes.
@@ -245,8 +353,13 @@ public class Facade
     //Cómo usuario quiero saber los clientes que hace cierto tiempo que no tengo ninguna interacción con ellos, para no
     //peder contacto con ellos.
 
+<<<<<<< HEAD:src/Library/Facade.cs
     public static Interaction LastInteraction(Customer customer) 
+=======
+    public static Interaction LastInteraction(string customerId)
+>>>>>>> 946d901 (Modifcaciones en clases referidas al flujo de las interacciones):proyecto/src/Library/Facade.cs
     {
+        Customer customer = cm.SearchById(customerId);
         if (customer.Interactions == null || customer.Interactions.Count == 0)
         {
             return null; 
@@ -267,8 +380,13 @@ public class Facade
     //Como usuario quiero saber los clientes que se pusieron en contacto conmigo y no les contesté hace cierto tiempo,
     //para no dejar de responder mensajes o llamadas
 
+<<<<<<< HEAD:src/Library/Facade.cs
     public static string UnansweredInteractions(Customer customer)  
+=======
+    public static string UnansweredInteractions(string customerId)
+>>>>>>> 946d901 (Modifcaciones en clases referidas al flujo de las interacciones):proyecto/src/Library/Facade.cs
     {
+        Customer customer = cm.SearchById(customerId);
         List<Interaction> unanswered = customer.GetUnansweredInteractions();
     
         if (unanswered.Count == 0)
@@ -285,14 +403,16 @@ public class Facade
         return report;
     }
 
-
-    public static void AssignCustomer(Customer customer, Seller seller)
+    public static void AssignCustomer(string customerId, string sellerId)
     {
+        Customer customer = cm.SearchById(customerId);
+        Seller seller = sm.SearchById(sellerId);
         cm.AssignCustomerToSeller(customer, seller);
     }
     
-    public static List<Sale> SalesWithin_A_Period(Seller seller, DateTime startDate, DateTime endDate)
+    public static List<Sale> SalesWithin_A_Period(string sellerId, DateTime startDate, DateTime endDate)
     {
+        Seller seller = sm.SearchById(sellerId);
         if (!sm.Sellers.Contains(seller))
         {
             throw new Exception("Seller does not exist in SellerManager");
@@ -320,6 +440,144 @@ public class Facade
 
         return result;
     }
+    
+    
+    private static void RegisterInteraction(Interaction interaction, Customer customer, Seller seller)
+    {
+        if (interaction == null)
+            throw new ArgumentNullException(nameof(interaction));
+        if (customer == null)
+            throw new ArgumentNullException(nameof(customer));
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        cm.RegisterInteraction(customer, seller, interaction  );
+        Console.WriteLine($" Interacción registrada: {interaction.GetType().Name} -> Cliente {customer.Name}");
+    }
+    
+
+    // ----------------------------------------------------------
+    //  REGISTRO DE INTERACCIONES
+    // ----------------------------------------------------------
+
+    public static void CallRegister(DateTime date, string topic, ExchangeType type, string customerId, string sellerId)
+    {
+        Customer customer = cm.SearchById(customerId);
+        Seller seller = sm.SearchById(sellerId);
+        Call call = new Call(date, topic, type, customer);
+        RegisterInteraction(call, customer, seller);
+    }
+
+    public static void MeetingRegister(string place, DateTime date, string topic, ExchangeType type, string customerId, string sellerId)
+    {
+        Customer customer = cm.SearchById(customerId);
+        Seller seller = sm.SearchById(sellerId);
+        Meeting meeting = new Meeting(place, date, topic, type, customer);
+        RegisterInteraction(meeting, customer, seller);
+    }
+
+    public static void MessageRegister(DateTime date, string topic, ExchangeType type, string customerId, string sellerId)
+    {
+        Customer customer = cm.SearchById(customerId);
+        Seller seller = sm.SearchById(sellerId);
+        Message message = new Message(date, topic, type, customer);
+        RegisterInteraction(message, customer, seller);
+    }
+
+    public static void MailRegister(DateTime date, string topic, ExchangeType type, string customerId, string sellerId)
+    {
+        Customer customer = cm.SearchById(customerId);
+        Seller seller = sm.SearchById(sellerId);
+        Mail mail = new Mail(date, topic, type, customer);
+        RegisterInteraction(mail, customer, seller);
+    }
+
+    public static void QuoteRegister(DateTime date, string topic, ExchangeType type, double amount, string description, string customerId, string sellerId)
+    {
+        Customer customer = cm.SearchById(customerId);
+        Seller seller = sm.SearchById(sellerId);
+        Quote quote = new Quote(date, topic, type, customer, amount, description);
+        RegisterInteraction(quote, customer, seller);
+    }
+
+    // ----------------------------------------------------------
+    //  SALE DESDE UNA QUOTE
+    // ----------------------------------------------------------
+    public static void SaleFromQuote(
+        string sellerId,
+        string customerId,
+        DateTime date,
+        string topic,
+        ExchangeType type,
+        double amount,
+        string product)
+    {
+        Customer foundCustomer = cm.Customers.FirstOrDefault(c => c.Id == customerId);
+        Seller foundSeller = sm.Sellers.FirstOrDefault(s => s.Id == sellerId);
+
+        if (foundCustomer == null)
+            throw new Exception("Customer no encontrado.");
+        if (foundSeller == null)
+            throw new Exception("Seller no encontrado.");
+
+        Quote foundQuote = null;
+
+        foreach (var interaction in foundCustomer.Interactions)
+        {
+            if (interaction is Quote qt)
+            {
+                if (qt.Date == date &&
+                    qt.Topic == topic &&
+                    qt.Type == type &&
+                    Math.Abs(qt.Amount - amount) < 0.0001)
+                {
+                    foundQuote = qt;
+                    break;
+                }
+            }
+        }
+
+        if (foundQuote == null)
+            throw new Exception("No se encontró la Quote correspondiente.");
+
+        Sale sale = new Sale(product, foundQuote, date, topic, type, foundCustomer);
+        RegisterInteraction(sale, foundCustomer, foundSeller);
+    }
+
+    
+    
+    /*//Como usuario quiero registrar llamadas enviadas o recibidas de clientes, incluyendo
+    //cuándo fueron y de qué tema trataron, para poder saber mis interacciones con los clientes.
+
+    public static void CallRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Call call = new Call(date, topic, type, _customer);
+    }
+    //Como usuario quiero registrar reuniones con los clientes, incluyendo cuándo y dónde fueron,
+    //y de qué tema trataron, para poder saber mis interacciones con los clientes.
+    public static void MeetingRegister(string place, DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Meeting meet = new Meeting(place, date, topic, type,_customer);
+    }
+    //Como usuario quiero registrar mensajes enviados a o recibidos de los clientes, incluendo cuándo y de qué tema fueron,
+    //para poder saber mis interacciones con los clientes.
+
+    public static void MessageRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Message meet = new Message(date, topic, type, _customer);
+
+    }
+
+    //Como usuario quiero registrar correos electrónicos enviados a o recibidos de los clientes, incluendo cuándo y de qué
+    //tema fueron, para poder saber mis interacciones con los clientes.
+
+    public static void MailRegister(DateTime date, string topic, ExchangeType type, Customer _customer)
+    {
+        Mail mail = new Mail(date, topic, type, _customer);
+    }*/
+    
+    
+    
 
     /*public static void QuoteRegister(Customer customer, Seller seller, DateTime date, string topic, ExchangeType type, Customer _customer, double amount, string description)
     {
@@ -414,6 +672,7 @@ public class Facade
     // ----------------------------------------------------------
     //  MÉTODO CENTRAL PARA REGISTRAR CUALQUIER INTERACCIÓN
     // ----------------------------------------------------------
+<<<<<<< HEAD:src/Library/Facade.cs
     private static void RegisterInteraction(Interaction interaction, Customer customer, Seller seller)
     {
         if (interaction == null)
@@ -507,6 +766,8 @@ public class Facade
         RegisterInteraction(sale, foundCustomer, foundSeller);
     }
 
+=======
+>>>>>>> 946d901 (Modifcaciones en clases referidas al flujo de las interacciones):proyecto/src/Library/Facade.cs
 
 }
 

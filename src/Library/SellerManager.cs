@@ -50,4 +50,16 @@ public class SellerManager
     
         return pending;
     }
+    
+    public Seller SearchById(string id)
+    {
+        foreach (Seller seller in sellers)
+        {
+            if (seller.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                return seller;
+            }
+        }
+        return null;
+    }
 }
