@@ -20,7 +20,7 @@ public class CustomerManager
         get{return customers;}
         set { customers = value; }
     }
-   
+    
     public CustomerManager()
     {
         customers = new List<Customer>();
