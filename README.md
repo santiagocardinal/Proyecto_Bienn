@@ -23,3 +23,29 @@ Llegamos a una solución final para esta primera entrega, pero como en todo proy
 En cuanto a comunicación, somos un equipo donde todos tienen voz. Le damos rienda suelta al debate y valoramos la opinión de cada integrante, lo que genera un ambiente de trabajo colaborativo y sin trabas para expresar ideas o dudas. Eso fue un punto fuerte que queremos mantener.
 Para las próximas entregas, el objetivo es claro: más tiempo en la planificación inicial, definir tareas más específicas desde el arranque, y tener una visión un poco más a largo plazo para anticiparnos a los baches del camino.<br/>
 **En resumen: esta etapa puso los cimientos de algo sólido. Cada uno metió lo suyo, aprendimos un montón tanto de código como de trabajo en equipo, y el CRC está tomando forma. Ahora, a aplicar lo aprendido en la siguiente entrega.**
+
+
+
+
+## Segunda Entrega
+
+### Evaluación General
+
+Estamos muy conformes con el desempeño alcanzado y con las devoluciones obtenidas por parte del cuerpo docente. Sentimos que esta segunda etapa reflejó una mejora clara tanto en la organización como en la calidad del código. Si bien todavía hay aspectos que podemos seguir puliendo, logramos una resolución sólida del sistema y una mayor claridad en la estructura general del proyecto.
+
+**Avances Técnicos**
+
+- En esta entrega incorporamos patrones de diseño que aportaron significativamente a la organización y funcionalidad del sistema.
+- El patrón `Facade` se implementó para facilitar la interacción del usuario con el sistema, permitiendo que este no tenga que conocer la estructura interna del programa. A través de la fachada, los usuarios pueden ingresar los datos directamente en formato `string`, simplificando el uso y haciendo más intuitiva la comunicación con las distintas funcionalidades del sistema.
+- Por otro lado, el patrón `Singleton` nos permitió mantener una única instancia de cada manager, garantizando que las listas se manejen de forma estática y global. De esta manera, al acceder a ellas desde cualquier parte del programa, siempre se trabaja con los mismos datos actualizados, evitando duplicaciones y asegurando la coherencia en la gestión de la información.
+- Además, integramos `Doxygen` como herramienta de documentación, lo que nos permitió mantener una descripción clara y profesional del código, detallando clases, métodos y relaciones del sistema. Esto facilita tanto la comprensión interna entre los miembros del equipo como la futura revisión por parte de terceros.
+
+**Organización y Trabajo en Equipo**
+
+- A nivel organizacional, logramos planificar y avanzar de manera más estructurada, superando dificultades externas y equilibrando las distintas tareas ajenas a la programación. La experiencia previa nos permitió distribuir mejor las responsabilidades, mejorar la comunicación y mantener un seguimiento más constante del progreso del proyecto.
+- El equipo se mostró comprometido y colaborativo, trabajando de forma coordinada para alcanzar los objetivos establecidos. Se reforzó la autonomía de cada integrante y se mantuvo un ambiente de trabajo abierto al diálogo y al aprendizaje colectivo.
+
+**Reflexión Final**
+
+En esta segunda entrega pudimos ver reflejado el crecimiento del equipo tanto a nivel técnico como organizativo. La incorporación de los patrones `Singleton` y `Facade`, junto con el uso de `Doxygen`, nos permitió estructurar mejor el sistema y hacerlo más accesible para los usuarios. Aprendimos a planificar con más precisión, a documentar de manera profesional y a mantener una comunicación fluida entre todos los integrantes. De cara a la última etapa del proyecto, nuestro objetivo será integrar el sistema con Discord, aplicando todo lo aprendido hasta ahora para lograr una versión completa y funcional. Sentimos que esta entrega fue un paso importante hacia esa meta, consolidando la base de un proyecto que creció tanto en su desarrollo técnico como en el trabajo en equipo.
+
