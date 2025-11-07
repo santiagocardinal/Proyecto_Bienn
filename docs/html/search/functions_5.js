@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['inheritsfromuser_0',['InheritsFromUser',['../class_library_1_1_tests_1_1_seller_tests.html#a8ba92d1ab0317a13a892a396223ea4bd',1,'Library::Tests::SellerTests']]],
+  ['interaction_1',['Interaction',['../class_library_1_1_interaction.html#afae79509edf147d0b47963ecbd7096e7',1,'Library::Interaction']]],
+  ['interaction_5faddmultiplenotes_2',['Interaction_AddMultipleNotes',['../class_library_1_1_tests_1_1_interaction_test.html#ae59be38ee61d0fcfc0777a447b0595e9',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5faddnote_3',['Interaction_AddNote',['../class_library_1_1_tests_1_1_interaction_test.html#ae2d05e0f8fe01f412b04d4ff44a3f154',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fcustomermutable_4',['Interaction_CustomerMutable',['../class_library_1_1_tests_1_1_interaction_test.html#a224d4eddc8867fcd23876008ef73eb8b',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fdatemutable_5',['Interaction_DateMutable',['../class_library_1_1_tests_1_1_interaction_test.html#a47e1d54a5f5168b229fbcca40afe0a0a',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fdifferentexchangetypes_6',['Interaction_DifferentExchangeTypes',['../class_library_1_1_tests_1_1_interaction_test.html#ac4496521c5fa681e05716e9dfd5563ca',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fhasresponseinitiallyfalse_7',['Interaction_HasResponseInitiallyFalse',['../class_library_1_1_tests_1_1_interaction_test.html#ace02891fda6a90a00121c77c7ce18f94',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fhasresponsemutable_8',['Interaction_HasResponseMutable',['../class_library_1_1_tests_1_1_interaction_test.html#aa0d9ba25b6c1c05172a5bc49c4c23b51',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fmarkasresponded_9',['Interaction_MarkAsResponded',['../class_library_1_1_tests_1_1_interaction_test.html#af9abde565d8932e0bff2de1cc1353a99',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fnullcustomer_10',['Interaction_NullCustomer',['../class_library_1_1_tests_1_1_interaction_test.html#aef82494b6a9ad518eddf60fc2ada21b3',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fnulltopic_11',['Interaction_NullTopic',['../class_library_1_1_tests_1_1_interaction_test.html#a6cdb72c519608e4c032c2d6c790b53d2',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5ftopicmutable_12',['Interaction_TopicMutable',['../class_library_1_1_tests_1_1_interaction_test.html#a60af88daa3d19f31974adf644f726a02',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5ftostringwithnulltopic_13',['Interaction_ToStringWithNullTopic',['../class_library_1_1_tests_1_1_interaction_test.html#afb37a559122a517c3b967a9865c1b8d5',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5ftypemutable_14',['Interaction_TypeMutable',['../class_library_1_1_tests_1_1_interaction_test.html#ad3071bb44f2750f414634c0d366063d4',1,'Library::Tests::InteractionTest']]],
+  ['interaction_5fvalidparameters_15',['Interaction_ValidParameters',['../class_library_1_1_tests_1_1_interaction_test.html#a0c277edbb633d55cdfb12c3032b51f78',1,'Library::Tests::InteractionTest']]],
+  ['invalidfieldexception_16',['InvalidFieldException',['../class_library_1_1_invalid_field_exception.html#a21cad3f3fa55ca271b87a3cb516a515a',1,'Library::InvalidFieldException']]],
+  ['issuspended_5fisfalse_17',['IsSuspended_IsFalse',['../class_library_1_1_tests_1_1_seller_tests.html#a270aa5888dd8c9f174338a84eb22aabe',1,'Library::Tests::SellerTests']]],
+  ['issuspended_5fsettofalse_18',['IsSuspended_SetToFalse',['../class_library_1_1_tests_1_1_seller_tests.html#a150ca9c971e7f54cfb1f29bce48a0a5d',1,'Library::Tests::SellerTests']]],
+  ['issuspended_5fsettotrue_19',['IsSuspended_SetToTrue',['../class_library_1_1_tests_1_1_seller_tests.html#abbe98e7ffaf39f0a76ac03026bfb5a25',1,'Library::Tests::SellerTests']]],
+  ['isvalidmail_20',['IsValidMail',['../class_library_1_1_customer.html#ae653e7b22ee5effbe19adc985ada0840',1,'Library::Customer']]]
+];

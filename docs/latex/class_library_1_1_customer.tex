@@ -1,0 +1,264 @@
+\doxysection{Library.\+Customer Class Reference}
+\hypertarget{class_library_1_1_customer}{}\label{class_library_1_1_customer}\index{Library.Customer@{Library.Customer}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_library_1_1_customer_a07a7ba8b9f02eae9d3d3ff4c58b3b764}{Customer}} (string id, string name, string family\+Name, string mail, string phone, string gender, Date\+Time birth\+Date)
+\item 
+bool \mbox{\hyperlink{class_library_1_1_customer_ae653e7b22ee5effbe19adc985ada0840}{Is\+Valid\+Mail}} (string mail)
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a842db811995282a6a3fa41523fd18a12}{Add\+Tag}} (\mbox{\hyperlink{class_library_1_1_tag}{Tag}} tag)
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a8ac3f18f21af81a93eba18e9b3c5ad80}{Remove\+Tag}} (\mbox{\hyperlink{class_library_1_1_tag}{Tag}} tag)
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a0729924fcb3edcf4475d11dc7b29eaaa}{Add\+Interaction}} (\mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} interaction)
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_ab8eb111c1155a054819e98e22bcdd570}{Get\+Interaction}} ()
+\item 
+List$<$ T $>$ \mbox{\hyperlink{class_library_1_1_customer_a3254b2fdd5e935465668957304dca0b3}{Get\+Interactions\+By\+Type$<$ T $>$}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_a6d42d50871da14323026a9620813ed05}{Get\+Interactions\+By\+Date}} (Date\+Time date)
+\item 
+Date\+Time \mbox{\hyperlink{class_library_1_1_customer_a76e163b3c9750c9cd26fad1b7a644640}{Get\+Last\+Interaction}} ()
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a0bd8fc752cc56f35b471adb3896df141}{Deactivate}} ()
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a3c9e8377759ecfaa93df0a75a3c352a5}{Activate}} ()
+\item 
+bool \mbox{\hyperlink{class_library_1_1_customer_a2c10391fa5ccc6d1955a067697a6c5d2}{Check\+Is\+Active}} ()
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a890ee611dacf42682fdfe19720ad7bad}{Mark\+As\+Pending}} ()
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_aa691db7ee26e1e145626d395ebfebb0b}{Mark\+As\+Active}} ()
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_a44a8573cbb50a12fed8109c664f91181}{Mark\+Last\+Received\+As\+Responded}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_a250956cb990d31f43843e76ada8474e4}{Get\+Unanswered\+Interactions}} ()
+\item 
+override string \mbox{\hyperlink{class_library_1_1_customer_a3e144cbc41d310bed58e6e57d9a9b15e}{To\+String}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_library_1_1_customer_add5c820c3daf953565ec4ac29158639e}{Id}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_library_1_1_customer_aa87b64cdbb33a9ee239e58fbba792b02}{Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_library_1_1_customer_aed60cdf63434631fa600f6f97e0190f0}{Family\+Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_library_1_1_customer_aa87384eb4dd1ff34514ec7fc98049cd1}{Mail}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_library_1_1_customer_a7b90ed91f639d4ffd4ad441c2e9ee57a}{Phone}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+string \mbox{\hyperlink{class_library_1_1_customer_a44dff01efd7ea13c07b8630faed0aaf8}{Gender}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Date\+Time \mbox{\hyperlink{class_library_1_1_customer_abf184f3157ceca152a44ab60ad4a064f}{Birth\+Date}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_tag}{Tag}} $>$ \mbox{\hyperlink{class_library_1_1_customer_a1268d57986bd31fd2c12b437a76abe58}{Tags}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_a86bb735b89ecbbf2cc5031c0a2c9d951}{Interactions}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}} \mbox{\hyperlink{class_library_1_1_customer_a1fb14440b4cae9abfb60efc978a52931}{Seller}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_library_1_1_customer_a63e119dd86f25aa1322694639f4b5823}{Is\+Active}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+bool \mbox{\hyperlink{class_library_1_1_customer_a12ec77bf155cf18dc35b3a9b11b1c151}{Has\+Pending\+Customer\+Reply}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_library_1_1_customer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_library_1_1_customer_a07a7ba8b9f02eae9d3d3ff4c58b3b764}\index{Library.Customer@{Library.Customer}!Customer@{Customer}}
+\index{Customer@{Customer}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Customer()}{Customer()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a07a7ba8b9f02eae9d3d3ff4c58b3b764} 
+Library.\+Customer.\+Customer (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{family\+Name}{, }\item[{string}]{mail}{, }\item[{string}]{phone}{, }\item[{string}]{gender}{, }\item[{Date\+Time}]{birth\+Date}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_customer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_customer_a3c9e8377759ecfaa93df0a75a3c352a5}\index{Library.Customer@{Library.Customer}!Activate@{Activate}}
+\index{Activate@{Activate}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Activate()}{Activate()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a3c9e8377759ecfaa93df0a75a3c352a5} 
+void Library.\+Customer.\+Activate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a0729924fcb3edcf4475d11dc7b29eaaa}\index{Library.Customer@{Library.Customer}!AddInteraction@{AddInteraction}}
+\index{AddInteraction@{AddInteraction}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{AddInteraction()}{AddInteraction()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a0729924fcb3edcf4475d11dc7b29eaaa} 
+void Library.\+Customer.\+Add\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_interaction}{Interaction}}}]{interaction}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a842db811995282a6a3fa41523fd18a12}\index{Library.Customer@{Library.Customer}!AddTag@{AddTag}}
+\index{AddTag@{AddTag}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{AddTag()}{AddTag()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a842db811995282a6a3fa41523fd18a12} 
+void Library.\+Customer.\+Add\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_tag}{Tag}}}]{tag}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a2c10391fa5ccc6d1955a067697a6c5d2}\index{Library.Customer@{Library.Customer}!CheckIsActive@{CheckIsActive}}
+\index{CheckIsActive@{CheckIsActive}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{CheckIsActive()}{CheckIsActive()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a2c10391fa5ccc6d1955a067697a6c5d2} 
+bool Library.\+Customer.\+Check\+Is\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a0bd8fc752cc56f35b471adb3896df141}\index{Library.Customer@{Library.Customer}!Deactivate@{Deactivate}}
+\index{Deactivate@{Deactivate}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Deactivate()}{Deactivate()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a0bd8fc752cc56f35b471adb3896df141} 
+void Library.\+Customer.\+Deactivate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_ab8eb111c1155a054819e98e22bcdd570}\index{Library.Customer@{Library.Customer}!GetInteraction@{GetInteraction}}
+\index{GetInteraction@{GetInteraction}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{GetInteraction()}{GetInteraction()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_ab8eb111c1155a054819e98e22bcdd570} 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Library.\+Customer.\+Get\+Interaction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a6d42d50871da14323026a9620813ed05}\index{Library.Customer@{Library.Customer}!GetInteractionsByDate@{GetInteractionsByDate}}
+\index{GetInteractionsByDate@{GetInteractionsByDate}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{GetInteractionsByDate()}{GetInteractionsByDate()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a6d42d50871da14323026a9620813ed05} 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Library.\+Customer.\+Get\+Interactions\+By\+Date (\begin{DoxyParamCaption}\item[{Date\+Time}]{date}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a3254b2fdd5e935465668957304dca0b3}\index{Library.Customer@{Library.Customer}!GetInteractionsByType$<$ T $>$@{GetInteractionsByType$<$ T $>$}}
+\index{GetInteractionsByType$<$ T $>$@{GetInteractionsByType$<$ T $>$}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{GetInteractionsByType$<$ T $>$()}{GetInteractionsByType< T >()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a3254b2fdd5e935465668957304dca0b3} 
+List$<$ T $>$ Library.\+Customer.\+Get\+Interactions\+By\+Type$<$ T $>$ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em Interaction}]\end{description}
+\end{Desc}
+\Hypertarget{class_library_1_1_customer_a76e163b3c9750c9cd26fad1b7a644640}\index{Library.Customer@{Library.Customer}!GetLastInteraction@{GetLastInteraction}}
+\index{GetLastInteraction@{GetLastInteraction}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{GetLastInteraction()}{GetLastInteraction()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a76e163b3c9750c9cd26fad1b7a644640} 
+Date\+Time Library.\+Customer.\+Get\+Last\+Interaction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a250956cb990d31f43843e76ada8474e4}\index{Library.Customer@{Library.Customer}!GetUnansweredInteractions@{GetUnansweredInteractions}}
+\index{GetUnansweredInteractions@{GetUnansweredInteractions}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{GetUnansweredInteractions()}{GetUnansweredInteractions()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a250956cb990d31f43843e76ada8474e4} 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Library.\+Customer.\+Get\+Unanswered\+Interactions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_ae653e7b22ee5effbe19adc985ada0840}\index{Library.Customer@{Library.Customer}!IsValidMail@{IsValidMail}}
+\index{IsValidMail@{IsValidMail}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{IsValidMail()}{IsValidMail()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_ae653e7b22ee5effbe19adc985ada0840} 
+bool Library.\+Customer.\+Is\+Valid\+Mail (\begin{DoxyParamCaption}\item[{string}]{mail}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_aa691db7ee26e1e145626d395ebfebb0b}\index{Library.Customer@{Library.Customer}!MarkAsActive@{MarkAsActive}}
+\index{MarkAsActive@{MarkAsActive}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{MarkAsActive()}{MarkAsActive()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_aa691db7ee26e1e145626d395ebfebb0b} 
+void Library.\+Customer.\+Mark\+As\+Active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a890ee611dacf42682fdfe19720ad7bad}\index{Library.Customer@{Library.Customer}!MarkAsPending@{MarkAsPending}}
+\index{MarkAsPending@{MarkAsPending}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{MarkAsPending()}{MarkAsPending()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a890ee611dacf42682fdfe19720ad7bad} 
+void Library.\+Customer.\+Mark\+As\+Pending (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a44a8573cbb50a12fed8109c664f91181}\index{Library.Customer@{Library.Customer}!MarkLastReceivedAsResponded@{MarkLastReceivedAsResponded}}
+\index{MarkLastReceivedAsResponded@{MarkLastReceivedAsResponded}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{MarkLastReceivedAsResponded()}{MarkLastReceivedAsResponded()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a44a8573cbb50a12fed8109c664f91181} 
+void Library.\+Customer.\+Mark\+Last\+Received\+As\+Responded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a8ac3f18f21af81a93eba18e9b3c5ad80}\index{Library.Customer@{Library.Customer}!RemoveTag@{RemoveTag}}
+\index{RemoveTag@{RemoveTag}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{RemoveTag()}{RemoveTag()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a8ac3f18f21af81a93eba18e9b3c5ad80} 
+void Library.\+Customer.\+Remove\+Tag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_tag}{Tag}}}]{tag}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_a3e144cbc41d310bed58e6e57d9a9b15e}\index{Library.Customer@{Library.Customer}!ToString@{ToString}}
+\index{ToString@{ToString}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a3e144cbc41d310bed58e6e57d9a9b15e} 
+override string Library.\+Customer.\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-property-members}
+\Hypertarget{class_library_1_1_customer_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_library_1_1_customer_abf184f3157ceca152a44ab60ad4a064f}\index{Library.Customer@{Library.Customer}!BirthDate@{BirthDate}}
+\index{BirthDate@{BirthDate}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{BirthDate}{BirthDate}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_abf184f3157ceca152a44ab60ad4a064f} 
+Date\+Time Library.\+Customer.\+Birth\+Date\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_aed60cdf63434631fa600f6f97e0190f0}\index{Library.Customer@{Library.Customer}!FamilyName@{FamilyName}}
+\index{FamilyName@{FamilyName}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{FamilyName}{FamilyName}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_aed60cdf63434631fa600f6f97e0190f0} 
+string Library.\+Customer.\+Family\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a44dff01efd7ea13c07b8630faed0aaf8}\index{Library.Customer@{Library.Customer}!Gender@{Gender}}
+\index{Gender@{Gender}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Gender}{Gender}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a44dff01efd7ea13c07b8630faed0aaf8} 
+string Library.\+Customer.\+Gender\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a12ec77bf155cf18dc35b3a9b11b1c151}\index{Library.Customer@{Library.Customer}!HasPendingCustomerReply@{HasPendingCustomerReply}}
+\index{HasPendingCustomerReply@{HasPendingCustomerReply}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{HasPendingCustomerReply}{HasPendingCustomerReply}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a12ec77bf155cf18dc35b3a9b11b1c151} 
+bool Library.\+Customer.\+Has\+Pending\+Customer\+Reply\hspace{0.3cm}{\ttfamily [get]}}
+
+\Hypertarget{class_library_1_1_customer_add5c820c3daf953565ec4ac29158639e}\index{Library.Customer@{Library.Customer}!Id@{Id}}
+\index{Id@{Id}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Id}{Id}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_add5c820c3daf953565ec4ac29158639e} 
+string Library.\+Customer.\+Id\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a86bb735b89ecbbf2cc5031c0a2c9d951}\index{Library.Customer@{Library.Customer}!Interactions@{Interactions}}
+\index{Interactions@{Interactions}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Interactions}{Interactions}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a86bb735b89ecbbf2cc5031c0a2c9d951} 
+List$<$\mbox{\hyperlink{class_library_1_1_interaction}{Interaction}}$>$ Library.\+Customer.\+Interactions\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a63e119dd86f25aa1322694639f4b5823}\index{Library.Customer@{Library.Customer}!IsActive@{IsActive}}
+\index{IsActive@{IsActive}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{IsActive}{IsActive}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a63e119dd86f25aa1322694639f4b5823} 
+bool Library.\+Customer.\+Is\+Active\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_aa87384eb4dd1ff34514ec7fc98049cd1}\index{Library.Customer@{Library.Customer}!Mail@{Mail}}
+\index{Mail@{Mail}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Mail}{Mail}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_aa87384eb4dd1ff34514ec7fc98049cd1} 
+string Library.\+Customer.\+Mail\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_aa87b64cdbb33a9ee239e58fbba792b02}\index{Library.Customer@{Library.Customer}!Name@{Name}}
+\index{Name@{Name}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Name}{Name}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_aa87b64cdbb33a9ee239e58fbba792b02} 
+string Library.\+Customer.\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a7b90ed91f639d4ffd4ad441c2e9ee57a}\index{Library.Customer@{Library.Customer}!Phone@{Phone}}
+\index{Phone@{Phone}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Phone}{Phone}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a7b90ed91f639d4ffd4ad441c2e9ee57a} 
+string Library.\+Customer.\+Phone\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a1fb14440b4cae9abfb60efc978a52931}\index{Library.Customer@{Library.Customer}!Seller@{Seller}}
+\index{Seller@{Seller}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Seller}{Seller}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a1fb14440b4cae9abfb60efc978a52931} 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}} Library.\+Customer.\+Seller\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\Hypertarget{class_library_1_1_customer_a1268d57986bd31fd2c12b437a76abe58}\index{Library.Customer@{Library.Customer}!Tags@{Tags}}
+\index{Tags@{Tags}!Library.Customer@{Library.Customer}}
+\doxysubsubsection{\texorpdfstring{Tags}{Tags}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_a1268d57986bd31fd2c12b437a76abe58} 
+List$<$\mbox{\hyperlink{class_library_1_1_tag}{Tag}}$>$ Library.\+Customer.\+Tags\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Library/\mbox{\hyperlink{_customer_8cs}{Customer.\+cs}}\end{DoxyCompactItemize}

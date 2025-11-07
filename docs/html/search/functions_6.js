@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['mail_0',['Mail',['../class_library_1_1_mail.html#a18f1c0dd0bcfab858f5f8812781fb85a',1,'Library::Mail']]],
+  ['mail_5fcanbestoredasinteraction_1',['Mail_CanBeStoredAsInteraction',['../class_library_1_1_tests_1_1_mail_tests.html#afa2c6c2340effd6b32fdbe20f952654c',1,'Library::Tests::MailTests']]],
+  ['mail_5finheritsfrominteraction_2',['Mail_InheritsFromInteraction',['../class_library_1_1_tests_1_1_mail_tests.html#a05a075c3f598a7bdd02c648b17acfcb7',1,'Library::Tests::MailTests']]],
+  ['mail_5fisdifferentfromcallandmessage_3',['Mail_IsDifferentFromCallAndMessage',['../class_library_1_1_tests_1_1_mail_tests.html#a76ce78a669fdf50e32107923a5196085',1,'Library::Tests::MailTests']]],
+  ['markasactive_4',['MarkAsActive',['../class_library_1_1_customer.html#aa691db7ee26e1e145626d395ebfebb0b',1,'Library::Customer']]],
+  ['markaspending_5',['MarkAsPending',['../class_library_1_1_customer.html#a890ee611dacf42682fdfe19720ad7bad',1,'Library::Customer']]],
+  ['markasresponded_6',['MarkAsResponded',['../class_library_1_1_interaction.html#acb7e570375858eb1fadf6437546bf647',1,'Library::Interaction']]],
+  ['marklastreceivedasresponded_7',['MarkLastReceivedAsResponded',['../class_library_1_1_customer.html#a44a8573cbb50a12fed8109c664f91181',1,'Library::Customer']]],
+  ['meeting_8',['Meeting',['../class_library_1_1_meeting.html#aa1d38c2496475c248ed47c7f2a20ce51',1,'Library::Meeting']]],
+  ['meeting_5fmutablecustomer_9',['Meeting_MutableCustomer',['../class_library_1_1_tests_1_1_meeting_test.html#acf207048985f99cce60f28df8f8c1aaf',1,'Library::Tests::MeetingTest']]],
+  ['meeting_5fnullcustomer_10',['Meeting_NullCustomer',['../class_library_1_1_tests_1_1_meeting_test.html#a34d137e33017596aa58e3ae64f9d7e88',1,'Library::Tests::MeetingTest']]],
+  ['meeting_5fnullplace_11',['Meeting_NullPlace',['../class_library_1_1_tests_1_1_meeting_test.html#adbfe04ae5346dfb1b8c7612357bb9244',1,'Library::Tests::MeetingTest']]],
+  ['meeting_5fnulltopic_12',['Meeting_NullTopic',['../class_library_1_1_tests_1_1_meeting_test.html#a7bb4759e4ba6dbf81a3db4f83dc4b43a',1,'Library::Tests::MeetingTest']]],
+  ['meeting_5fplacemutable_13',['Meeting_PlaceMutable',['../class_library_1_1_tests_1_1_meeting_test.html#ae6455f5aaf9e4cc08d55cf83cf59d439',1,'Library::Tests::MeetingTest']]],
+  ['meeting_5ftopicmutable_14',['Meeting_TopicMutable',['../class_library_1_1_tests_1_1_meeting_test.html#a398f322d5abfeb4da7bad1f6edf23da9',1,'Library::Tests::MeetingTest']]],
+  ['meeting_5fvalidparameters_15',['Meeting_ValidParameters',['../class_library_1_1_tests_1_1_meeting_test.html#a05c11b811b847a52946b2297bb85a18f',1,'Library::Tests::MeetingTest']]],
+  ['message_16',['Message',['../class_library_1_1_message.html#ac5d0efe242ed11d84ea808fff7efe14d',1,'Library::Message']]],
+  ['message_5fcanbestoredasinteraction_17',['Message_CanBeStoredAsInteraction',['../class_library_1_1_tests_1_1_message_tests.html#acfbcf5e7df6809e36384fffe3e48a56e',1,'Library::Tests::MessageTests']]],
+  ['message_5finheritedproperties_5fcanbemodified_18',['Message_InheritedProperties_CanBeModified',['../class_library_1_1_tests_1_1_message_tests.html#ae9c45079e52b614dc7fe3a7138ad4ed4',1,'Library::Tests::MessageTests']]],
+  ['message_5finheritsfrominteraction_19',['Message_InheritsFromInteraction',['../class_library_1_1_tests_1_1_message_tests.html#aa84c8ee84183ad438a043f097799bd9e',1,'Library::Tests::MessageTests']]],
+  ['modify_20',['Modify',['../class_library_1_1_customer_manager.html#ac4b2020b29e5124b33213033e57dc55a',1,'Library::CustomerManager']]],
+  ['modify_5fexistingcustomer_5fupdatescustomer_21',['Modify_ExistingCustomer_UpdatesCustomer',['../class_library_1_1_tests_1_1_customer_manager_tests.html#ac30d4bdab7127e731ce8670bb943d8ed',1,'Library::Tests::CustomerManagerTests']]],
+  ['modify_5fnonexistingcustomer_5fdoesnotmodify_22',['Modify_NonExistingCustomer_DoesNotModify',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a8dd96016bbfe332ab1f04131c3d57dd6',1,'Library::Tests::CustomerManagerTests']]],
+  ['multipleinteractions_23',['MultipleInteractions',['../class_library_1_1_tests_1_1_seller_tests.html#a7f2ea1a610a4606b6903e32f0e1acd90',1,'Library::Tests::SellerTests']]],
+  ['multipleusers_24',['MultipleUsers',['../class_library_1_1_tests_1_1_user_tests.html#a26fdbf8c75c3bae2c4efe8ca951bf777',1,'Library::Tests::UserTests']]]
+];

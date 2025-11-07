@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['activate_0',['Activate',['../class_library_1_1_customer.html#a3c9e8377759ecfaa93df0a75a3c352a5',1,'Library::Customer']]],
+  ['addcustomer_1',['AddCustomer',['../class_library_1_1_customer_manager.html#aa4ef992979334a70543b13aec3a20948',1,'Library::CustomerManager']]],
+  ['addcustomer_5fduplicateid_5fdoesnotadd_2',['AddCustomer_DuplicateId_DoesNotAdd',['../class_library_1_1_tests_1_1_customer_manager_tests.html#ad0568771cdfeb041b1801a88b4570295',1,'Library::Tests::CustomerManagerTests']]],
+  ['addcustomer_5fnullcustomer_5fdoesnotadd_3',['AddCustomer_NullCustomer_DoesNotAdd',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a114dd5e9f8d554fa7f170e35cfd53d37',1,'Library::Tests::CustomerManagerTests']]],
+  ['addcustomer_5fvalidcustomer_5faddssuccessfully_4',['AddCustomer_ValidCustomer_AddsSuccessfully',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a434748d2c9c80fb210eeca38d0d2a409',1,'Library::Tests::CustomerManagerTests']]],
+  ['addinteraction_5',['AddInteraction',['../class_library_1_1_customer.html#a0729924fcb3edcf4475d11dc7b29eaaa',1,'Library.Customer.AddInteraction()'],['../class_library_1_1_seller.html#a2f5b1575143e04af8e20c98be90ac805',1,'Library.Seller.AddInteraction()'],['../class_library_1_1_tests_1_1_seller_tests.html#ad3faa1adbab2cc92b9d6b738570dcce3',1,'Library.Tests.SellerTests.AddInteraction()']]],
+  ['addinteraction_5fnullinteraction_5fdoesnotadd_6',['AddInteraction_NullInteraction_DoesNotAdd',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a05ef83c49faeaa1fa4ca234cf131c18a',1,'Library::Tests::CustomerManagerTests']]],
+  ['addinteraction_5fvalidinteraction_5faddstocustomer_7',['AddInteraction_ValidInteraction_AddsToCustomer',['../class_library_1_1_tests_1_1_customer_manager_tests.html#ade4292f3e3a946c430c289f560530ce1',1,'Library::Tests::CustomerManagerTests']]],
+  ['addnote_8',['AddNote',['../class_library_1_1_interaction.html#ad87d6c9cfee9a91e65439c629c2bd833',1,'Library::Interaction']]],
+  ['addtag_9',['AddTag',['../class_library_1_1_customer.html#a842db811995282a6a3fa41523fd18a12',1,'Library::Customer']]],
+  ['admin_10',['Admin',['../class_library_1_1_admin.html',1,'Library.Admin'],['../class_library_1_1_admin.html#a35746e4534ce62c3f37a9199ddba27c1',1,'Library.Admin.Admin()']]],
+  ['admin_2ecs_11',['Admin.cs',['../_admin_8cs.html',1,'']]],
+  ['admin_5fcanbecompared_12',['Admin_CanBeCompared',['../class_library_1_1_tests_1_1_admin_tests.html#a91d81af01a7d410ba0b92c1b56d1b40f',1,'Library::Tests::AdminTests']]],
+  ['admintest_2ecs_13',['AdminTest.cs',['../_admin_test_8cs.html',1,'']]],
+  ['admintests_14',['AdminTests',['../class_library_1_1_tests_1_1_admin_tests.html',1,'Library::Tests']]],
+  ['amount_15',['Amount',['../class_library_1_1_quote.html#ae91911b8d58e9dfea5b562dc0b4910aa',1,'Library.Quote.Amount'],['../class_library_1_1_sale.html#aeb108767386e484f607be10d0d2baf63',1,'Library.Sale.Amount']]],
+  ['assigncustomertoseller_16',['AssignCustomerToSeller',['../class_library_1_1_customer_manager.html#ab1d2c974be1dd9f20edc99850fad0456',1,'Library::CustomerManager']]],
+  ['assigncustomertoseller_5fnullcustomer_5fdoesnotassign_17',['AssignCustomerToSeller_NullCustomer_DoesNotAssign',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a3a2ad164ea343b0b82e7d94c5fcc8c88',1,'Library::Tests::CustomerManagerTests']]],
+  ['assigncustomertoseller_5fvalidcustomerandseller_5fassignssuccessfully_18',['AssignCustomerToSeller_ValidCustomerAndSeller_AssignsSuccessfully',['../class_library_1_1_tests_1_1_customer_manager_tests.html#afbbb4fa9f4cf0f500d89ef1578c01464',1,'Library::Tests::CustomerManagerTests']]]
+];

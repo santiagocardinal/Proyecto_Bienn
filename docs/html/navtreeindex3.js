@@ -1,0 +1,23 @@
+var NAVTREEINDEX3 =
+{
+"functions_w.html":[1,3,0,18],
+"hierarchy.html":[1,2],
+"index.html":[],
+"interface_library_1_1_i_writer.html":[0,0,0,11],
+"interface_library_1_1_i_writer.html":[1,0,0,11],
+"interface_library_1_1_i_writer.html#a30163f62ecd76ca39a46dc954b9a482b":[0,0,0,11,0],
+"interface_library_1_1_i_writer.html#a30163f62ecd76ca39a46dc954b9a482b":[1,0,0,11,0],
+"namespace_library.html":[0,0,0],
+"namespace_library.html#a53fbb4e13c0ce7d50b374a8ebeb17b95":[0,0,0,22],
+"namespace_library.html#a53fbb4e13c0ce7d50b374a8ebeb17b95a7f8c0283f16925caed8e632086b81b9c":[0,0,0,22,0],
+"namespace_library.html#a53fbb4e13c0ce7d50b374a8ebeb17b95aac5bb077c33753116b5e91ff1766e7bc":[0,0,0,22,1],
+"namespace_library_1_1_tests.html":[0,0,0,0],
+"namespace_program.html":[0,0,1],
+"namespacemembers.html":[0,1,0],
+"namespacemembers_enum.html":[0,1,1],
+"namespaces.html":[0,0],
+"pages.html":[],
+"src_2_library_2obj_2_debug_2net9_80_2_8_n_e_t_core_app_00_version_0av9_80_8_assembly_attributes_8cs.html":[2,0,0,0,0,0,0,0,0,0,0],
+"src_2_program_2obj_2_debug_2net9_80_2_8_n_e_t_core_app_00_version_0av9_80_8_assembly_attributes_8cs.html":[2,0,0,0,0,0,1,0,0,0,0],
+"test_2_library_8_tests_2obj_2_debug_2net9_80_2_8_n_e_t_core_app_00_version_0av9_80_8_assembly_attributes_8cs.html":[2,0,0,0,0,1,0,0,0,0,0]
+};

@@ -1,11 +1,6 @@
 namespace Library;
 
-//MI GENTE LATINO
-//MISTER WORDWIDE, FIESTA
-//DALE
-
-public class Facade
-
+public class FacadeDos
 {
     public static CustomerManager cm = Singleton<CustomerManager>.GetInstance();
     public static SellerManager sm = Singleton<SellerManager>.GetInstance();
