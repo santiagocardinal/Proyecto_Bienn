@@ -65,9 +65,9 @@ public class SellerTests
     [Test]
     public void AddInteraction()
     {
-        Interaction interaction = new Interaction(DateTime.Now, "Reunión",ExchangeType.Received,new Customer("12345678", "Cliente Dos", "Rodriguez", "cliente2@gmail.com", "099444333", "Femenino", new DateTime(2000, 11, 20)));
+        Interaction interaction = new InteractionRegular(DateTime.Now, "Reunión",ExchangeType.Received,new Customer("12345678", "Cliente Dos", "Rodriguez", "cliente2@gmail.com", "099444333", "Femenino", new DateTime(2000, 11, 20)));
         
-        seller.addInteraction(interaction);
+        seller.AddInteraction(interaction);
 
         Assert.That(seller.Interactions.Count, Is.EqualTo(1));
         Assert.That(seller.Interactions[0], Is.EqualTo(interaction));
@@ -76,13 +76,13 @@ public class SellerTests
     [Test]
     public void MultipleInteractions()
     {
-        Interaction interaction1 = new Interaction(DateTime.Now, "Reunión 1", ExchangeType.Received,new Customer("12545678", "Cliente Uno", "099533444", "cliente1@email.com", "099533444", "Masculino", new DateTime(1990, 1, 1)));
-        Interaction interaction2 = new Interaction(DateTime.Now, "Reunión 2", ExchangeType.Sent,new Customer("12445678", "Cliente Dos", "Rodriguez", "cliente2@gmail.com", "099444333", "Femenino", new DateTime(2000, 11, 20)));
-        Interaction interaction3 = new Interaction(DateTime.Now, "Reunión 3", ExchangeType.Sent,new Customer("12345678", "Cliente Tres", "Orue", "cliente3@gmail.com", "099964333", "Femenino", new DateTime(2010, 09, 14)));
+        Interaction interaction1 = new InteractionRegular(DateTime.Now, "Reunión 1", ExchangeType.Received,new Customer("12545678", "Cliente Uno", "099533444", "cliente1@email.com", "099533444", "Masculino", new DateTime(1990, 1, 1)));
+        Interaction interaction2 = new InteractionRegular(DateTime.Now, "Reunión 2", ExchangeType.Sent,new Customer("12445678", "Cliente Dos", "Rodriguez", "cliente2@gmail.com", "099444333", "Femenino", new DateTime(2000, 11, 20)));
+        Interaction interaction3 = new InteractionRegular(DateTime.Now, "Reunión 3", ExchangeType.Sent,new Customer("12345678", "Cliente Tres", "Orue", "cliente3@gmail.com", "099964333", "Femenino", new DateTime(2010, 09, 14)));
 
-        seller.addInteraction(interaction1);
-        seller.addInteraction(interaction2);
-        seller.addInteraction(interaction3);
+        seller.AddInteraction(interaction1);
+        seller.AddInteraction(interaction2);
+        seller.AddInteraction(interaction3);
 
         Assert.That(seller.Interactions.Count, Is.EqualTo(3));
     }
@@ -98,10 +98,10 @@ public class SellerTests
     [Test]
     public void GetTotalSales_RegularInteractions()
     {
-        Interaction interaction1 = new Interaction(DateTime.Now, "Reunión", ExchangeType.Received,new Customer("12345678", "ClienteA", "Penino", "clientea@gmail.com", "099444333", "Masculino", new DateTime(2000, 11, 20)));
-        Interaction interaction2 = new Interaction(DateTime.Now, "Seguimiento", ExchangeType.Sent,new Customer("12445678", "ClienteB", "Carballido", "clienteb@gmail.com", "099454333", "Masculino", new DateTime(2003, 10, 11)));
-        seller.addInteraction(interaction1);
-        seller.addInteraction(interaction2);
+        Interaction interaction1 = new InteractionRegular(DateTime.Now, "Reunión", ExchangeType.Received,new Customer("12345678", "ClienteA", "Penino", "clientea@gmail.com", "099444333", "Masculino", new DateTime(2000, 11, 20)));
+        Interaction interaction2 = new InteractionRegular(DateTime.Now, "Seguimiento", ExchangeType.Sent,new Customer("12445678", "ClienteB", "Carballido", "clienteb@gmail.com", "099454333", "Masculino", new DateTime(2003, 10, 11)));
+        seller.AddInteraction(interaction1);
+        seller.AddInteraction(interaction2);
 
         List<Sale> sales = seller.getTotalSales();
 
@@ -118,11 +118,11 @@ public class SellerTests
         Sale sale1 = new Sale( "Papel", pepe, new DateTime(2025,07,29),"Reunion",ExchangeType.Received,pennino);
         Sale sale2 = new Sale( "Piscinas", gallina,new DateTime(2025,10,20),"Reunion",ExchangeType.Received,pennino);
         
-        Interaction interaction = new Interaction(DateTime.Now, "Reunión", ExchangeType.Received,pennino);
+        Interaction interaction = new InteractionRegular(DateTime.Now, "Reunión", ExchangeType.Received,pennino);
         
-        seller.addInteraction(sale1);
-        seller.addInteraction(interaction);
-        seller.addInteraction(sale2);
+        seller.AddInteraction(sale1);
+        seller.AddInteraction(interaction);
+        seller.AddInteraction(sale2);
         
         List<Sale> sales = seller.getTotalSales();
 

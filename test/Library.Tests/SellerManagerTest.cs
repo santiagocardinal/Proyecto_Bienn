@@ -5,7 +5,7 @@ public class SellerManagerTests
     private SellerManager _sellerManager;
     private Seller _testSeller;
     private Customer _testCustomer;
-
+    
     [SetUp]
     public void Setup()
     {
@@ -18,6 +18,7 @@ public class SellerManagerTests
     public void CreateSeller_ValidSeller_AddsToList()
     {
         // Act
+        Seller _testSeller = new Seller("Carlos", "carlos@mail.com", "099111222", "S1");
         _sellerManager.CreateSeller(_testSeller);
         
         // Assert
@@ -25,6 +26,18 @@ public class SellerManagerTests
         Assert.That(_sellerManager.Sellers.Count, Is.EqualTo(1));
     }
 
+    [Test]
+    public void CreateSeller_DuplicateSeller_ThrowsException()
+    {
+        // Arrange
+        _sellerManager.CreateSeller(_testSeller);
+        Seller duplicateSeller = new Seller("Otro", "otro@mail.com", "099999999", "S1");
+        
+        // Act & Assert
+        Assert.Throws<Exceptions.DuplicateSellerException>(() => 
+            _sellerManager.CreateSeller(duplicateSeller));
+    }
+    
     [Test]
     public void CreateSeller_MultipleSellers_AddsAllToList()
     {
@@ -44,6 +57,7 @@ public class SellerManagerTests
         Assert.That(_sellerManager.Sellers, Does.Contain(seller3));
     }
 
+    
     [Test]
     public void DeleteSeller_ExistingSeller_RemovesFromList()
     {
@@ -57,7 +71,7 @@ public class SellerManagerTests
         Assert.That(_sellerManager.Sellers, Does.Not.Contain(_testSeller));
         Assert.That(_sellerManager.Sellers.Count, Is.EqualTo(0));
     }
-
+    
     [Test]
     public void DeleteSeller_NonExistingSeller_DoesNotThrowError()
     {
@@ -82,6 +96,17 @@ public class SellerManagerTests
     }
 
     [Test]
+    public void SuspendSeller_NonExistingSeller_ThrowsException()
+    {
+        // Arrange
+        Seller nonExisting = new Seller("NoExiste", "noexiste@mail.com", "099999999", "S99");
+        
+        // Act & Assert
+        Assert.Throws<Exceptions.SellerNotFoundException>(() => 
+            _sellerManager.SuspendSeller(nonExisting));
+    }
+    
+    [Test]
     public void SuspendSeller_MultipleSellers_OnlySuspendsTargetSeller()
     {
         // Arrange
@@ -104,11 +129,11 @@ public class SellerManagerTests
         _sellerManager.CreateSeller(_testSeller);
         
         // Crear interacciones recibidas sin respuesta
-        Interaction pending1 = new Interaction(DateTime.Now.AddDays(-2), "Consulta sin responder 1", ExchangeType.Received, _testCustomer);
-        Interaction pending2 = new Interaction(DateTime.Now.AddDays(-1), "Consulta sin responder 2", ExchangeType.Received, _testCustomer);
+        InteractionRegular pending1 = new InteractionRegular(DateTime.Now.AddDays(-2), "Consulta sin responder 1", ExchangeType.Received, _testCustomer);
+        InteractionRegular pending2 = new InteractionRegular(DateTime.Now.AddDays(-1), "Consulta sin responder 2", ExchangeType.Received, _testCustomer);
         
-        _testSeller.addInteraction(pending1);
-        _testSeller.addInteraction(pending2);
+        _testSeller.AddInteraction(pending1);
+        _testSeller.AddInteraction(pending2);
         
         // Act
         List<Interaction> pendingResponses = _sellerManager.GetPendingResponses(_testSeller);
@@ -127,10 +152,10 @@ public class SellerManagerTests
         _sellerManager.CreateSeller(_testSeller);
         
         // Crear interacción recibida y marcarla como respondida
-        Interaction answeredInteraction = new Interaction(DateTime.Now.AddDays(-3), "Consulta respondida", ExchangeType.Received, _testCustomer);
+        InteractionRegular answeredInteraction = new InteractionRegular(DateTime.Now.AddDays(-3), "Consulta respondida", ExchangeType.Received, _testCustomer);
         answeredInteraction.MarkAsResponded();
         
-        _testSeller.addInteraction(answeredInteraction);
+        _testSeller.AddInteraction(answeredInteraction);
         
         // Act
         List<Interaction> pendingResponses = _sellerManager.GetPendingResponses(_testSeller);
@@ -148,9 +173,9 @@ public class SellerManagerTests
         _sellerManager.CreateSeller(_testSeller);
         
         // Crear interacción enviada (no recibida)
-        Interaction sentInteraction = new Interaction(DateTime.Now.AddDays(-1), "Mensaje enviado", ExchangeType.Sent, _testCustomer);
+        InteractionRegular sentInteraction = new InteractionRegular(DateTime.Now.AddDays(-1), "Mensaje enviado", ExchangeType.Sent, _testCustomer);
         
-        _testSeller.addInteraction(sentInteraction);
+        _testSeller.AddInteraction(sentInteraction);
         
         // Act
         List<Interaction> pendingResponses = _sellerManager.GetPendingResponses(_testSeller);
@@ -168,14 +193,14 @@ public class SellerManagerTests
         _sellerManager.CreateSeller(_testSeller);
         
         // Crear diferentes tipos de interacciones
-        Interaction pending = new Interaction(DateTime.Now.AddDays(-2), "Pendiente", ExchangeType.Received, _testCustomer);
-        Interaction answered = new Interaction(DateTime.Now.AddDays(-3), "Respondida", ExchangeType.Received, _testCustomer);
+        InteractionRegular pending = new InteractionRegular(DateTime.Now.AddDays(-2), "Pendiente", ExchangeType.Received, _testCustomer);
+        InteractionRegular answered = new InteractionRegular(DateTime.Now.AddDays(-3), "Respondida", ExchangeType.Received, _testCustomer);
         answered.MarkAsResponded();
-        Interaction sent = new Interaction(DateTime.Now.AddDays(-1), "Enviada", ExchangeType.Sent, _testCustomer);
+        InteractionRegular sent = new InteractionRegular(DateTime.Now.AddDays(-1), "Enviada", ExchangeType.Sent, _testCustomer);
         
-        _testSeller.addInteraction(pending);
-        _testSeller.addInteraction(answered);
-        _testSeller.addInteraction(sent);
+        _testSeller.AddInteraction(pending);
+        _testSeller.AddInteraction(answered);
+        _testSeller.AddInteraction(sent);
         
         // Act
         List<Interaction> pendingResponses = _sellerManager.GetPendingResponses(_testSeller);
@@ -199,5 +224,40 @@ public class SellerManagerTests
         // Assert
         Assert.That(pendingResponses, Is.Not.Null);
         Assert.That(pendingResponses.Count, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void GetPendingResponses_NonExistingSeller_ThrowsException()
+    {
+        // Arrange
+        Seller nonExisting = new Seller("NoExiste", "noexiste@mail.com", "099999999", "S99");
+        
+        // Act & Assert
+        Assert.Throws<Exceptions.SellerNotFoundException>(() => 
+            _sellerManager.GetPendingResponses(nonExisting));
+    }
+
+    [Test]
+    public void SearchById_NonExistingSeller_ReturnsNull()
+    {
+        // Act
+        Seller? found = _sellerManager.SearchById("S999");
+        
+        // Assert
+        Assert.That(found, Is.Null);
+    }
+
+    [Test]
+    public void SearchById_ExistingSeller_ReturnsSeller()
+    {
+        // Arrange
+        _sellerManager.CreateSeller(_testSeller);
+        
+        // Act
+        Seller? found = _sellerManager.SearchById("S1");
+        
+        // Assert
+        Assert.That(found, Is.Not.Null);
+        Assert.That(found, Is.EqualTo(_testSeller));
     }
 }
