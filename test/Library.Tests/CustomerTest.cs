@@ -292,7 +292,7 @@ public class CustomerTest
         DateTime birthDate = new DateTime(1993, 11, 07);
 
         var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        Interaction interaction1 = new Interaction(new DateTime(2025, 10, 20), "Reunion", 
+        Interaction interaction1 = new InteractionRegular(new DateTime(2025, 10, 20), "Reunion", 
             ExchangeType.Received, customer);
 
         customer.AddInteraction(interaction1);
@@ -313,9 +313,9 @@ public class CustomerTest
         DateTime birthDate = new DateTime(1993, 11, 07);
 
         var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        Interaction interaction1 = new Interaction(new DateTime(2025, 10, 20), "Reunion", 
+        Interaction interaction1 = new InteractionRegular(new DateTime(2025, 10, 20), "Reunion", 
             ExchangeType.Received, customer);
-        Interaction interaction2 = new Interaction(new DateTime(2025, 10, 21), "Llamada", 
+        Interaction interaction2 = new InteractionRegular(new DateTime(2025, 10, 21), "Llamada", 
             ExchangeType.Sent, customer);
 
         customer.AddInteraction(interaction1);
@@ -365,11 +365,11 @@ public class CustomerTest
         DateTime birthDate = new DateTime(1993, 11, 07);
 
         var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        Interaction interaction1 = new Interaction(new DateTime(2025, 10, 20), "Reunion", 
+        Interaction interaction1 = new InteractionRegular(new DateTime(2025, 10, 20), "Reunion", 
             ExchangeType.Received, customer);
-        Interaction interaction2 = new Interaction(new DateTime(2025, 10, 20, 15, 30, 0), "Llamada", 
+        Interaction interaction2 = new InteractionRegular(new DateTime(2025, 10, 20, 15, 30, 0), "Llamada", 
             ExchangeType.Sent, customer);
-        Interaction interaction3 = new Interaction(new DateTime(2025, 10, 21), "Email", 
+        Interaction interaction3 = new InteractionRegular(new DateTime(2025, 10, 21), "Email", 
             ExchangeType.Received, customer);
 
         customer.AddInteraction(interaction1);
@@ -395,11 +395,11 @@ public class CustomerTest
         DateTime birthDate = new DateTime(1993, 11, 07);
 
         var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        Interaction interaction1 = new Interaction(new DateTime(2025, 10, 20), "Reunion", 
+        Interaction interaction1 = new InteractionRegular(new DateTime(2025, 10, 20), "Reunion", 
             ExchangeType.Received, customer);
-        Interaction interaction2 = new Interaction(new DateTime(2025, 10, 25), "Llamada", 
+        Interaction interaction2 = new InteractionRegular(new DateTime(2025, 10, 25), "Llamada", 
             ExchangeType.Sent, customer);
-        Interaction interaction3 = new Interaction(new DateTime(2025, 10, 22), "Email", 
+        Interaction interaction3 = new InteractionRegular(new DateTime(2025, 10, 22), "Email", 
             ExchangeType.Received, customer);
 
         customer.AddInteraction(interaction1);
@@ -439,11 +439,11 @@ public class CustomerTest
         DateTime birthDate = new DateTime(1993, 11, 07);
 
         var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
-        Interaction interaction1 = new Interaction(new DateTime(2025, 10, 20), "Reunion", 
+        Interaction interaction1 = new InteractionRegular(new DateTime(2025, 10, 20), "Reunion", 
             ExchangeType.Received, customer);
-        Interaction interaction2 = new Interaction(new DateTime(2025, 10, 21), "Llamada", 
+        Interaction interaction2 = new InteractionRegular(new DateTime(2025, 10, 21), "Llamada", 
             ExchangeType.Sent, customer);
-        Interaction interaction3 = new Interaction(new DateTime(2025, 10, 22), "Email", 
+        Interaction interaction3 = new InteractionRegular(new DateTime(2025, 10, 22), "Email", 
             ExchangeType.Received, customer);
         interaction1.MarkAsResponded();
 

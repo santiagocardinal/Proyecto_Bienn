@@ -16,7 +16,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         
         Assert.That(interaction.Date, Is.EqualTo(date));
         Assert.That(interaction.Topic, Is.EqualTo(topic));
@@ -36,7 +36,7 @@ public class InteractionTest
         Customer pablo = new Customer("12345678", "Pablo", "Josemaria", "pablojosemaria7@gmail.com", 
             "98123123", "Masculino", new DateTime(1993, 11, 07));
 
-        var interaction = new Interaction(date, topic, type, pablo);
+        var interaction = new InteractionRegular(date, topic, type, pablo);
         
         Assert.That(interaction.Date, Is.EqualTo(date));
         Assert.That(interaction.Topic, Is.Null);
@@ -52,7 +52,7 @@ public class InteractionTest
         ExchangeType type = ExchangeType.Received;
         Customer customer = null;
 
-        var interaction = new Interaction(date, topic, type, customer);
+        var interaction = new InteractionRegular(date, topic, type, customer);
         
         Assert.That(interaction.Date, Is.EqualTo(date));
         Assert.That(interaction.Topic, Is.EqualTo(topic));
@@ -69,7 +69,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.Date = new DateTime(2025, 12, 25);
         
         Assert.That(interaction.Date, Is.EqualTo(new DateTime(2025, 12, 25)));
@@ -87,7 +87,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.Topic = "Encuentro";
         
         Assert.That(interaction.Date, Is.EqualTo(date));
@@ -105,7 +105,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.Type = ExchangeType.Received;
         
         Assert.That(interaction.Date, Is.EqualTo(date));
@@ -125,7 +125,7 @@ public class InteractionTest
         Customer javier = new Customer("87654321", "Javier", "Gonzalez", "javiergonzalez@gmail.com", 
             "98321321", "Masculino", new DateTime(1995, 01, 10));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.Customer = javier;
         
         Assert.That(interaction.Date, Is.EqualTo(date));
@@ -144,7 +144,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         
         Assert.That(interaction.HasResponse, Is.False);
     }
@@ -158,7 +158,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.MarkAsResponded();
         
         Assert.That(interaction.HasResponse, Is.True);
@@ -173,7 +173,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.HasResponse = true;
         
         Assert.That(interaction.HasResponse, Is.True);
@@ -194,7 +194,7 @@ public class InteractionTest
         note1.Topic = "Primera nota";
         note1.Date = DateTime.Today;
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.AddNote(note1);
         
         Assert.That(interaction.Note.Count, Is.EqualTo(1));
@@ -216,7 +216,7 @@ public class InteractionTest
         Note note3 = new Note("Permutacion",new DateTime(2025, 12, 25),ExchangeType.Received);
         note3.Topic = "Tercera nota";
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         interaction.AddNote(note1);
         interaction.AddNote(note2);
         interaction.AddNote(note3);
@@ -236,7 +236,7 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interaction = new Interaction(date, topic, type, pepe);
+        var interaction = new InteractionRegular(date, topic, type, pepe);
         
         Assert.DoesNotThrow(() => interaction.ToString());
     }
@@ -249,8 +249,8 @@ public class InteractionTest
         Customer pepe = new Customer("12345678", "Pepe", "Castro", "pepecastro@gmail.com", "98234234", 
             "Masculino", new DateTime(1999, 03, 21));
 
-        var interactionSent = new Interaction(date, topic, ExchangeType.Sent, pepe);
-        var interactionReceived = new Interaction(date, topic, ExchangeType.Received, pepe);
+        var interactionSent = new InteractionRegular(date, topic, ExchangeType.Sent, pepe);
+        var interactionReceived = new InteractionRegular(date, topic, ExchangeType.Received, pepe);
         
         Assert.That(interactionSent.Type, Is.EqualTo(ExchangeType.Sent));
         Assert.That(interactionReceived.Type, Is.EqualTo(ExchangeType.Received));
