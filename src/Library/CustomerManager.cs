@@ -11,327 +11,254 @@ namespace Library;
 // - Buscar clientes por diferentes criterios
 // - Coordinar operaciones entre clientes y vendedores
 // - Generar reportes y análisis sobre clientes
-public class CustomerManager
-{
-    
-    private List<Customer> customers;
-    public List<Customer> Customers
+
+//using System.Linq;
+
+    public class CustomerManager
     {
-        get{return customers;}
-        set { customers = value; }
-    }
-    
-    public CustomerManager()
-    {
-        customers = new List<Customer>();
-    }
-    
-    public Customer SearchByName(string name)
-    {
-        foreach (Customer customer in customers)
+        private List<Customer> customers;
+
+        public List<Customer> Customers
         {
-            if (customer.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-            {
-                return customer;
-            }
+            get { return customers; }
+            private set { customers = value; }
         }
 
-        throw new NotExistingCustomerException();
-    }
-
-    
-    public Customer SearchByMail(string mail)
-    {
-        foreach (Customer customer in customers)
+        public CustomerManager()
         {
-            if (customer.Name.Equals(mail, StringComparison.OrdinalIgnoreCase))
-            {
-                return customer;
-            }
-        }
-        throw new NotExistingCustomerException();
-    }
-
-    public Customer SearchByFamilyName(string familyname)
-    {
-        foreach (Customer customer in customers)
-        {
-            if (customer.FamilyName.Equals(familyname, StringComparison.OrdinalIgnoreCase))
-            {
-                return customer;
-            }
+            customers = new List<Customer>();
         }
 
-        throw new NotExistingCustomerException();
-    }
-    
-    public Customer SearchByPhone(string phone)
-    {
-        foreach (Customer customer in customers)
+        // ---------------- BÚSQUEDAS ----------------
+
+        public Customer SearchByName(string name)
         {
-            if (customer.Phone.Equals(phone))
-            {
-                return customer;
-            }
+            Customer c = customers.FirstOrDefault(cu =>
+                cu.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+            if (c == null)
+                throw new NotExistingCustomerException();
+
+            return c;
         }
 
-        throw new NotExistingCustomerException();
-    }
+        public Customer SearchByMail(string mail)
+        {
+            Customer c = customers.FirstOrDefault(cu =>
+                cu.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase));
 
-    public Customer SearchById(string id)
-    {
-        foreach (Customer customer in customers)
-        {
-            if (customer.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
-            {
-                return customer;
-            }
-        }
-        return null;
-    }
+            if (c == null)
+                throw new NotExistingCustomerException();
 
-   
-    public void AddCustomer(Customer customer)
-    {
-        // Verificar si ya existe
-        if (this.Customers.Contains(customer))
-        {
-            throw new DuplicatedCustomerException(customer);
+            return c;
         }
-        else
+
+        public Customer SearchByFamilyName(string familyname)
         {
-            this.customers.Add(customer);
+            Customer c = customers.FirstOrDefault(cu =>
+                cu.FamilyName.Equals(familyname, StringComparison.OrdinalIgnoreCase));
+
+            if (c == null)
+                throw new NotExistingCustomerException();
+
+            return c;
         }
-    }
-    
-    public void Delete(Customer customer)
-    {
-        if (customer != null && customers.Contains(customer))
+
+        public Customer SearchByPhone(string phone)
         {
+            Customer c = customers.FirstOrDefault(cu =>
+                cu.Phone.Equals(phone));
+
+            if (c == null)
+                throw new NotExistingCustomerException();
+
+            return c;
+        }
+
+        public Customer SearchById(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                throw new ArgumentException("El ID no puede estar vacío.");
+
+            return customers.FirstOrDefault(c =>
+                c.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // ---------------- CRUD DE CUSTOMER ----------------
+
+        public void AddCustomer(Customer customer)
+        {
+            if (customer == null)
+                throw new ArgumentNullException(nameof(customer));
+
+            if (customers.Any(c => c.Id == customer.Id))
+                throw new DuplicatedCustomerException(customer);
+
+            customers.Add(customer);
+        }
+
+        public void Delete(Customer customer)
+        {
+            if (customer == null || !customers.Contains(customer))
+                throw new NotExistingCustomerException();
+
             customers.Remove(customer);
         }
-        else
-        {
-            throw new NotExistingCustomerException();
-        }
-    }
 
-    
-    public void Modify(string id, string field, string newValue)
-    {
-        Customer existing = SearchById(id);
+        public void Modify(string id, string field, string newValue)
+        {
+            Customer existing = SearchById(id);
 
-        if (existing == null)
-        {
-            throw new NotExistingCustomerException();
-        }
-        else
-        {
+            if (existing == null)
+                throw new NotExistingCustomerException();
+
             switch (field.ToLower())
             {
                 case "name":
                     existing.Name = newValue;
                     break;
-
                 case "familyname":
                     existing.FamilyName = newValue;
                     break;
-
                 case "mail":
                     existing.Mail = newValue;
                     break;
-
                 case "phone":
                     existing.Phone = newValue;
                     break;
-
                 case "gender":
                     existing.Gender = newValue;
                     break;
-
                 case "birthdate":
                     if (DateTime.TryParse(newValue, out DateTime bd))
                         existing.BirthDate = bd;
                     break;
-
                 default:
-                    throw new InvalidFieldException(field.ToLower());
-                    return;
+                    throw new InvalidFieldException(field);
             }
         }
-    }
 
-    
-    // Registro centralizado de interacción
-    public void RegisterInteraction(Customer customer, Seller seller, Interaction interaction)
-    {
-        if (interaction.Type == ExchangeType.Received)
+        // ---------------- INTERACTIONS ----------------
+
+        public void RegisterInteraction(Customer customer, Seller seller, Interaction interaction)
         {
-            customer.MarkAsPending();
-        }
-        else if (interaction.Type == ExchangeType.Sent)
-        {
-            customer.MarkAsActive();
-            customer.MarkLastReceivedAsResponded();
-        }
+            if (customer == null)
+                throw new NotExistingCustomerException();
 
-        seller.AddInteraction(interaction);
-        customer.AddInteraction(interaction);
-    }
-    
-    
-    private int GetTotalCustomer()
-    {
-        return customers.Count;
-    }
-    
-    private List<Customer> GetRecentInteraction(TimeSpan lapso)
-    {
-        List<Customer> list = new List<Customer>();
-        DateTime ahora = DateTime.Now;
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException("null");
 
-        foreach (Customer customer in this.customers)
-        {
-            DateTime lastinteraction = customer.GetLastInteraction();
+            if (interaction == null)
+                throw new ArgumentNullException(nameof(interaction));
 
-            if (lastinteraction < ahora - lapso)
+            if (interaction.Type == ExchangeType.Received)
             {
-                list.Add(customer);
+                customer.MarkAsPending();
             }
-        }
-
-        return list;
-    }
-    
-  
-    private List<Meeting> GetUpcomingMeetings(Customer customer)
-    {
-        DateTime now = DateTime.Now;
-        List<Meeting> upcomingMeetings = new List<Meeting>();
-
-        Customer existingCustomer = customers.FirstOrDefault(c => c.Id == customer.Id);
-
-        if (existingCustomer == null)
-        {
-            return upcomingMeetings;
-        }
-
-
-        foreach (var inter in existingCustomer.Interactions)
-        {
- 
-            if (inter is Meeting meeting && meeting.Date > now)
+            else if (interaction.Type == ExchangeType.Sent)
             {
-                upcomingMeetings.Add(meeting);
+                customer.MarkAsActive();
+                customer.MarkLastReceivedAsResponded();
             }
-        }
 
-        return upcomingMeetings;
-    }
-    
- 
-    public DashboardSummary GetDashboard()
-    {
-        int totalCustomers = GetTotalCustomer();
-
-        TimeSpan lapso = TimeSpan.FromDays(7);
-        List<Customer> recentInteractions = GetRecentInteraction(lapso);
-
-        List<Meeting> upcomingMeetings = new List<Meeting>();
-        foreach (var customer in customers)
-        {
-    
-            upcomingMeetings.AddRange(GetUpcomingMeetings(customer));
-        }
-
-        return new DashboardSummary(recentInteractions, upcomingMeetings, totalCustomers);
-    }
-
- 
-    public List<Customer> GetInactiveCustomers(int days)
-    {
-        TimeSpan lapso = TimeSpan.FromDays(days);
-        List<Customer> inactiveCustomers = new List<Customer>();
-        DateTime now = DateTime.Now;
-
-        foreach (var customer in this.customers) 
-        {
-            if (!customer.CheckIsActive()) 
-            {
-                inactiveCustomers.Add(customer);
-            }
-            else
-            {
-                DateTime lastInteraction = customer.GetLastInteraction();
-                if (lastInteraction < now - lapso)
-                {
-                    customer.Deactivate(); 
-                    inactiveCustomers.Add(customer);
-                }
-            }
-        }
-
-        return inactiveCustomers;
-    }
- 
-    public List<Customer> GetUnansweredCustomers(int days)
-    {
-        List<Customer> unansweredCustomers = new List<Customer>();
-        DateTime threshold = DateTime.Now.AddDays(-days);
-
-        foreach (Customer customer in customers)
-        {
-            bool hasUnanswered = false;
-          
-            foreach (Interaction interaction in customer.Interactions)
-            {
-                if (interaction.Type == ExchangeType.Received && 
-                    !interaction.HasResponse && 
-                    interaction.Date >= threshold)
-                {
-                    hasUnanswered = true;
-                    break;
-                }
-            }
-        
-            if (hasUnanswered)
-            {
-                unansweredCustomers.Add(customer);
-            }
-        }
-        return unansweredCustomers;
-    }
-
-    
-    public void AssignCustomerToSeller(Customer customer, Seller seller)
-    {
-        if (customer != null && seller != null)
-        {
-            seller.Customer.Add(customer);
-            Console.WriteLine($"Cliente {customer.Name} asignado al vendedor {seller.Name}.");
-        }
-        else
-        {
-            Console.WriteLine("No se pudo asignar: cliente o vendedor nulo.");
-        }
-    }
-
-   
-    public List<Interaction> GetCustomerInteractions(Customer customer)
-    {
-        return customer.GetInteraction();
-    }
-    
-    /*public void AddInteraction(Interaction interaction, Seller seller, Customer customer)
-    {
-        if (interaction != null)
-        {
             seller.AddInteraction(interaction);
-
             customer.AddInteraction(interaction);
-
-            customer.Activate();
-
         }
-    }*/
-}
+
+        // ---------------- DASHBOARD ----------------
+
+        private int GetTotalCustomer() => customers.Count;
+
+        private List<Customer> GetRecentInteraction(TimeSpan lapso)
+        {
+            DateTime now = DateTime.Now;
+
+            return customers
+                .Where(c => c.GetLastInteraction() < now - lapso)
+                .ToList();
+        }
+
+        private List<Meeting> GetUpcomingMeetings(Customer customer)
+        {
+            DateTime now = DateTime.Now;
+
+            return customer.Interactions
+                .OfType<Meeting>()
+                .Where(m => m.Date > now)
+                .ToList();
+        }
+
+        public DashboardSummary GetDashboard()
+        {
+            TimeSpan lapse = TimeSpan.FromDays(7);
+
+            var total = GetTotalCustomer();
+            var recent = GetRecentInteraction(lapse);
+
+            List<Meeting> upcoming = new List<Meeting>();
+            foreach (var c in customers)
+                upcoming.AddRange(GetUpcomingMeetings(c));
+
+            return new DashboardSummary(recent, upcoming, total);
+        }
+
+        // ---------------- CLIENTES INACTIVOS ----------------
+
+        public List<Customer> GetInactiveCustomers(int days)
+        {
+            List<Customer> inactive = new List<Customer>();
+            TimeSpan lapso = TimeSpan.FromDays(days);
+            DateTime now = DateTime.Now;
+
+            foreach (var customer in customers)
+            {
+                if (!customer.CheckIsActive())
+                {
+                    inactive.Add(customer);
+                }
+                else if (customer.GetLastInteraction() < now - lapso)
+                {
+                    customer.Deactivate();
+                    inactive.Add(customer);
+                }
+            }
+
+            return inactive;
+        }
+
+        // ---------------- SIN RESPUESTA ----------------
+
+        public List<Customer> GetUnansweredCustomers(int days)
+        {
+            DateTime threshold = DateTime.Now.AddDays(-days);
+
+            return customers
+                .Where(customer =>
+                    customer.Interactions.Any(interaction =>
+                        interaction.Type == ExchangeType.Received &&
+                        !interaction.HasResponse &&
+                        interaction.Date >= threshold))
+                .ToList();
+        }
+
+        // ---------------- ASIGNACIÓN ----------------
+
+        public void AssignCustomerToSeller(Customer customer, Seller seller)
+        {
+            if (customer == null)
+                throw new NotExistingCustomerException();
+
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException("null");
+
+            seller.Customer.Add(customer);
+        }
+
+        public List<Interaction> GetCustomerInteractions(Customer customer)
+        {
+            if (customer == null)
+                throw new NotExistingCustomerException();
+
+            return customer.GetInteraction();
+        }
+    }
