@@ -18,7 +18,6 @@ public class SellerManagerTests
     public void CreateSeller_ValidSeller_AddsToList()
     {
         // Act
-        Seller _testSeller = new Seller("Carlos", "carlos@mail.com", "099111222", "S1");
         _sellerManager.CreateSeller(_testSeller);
         
         // Assert
@@ -73,13 +72,14 @@ public class SellerManagerTests
     }
     
     [Test]
-    public void DeleteSeller_NonExistingSeller_DoesNotThrowError()
+    public void DeleteSeller_NonExistingSeller_ThrowsException()
     {
         // Arrange
         Seller nonExisting = new Seller("NoExiste", "noexiste@mail.com", "099999999", "S99");
         
         // Act & Assert
-        Assert.DoesNotThrow(() => _sellerManager.DeleteSeller(nonExisting));
+        Assert.Throws<Exceptions.SellerNotFoundException>(() => 
+            _sellerManager.DeleteSeller(nonExisting));
     }
 
     [Test]
@@ -242,7 +242,7 @@ public class SellerManagerTests
     {
         // Act
         Seller? found = _sellerManager.SearchById("S999");
-        
+    
         // Assert
         Assert.That(found, Is.Null);
     }

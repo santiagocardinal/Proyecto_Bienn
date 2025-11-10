@@ -22,14 +22,25 @@ public class SellerManager
     {
         this.Sellers = new List<Seller>();
     }
-
+    
     // Crear Vendedor
-    public void CreateSeller(Seller seller)
+    /*public void CreateSeller(Seller seller)
     {
         if (seller == null)
             throw new ArgumentNullException(nameof(seller));
 
         if (SearchById(seller.Id) != null)
+            throw new Exceptions.DuplicateSellerException(seller.Id);
+
+        this.Sellers.Add(seller);
+    }
+    public void CreateSeller(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        // ✅ Buscar directamente sin lanzar excepción
+        if (sellers.Any(s => s.Id.Equals(seller.Id, StringComparison.OrdinalIgnoreCase)))
             throw new Exceptions.DuplicateSellerException(seller.Id);
 
         this.Sellers.Add(seller);
@@ -84,7 +95,7 @@ public class SellerManager
         
         
     }*/
-    
+    /*
     public Seller SearchById(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
@@ -97,5 +108,81 @@ public class SellerManager
             throw new Exceptions.SellerNotFoundException(id);
 
         return s;
+    }*/
+    // Crear Vendedor
+    public void CreateSeller(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        // Buscar directamente sin lanzar excepción
+        if (sellers.Any(s => s.Id.Equals(seller.Id, StringComparison.OrdinalIgnoreCase)))
+            throw new Exceptions.DuplicateSellerException(seller.Id);
+
+        this.Sellers.Add(seller);
+    }
+
+    // Eliminar Vendedor
+    /*public void DeleteSeller(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        // No lanza excepción si no existe, solo intenta remover
+        this.Sellers.Remove(seller);
+    }*/
+    public void DeleteSeller(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        if (!this.Sellers.Contains(seller))
+            throw new Exceptions.SellerNotFoundException(seller.Id);
+
+        this.Sellers.Remove(seller);
+    }
+
+    // Suspender
+    public void SuspendSeller(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        if (!this.Sellers.Contains(seller))
+            throw new Exceptions.SellerNotFoundException(seller.Id);
+
+        seller.IsSuspended = true;
+    }
+
+    // Interacciones sin responder
+    public List<Interaction> GetPendingResponses(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        if (!this.Sellers.Contains(seller))
+            throw new Exceptions.SellerNotFoundException(seller.Id);
+
+        return seller.Interactions
+            .Where(i => i.Type == ExchangeType.Received && !i.HasResponse)
+            .ToList();
+    }
+
+    // Búsqueda por ID - retorna null si no encuentra
+    /*public Seller? SearchById(string id)
+    {
+        if (string.IsNullOrWhiteSpace(id))
+            throw new ArgumentException("El ID no puede estar vacío.");
+
+        return sellers.FirstOrDefault(s => 
+            s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+    }*/
+    public Seller? SearchById(string id)
+    {
+        if (string.IsNullOrWhiteSpace(id))
+            throw new ArgumentException("El ID no puede estar vacío.");
+
+        return sellers.FirstOrDefault(s => 
+            s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
     }
 }
