@@ -11,10 +11,6 @@
 - Cobertura de pruebas unitarias con `NUnit`, este proceso tomó tiempo considerable pero resultó fundamental para validar comportamientos y detectar errores tempranamente, estableciendo una base sólida para el desarrollo futuro.
 - El uso de `GitHub` como herramienta de gestión nos obligó a aprender manejo de ramas, resolución de conflictos y coordinación de tareas simultáneas. La curva de aprendizaje fue pronunciada pero necesaria.
 
-> [!IMPORTANT]   
-> Dado que **`Interaction`** es una clase abstracta, fue necesario crear una clase concreta llamada **`InteractionRegular`** para realizar las pruebas unitarias.  
-> Esta clase hereda de la abstracta y permitió testear las funcionalidades comunes definidas en la clase base, asegurando el correcto comportamiento de la jerarquía de interacciones y la robustez del diseño orientado a objetos.
-
 **Aprendizajes Clave**
 - Aplicación práctica de principios OO y su impacto directo en mantenibilidad y escalabilidad del código.
 - Integración de herramientas de testing como parte esencial del flujo de desarrollo, no como paso opcional.
@@ -43,6 +39,10 @@ Estamos muy conformes con el desempeño alcanzado y con las devoluciones obtenid
 - El patrón `Facade` se implementó para facilitar la interacción del usuario con el sistema, permitiendo que este no tenga que conocer la estructura interna del programa. A través de la fachada, los usuarios pueden ingresar los datos directamente en formato `string`, simplificando el uso y haciendo más intuitiva la comunicación con las distintas funcionalidades del sistema.
 - Por otro lado, el patrón `Singleton` nos permitió mantener una única instancia de cada manager, garantizando que las listas se manejen de forma estática y global. De esta manera, al acceder a ellas desde cualquier parte del programa, siempre se trabaja con los mismos datos actualizados, evitando duplicaciones y asegurando la coherencia en la gestión de la información.
 - Además, integramos `Doxygen` como herramienta de documentación, lo que nos permitió mantener una descripción clara y profesional del código, detallando clases, métodos y relaciones del sistema. Esto facilita tanto la comprensión interna entre los miembros del equipo como la futura revisión por parte de terceros.
+
+> [!IMPORTANT]   
+> Dado que `Interaction` es una clase abstracta, fue necesario crear una clase concreta llamada **`InteractionRegular`** para realizar las pruebas unitarias.  
+> Esta clase hereda de la abstracta y permitió testear las funcionalidades comunes definidas en la clase base, asegurando el correcto comportamiento de la jerarquía de interacciones y la robustez del diseño orientado a objetos.
 
 **Organización y Trabajo en Equipo**
 
