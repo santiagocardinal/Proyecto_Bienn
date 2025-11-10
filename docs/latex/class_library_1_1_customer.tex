@@ -1,5 +1,10 @@
 \doxysection{Library.\+Customer Class Reference}
 \hypertarget{class_library_1_1_customer}{}\label{class_library_1_1_customer}\index{Library.Customer@{Library.Customer}}
+
+
+Representa a un cliente del sistema, con su información personal, etiquetas e historial de interacciones. Contiene comportamientos para gestionar su estado y sus relaciones.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,7 +21,7 @@ void \mbox{\hyperlink{class_library_1_1_customer_a0729924fcb3edcf4475d11dc7b29ea
 List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_ab8eb111c1155a054819e98e22bcdd570}{Get\+Interaction}} ()
 \item 
 List$<$ T $>$ \mbox{\hyperlink{class_library_1_1_customer_a3254b2fdd5e935465668957304dca0b3}{Get\+Interactions\+By\+Type$<$ T $>$}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Filtra las interacciones del cliente por tipo utilizando genéricos. Devuelve solo las interacciones que coincidan con el tipo especificado. \end{DoxyCompactList}\item 
 List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_a6d42d50871da14323026a9620813ed05}{Get\+Interactions\+By\+Date}} (Date\+Time date)
 \item 
 Date\+Time \mbox{\hyperlink{class_library_1_1_customer_a76e163b3c9750c9cd26fad1b7a644640}{Get\+Last\+Interaction}} ()
@@ -65,6 +70,9 @@ bool \mbox{\hyperlink{class_library_1_1_customer_a63e119dd86f25aa1322694639f4b58
 bool \mbox{\hyperlink{class_library_1_1_customer_a12ec77bf155cf18dc35b3a9b11b1c151}{Has\+Pending\+Customer\+Reply}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Representa a un cliente del sistema, con su información personal, etiquetas e historial de interacciones. Contiene comportamientos para gestionar su estado y sus relaciones. 
 
 \label{doc-constructors}
 \Hypertarget{class_library_1_1_customer_doc-constructors}
@@ -128,6 +136,18 @@ List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Librar
 {\footnotesize\ttfamily \label{class_library_1_1_customer_a3254b2fdd5e935465668957304dca0b3} 
 List$<$ T $>$ Library.\+Customer.\+Get\+Interactions\+By\+Type$<$ T $>$ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
+
+
+Filtra las interacciones del cliente por tipo utilizando genéricos. Devuelve solo las interacciones que coincidan con el tipo especificado. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Tipo de interacción (por ejemplo\+: \doxylink{class_library_1_1_sale}{Sale}, \doxylink{class_library_1_1_meeting}{Meeting}, \doxylink{class_library_1_1_call}{Call}).\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Lista de interacciones del tipo solicitado.
+\end{DoxyReturn}
 \begin{Desc}
 \item[Type Constraints]\begin{description}
 \item[{\em T} : {\em Interaction}]\end{description}

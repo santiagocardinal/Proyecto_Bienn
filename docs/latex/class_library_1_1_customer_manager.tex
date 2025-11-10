@@ -1,5 +1,10 @@
 \doxysection{Library.\+Customer\+Manager Class Reference}
 \hypertarget{class_library_1_1_customer_manager}{}\label{class_library_1_1_customer_manager}\index{Library.CustomerManager@{Library.CustomerManager}}
+
+
+Administra la colección global de clientes del sistema. Provee métodos para CRUD, búsquedas, registro de interacciones y generación de reportes.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,9 +25,9 @@ void \mbox{\hyperlink{class_library_1_1_customer_manager_aa4ef992979334a70543b13
 void \mbox{\hyperlink{class_library_1_1_customer_manager_a045be0f378c3989714a90ae7c30c384e}{Delete}} (\mbox{\hyperlink{class_library_1_1_customer}{Customer}} customer)
 \item 
 void \mbox{\hyperlink{class_library_1_1_customer_manager_ac4b2020b29e5124b33213033e57dc55a}{Modify}} (string id, string field, string new\+Value)
-\item 
+\begin{DoxyCompactList}\small\item\em Modifica un campo específico de un cliente según su ID. Soporta cambios en nombre, apellido, mail, teléfono, género o fecha de nacimiento. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_library_1_1_customer_manager_a9dd66e553127cfe84c1dddd7692c533b}{Register\+Interaction}} (\mbox{\hyperlink{class_library_1_1_customer}{Customer}} customer, \mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller, \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} interaction)
-\item 
+\begin{DoxyCompactList}\small\item\em Registra una interacción entre un cliente y un vendedor. Actualiza el estado del cliente según el tipo de intercambio (Recibido o Enviado) y asocia la interacción a ambos. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_library_1_1_dashboard_summary}{Dashboard\+Summary}} \mbox{\hyperlink{class_library_1_1_customer_manager_a72fbed6f04c371de9f5cbe23d363a64f}{Get\+Dashboard}} ()
 \item 
 List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_a54a8bead451cd691840ff2e46bda8691}{Get\+Inactive\+Customers}} (int days)
@@ -36,9 +41,12 @@ List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{
 \doxysubsubsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_aebd2a6f334a94b20399c517f670b7c79}{Customers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_aebd2a6f334a94b20399c517f670b7c79}{Customers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Administra la colección global de clientes del sistema. Provee métodos para CRUD, búsquedas, registro de interacciones y generación de reportes. 
 
 \label{doc-constructors}
 \Hypertarget{class_library_1_1_customer_manager_doc-constructors}
@@ -102,11 +110,28 @@ List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ Library.\+Cu
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ac4b2020b29e5124b33213033e57dc55a} 
 void Library.\+Customer\+Manager.\+Modify (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{field}{, }\item[{string}]{new\+Value}{}\end{DoxyParamCaption})}
 
+
+
+Modifica un campo específico de un cliente según su ID. Soporta cambios en nombre, apellido, mail, teléfono, género o fecha de nacimiento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Identificador del cliente a modificar.\\
+\hline
+{\em field} & Nombre del campo a cambiar (en minúsculas).\\
+\hline
+{\em new\+Value} & Nuevo valor para el campo.\\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_library_1_1_customer_manager_a9dd66e553127cfe84c1dddd7692c533b}\index{Library.CustomerManager@{Library.CustomerManager}!RegisterInteraction@{RegisterInteraction}}
 \index{RegisterInteraction@{RegisterInteraction}!Library.CustomerManager@{Library.CustomerManager}}
 \doxysubsubsection{\texorpdfstring{RegisterInteraction()}{RegisterInteraction()}}
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_a9dd66e553127cfe84c1dddd7692c533b} 
 void Library.\+Customer\+Manager.\+Register\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_customer}{Customer}}}]{customer}{, }\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{, }\item[{\mbox{\hyperlink{class_library_1_1_interaction}{Interaction}}}]{interaction}{}\end{DoxyParamCaption})}
+
+
+
+Registra una interacción entre un cliente y un vendedor. Actualiza el estado del cliente según el tipo de intercambio (Recibido o Enviado) y asocia la interacción a ambos. 
 
 \Hypertarget{class_library_1_1_customer_manager_ad26bf522cb518c0a5e27d5da133c86e1}\index{Library.CustomerManager@{Library.CustomerManager}!SearchByFamilyName@{SearchByFamilyName}}
 \index{SearchByFamilyName@{SearchByFamilyName}!Library.CustomerManager@{Library.CustomerManager}}
@@ -147,7 +172,7 @@ void Library.\+Customer\+Manager.\+Register\+Interaction (\begin{DoxyParamCaptio
 \index{Customers@{Customers}!Library.CustomerManager@{Library.CustomerManager}}
 \doxysubsubsection{\texorpdfstring{Customers}{Customers}}
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_aebd2a6f334a94b20399c517f670b7c79} 
-List$<$\mbox{\hyperlink{class_library_1_1_customer}{Customer}}$>$ Library.\+Customer\+Manager.\+Customers\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+List$<$\mbox{\hyperlink{class_library_1_1_customer}{Customer}}$>$ Library.\+Customer\+Manager.\+Customers\hspace{0.3cm}{\ttfamily [get]}}
 
 
 

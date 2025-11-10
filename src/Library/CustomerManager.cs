@@ -42,7 +42,7 @@ public class CustomerManager
             cu.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
         if (c == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         return c;
     }
@@ -53,7 +53,7 @@ public class CustomerManager
             cu.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase));
 
         if (c == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         return c;
     }
@@ -64,7 +64,7 @@ public class CustomerManager
             cu.FamilyName.Equals(familyname, StringComparison.OrdinalIgnoreCase));
 
         if (c == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         return c;
     }
@@ -75,7 +75,7 @@ public class CustomerManager
             cu.Phone.Equals(phone));
 
         if (c == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         return c;
     }
@@ -98,7 +98,7 @@ public class CustomerManager
             cu.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
         if (c == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         return c;
     }
@@ -112,7 +112,7 @@ public class CustomerManager
             throw new ArgumentNullException(nameof(customer));
 
         if (customers.Any(c => c.Id == customer.Id))
-            throw new DuplicatedCustomerException(customer);
+            throw new Exceptions.DuplicatedCustomerException(customer);
 
         customers.Add(customer);
     }
@@ -120,7 +120,7 @@ public class CustomerManager
     public void Delete(Customer customer)
     {
         if (customer == null || !customers.Contains(customer))
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         customers.Remove(customer);
     }
@@ -138,7 +138,7 @@ public class CustomerManager
         Customer existing = SearchById(id);
 
         if (existing == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         switch (field.ToLower())
         {
@@ -162,7 +162,7 @@ public class CustomerManager
                     existing.BirthDate = bd;
                 break;
             default:
-                throw new InvalidFieldException(field);
+                throw new Exceptions.InvalidFieldException(field);
         }
     }
 
@@ -176,7 +176,7 @@ public class CustomerManager
     public void RegisterInteraction(Customer customer, Seller seller, Interaction interaction)
     {
         if (customer == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         if (seller == null)
             throw new Exceptions.SellerNotFoundException("null");
@@ -279,7 +279,7 @@ public class CustomerManager
     public void AssignCustomerToSeller(Customer customer, Seller seller)
     {
         if (customer == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         if (seller == null)
             throw new Exceptions.SellerNotFoundException("null");
@@ -290,7 +290,7 @@ public class CustomerManager
     public List<Interaction> GetCustomerInteractions(Customer customer)
     {
         if (customer == null)
-            throw new NotExistingCustomerException();
+            throw new Exceptions.NotExistingCustomerException();
 
         return customer.GetInteraction();
     }

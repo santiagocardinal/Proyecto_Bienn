@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CRM_P2: Library.SellerManager Class Reference</title>
+<title>CHATBOT CRM: Library.SellerManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CRM_P2
+   <div id="projectname">CHATBOT CRM<span id="projectnumber">&#160;2da</span>
    </div>
   </td>
  </tr>
@@ -91,6 +91,9 @@ $(function(){initNavTree('class_library_1_1_seller_manager.html','','class_libra
   <div class="headertitle"><div class="title">Library.SellerManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Administra la colección global de vendedores del sistema. Se encarga de crear, eliminar, suspender y consultar vendedores, además de gestionar sus interacciones pendientes.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -99,13 +102,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9875fe407df8419380c4d7c4d6e606cd" id="r_a9875fe407df8419380c4d7c4d6e606cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9875fe407df8419380c4d7c4d6e606cd">DeleteSeller</a> (<a class="el" href="class_library_1_1_seller.html">Seller</a> seller)</td></tr>
 <tr class="memitem:a2b7ede245b6448c165112cc7fab475d4" id="r_a2b7ede245b6448c165112cc7fab475d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b7ede245b6448c165112cc7fab475d4">SuspendSeller</a> (<a class="el" href="class_library_1_1_seller.html">Seller</a> seller)</td></tr>
 <tr class="memitem:ad7d3b8a72271d0c61ddef3fdb2044e77" id="r_ad7d3b8a72271d0c61ddef3fdb2044e77"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_library_1_1_interaction.html">Interaction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7d3b8a72271d0c61ddef3fdb2044e77">GetPendingResponses</a> (<a class="el" href="class_library_1_1_seller.html">Seller</a> seller)</td></tr>
-<tr class="memitem:ae3a855f4e00a08f34ff7e2777d0a3216" id="r_ae3a855f4e00a08f34ff7e2777d0a3216"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_library_1_1_seller.html">Seller</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3a855f4e00a08f34ff7e2777d0a3216">SearchById</a> (string id)</td></tr>
+<tr class="memdesc:ad7d3b8a72271d0c61ddef3fdb2044e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta. Lanza una excepción si el vendedor no existe.  <br /></td></tr>
+<tr class="memitem:a8f5a7e672d0ffae75cb6dd99a49a521d" id="r_a8f5a7e672d0ffae75cb6dd99a49a521d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_library_1_1_seller.html">Seller</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f5a7e672d0ffae75cb6dd99a49a521d">SearchById</a> (string id)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-properties" class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a872d6a69e82368e237a9b5f0ffa0daf2" id="r_a872d6a69e82368e237a9b5f0ffa0daf2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_library_1_1_seller.html">Seller</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a872d6a69e82368e237a9b5f0ffa0daf2">Sellers</a><code> [get, set]</code></td></tr>
+<tr class="memitem:a872d6a69e82368e237a9b5f0ffa0daf2" id="r_a872d6a69e82368e237a9b5f0ffa0daf2"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_library_1_1_seller.html">Seller</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a872d6a69e82368e237a9b5f0ffa0daf2">Sellers</a><code> [get]</code></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Administra la colección global de vendedores del sistema. Se encarga de crear, eliminar, suspender y consultar vendedores, además de gestionar sus interacciones pendientes. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0521c6c6b50a8384b501862cdf2c0a4c" name="a0521c6c6b50a8384b501862cdf2c0a4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0521c6c6b50a8384b501862cdf2c0a4c">&#9670;&#160;</a></span>SellerManager()</h2>
 
@@ -173,16 +179,25 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta. Lanza una excepción si el vendedor no existe. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">seller</td><td>Vendedor cuyas interacciones se analizarán.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Lista de interacciones pendientes de respuesta.</dd></dl>
+
 </div>
 </div>
-<a id="ae3a855f4e00a08f34ff7e2777d0a3216" name="ae3a855f4e00a08f34ff7e2777d0a3216"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3a855f4e00a08f34ff7e2777d0a3216">&#9670;&#160;</a></span>SearchById()</h2>
+<a id="a8f5a7e672d0ffae75cb6dd99a49a521d" name="a8f5a7e672d0ffae75cb6dd99a49a521d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f5a7e672d0ffae75cb6dd99a49a521d">&#9670;&#160;</a></span>SearchById()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_library_1_1_seller.html">Seller</a> Library.SellerManager.SearchById </td>
+          <td class="memname"><a class="el" href="class_library_1_1_seller.html">Seller</a>? Library.SellerManager.SearchById </td>
           <td>(</td>
           <td class="paramtype">string</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
           <td></td>
@@ -225,7 +240,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel get">get</span><span class="mlabel set">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel get">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

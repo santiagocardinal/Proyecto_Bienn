@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CRM_P2: Class Members</title>
+<title>CHATBOT CRM: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CRM_P2
+   <div id="projectname">CHATBOT CRM<span id="projectnumber">&#160;2da</span>
    </div>
   </td>
  </tr>
@@ -92,20 +92,30 @@ $(function(){initNavTree('functions.html','',''); });
 
 <h3 class="doxsection"><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>Activate()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a3c9e8377759ecfaa93df0a75a3c352a5">Library.Customer</a></li>
-<li>AddCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#aa4ef992979334a70543b13aec3a20948">Library.CustomerManager</a></li>
-<li>AddCustomer_DuplicateId_DoesNotAdd()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#ad0568771cdfeb041b1801a88b4570295">Library.Tests.CustomerManagerTests</a></li>
-<li>AddCustomer_NullCustomer_DoesNotAdd()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a114dd5e9f8d554fa7f170e35cfd53d37">Library.Tests.CustomerManagerTests</a></li>
+<li>AddCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#aa4ef992979334a70543b13aec3a20948">Library.CustomerManager</a>, <a class="el" href="class_library_1_1_facade.html#a6952548a8b4b185191af9edf31af883a">Library.Facade</a></li>
+<li>AddCustomer_DuplicateCustomer_ReturnsErrorMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a36c41f9f0ed38e1cec39ad4bd2b71dd5">Library.Tests.FacadeTests</a></li>
+<li>AddCustomer_DuplicateId_ThrowsException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#aa43eefa85a966f5016e8ebc0a64e9dc1">Library.Tests.CustomerManagerTests</a></li>
+<li>AddCustomer_NullCustomer_ThrowsArgumentNullException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#ab2a9d59d4769053ffd282442f4990503">Library.Tests.CustomerManagerTests</a></li>
 <li>AddCustomer_ValidCustomer_AddsSuccessfully()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a434748d2c9c80fb210eeca38d0d2a409">Library.Tests.CustomerManagerTests</a></li>
+<li>AddCustomer_ValidCustomer_ReturnsSuccessMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a3acb2b780a09cb26c8e302fb0d6b49c3">Library.Tests.FacadeTests</a></li>
 <li>AddInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a0729924fcb3edcf4475d11dc7b29eaaa">Library.Customer</a>, <a class="el" href="class_library_1_1_seller.html#a2f5b1575143e04af8e20c98be90ac805">Library.Seller</a>, <a class="el" href="class_library_1_1_tests_1_1_seller_tests.html#ad3faa1adbab2cc92b9d6b738570dcce3">Library.Tests.SellerTests</a></li>
-<li>AddInteraction_NullInteraction_DoesNotAdd()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a05ef83c49faeaa1fa4ca234cf131c18a">Library.Tests.CustomerManagerTests</a></li>
-<li>AddInteraction_ValidInteraction_AddsToCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#ade4292f3e3a946c430c289f560530ce1">Library.Tests.CustomerManagerTests</a></li>
 <li>AddNote()&#160;:&#160;<a class="el" href="class_library_1_1_interaction.html#ad87d6c9cfee9a91e65439c629c2bd833">Library.Interaction</a></li>
+<li>AddNoteToInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a9db9756e3a9355e961b977bf2a33150e">Library.Facade</a></li>
 <li>AddTag()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a842db811995282a6a3fa41523fd18a12">Library.Customer</a></li>
+<li>AddTag_Customer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ad792518f01dcffdce68c4e50fd4663db">Library.Facade</a></li>
+<li>AddTagCustomer_ReturnsErrorMessage1()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a3e2fa9ba63d6bb705acca791a8229f9d">Library.Tests.FacadeTests</a></li>
+<li>AddTagCustomer_ReturnsErrorMessage2()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a6447b655831b58c9c6abc4ce1c97af6c">Library.Tests.FacadeTests</a></li>
+<li>AddTagCustomer_ReturnsSuccessMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#af6f560c84800d96562a7767e56c924fe">Library.Tests.FacadeTests</a></li>
 <li>Admin()&#160;:&#160;<a class="el" href="class_library_1_1_admin.html#a35746e4534ce62c3f37a9199ddba27c1">Library.Admin</a></li>
 <li>Admin_CanBeCompared()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_admin_tests.html#a91d81af01a7d410ba0b92c1b56d1b40f">Library.Tests.AdminTests</a></li>
 <li>Amount&#160;:&#160;<a class="el" href="class_library_1_1_quote.html#ae91911b8d58e9dfea5b562dc0b4910aa">Library.Quote</a>, <a class="el" href="class_library_1_1_sale.html#aeb108767386e484f607be10d0d2baf63">Library.Sale</a></li>
+<li>AssignCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ae1e3f94bac06533dd422a2b47d9780be">Library.Facade</a></li>
+<li>AssignCustomer_ReturnsErrorMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a4ad3205b73d1e502b7be749a59087f74">Library.Tests.FacadeTests</a></li>
+<li>AssignCustomer_ReturnsSuccessMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#aa094611e1ee1f855a1e91df76b2b7974">Library.Tests.FacadeTests</a></li>
+<li>AssignCustomer_SellerNotFound_ReturnsErrorMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a0c0822783e9992aaff3c3feef2afae38">Library.Tests.FacadeTests</a></li>
 <li>AssignCustomerToSeller()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ab1d2c974be1dd9f20edc99850fad0456">Library.CustomerManager</a></li>
-<li>AssignCustomerToSeller_NullCustomer_DoesNotAssign()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a3a2ad164ea343b0b82e7d94c5fcc8c88">Library.Tests.CustomerManagerTests</a></li>
+<li>AssignCustomerToSeller_NullCustomer_ThrowsException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a63b2f736a6cf1a31e1246268c3c6c383">Library.Tests.CustomerManagerTests</a></li>
+<li>AssignCustomerToSeller_NullSeller_ThrowsException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a5a210ca3bd753caab0652b33b4500d39">Library.Tests.CustomerManagerTests</a></li>
 <li>AssignCustomerToSeller_ValidCustomerAndSeller_AssignsSuccessfully()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#afbbb4fa9f4cf0f500d89ef1578c01464">Library.Tests.CustomerManagerTests</a></li>
 </ul>
 </div><!-- contents -->

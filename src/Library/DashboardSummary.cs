@@ -8,10 +8,14 @@ namespace Library;
 // la información resumida del dashboard. Encapsula los datos que
 // conforman el resumen ejecutivo del sistema.
 //
-// Esta clase sigue el patrón DTO (Data Transfer Object):
-// - Agrupa datos relacionados
-// - No contiene lógica de negocio compleja
-// - Facilita el transporte de información entre capas/componentes
+
+/// <summary>
+/// Representa un resumen general del sistema (dashboard).
+/// Es un DTO (Data Transfer Object) que agrupa información relevante sobre:
+/// - Clientes con interacciones recientes
+/// - Reuniones próximas
+/// - Total de clientes registrados
+/// </summary>
 public class DashboardSummary
 {
     

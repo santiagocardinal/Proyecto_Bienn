@@ -185,7 +185,7 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             if (customer.Tags.Any(t => t.Name.Equals(tagName, StringComparison.OrdinalIgnoreCase)))
                 throw new Exceptions.DuplicateTagException(tagName);
@@ -211,7 +211,7 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             Interaction interaction = customer.Interactions
                 .FirstOrDefault(i => i.Topic == interactionTopic && i.Date == interactionDate);
@@ -240,7 +240,7 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             List<Interaction> interactions = customer.Interactions;
 
@@ -276,7 +276,7 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             if (customer.Interactions.Count == 0)
                 return "No hay interacciones registradas.";
@@ -299,7 +299,7 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             var unanswered = customer.GetUnansweredInteractions();
 
@@ -329,7 +329,7 @@ public class Facade
             Seller seller = sm.SearchById(sellerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
                 throw new Exceptions.SellerNotFoundException(sellerId);
@@ -472,7 +472,7 @@ public class Facade
             Seller seller = sm.SearchById(sellerId);
 
             if (customer == null)
-                throw new NotExistingCustomerException();
+                throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
                 throw new Exceptions.SellerNotFoundException(sellerId);

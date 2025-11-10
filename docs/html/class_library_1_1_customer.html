@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CRM_P2: Library.Customer Class Reference</title>
+<title>CHATBOT CRM: Library.Customer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">CRM_P2
+   <div id="projectname">CHATBOT CRM<span id="projectnumber">&#160;2da</span>
    </div>
   </td>
  </tr>
@@ -91,6 +91,9 @@ $(function(){initNavTree('class_library_1_1_customer.html','','class_library_1_1
   <div class="headertitle"><div class="title">Library.Customer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Representa a un cliente del sistema, con su información personal, etiquetas e historial de interacciones. Contiene comportamientos para gestionar su estado y sus relaciones.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -101,6 +104,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0729924fcb3edcf4475d11dc7b29eaaa" id="r_a0729924fcb3edcf4475d11dc7b29eaaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0729924fcb3edcf4475d11dc7b29eaaa">AddInteraction</a> (<a class="el" href="class_library_1_1_interaction.html">Interaction</a> interaction)</td></tr>
 <tr class="memitem:ab8eb111c1155a054819e98e22bcdd570" id="r_ab8eb111c1155a054819e98e22bcdd570"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_library_1_1_interaction.html">Interaction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8eb111c1155a054819e98e22bcdd570">GetInteraction</a> ()</td></tr>
 <tr class="memitem:a3254b2fdd5e935465668957304dca0b3" id="r_a3254b2fdd5e935465668957304dca0b3"><td class="memItemLeft" align="right" valign="top">List&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3254b2fdd5e935465668957304dca0b3">GetInteractionsByType&lt; T &gt;</a> ()</td></tr>
+<tr class="memdesc:a3254b2fdd5e935465668957304dca0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filtra las interacciones del cliente por tipo utilizando genéricos. Devuelve solo las interacciones que coincidan con el tipo especificado.  <br /></td></tr>
 <tr class="memitem:a6d42d50871da14323026a9620813ed05" id="r_a6d42d50871da14323026a9620813ed05"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_library_1_1_interaction.html">Interaction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d42d50871da14323026a9620813ed05">GetInteractionsByDate</a> (DateTime date)</td></tr>
 <tr class="memitem:a76e163b3c9750c9cd26fad1b7a644640" id="r_a76e163b3c9750c9cd26fad1b7a644640"><td class="memItemLeft" align="right" valign="top">DateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76e163b3c9750c9cd26fad1b7a644640">GetLastInteraction</a> ()</td></tr>
 <tr class="memitem:a0bd8fc752cc56f35b471adb3896df141" id="r_a0bd8fc752cc56f35b471adb3896df141"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bd8fc752cc56f35b471adb3896df141">Deactivate</a> ()</td></tr>
@@ -127,7 +131,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a63e119dd86f25aa1322694639f4b5823" id="r_a63e119dd86f25aa1322694639f4b5823"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e119dd86f25aa1322694639f4b5823">IsActive</a><code> [get, set]</code></td></tr>
 <tr class="memitem:a12ec77bf155cf18dc35b3a9b11b1c151" id="r_a12ec77bf155cf18dc35b3a9b11b1c151"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12ec77bf155cf18dc35b3a9b11b1c151">HasPendingCustomerReply</a><code> [get]</code></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Representa a un cliente del sistema, con su información personal, etiquetas e historial de interacciones. Contiene comportamientos para gestionar su estado y sus relaciones. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a07a7ba8b9f02eae9d3d3ff4c58b3b764" name="a07a7ba8b9f02eae9d3d3ff4c58b3b764"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a07a7ba8b9f02eae9d3d3ff4c58b3b764">&#9670;&#160;</a></span>Customer()</h2>
 
@@ -308,6 +314,15 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Filtra las interacciones del cliente por tipo utilizando genéricos. Devuelve solo las interacciones que coincidan con el tipo especificado. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Tipo de interacción (por ejemplo: <a class="el" href="class_library_1_1_sale.html">Sale</a>, <a class="el" href="class_library_1_1_meeting.html">Meeting</a>, <a class="el" href="class_library_1_1_call.html">Call</a>).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Lista de interacciones del tipo solicitado.</dd></dl>
 <div class="typeconstraint">
 <dl><dt><b>Type Constraints</b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">

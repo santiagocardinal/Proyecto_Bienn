@@ -16,9 +16,18 @@ var searchData=
   ['interaction_5ftostringwithnulltopic_13',['Interaction_ToStringWithNullTopic',['../class_library_1_1_tests_1_1_interaction_test.html#afb37a559122a517c3b967a9865c1b8d5',1,'Library::Tests::InteractionTest']]],
   ['interaction_5ftypemutable_14',['Interaction_TypeMutable',['../class_library_1_1_tests_1_1_interaction_test.html#ad3071bb44f2750f414634c0d366063d4',1,'Library::Tests::InteractionTest']]],
   ['interaction_5fvalidparameters_15',['Interaction_ValidParameters',['../class_library_1_1_tests_1_1_interaction_test.html#a0c277edbb633d55cdfb12c3032b51f78',1,'Library::Tests::InteractionTest']]],
-  ['invalidfieldexception_16',['InvalidFieldException',['../class_library_1_1_invalid_field_exception.html#a21cad3f3fa55ca271b87a3cb516a515a',1,'Library::InvalidFieldException']]],
-  ['issuspended_5fisfalse_17',['IsSuspended_IsFalse',['../class_library_1_1_tests_1_1_seller_tests.html#a270aa5888dd8c9f174338a84eb22aabe',1,'Library::Tests::SellerTests']]],
-  ['issuspended_5fsettofalse_18',['IsSuspended_SetToFalse',['../class_library_1_1_tests_1_1_seller_tests.html#a150ca9c971e7f54cfb1f29bce48a0a5d',1,'Library::Tests::SellerTests']]],
-  ['issuspended_5fsettotrue_19',['IsSuspended_SetToTrue',['../class_library_1_1_tests_1_1_seller_tests.html#abbe98e7ffaf39f0a76ac03026bfb5a25',1,'Library::Tests::SellerTests']]],
-  ['isvalidmail_20',['IsValidMail',['../class_library_1_1_customer.html#ae653e7b22ee5effbe19adc985ada0840',1,'Library::Customer']]]
+  ['interactionnotfoundexception_16',['InteractionNotFoundException',['../class_library_1_1_exceptions_1_1_interaction_not_found_exception.html#a710c47ff0082f6f73a86c3bea7b7659a',1,'Library::Exceptions::InteractionNotFoundException']]],
+  ['interactionnotfoundexception_5fcanbethrown_17',['InteractionNotFoundException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#a692db184626a69462a1c083053a5492e',1,'Library::Tests::ExceptionsTests']]],
+  ['interactionnotfoundexception_5fconstructor_5fcreateswithcorrectmessage_18',['InteractionNotFoundException_Constructor_CreatesWithCorrectMessage',['../class_library_1_1_tests_1_1_exceptions_tests.html#a458f29657dbad843bac184a58c939d3b',1,'Library::Tests::ExceptionsTests']]],
+  ['interactionregular_19',['InteractionRegular',['../class_library_1_1_interaction_regular.html#a6e52757239c7840fb7b5a461cf338732',1,'Library::InteractionRegular']]],
+  ['invaliddaterangeexception_20',['InvalidDateRangeException',['../class_library_1_1_exceptions_1_1_invalid_date_range_exception.html#a4ad23af931ceb8225fb247942e53c16f',1,'Library::Exceptions::InvalidDateRangeException']]],
+  ['invaliddaterangeexception_5fcanbethrown_21',['InvalidDateRangeException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#a493f46ce279cd5f26b7eaa5ead2c7642',1,'Library::Tests::ExceptionsTests']]],
+  ['invaliddaterangeexception_5fconstructor_5fcreateswithcorrectmessage_22',['InvalidDateRangeException_Constructor_CreatesWithCorrectMessage',['../class_library_1_1_tests_1_1_exceptions_tests.html#ae805a27fe880b77b51065ec55bddc0bb',1,'Library::Tests::ExceptionsTests']]],
+  ['invalidfieldexception_23',['InvalidFieldException',['../class_library_1_1_exceptions_1_1_invalid_field_exception.html#af2ec5b990026544d2ff626f63d1c5063',1,'Library::Exceptions::InvalidFieldException']]],
+  ['invalidfieldexception_5fcanbethrown_24',['InvalidFieldException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#a70a34156c6c2f5c2826946109d34192f',1,'Library::Tests::ExceptionsTests']]],
+  ['invalidfieldexception_5fwithfieldname_5fcreateswithfieldinmessage_25',['InvalidFieldException_WithFieldName_CreatesWithFieldInMessage',['../class_library_1_1_tests_1_1_exceptions_tests.html#ab8d14a91ecb6ec5b4238e89814fb9dca',1,'Library::Tests::ExceptionsTests']]],
+  ['issuspended_5fisfalse_26',['IsSuspended_IsFalse',['../class_library_1_1_tests_1_1_seller_tests.html#a270aa5888dd8c9f174338a84eb22aabe',1,'Library::Tests::SellerTests']]],
+  ['issuspended_5fsettofalse_27',['IsSuspended_SetToFalse',['../class_library_1_1_tests_1_1_seller_tests.html#a150ca9c971e7f54cfb1f29bce48a0a5d',1,'Library::Tests::SellerTests']]],
+  ['issuspended_5fsettotrue_28',['IsSuspended_SetToTrue',['../class_library_1_1_tests_1_1_seller_tests.html#abbe98e7ffaf39f0a76ac03026bfb5a25',1,'Library::Tests::SellerTests']]],
+  ['isvalidmail_29',['IsValidMail',['../class_library_1_1_customer.html#ae653e7b22ee5effbe19adc985ada0840',1,'Library::Customer']]]
 ];

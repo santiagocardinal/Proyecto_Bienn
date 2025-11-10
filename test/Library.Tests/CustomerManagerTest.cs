@@ -33,7 +33,7 @@ public class CustomerManagerTests
     public void SearchByName_CustomerNotExists_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.SearchByName("NoExiste"));
     }
 
@@ -70,7 +70,7 @@ public class CustomerManagerTests
     public void SearchByMail_CustomerNotExists_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.SearchByMail("noexiste@mail.com"));
     }
 
@@ -106,7 +106,7 @@ public class CustomerManagerTests
     public void SearchByFamilyName_CustomerNotExists_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.SearchByFamilyName("NoExiste"));
     }
 
@@ -129,7 +129,7 @@ public class CustomerManagerTests
     public void SearchByPhone_CustomerNotExists_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.SearchByPhone("099999999"));
     }
 
@@ -152,7 +152,7 @@ public class CustomerManagerTests
     public void SearchById_CustomerNotExists_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.SearchById("999"));
     }
 
@@ -193,7 +193,7 @@ public class CustomerManagerTests
         Customer duplicate = new Customer("1", "Pedro", "García", "pedro@mail.com", "099999999", "male", new DateTime(1995, 10, 05));
         
         // Act & Assert
-        Assert.Throws<DuplicatedCustomerException>(() => 
+        Assert.Throws<Exceptions.DuplicatedCustomerException>(() => 
             _customerManager.AddCustomer(duplicate));
     }
 
@@ -216,7 +216,7 @@ public class CustomerManagerTests
         _customerManager.Delete(_testCustomer);
         
         // Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.SearchById("1"));
     }
 
@@ -224,7 +224,7 @@ public class CustomerManagerTests
     public void Delete_NonExistingCustomer_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.Delete(_testCustomer));
     }
 
@@ -232,7 +232,7 @@ public class CustomerManagerTests
     public void Delete_NullCustomer_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.Delete(null));
     }
 
@@ -326,7 +326,7 @@ public class CustomerManagerTests
     public void Modify_NonExistingCustomer_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.Modify("999", "name", "Test"));
     }
 
@@ -337,7 +337,7 @@ public class CustomerManagerTests
         _customerManager.AddCustomer(_testCustomer);
         
         // Act & Assert
-        Assert.Throws<InvalidFieldException>(() => 
+        Assert.Throws<Exceptions.InvalidFieldException>(() => 
             _customerManager.Modify("1", "campoInvalido", "valor"));
     }
 
@@ -519,7 +519,7 @@ public class CustomerManagerTests
         Seller seller = new Seller("Lucia", "lucia@gmail.com", "036025014", "S3");
         
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.AssignCustomerToSeller(null, seller));
     }
 
@@ -588,7 +588,7 @@ public class CustomerManagerTests
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Compra", ExchangeType.Received, _testCustomer);
         
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.RegisterInteraction(null, _testSeller, interaction));
     }
 
@@ -632,7 +632,7 @@ public class CustomerManagerTests
     public void GetCustomerInteractions_NullCustomer_ThrowsException()
     {
         // Act & Assert
-        Assert.Throws<NotExistingCustomerException>(() => 
+        Assert.Throws<Exceptions.NotExistingCustomerException>(() => 
             _customerManager.GetCustomerInteractions(null));
     }
 }
