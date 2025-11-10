@@ -1,0 +1,16 @@
+var searchData=
+[
+  ['name_5fsetvalidvalue_5fupdatessuccessfully_0',['Name_SetValidValue_UpdatesSuccessfully',['../class_library_1_1_tests_1_1_user_tests.html#aa6093757e23432ca243443b25a2bbf93',1,'Library::Tests::UserTests']]],
+  ['nonexistingcustomer_5freturnserrormessage_1',['NonExistingCustomer_ReturnsErrorMessage',['../class_library_1_1_tests_1_1_facade_tests.html#a7abaa57fe10a80bbcf285de50f0a1d3a',1,'Library::Tests::FacadeTests']]],
+  ['note_2',['Note',['../class_note.html#af54e12f6303eb0dc4236db3c8a7db94b',1,'Note']]],
+  ['note_5faddmultiplenotes_5faddsallsuccessfully_3',['Note_AddMultipleNotes_AddsAllSuccessfully',['../class_library_1_1_tests_1_1_call_tests.html#ad70604fabc6f49e2e80b5f1cc6bae8b0',1,'Library.Tests.CallTests.Note_AddMultipleNotes_AddsAllSuccessfully()'],['../class_library_1_1_tests_1_1_mail_tests.html#a0a9aa8cb69c220a76ec07877bcaa0bf3',1,'Library.Tests.MailTests.Note_AddMultipleNotes_AddsAllSuccessfully()'],['../class_library_1_1_tests_1_1_message_tests.html#a11d70d1dbf05bb00457ed21a6aea0a29',1,'Library.Tests.MessageTests.Note_AddMultipleNotes_AddsAllSuccessfully()']]],
+  ['note_5faddnote_5faddssuccessfully_4',['Note_AddNote_AddsSuccessfully',['../class_library_1_1_tests_1_1_call_tests.html#aee2faf470c3d237ad6ff59929817bf43',1,'Library.Tests.CallTests.Note_AddNote_AddsSuccessfully()'],['../class_library_1_1_tests_1_1_mail_tests.html#a462c4c6689da50d9018a39f1b860fc57',1,'Library.Tests.MailTests.Note_AddNote_AddsSuccessfully()'],['../class_library_1_1_tests_1_1_message_tests.html#a23cf571c145f72f23e388d5e5684b01c',1,'Library.Tests.MessageTests.Note_AddNote_AddsSuccessfully()']]],
+  ['note_5fdate_5',['Note_Date',['../class_library_1_1_tests_1_1_note_tests.html#a34f00696b05370e4eca80e0c10bd492d',1,'Library::Tests::NoteTests']]],
+  ['note_5fremovenote_5fremovessuccessfully_6',['Note_RemoveNote_RemovesSuccessfully',['../class_library_1_1_tests_1_1_call_tests.html#a9bcb3c5c905fc8d5455c63ee039f4924',1,'Library.Tests.CallTests.Note_RemoveNote_RemovesSuccessfully()'],['../class_library_1_1_tests_1_1_message_tests.html#acda10ab4286d74b8807f0f955daa52ed',1,'Library.Tests.MessageTests.Note_RemoveNote_RemovesSuccessfully()']]],
+  ['note_5ftopic_7',['Note_Topic',['../class_library_1_1_tests_1_1_note_tests.html#a39f04a6eff477f6699c1d75e7eb82631',1,'Library::Tests::NoteTests']]],
+  ['note_5ftostringmethod_8',['Note_ToStringMethod',['../class_library_1_1_tests_1_1_note_tests.html#ac71cd94020e0ab449761ae2703bcecc3',1,'Library::Tests::NoteTests']]],
+  ['notes_5fsettopicanddate_9',['Notes_SetTopicAndDate',['../class_library_1_1_tests_1_1_note_tests.html#ad97fc8541b2f855294d934d8405f4eea',1,'Library::Tests::NoteTests']]],
+  ['notexistingcustomerexception_10',['NotExistingCustomerException',['../class_library_1_1_exceptions_1_1_not_existing_customer_exception.html#a83a3e645a74b2222169d53b13d2ddff6',1,'Library::Exceptions::NotExistingCustomerException']]],
+  ['notexistingcustomerexception_5fcanbethrown_11',['NotExistingCustomerException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#a219ba2ea091f09f887f3861360959803',1,'Library::Tests::ExceptionsTests']]],
+  ['notexistingcustomerexception_5fconstructor_12',['NotExistingCustomerException_Constructor',['../class_library_1_1_tests_1_1_exceptions_tests.html#a71d7500dc727c51dfccd1a4dc777b556',1,'Library::Tests::ExceptionsTests']]]
+];

@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['activate_0',['Activate',['../class_library_1_1_customer.html#a3c9e8377759ecfaa93df0a75a3c352a5',1,'Library::Customer']]],
+  ['addcustomer_1',['AddCustomer',['../class_library_1_1_customer_manager.html#aa4ef992979334a70543b13aec3a20948',1,'Library.CustomerManager.AddCustomer()'],['../class_library_1_1_facade.html#a6952548a8b4b185191af9edf31af883a',1,'Library.Facade.AddCustomer()']]],
+  ['addcustomer_5fduplicatecustomer_5freturnserrormessage_2',['AddCustomer_DuplicateCustomer_ReturnsErrorMessage',['../class_library_1_1_tests_1_1_facade_tests.html#a36c41f9f0ed38e1cec39ad4bd2b71dd5',1,'Library::Tests::FacadeTests']]],
+  ['addcustomer_5fduplicateid_5fthrowsexception_3',['AddCustomer_DuplicateId_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#aa43eefa85a966f5016e8ebc0a64e9dc1',1,'Library::Tests::CustomerManagerTests']]],
+  ['addcustomer_5fnullcustomer_5fthrowsargumentnullexception_4',['AddCustomer_NullCustomer_ThrowsArgumentNullException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#ab2a9d59d4769053ffd282442f4990503',1,'Library::Tests::CustomerManagerTests']]],
+  ['addcustomer_5fvalidcustomer_5faddssuccessfully_5',['AddCustomer_ValidCustomer_AddsSuccessfully',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a434748d2c9c80fb210eeca38d0d2a409',1,'Library::Tests::CustomerManagerTests']]],
+  ['addcustomer_5fvalidcustomer_5freturnssuccessmessage_6',['AddCustomer_ValidCustomer_ReturnsSuccessMessage',['../class_library_1_1_tests_1_1_facade_tests.html#a3acb2b780a09cb26c8e302fb0d6b49c3',1,'Library::Tests::FacadeTests']]],
+  ['addinteraction_7',['AddInteraction',['../class_library_1_1_customer.html#a0729924fcb3edcf4475d11dc7b29eaaa',1,'Library.Customer.AddInteraction()'],['../class_library_1_1_seller.html#a2f5b1575143e04af8e20c98be90ac805',1,'Library.Seller.AddInteraction()'],['../class_library_1_1_tests_1_1_seller_tests.html#ad3faa1adbab2cc92b9d6b738570dcce3',1,'Library.Tests.SellerTests.AddInteraction()']]],
+  ['addnote_8',['AddNote',['../class_library_1_1_interaction.html#ad87d6c9cfee9a91e65439c629c2bd833',1,'Library::Interaction']]],
+  ['addnotetointeraction_9',['AddNoteToInteraction',['../class_library_1_1_facade.html#a9db9756e3a9355e961b977bf2a33150e',1,'Library::Facade']]],
+  ['addtag_10',['AddTag',['../class_library_1_1_customer.html#a842db811995282a6a3fa41523fd18a12',1,'Library::Customer']]],
+  ['addtag_5fcustomer_11',['AddTag_Customer',['../class_library_1_1_facade.html#ad792518f01dcffdce68c4e50fd4663db',1,'Library::Facade']]],
+  ['addtagcustomer_5freturnserrormessage1_12',['AddTagCustomer_ReturnsErrorMessage1',['../class_library_1_1_tests_1_1_facade_tests.html#a3e2fa9ba63d6bb705acca791a8229f9d',1,'Library::Tests::FacadeTests']]],
+  ['addtagcustomer_5freturnserrormessage2_13',['AddTagCustomer_ReturnsErrorMessage2',['../class_library_1_1_tests_1_1_facade_tests.html#a6447b655831b58c9c6abc4ce1c97af6c',1,'Library::Tests::FacadeTests']]],
+  ['addtagcustomer_5freturnssuccessmessage_14',['AddTagCustomer_ReturnsSuccessMessage',['../class_library_1_1_tests_1_1_facade_tests.html#af6f560c84800d96562a7767e56c924fe',1,'Library::Tests::FacadeTests']]],
+  ['admin_15',['Admin',['../class_library_1_1_admin.html#a35746e4534ce62c3f37a9199ddba27c1',1,'Library::Admin']]],
+  ['admin_5fcanbecompared_16',['Admin_CanBeCompared',['../class_library_1_1_tests_1_1_admin_tests.html#a91d81af01a7d410ba0b92c1b56d1b40f',1,'Library::Tests::AdminTests']]],
+  ['assigncustomer_17',['AssignCustomer',['../class_library_1_1_facade.html#ae1e3f94bac06533dd422a2b47d9780be',1,'Library::Facade']]],
+  ['assigncustomer_5freturnserrormessage_18',['AssignCustomer_ReturnsErrorMessage',['../class_library_1_1_tests_1_1_facade_tests.html#a4ad3205b73d1e502b7be749a59087f74',1,'Library::Tests::FacadeTests']]],
+  ['assigncustomer_5freturnssuccessmessage_19',['AssignCustomer_ReturnsSuccessMessage',['../class_library_1_1_tests_1_1_facade_tests.html#aa094611e1ee1f855a1e91df76b2b7974',1,'Library::Tests::FacadeTests']]],
+  ['assigncustomer_5fsellernotfound_5freturnserrormessage_20',['AssignCustomer_SellerNotFound_ReturnsErrorMessage',['../class_library_1_1_tests_1_1_facade_tests.html#a0c0822783e9992aaff3c3feef2afae38',1,'Library::Tests::FacadeTests']]],
+  ['assigncustomertoseller_21',['AssignCustomerToSeller',['../class_library_1_1_customer_manager.html#ab1d2c974be1dd9f20edc99850fad0456',1,'Library::CustomerManager']]],
+  ['assigncustomertoseller_5fnullcustomer_5fthrowsexception_22',['AssignCustomerToSeller_NullCustomer_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a63b2f736a6cf1a31e1246268c3c6c383',1,'Library::Tests::CustomerManagerTests']]],
+  ['assigncustomertoseller_5fnullseller_5fthrowsexception_23',['AssignCustomerToSeller_NullSeller_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a5a210ca3bd753caab0652b33b4500d39',1,'Library::Tests::CustomerManagerTests']]],
+  ['assigncustomertoseller_5fvalidcustomerandseller_5fassignssuccessfully_24',['AssignCustomerToSeller_ValidCustomerAndSeller_AssignsSuccessfully',['../class_library_1_1_tests_1_1_customer_manager_tests.html#afbbb4fa9f4cf0f500d89ef1578c01464',1,'Library::Tests::CustomerManagerTests']]]
+];

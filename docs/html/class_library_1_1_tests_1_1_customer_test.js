@@ -1,0 +1,26 @@
+var class_library_1_1_tests_1_1_customer_test =
+[
+    [ "Customer_Activate", "class_library_1_1_tests_1_1_customer_test.html#ab079db24c8235e2de85efb71f3a1106c", null ],
+    [ "Customer_AddInteraction", "class_library_1_1_tests_1_1_customer_test.html#a65b2c3fe0bb89fcba4ebba8e4489ef8c", null ],
+    [ "Customer_AddMultipleInteractions", "class_library_1_1_tests_1_1_customer_test.html#a5771cfa38061b0db855cf26c08521c5c", null ],
+    [ "Customer_AddMultipleTags", "class_library_1_1_tests_1_1_customer_test.html#a551e110ff60d461f620be0cf942ff7ff", null ],
+    [ "Customer_AddTag", "class_library_1_1_tests_1_1_customer_test.html#ac02ee4637346bdb9ff8fcbd0202406a9", null ],
+    [ "Customer_Deactivate", "class_library_1_1_tests_1_1_customer_test.html#a7d4795bf3cf6cf331f62057d3d5b85fa", null ],
+    [ "Customer_GenderMutable", "class_library_1_1_tests_1_1_customer_test.html#ae0f038548e69450e380ba2e4dfda905d", null ],
+    [ "Customer_GetInteractionsByDate", "class_library_1_1_tests_1_1_customer_test.html#a300e0ad6f2bddc5584da307cb7b32b23", null ],
+    [ "Customer_GetInteractionsByType", "class_library_1_1_tests_1_1_customer_test.html#a3e025969833e250af2a76da610b0bf1f", null ],
+    [ "Customer_GetLastInteraction", "class_library_1_1_tests_1_1_customer_test.html#a5e134a63660d110a1aee1e44701ff188", null ],
+    [ "Customer_GetUnansweredInteractions", "class_library_1_1_tests_1_1_customer_test.html#a2a84a206427dc88b515bf7ec66bd58e7", null ],
+    [ "Customer_InteractionsInitializedEmpty", "class_library_1_1_tests_1_1_customer_test.html#aa9628beb48b153ab36cf459f23fe00da", null ],
+    [ "Customer_IsValidMail", "class_library_1_1_tests_1_1_customer_test.html#a6ca879e3431f97d890c4a10faaf8f590", null ],
+    [ "Customer_MailMutable", "class_library_1_1_tests_1_1_customer_test.html#a6aa5197ce0432946ba2b5487326e17e1", null ],
+    [ "Customer_NoInteractions", "class_library_1_1_tests_1_1_customer_test.html#ade9981cb4a454192a0ca8e4c47c66b4a", null ],
+    [ "Customer_NullMail", "class_library_1_1_tests_1_1_customer_test.html#afc7b59bf0dac85bd493a6a75c6f78885", null ],
+    [ "Customer_NullName", "class_library_1_1_tests_1_1_customer_test.html#a06366db137dda6d3bf8cd7e258dbd4c5", null ],
+    [ "Customer_PhoneMutable", "class_library_1_1_tests_1_1_customer_test.html#ad91fe2f038bec0d4f7dc95c4639b6406", null ],
+    [ "Customer_RemoveTag", "class_library_1_1_tests_1_1_customer_test.html#a166994f5296249c2e70e67a8ca28959b", null ],
+    [ "Customer_SellerMutable", "class_library_1_1_tests_1_1_customer_test.html#a0f11ecdb4e8de7ca9871404d79e3bac2", null ],
+    [ "Customer_TagsInitializedEmpty", "class_library_1_1_tests_1_1_customer_test.html#aa6495f67abd960cb850a4759d566e0be", null ],
+    [ "Customer_ToString", "class_library_1_1_tests_1_1_customer_test.html#ad7c6e37b82a4d7537f8f92bc23921558", null ],
+    [ "Customer_ValidParameters", "class_library_1_1_tests_1_1_customer_test.html#aaefe657f4b1b63a9a38741cf58a8b44f", null ]
+];

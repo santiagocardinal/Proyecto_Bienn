@@ -1,0 +1,62 @@
+\doxysection{D\+:/\+P2/\+Proyecto\+\_\+\+Bienn Directory Reference}
+\hypertarget{dir_49d05e013a54c162d93a1d8ad07a7232}{}\label{dir_49d05e013a54c162d93a1d8ad07a7232}\index{D:/P2/Proyecto\_Bienn Directory Reference@{D:/P2/Proyecto\_Bienn Directory Reference}}
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \mbox{\hyperlink{dir_275753338b3846e2c763c813435106fe}{src}}
+\item 
+directory \mbox{\hyperlink{dir_e4a53184b59af56e2c2d02d9c9ce8e42}{test}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{README.md_autotoc_md0}{}\doxysubsection{\texorpdfstring{Proyecto CRM}{Proyecto CRM}}\label{README.md_autotoc_md0}
+\hypertarget{README.md_autotoc_md1}{}\doxysubsection{\texorpdfstring{Primera Entrega}{Primera Entrega}}\label{README.md_autotoc_md1}
+{\bfseries{Desafíos Técnicos}}
+
+
+\begin{DoxyItemize}
+\item Definir las relaciones entre {\ttfamily Customer}, {\ttfamily Interaction}, {\ttfamily Meeting}, {\ttfamily Sale} y demás clases requirió aplicar correctamente guías de diseño como Expert. La asignación de responsabilidades fue iterativa, con varios ajustes hasta lograr una estructura coherente y mantenible.
+\item Mantener las buenas prácticas de programación mientras buscábamos soluciones fue un desafío constante. La presión de resolver problemas nos generaba el temor de incumplir algún principio {\ttfamily SOLID}, patrón de diseño o guía establecida. En momentos de bloqueo, había que frenar y asegurarnos de no sacrificar calidad por velocidad.
+\item Implementamos polimorfismo para manejar diferentes tipos de interacciones, lo que permitió extender funcionalidades sin modificar código existente y facilitó la escalabilidad del sistema.
+\item La lógica para identificar clientes sin actividad reciente implicó trabajar con {\ttfamily Date\+Time} y {\ttfamily Time\+Span}. Métodos como {\ttfamily Get\+Inactive\+Customers} y {\ttfamily Get\+Recent\+Interaction} requirieron varias iteraciones hasta quedar robustos y reutilizables.
+\item Cobertura de pruebas unitarias con {\ttfamily NUnit}, este proceso tomó tiempo considerable pero resultó fundamental para validar comportamientos y detectar errores tempranamente, estableciendo una base sólida para el desarrollo futuro.
+\item El uso de {\ttfamily Git\+Hub} como herramienta de gestión nos obligó a aprender manejo de ramas, resolución de conflictos y coordinación de tareas simultáneas. La curva de aprendizaje fue pronunciada pero necesaria.
+\end{DoxyItemize}
+
+{\bfseries{Aprendizajes Clave}}
+\begin{DoxyItemize}
+\item Aplicación práctica de principios OO y su impacto directo en mantenibilidad y escalabilidad del código.
+\item Integración de herramientas de testing como parte esencial del flujo de desarrollo, no como paso opcional.
+\item Uso de Git\+Hub no solo como repositorio sino como plataforma de coordinación y documentación del proyecto.
+\item Importancia de las retrospectivas para identificar puntos de mejora en planificación y comunicación interna.
+\end{DoxyItemize}
+
+{\bfseries{Balance del Equipo}}
+
+Llegamos a una solución final para esta primera entrega, pero como en todo proyecto, hay cosas que podemos mejorar. El punto más claro que salió en las retrospectivas fue la organización y coordinación. Si bien hubo organización, nos faltó tomarnos más tiempo al principio para definir bien las tareas y dividirlas entre todos. Pensar un poco más a futuro nos habría dado más margen para estar disponibles ante imprevistos o correcciones de último momento. En cuanto a comunicación, somos un equipo donde todos tienen voz. Le damos rienda suelta al debate y valoramos la opinión de cada integrante, lo que genera un ambiente de trabajo colaborativo y sin trabas para expresar ideas o dudas. Eso fue un punto fuerte que queremos mantener. Para las próximas entregas, el objetivo es claro\+: más tiempo en la planificación inicial, definir tareas más específicas desde el arranque, y tener una visión un poco más a largo plazo para anticiparnos a los baches del camino.~\newline
+ {\bfseries{En resumen\+: esta etapa puso los cimientos de algo sólido. Cada uno metió lo suyo, aprendimos un montón tanto de código como de trabajo en equipo, y el CRC está tomando forma. Ahora, a aplicar lo aprendido en la siguiente entrega.}}\hypertarget{README.md_autotoc_md2}{}\doxysubsection{\texorpdfstring{Segunda Entrega}{Segunda Entrega}}\label{README.md_autotoc_md2}
+\hypertarget{README.md_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Evaluación General}{Evaluación General}}\label{README.md_autotoc_md3}
+Estamos muy conformes con el desempeño alcanzado y con las devoluciones obtenidas por parte del cuerpo docente. Sentimos que esta segunda etapa reflejó una mejora clara tanto en la organización como en la calidad del código. Si bien todavía hay aspectos que podemos seguir puliendo, logramos una resolución sólida del sistema y una mayor claridad en la estructura general del proyecto.
+
+{\bfseries{Avances Técnicos}}
+
+
+\begin{DoxyItemize}
+\item En esta entrega incorporamos patrones de diseño que aportaron significativamente a la organización y funcionalidad del sistema.
+\item El patrón {\ttfamily Facade} se implementó para facilitar la interacción del usuario con el sistema, permitiendo que este no tenga que conocer la estructura interna del programa. A través de la fachada, los usuarios pueden ingresar los datos directamente en formato {\ttfamily string}, simplificando el uso y haciendo más intuitiva la comunicación con las distintas funcionalidades del sistema.
+\item Por otro lado, el patrón {\ttfamily Singleton} nos permitió mantener una única instancia de cada manager, garantizando que las listas se manejen de forma estática y global. De esta manera, al acceder a ellas desde cualquier parte del programa, siempre se trabaja con los mismos datos actualizados, evitando duplicaciones y asegurando la coherencia en la gestión de la información.
+\item Además, integramos {\ttfamily Doxygen} como herramienta de documentación, lo que nos permitió mantener una descripción clara y profesional del código, detallando clases, métodos y relaciones del sistema. Esto facilita tanto la comprensión interna entre los miembros del equipo como la futura revisión por parte de terceros.
+\end{DoxyItemize}
+
+{\bfseries{Organización y Trabajo en Equipo}}
+
+
+\begin{DoxyItemize}
+\item A nivel organizacional, logramos planificar y avanzar de manera más estructurada, superando dificultades externas y equilibrando las distintas tareas ajenas a la programación. La experiencia previa nos permitió distribuir mejor las responsabilidades, mejorar la comunicación y mantener un seguimiento más constante del progreso del proyecto.
+\item El equipo se mostró comprometido y colaborativo, trabajando de forma coordinada para alcanzar los objetivos establecidos. Se reforzó la autonomía de cada integrante y se mantuvo un ambiente de trabajo abierto al diálogo y al aprendizaje colectivo.
+\end{DoxyItemize}
+
+{\bfseries{Reflexión Final}}
+
+En esta segunda entrega pudimos ver reflejado el crecimiento del equipo tanto a nivel técnico como organizativo. La incorporación de los patrones {\ttfamily Singleton} y {\ttfamily Facade}, junto con el uso de {\ttfamily Doxygen}, nos permitió estructurar mejor el sistema y hacerlo más accesible para los usuarios. Aprendimos a planificar con más precisión, a documentar de manera profesional y a mantener una comunicación fluida entre todos los integrantes. De cara a la última etapa del proyecto, nuestro objetivo será integrar el sistema con Discord, aplicando todo lo aprendido hasta ahora para lograr una versión completa y funcional. Sentimos que esta entrega fue un paso importante hacia esa meta, consolidando la base de un proyecto que creció tanto en su desarrollo técnico como en el trabajo en equipo. 

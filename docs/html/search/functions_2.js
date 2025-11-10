@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['dashboardsummary_0',['DashboardSummary',['../class_library_1_1_dashboard_summary.html#a167d7b38c5bf54e7ca03173c04cb490f',1,'Library::DashboardSummary']]],
+  ['deactivate_1',['Deactivate',['../class_library_1_1_customer.html#a0bd8fc752cc56f35b471adb3896df141',1,'Library::Customer']]],
+  ['delete_2',['Delete',['../class_library_1_1_customer_manager.html#a045be0f378c3989714a90ae7c30c384e',1,'Library::CustomerManager']]],
+  ['delete_5fexistingcustomer_5fremovescustomer_3',['Delete_ExistingCustomer_RemovesCustomer',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a035bd1900aaf23a86ba8010e4be231d7',1,'Library::Tests::CustomerManagerTests']]],
+  ['delete_5fnonexistingcustomer_5fthrowsexception_4',['Delete_NonExistingCustomer_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a55c0d1335e8ea5809883ea9321479d34',1,'Library::Tests::CustomerManagerTests']]],
+  ['delete_5fnullcustomer_5fthrowsexception_5',['Delete_NullCustomer_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a43a0393da325d1a3ab86b9b5a3cf1374',1,'Library::Tests::CustomerManagerTests']]],
+  ['deletecustomer_6',['DeleteCustomer',['../class_library_1_1_facade.html#ad76de5f199da8f7647daa470e381f458',1,'Library::Facade']]],
+  ['deleteseller_7',['DeleteSeller',['../class_library_1_1_seller_manager.html#a9875fe407df8419380c4d7c4d6e606cd',1,'Library::SellerManager']]],
+  ['deleteseller_5fexistingseller_5fremovesfromlist_8',['DeleteSeller_ExistingSeller_RemovesFromList',['../class_library_1_1_tests_1_1_seller_manager_tests.html#a46d7f9259556d0fd14c7cab72a31fa11',1,'Library::Tests::SellerManagerTests']]],
+  ['deleteseller_5fnonexistingseller_5fthrowsexception_9',['DeleteSeller_NonExistingSeller_ThrowsException',['../class_library_1_1_tests_1_1_seller_manager_tests.html#ab71a9cfd3e4846fe9d6db04f297309ae',1,'Library::Tests::SellerManagerTests']]],
+  ['duplicatedcustomerexception_10',['DuplicatedCustomerException',['../class_library_1_1_exceptions_1_1_duplicated_customer_exception.html#aaa3baecc405aa13dbe2e0b58d8a87c3d',1,'Library::Exceptions::DuplicatedCustomerException']]],
+  ['duplicatedcustomerexception_5fcanbethrown_11',['DuplicatedCustomerException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#a392cdc1f8606ecd2699426a305346ce2',1,'Library::Tests::ExceptionsTests']]],
+  ['duplicatedcustomerexception_5fwithcustomer_5fcreateswithcustomerid_12',['DuplicatedCustomerException_WithCustomer_CreatesWithCustomerId',['../class_library_1_1_tests_1_1_exceptions_tests.html#ad955e40864c53e17324a79147bdae78a',1,'Library::Tests::ExceptionsTests']]],
+  ['duplicatesellerexception_13',['DuplicateSellerException',['../class_library_1_1_exceptions_1_1_duplicate_seller_exception.html#a4417e29393571981a7b324a3d80e4526',1,'Library::Exceptions::DuplicateSellerException']]],
+  ['duplicatesellerexception_5fcanbethrown_14',['DuplicateSellerException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#aa0c0830287a1e5f0d53bf7dc14af36c2',1,'Library::Tests::ExceptionsTests']]],
+  ['duplicatesellerexception_5fwithid_5fcreateswithidinmessage_15',['DuplicateSellerException_WithId_CreatesWithIdInMessage',['../class_library_1_1_tests_1_1_exceptions_tests.html#a4ce70a5b50ff69cb7cefbbb51114f1a3',1,'Library::Tests::ExceptionsTests']]],
+  ['duplicatetagexception_16',['DuplicateTagException',['../class_library_1_1_exceptions_1_1_duplicate_tag_exception.html#a2df7cf971fb44c49eed7b6b194b50d14',1,'Library::Exceptions::DuplicateTagException']]],
+  ['duplicatetagexception_5fcanbethrown_17',['DuplicateTagException_CanBeThrown',['../class_library_1_1_tests_1_1_exceptions_tests.html#a75975227d4a43a4a070c0d02934d20af',1,'Library::Tests::ExceptionsTests']]],
+  ['duplicatetagexception_5fwithtagname_5fcreateswithtaginmessage_18',['DuplicateTagException_WithTagName_CreatesWithTagInMessage',['../class_library_1_1_tests_1_1_exceptions_tests.html#a77697662dd5dd38e8acd9fc26c6fc17a',1,'Library::Tests::ExceptionsTests']]]
+];

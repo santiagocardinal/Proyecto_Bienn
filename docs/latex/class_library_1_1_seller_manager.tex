@@ -1,0 +1,104 @@
+\doxysection{Library.\+Seller\+Manager Class Reference}
+\hypertarget{class_library_1_1_seller_manager}{}\label{class_library_1_1_seller_manager}\index{Library.SellerManager@{Library.SellerManager}}
+
+
+Administra la colección global de vendedores del sistema. Se encarga de crear, eliminar, suspender y consultar vendedores, además de gestionar sus interacciones pendientes.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_library_1_1_seller_manager_a0521c6c6b50a8384b501862cdf2c0a4c}{Seller\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_library_1_1_seller_manager_a7c3e8e3ca2add167cb40bc24a1a6007a}{Create\+Seller}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
+\item 
+void \mbox{\hyperlink{class_library_1_1_seller_manager_a9875fe407df8419380c4d7c4d6e606cd}{Delete\+Seller}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
+\item 
+void \mbox{\hyperlink{class_library_1_1_seller_manager_a2b7ede245b6448c165112cc7fab475d4}{Suspend\+Seller}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_seller_manager_ad7d3b8a72271d0c61ddef3fdb2044e77}{Get\+Pending\+Responses}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
+\begin{DoxyCompactList}\small\item\em Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta. Lanza una excepción si el vendedor no existe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}}? \mbox{\hyperlink{class_library_1_1_seller_manager_a8f5a7e672d0ffae75cb6dd99a49a521d}{Search\+By\+Id}} (string id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_seller}{Seller}} $>$ \mbox{\hyperlink{class_library_1_1_seller_manager_a872d6a69e82368e237a9b5f0ffa0daf2}{Sellers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Administra la colección global de vendedores del sistema. Se encarga de crear, eliminar, suspender y consultar vendedores, además de gestionar sus interacciones pendientes. 
+
+\label{doc-constructors}
+\Hypertarget{class_library_1_1_seller_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_library_1_1_seller_manager_a0521c6c6b50a8384b501862cdf2c0a4c}\index{Library.SellerManager@{Library.SellerManager}!SellerManager@{SellerManager}}
+\index{SellerManager@{SellerManager}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{SellerManager()}{SellerManager()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a0521c6c6b50a8384b501862cdf2c0a4c} 
+Library.\+Seller\+Manager.\+Seller\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_seller_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_seller_manager_a7c3e8e3ca2add167cb40bc24a1a6007a}\index{Library.SellerManager@{Library.SellerManager}!CreateSeller@{CreateSeller}}
+\index{CreateSeller@{CreateSeller}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{CreateSeller()}{CreateSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a7c3e8e3ca2add167cb40bc24a1a6007a} 
+void Library.\+Seller\+Manager.\+Create\+Seller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_a9875fe407df8419380c4d7c4d6e606cd}\index{Library.SellerManager@{Library.SellerManager}!DeleteSeller@{DeleteSeller}}
+\index{DeleteSeller@{DeleteSeller}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{DeleteSeller()}{DeleteSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a9875fe407df8419380c4d7c4d6e606cd} 
+void Library.\+Seller\+Manager.\+Delete\+Seller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_ad7d3b8a72271d0c61ddef3fdb2044e77}\index{Library.SellerManager@{Library.SellerManager}!GetPendingResponses@{GetPendingResponses}}
+\index{GetPendingResponses@{GetPendingResponses}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{GetPendingResponses()}{GetPendingResponses()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_ad7d3b8a72271d0c61ddef3fdb2044e77} 
+List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Library.\+Seller\+Manager.\+Get\+Pending\+Responses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+
+
+Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta. Lanza una excepción si el vendedor no existe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seller} & Vendedor cuyas interacciones se analizarán.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Lista de interacciones pendientes de respuesta.
+\end{DoxyReturn}
+\Hypertarget{class_library_1_1_seller_manager_a8f5a7e672d0ffae75cb6dd99a49a521d}\index{Library.SellerManager@{Library.SellerManager}!SearchById@{SearchById}}
+\index{SearchById@{SearchById}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{SearchById()}{SearchById()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a8f5a7e672d0ffae75cb6dd99a49a521d} 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}}? Library.\+Seller\+Manager.\+Search\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_a2b7ede245b6448c165112cc7fab475d4}\index{Library.SellerManager@{Library.SellerManager}!SuspendSeller@{SuspendSeller}}
+\index{SuspendSeller@{SuspendSeller}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{SuspendSeller()}{SuspendSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a2b7ede245b6448c165112cc7fab475d4} 
+void Library.\+Seller\+Manager.\+Suspend\+Seller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-property-members}
+\Hypertarget{class_library_1_1_seller_manager_doc-property-members}
+\doxysubsection{Property Documentation}
+\Hypertarget{class_library_1_1_seller_manager_a872d6a69e82368e237a9b5f0ffa0daf2}\index{Library.SellerManager@{Library.SellerManager}!Sellers@{Sellers}}
+\index{Sellers@{Sellers}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{Sellers}{Sellers}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a872d6a69e82368e237a9b5f0ffa0daf2} 
+List$<$\mbox{\hyperlink{class_library_1_1_seller}{Seller}}$>$ Library.\+Seller\+Manager.\+Sellers\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Library/\mbox{\hyperlink{_seller_manager_8cs}{Seller\+Manager.\+cs}}\end{DoxyCompactItemize}
