@@ -40,6 +40,10 @@ Estamos muy conformes con el desempeño alcanzado y con las devoluciones obtenid
 - Por otro lado, el patrón `Singleton` nos permitió mantener una única instancia de cada manager, garantizando que las listas se manejen de forma estática y global. De esta manera, al acceder a ellas desde cualquier parte del programa, siempre se trabaja con los mismos datos actualizados, evitando duplicaciones y asegurando la coherencia en la gestión de la información.
 - Además, integramos `Doxygen` como herramienta de documentación, lo que nos permitió mantener una descripción clara y profesional del código, detallando clases, métodos y relaciones del sistema. Esto facilita tanto la comprensión interna entre los miembros del equipo como la futura revisión por parte de terceros.
 
+> [!IMPORTANT]   
+> Dado que `Interaction` es una clase abstracta, fue necesario crear una clase concreta llamada **`InteractionRegular`** para realizar las pruebas unitarias.  
+> Esta clase hereda de la abstracta y permitió testear las funcionalidades comunes definidas en la clase base, asegurando el correcto comportamiento de la jerarquía de interacciones y la robustez del diseño orientado a objetos.
+
 **Organización y Trabajo en Equipo**
 
 - A nivel organizacional, logramos planificar y avanzar de manera más estructurada, superando dificultades externas y equilibrando las distintas tareas ajenas a la programación. La experiencia previa nos permitió distribuir mejor las responsabilidades, mejorar la comunicación y mantener un seguimiento más constante del progreso del proyecto.
