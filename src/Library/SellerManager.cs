@@ -86,7 +86,7 @@ public class SellerManager
     }
 
     
-    public Seller? SearchById(string id)
+    public Seller SearchById(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
             throw new ArgumentException("El ID no puede estar vacío.");
