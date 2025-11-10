@@ -7,14 +7,22 @@ using System;
 //using System.Linq;
 //using System.Collections.Generic;
 
+
+/// <summary>
+/// Clase fachada que centraliza las operaciones de clientes, vendedores e interacciones.
+/// Permite acceder a las funcionalidades del sistema sin exponer su estructura interna.
+/// </summary>
 public class Facade
 {
     public static CustomerManager cm = Singleton<CustomerManager>.GetInstance();
     public static SellerManager sm = Singleton<SellerManager>.GetInstance();
 
-    // ---------------------------------------------------------
-    //   CREACIÓN DE CLIENTE
-    // ---------------------------------------------------------
+    
+    /// <summary>
+    /// Crea un nuevo cliente a partir de los datos ingresados y lo agrega al sistema.
+    /// Devuelve un mensaje de éxito o el mensaje de la excepción lanzada.
+    /// </summary>
+
     public static string CreateCustomer(
         string id, string name, string familyName,
         string mail, string phone, string gender, DateTime birthDate)
@@ -30,9 +38,11 @@ public class Facade
             return ex.Message;
         }
     }
-    // ---------------------------------------------------------
-    //   ELIMINACIÓN DE CLIENTE
-    // ---------------------------------------------------------
+    
+    /// <summary>
+    /// Elimina un cliente del sistema según su ID.
+    /// Verifica primero si el ID es válido y si el cliente existe.
+    /// </summary>
     public static string DeleteCustomer(string id)
     {
         try
@@ -119,9 +129,10 @@ public class Facade
         }
     }
 
-    // ---------------------------------------------------------
-    //   MOSTRAR CLIENTES POR VENDEDOR
-    // ---------------------------------------------------------
+    /// <summary>
+    /// Muestra todos los clientes asociados a un vendedor específico.
+    /// Devuelve un listado con los nombres o un mensaje si no hay clientes asignados.
+    /// </summary>
     public static string ShowCustomers_BySellerId(string sellerId)
     {
         try
@@ -333,9 +344,10 @@ public class Facade
         }
     }
 
-    // ---------------------------------------------------------
-    //   REGISTRO CENTRAL DE INTERACCIONES
-    // ---------------------------------------------------------
+    /// <summary>
+    /// Registra de forma centralizada una nueva interacción entre cliente y vendedor.
+    /// Este método es reutilizado por los distintos tipos de interacciones (llamadas, reuniones, etc.).  
+    /// </summary>
     private static string RegisterInteraction(Interaction interaction, Customer customer, Seller seller)
     {
         try
@@ -441,9 +453,10 @@ public class Facade
         }
     }
 
-    // ---------------------------------------------------------
-    //   SALE DESDE QUOTE
-    // ---------------------------------------------------------
+    /// <summary>
+    /// Genera una venta a partir de una cotización previa (Quote).
+    /// Verifica que la cotización coincida con los datos provistos antes de crear la venta.
+    /// </summary>
     public static string SaleFromQuote(
         string sellerId,
         string customerId,
