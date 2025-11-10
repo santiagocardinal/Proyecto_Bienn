@@ -14,6 +14,11 @@ namespace Library;
 
 //using System.Linq;
 
+/// <summary>
+/// Administra la colección global de clientes del sistema.
+/// Provee métodos para CRUD, búsquedas, registro de interacciones
+/// y generación de reportes.
+/// </summary>
 public class CustomerManager
 {
     private List<Customer> customers;
@@ -120,6 +125,14 @@ public class CustomerManager
         customers.Remove(customer);
     }
 
+    /// <summary>
+    /// Modifica un campo específico de un cliente según su ID.
+    /// Soporta cambios en nombre, apellido, mail, teléfono, género o fecha de nacimiento.
+    /// </summary>
+    /// <param name="id">Identificador del cliente a modificar.</param>
+    /// <param name="field">Nombre del campo a cambiar (en minúsculas).</param>
+    /// <param name="newValue">Nuevo valor para el campo.</param>
+
     public void Modify(string id, string field, string newValue)
     {
         Customer existing = SearchById(id);
@@ -155,6 +168,11 @@ public class CustomerManager
 
     // ---------------- INTERACTIONS ----------------
 
+    /// <summary>
+    /// Registra una interacción entre un cliente y un vendedor.
+    /// Actualiza el estado del cliente según el tipo de intercambio
+    /// (Recibido o Enviado) y asocia la interacción a ambos.
+    /// </summary>
     public void RegisterInteraction(Customer customer, Seller seller, Interaction interaction)
     {
         if (customer == null)

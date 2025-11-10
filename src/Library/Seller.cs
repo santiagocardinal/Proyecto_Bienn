@@ -5,6 +5,11 @@ namespace Library;
 // LSP: Seller es un User y puede sustituirlo en cualquier contexto.
 // SRP: Seller tiene la responsabilidad de gestionar las interacciones
 // y relaciones comerciales de un vendedor.
+
+/// <summary>
+/// Representa a un vendedor del sistema.
+/// Gestiona sus clientes, interacciones y ventas, además de su estado de suspensión.
+/// </summary>
 public class Seller : User
 {
     private bool isSuspended;

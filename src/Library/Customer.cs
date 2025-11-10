@@ -4,6 +4,12 @@ namespace Library;
 // y gestionar su información personal, sus etiquetas e interacciones.
 // EXPERT: Customer es el experto en conocer toda la información relacionada
 // con un cliente específico.
+
+/// <summary>
+/// Representa a un cliente del sistema, con su información personal,
+/// etiquetas e historial de interacciones.
+/// Contiene comportamientos para gestionar su estado y sus relaciones.
+/// </summary>
 public class Customer
 {
     private string id;
@@ -137,6 +143,13 @@ public class Customer
     // POLIMORFISMO: Utiliza genéricos y pattern matching para filtrar
     // interacciones por tipo. Aprovecha que T debe ser un subtipo de Interaction
     // SRP: Responsabilidad específica de filtrar interacciones por tipo
+    
+    /// <summary>
+    /// Filtra las interacciones del cliente por tipo utilizando genéricos.
+    /// Devuelve solo las interacciones que coincidan con el tipo especificado.
+    /// </summary>
+    /// <typeparam name="T">Tipo de interacción (por ejemplo: Sale, Meeting, Call).</typeparam>
+    /// <returns>Lista de interacciones del tipo solicitado.</returns>
     public List<T> GetInteractionsByType<T>() where T : Interaction
     {
         List<T> result = new List<T>();

@@ -8,6 +8,11 @@ namespace Library;
 //using Library.Exceptions;
 //using System.Linq;
 
+/// <summary>
+/// Administra la colección global de vendedores del sistema.
+/// Se encarga de crear, eliminar, suspender y consultar vendedores,
+/// además de gestionar sus interacciones pendientes.
+/// </summary>
 public class SellerManager
 {
     private List<Seller> sellers = new List<Seller>();
@@ -23,92 +28,7 @@ public class SellerManager
         this.Sellers = new List<Seller>();
     }
     
-    // Crear Vendedor
-    /*public void CreateSeller(Seller seller)
-    {
-        if (seller == null)
-            throw new ArgumentNullException(nameof(seller));
-
-        if (SearchById(seller.Id) != null)
-            throw new Exceptions.DuplicateSellerException(seller.Id);
-
-        this.Sellers.Add(seller);
-    }
-    public void CreateSeller(Seller seller)
-    {
-        if (seller == null)
-            throw new ArgumentNullException(nameof(seller));
-
-        // ✅ Buscar directamente sin lanzar excepción
-        if (sellers.Any(s => s.Id.Equals(seller.Id, StringComparison.OrdinalIgnoreCase)))
-            throw new Exceptions.DuplicateSellerException(seller.Id);
-
-        this.Sellers.Add(seller);
-    }
-
-    // Eliminar Vendedor
-    public void DeleteSeller(Seller seller)
-    {
-        if (seller == null)
-            throw new ArgumentNullException(nameof(seller));
-
-        if (!this.Sellers.Contains(seller))
-            throw new Exceptions.SellerNotFoundException(seller.Id);
-
-        this.Sellers.Remove(seller);
-    }
-
-    // Suspender
-    public void SuspendSeller(Seller seller)
-    {
-        if (seller == null)
-            throw new ArgumentNullException(nameof(seller));
-
-        if (!this.Sellers.Contains(seller))
-            throw new Exceptions.SellerNotFoundException(seller.Id);
-
-        seller.IsSuspended = true;
-    }
-
-    // Interacciones sin responder
-    public List<Interaction> GetPendingResponses(Seller seller)
-    {
-        if (seller == null)
-            throw new ArgumentNullException(nameof(seller));
-
-        if (!this.Sellers.Contains(seller))
-            throw new Exceptions.SellerNotFoundException(seller.Id);
-
-        return seller.Interactions
-            .Where(i => i.Type == ExchangeType.Received && !i.HasResponse)
-            .ToList();
-    }
-
-    // Búsqueda por ID
-    /*public Seller SearchById(string id)
-    {
-        if (string.IsNullOrWhiteSpace(id))
-            throw new ArgumentException("El ID no puede estar vacío.");
-
-        return sellers
-            .FirstOrDefault(s => s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
-        
-        
-    }*/
-    /*
-    public Seller SearchById(string id)
-    {
-        if (string.IsNullOrWhiteSpace(id))
-            throw new ArgumentException("El ID no puede estar vacío.");
-
-        Seller? s = sellers.FirstOrDefault(seller =>
-            seller.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
-
-        if (s == null)
-            throw new Exceptions.SellerNotFoundException(id);
-
-        return s;
-    }*/
+    
     // Crear Vendedor
     public void CreateSeller(Seller seller)
     {
@@ -121,16 +41,7 @@ public class SellerManager
 
         this.Sellers.Add(seller);
     }
-
-    // Eliminar Vendedor
-    /*public void DeleteSeller(Seller seller)
-    {
-        if (seller == null)
-            throw new ArgumentNullException(nameof(seller));
-
-        // No lanza excepción si no existe, solo intenta remover
-        this.Sellers.Remove(seller);
-    }*/
+    //Eliminar Vendedor
     public void DeleteSeller(Seller seller)
     {
         if (seller == null)
@@ -154,7 +65,13 @@ public class SellerManager
         seller.IsSuspended = true;
     }
 
-    // Interacciones sin responder
+    /// <summary>
+    /// Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta.
+    /// Lanza una excepción si el vendedor no existe.
+    /// </summary>
+    /// <param name="seller">Vendedor cuyas interacciones se analizarán.</param>
+    /// <returns>Lista de interacciones pendientes de respuesta.</returns>
+
     public List<Interaction> GetPendingResponses(Seller seller)
     {
         if (seller == null)
@@ -168,15 +85,7 @@ public class SellerManager
             .ToList();
     }
 
-    // Búsqueda por ID - retorna null si no encuentra
-    /*public Seller? SearchById(string id)
-    {
-        if (string.IsNullOrWhiteSpace(id))
-            throw new ArgumentException("El ID no puede estar vacío.");
-
-        return sellers.FirstOrDefault(s => 
-            s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
-    }*/
+    
     public Seller? SearchById(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
