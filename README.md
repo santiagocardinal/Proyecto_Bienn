@@ -11,7 +11,7 @@
 - Cobertura de pruebas unitarias con `NUnit`, este proceso tomó tiempo considerable pero resultó fundamental para validar comportamientos y detectar errores tempranamente, estableciendo una base sólida para el desarrollo futuro.
 - El uso de `GitHub` como herramienta de gestión nos obligó a aprender manejo de ramas, resolución de conflictos y coordinación de tareas simultáneas. La curva de aprendizaje fue pronunciada pero necesaria.
 
-> [!INFO]  
+> [!IMPORTANT]   
 > Dado que **`Interaction`** es una clase abstracta, fue necesario crear una clase concreta llamada **`InteractionRegular`** para realizar las pruebas unitarias.  
 > Esta clase hereda de la abstracta y permitió testear las funcionalidades comunes definidas en la clase base, asegurando el correcto comportamiento de la jerarquía de interacciones y la robustez del diseño orientado a objetos.
 
