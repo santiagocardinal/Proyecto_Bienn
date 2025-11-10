@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "CHATBOT CRM", "index.html", [
+  [ "Proyecto CRM integrado con ChatBot", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ],
       [ "Package Members", "namespacemembers.html", [
