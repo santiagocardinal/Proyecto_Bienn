@@ -53,3 +53,6 @@ Estamos muy conformes con el desempeño alcanzado y con las devoluciones obtenid
 
 En esta segunda entrega pudimos ver reflejado el crecimiento del equipo tanto a nivel técnico como organizativo. La incorporación de los patrones `Singleton` y `Facade`, junto con el uso de `Doxygen`, nos permitió estructurar mejor el sistema y hacerlo más accesible para los usuarios. Aprendimos a planificar con más precisión, a documentar de manera profesional y a mantener una comunicación fluida entre todos los integrantes. De cara a la última etapa del proyecto, nuestro objetivo será integrar el sistema con Discord, aplicando todo lo aprendido hasta ahora para lograr una versión completa y funcional. Sentimos que esta entrega fue un paso importante hacia esa meta, consolidando la base de un proyecto que creció tanto en su desarrollo técnico como en el trabajo en equipo.
 
+> [!NOTE]
+> En el siguiente link se podrán encontrar con la web de la documentación:
+> https://santiagocardinal.github.io/Proyecto_Bienn/html/index.html
