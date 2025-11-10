@@ -30,7 +30,28 @@ public class Facade
             return ex.Message;
         }
     }
+    // ---------------------------------------------------------
+    //   ELIMINACIÓN DE CLIENTE
+    // ---------------------------------------------------------
+    public static string DeleteCustomer(string id)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                throw new ArgumentException("El ID no puede estar vacío.");
 
+            Customer customerToRemove = cm.SearchById(id);
+            // Si no existe, SearchById ya lanza NotExistingCustomerException
+
+            cm.Customers.Remove(customerToRemove);
+
+            return "Cliente eliminado correctamente.";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
     // ---------------------------------------------------------
     //   MODIFICACIÓN DE CLIENTE
     // ---------------------------------------------------------
