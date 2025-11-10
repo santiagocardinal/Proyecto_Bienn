@@ -1,12 +1,5 @@
 namespace Library;
 using System;
-//MI GENTE LATINO
-//MISTER WORDWIDE, FIESTA
-//DALE
-
-//using System.Linq;
-//using System.Collections.Generic;
-
 
 /// <summary>
 /// Clase fachada que centraliza las operaciones de clientes, vendedores e interacciones.
