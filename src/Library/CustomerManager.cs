@@ -79,16 +79,7 @@ public class CustomerManager
 
         return c;
     }
-
-    /*public Customer SearchById(string id)
-    {
-        if (string.IsNullOrWhiteSpace(id))
-            throw new ArgumentException("El ID no puede estar vacío.");
-
-        return customers.FirstOrDefault(c =>
-            c.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
-    }*/
-
+    
     public Customer SearchById(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
@@ -102,7 +93,6 @@ public class CustomerManager
 
         return c;
     }
-
 
     // ---------------- CRUD DE CUSTOMER ----------------
 
