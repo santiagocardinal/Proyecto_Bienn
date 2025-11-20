@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Ucu.Poo.DiscordDemo.DiscordBot.Services;
 
-namespace Ucu.Poo.DiscordDemo.DiscordBot.Services
+namespace Library
 {
     /// <summary>
     /// Esta clase ejecuta el bot de Discord hasta que en la terminal donde se

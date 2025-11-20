@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace Ucu.Poo.DiscordDemo.DiscordBot.Commands
+namespace Library
 {
 
     /// <summary>

@@ -1,7 +1,7 @@
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace Ucu.Poo.DiscordDemo.DiscordBot.Commands
+namespace Library
 {
     public static class CommandHelper
     {
