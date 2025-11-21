@@ -17,7 +17,7 @@ namespace Library
         {
             if (string.IsNullOrWhiteSpace(customerId))
             {
-                await ReplyAsync("❌ Debes ingresar un ID. Ejemplo: `!searchcustomer C1`");
+                await ReplyAsync("Debes ingresar un ID. Ejemplo: `!searchcustomer C1`");
                 return;
             }
 

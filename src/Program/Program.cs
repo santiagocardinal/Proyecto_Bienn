@@ -14,8 +14,13 @@ namespace Program
         /// <summary>
         /// Punto de entrada al programa.
         /// </summary>
+        
+        
         public static async Task Main(string[] args)
         {
+            Facade.cm.AddCustomer(new Customer("C1", "Juan", "Perez", "mail@mail.com", "099", "M", DateTime.Now));
+            Facade.sm.CreateSeller(new Seller("Carlos", "carlos@mail.com", "099111222", "S1"));
+
             if (args.Length != 0)
             {
                 DemoFacade(args);
