@@ -1,27 +1,28 @@
 using System.Threading.Tasks;
 using Discord.Commands;
-using Discord.WebSocket;
+using Library;
 
 namespace Library
 {
     /// <summary>
-    /// Esta clase implementa el comando 'showcustomers' del bot.
-    /// Este comando muestra todos los clientes asignados a un vendedor específico.
+    /// Implementa el comando 'searchcustomer' del bot.
+    /// Busca un cliente según su ID dentro del sistema.
     /// </summary>
-    // ReSharper disable once UnusedType.Global
-    public class ShowCustomersCommand : ModuleBase<SocketCommandContext>
+    public class SearchCustomerCommand : ModuleBase<SocketCommandContext>
     {
-        /// <summary>
-        /// Implementa el comando 'showcustomers'.
-        /// </summary>
-        /// <param name="sellerId">El ID del vendedor.</param>
-        [Command("showcustomers")]
-        [Summary("Muestra todos los clientes asignados a un vendedor. Uso: !showcustomers <sellerId>")]
-        // ReSharper disable once UnusedMember.Global
+        [Command("searchcustomer")]
+        [Summary("Busca un cliente por su ID. Uso: !searchcustomer <id>")]
         public async Task ExecuteAsync(
-            [Summary("El ID del vendedor")] string sellerId)
+            [Summary("El ID del cliente")] string customerId)
         {
-            string result = Facade.ShowCustomers_BySellerId(sellerId);
+            if (string.IsNullOrWhiteSpace(customerId))
+            {
+                await ReplyAsync("❌ Debes ingresar un ID. Ejemplo: `!searchcustomer C1`");
+                return;
+            }
+
+            string result = Facade.SearchCustomer_ById(customerId);
+
             await ReplyAsync(result);
         }
     }

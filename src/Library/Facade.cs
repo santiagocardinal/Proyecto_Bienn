@@ -74,6 +74,26 @@ public class Facade
     // ---------------------------------------------------------
     //   BÚSQUEDAS
     // ---------------------------------------------------------
+    
+    public static string SearchCustomer_ById(string id)
+    {
+        try
+        {
+            Customer c = cm.SearchById(id);
+
+            return $"Cliente encontrado:\n" +
+                   $"- ID: {c.Id}\n" +
+                   $"- Nombre: {c.Name} {c.FamilyName}\n" +
+                   $"- Mail: {c.Mail}\n" +
+                   $"- Teléfono: {c.Phone}";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+
     public static string SearchCostumer_ByName(string name)
     {
         try
