@@ -1,9 +1,44 @@
-﻿namespace Program;
+﻿using System;
+using System.Threading.Tasks;
 
-class Program
+using DiscordBot.Services;
+using Library;
+
+namespace Program
 {
-    static void Main(string[] args)
+    /// <summary>
+    /// Un programa que implementa un bot de Discord.
+    /// </summary>
+    internal static class Program
     {
-        Console.WriteLine("Hello, World!");
+        /// <summary>
+        /// Punto de entrada al programa.
+        /// </summary>
+        public static async Task Main(string[] args)
+        {
+            if (args.Length != 0)
+            {
+                DemoFacade(args);
+            }
+            else
+            {
+                await DemoBot(); // <--- IMPORTANTE
+            }
+        }
+
+        private static void DemoFacade(string [] args)
+        {
+            if (args.Length > 0)
+            {
+                Console.WriteLine(Facade.SearchCostumer_ByFamilyName("Algo"));
+            }
+        }
+
+        private static async Task DemoBot()  // <--- async Task
+        {
+            await BotLoader.LoadAsync();     // <--- await
+        }
+        
     }
 }
+

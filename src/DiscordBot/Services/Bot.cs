@@ -8,7 +8,7 @@ using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 
-namespace Ucu.Poo.DiscordDemo.DiscordBot.Services
+namespace DiscordBot.Services
 {
     /// <summary>
     /// Esta clase implementa el bot de Discord.
@@ -31,6 +31,7 @@ namespace Ucu.Poo.DiscordDemo.DiscordBot.Services
                 AlwaysDownloadUsers = true,
                 GatewayIntents =
                     GatewayIntents.AllUnprivileged
+                    | GatewayIntents.GuildMembers
                     | GatewayIntents.MessageContent
             };
 
