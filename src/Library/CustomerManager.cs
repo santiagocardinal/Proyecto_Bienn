@@ -36,21 +36,47 @@ public class CustomerManager
 
     // ---------------- BÚSQUEDAS ----------------
 
-    public Customer SearchByName(string name)
+    public List<Customer> SearchByName(string name)
     {
-        Customer c = customers.FirstOrDefault(cu =>
+        
+        if (string.IsNullOrWhiteSpace(name))
+            throw new Exceptions.InvalidFieldException("El apellido no puede estar vacío.");
+
+        // normalizamos
+        string normalized = name.Trim().ToLower();
+
+        var list = customers
+            .Where(c => c.Name.Trim().ToLower() == normalized)
+            .ToList();
+
+        if (list.Count == 0)
+            throw new Exceptions.NotExistingCustomerException();
+
+        return list;
+        /*Customer c = customers.FirstOrDefault(cu =>
             cu.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
         if (c == null)
             throw new Exceptions.NotExistingCustomerException();
 
-        return c;
+        return c;*/
     }
 
     public Customer SearchByMail(string mail)
     {
         Customer c = customers.FirstOrDefault(cu =>
             cu.Mail.Equals(mail, StringComparison.OrdinalIgnoreCase));
+
+        if (c == null)
+            throw new Exceptions.NotExistingCustomerException();
+
+        return c;
+    }
+    
+    public Customer SearchByPhone(string phone)
+    {
+        Customer c = customers.FirstOrDefault(cu =>
+            cu.Phone.Equals(phone));
 
         if (c == null)
             throw new Exceptions.NotExistingCustomerException();
@@ -86,18 +112,7 @@ public class CustomerManager
 
         return list;
     }
-
-
-    public Customer SearchByPhone(string phone)
-    {
-        Customer c = customers.FirstOrDefault(cu =>
-            cu.Phone.Equals(phone));
-
-        if (c == null)
-            throw new Exceptions.NotExistingCustomerException();
-
-        return c;
-    }
+    
     
     public Customer SearchById(string id)
     {

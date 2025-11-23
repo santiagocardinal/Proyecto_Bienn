@@ -94,7 +94,7 @@ public class Facade
     }
 
 
-    public static string SearchCostumer_ByName(string name)
+    /*public static string SearchCostumer_ByName(string name)
     {
         try
         {
@@ -110,7 +110,31 @@ public class Facade
         {
             return ex.Message;
         }
+    }*/
+    
+    public static string SearchCostumer_ByName(string name)
+    {
+        try
+        {
+            List<Customer> customers = cm.SearchByName(name);
+
+            string result = $"Clientes con nombre '{name}':\n";
+
+            foreach (Customer c in customers)
+            {
+                result += $"- {c.Name} {c.FamilyName} (ID: {c.Id})\n";
+            }
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
     }
+    
+    
+    
 
     /*public static string SearchCostumer_ByFamilyName(string familyname)
     {
@@ -156,7 +180,13 @@ public class Facade
     {
         try
         {
-            return cm.SearchByPhone(phone).Phone;
+            Customer c = cm.SearchByPhone(phone);
+
+            return $"Cliente encontrado:\n" +
+                   $"- ID: {c.Id}\n" +
+                   $"- Nombre: {c.Name} {c.FamilyName}\n" +
+                   $"- Mail: {c.Mail}\n" +
+                   $"- Teléfono: {c.Phone}";
         }
         catch (Exception ex)
         {
