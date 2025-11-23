@@ -94,4 +94,5 @@ public class SellerManager
         return sellers.FirstOrDefault(s => 
             s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
     }
+    
 }

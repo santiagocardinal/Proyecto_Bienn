@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Discord.Interactions;
 
 namespace DiscordBot.Services
 {
@@ -20,6 +21,9 @@ namespace DiscordBot.Services
         private readonly IConfiguration configuration;
         private readonly DiscordSocketClient client;
         private readonly CommandService commands;
+
+        // 🔥 AGREGADO: InteractionService para slash commands
+        private readonly InteractionService interactions;
 
         public Bot(ILogger<Bot> logger, IConfiguration configuration)
         {
@@ -37,29 +41,49 @@ namespace DiscordBot.Services
 
             client = new DiscordSocketClient(config);
             commands = new CommandService();
+
+            // 🔥 AGREGADO
+            interactions = new InteractionService(client);
         }
 
         public async Task StartAsync(ServiceProvider services)
         {
-            string discordToken = configuration["DiscordToken"];
-            if (discordToken == null)
-            {
-                throw new Exception("Falta el token");
-            }
-
-            logger.LogInformation($"Iniciando el con token {discordToken}");
-
             serviceProvider = services;
 
-            await commands.AddModulesAsync(Assembly.GetExecutingAssembly(),
-                serviceProvider);
+            string discordToken = configuration["DiscordToken"];
+            if (discordToken == null)
+                throw new Exception("Falta el token");
+
+            logger.LogInformation($"Iniciando bot...");
+
+            // Carga módulos de comandos de texto !
+            await commands.AddModulesAsync(Assembly.GetExecutingAssembly(), serviceProvider);
+
+            // 🔥 Carga módulos de slash commands /
+            await interactions.AddModulesAsync(Assembly.GetExecutingAssembly(), serviceProvider);
+
             client.Log += Log;
+
+            // Manejar comandos de texto "!"
+            client.MessageReceived += HandleCommandAsync;
+
+            // 🔥 Manejar slash commands "/"
+            client.InteractionCreated += HandleInteractionAsync;
+
+            // 🔥 Registrar slash commands cuando el bot está listo
+            client.Ready += async () =>
+            {
+                ulong guildId = 1440397599608803459; // <- PEGAR ACÁ EL ID DE TU SERVIDOR
+
+                await interactions.RegisterCommandsToGuildAsync(guildId);
+
+                logger.LogInformation("Slash commands registrados en el servidor.");
+            };
+
             await client.LoginAsync(TokenType.Bot, discordToken);
             await client.StartAsync();
-
-            client.MessageReceived += HandleCommandAsync;
         }
-        
+
         private static Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
@@ -73,23 +97,38 @@ namespace DiscordBot.Services
             await client.StopAsync();
         }
 
+        // 🔵 Comandos texto !
         private async Task HandleCommandAsync(SocketMessage arg)
         {
             var message = arg as SocketUserMessage;
             if (message == null || message.Author.IsBot)
-            {
                 return;
-            }
 
             int position = 0;
-            bool messageIsCommand = message.HasCharPrefix('!', ref position);
-
-            if (messageIsCommand)
+            if (message.HasCharPrefix('!', ref position))
             {
                 await commands.ExecuteAsync(
                     new SocketCommandContext(client, message),
                     position,
                     serviceProvider);
+            }
+        }
+
+        // 🔵 Slash commands /
+        private async Task HandleInteractionAsync(SocketInteraction interaction)
+        {
+            try
+            {
+                var context = new SocketInteractionContext(client, interaction);
+                await interactions.ExecuteCommandAsync(context, serviceProvider);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+
+                if (interaction.Type == InteractionType.ApplicationCommand)
+                    await interaction.GetOriginalResponseAsync()
+                        .ContinueWith(async msg => await msg.Result.DeleteAsync());
             }
         }
     }

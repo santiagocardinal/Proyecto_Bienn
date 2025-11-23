@@ -371,6 +371,58 @@ public class Facade
         }
     }
 
+    
+    
+    public static string CreateSeller(
+        string id, string name, string mail, 
+        string phone, string password)
+    {
+        try
+        {
+            const string adminPassword = "1234"; // la cambiás por la real
+
+            if (password != adminPassword)
+                throw new Exception("Contraseña incorrecta. No tienes permisos para crear vendedores.");
+
+            Seller seller = new Seller(name, mail, phone, id);
+
+            sm.CreateSeller(seller);
+
+            return "Vendedor creado correctamente.";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+    // ---------------------------------------------------------
+//   BÚSQUEDAS DE SELLER
+// ---------------------------------------------------------
+
+    public static string SearchSeller_ById(string id)
+    {
+        try
+        {
+            Seller seller = sm.SearchById(id);
+
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException(id);
+
+            return $"Vendedor encontrado:\n" +
+                   $"- ID: {seller.Id}\n" +
+                   $"- Nombre: {seller.Name}\n" +
+                   $"- Mail: {seller.Mail}\n" +
+                   $"- Teléfono: {seller.Phone}\n" +
+                   $"- Suspendido: {(seller.IsSuspended ? "Sí" : "No")}";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+    
+    
     // ---------------------------------------------------------
     //   ASIGNAR CLIENTE A VENDEDOR
     // ---------------------------------------------------------
@@ -397,6 +449,11 @@ public class Facade
         }
     }
 
+    
+    
+    
+    
+    
     /// <summary>
     /// Registra de forma centralizada una nueva interacción entre cliente y vendedor.
     /// Este método es reutilizado por los distintos tipos de interacciones (llamadas, reuniones, etc.).  
@@ -413,7 +470,9 @@ public class Facade
             return ex.Message;
         }
     }
-
+    
+    
+    
     // --------------------------- REGISTROS ---------------------------
 
     public static string CallRegister(DateTime date, string topic, ExchangeType type, string customerId,
