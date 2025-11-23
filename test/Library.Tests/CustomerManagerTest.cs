@@ -22,11 +22,16 @@ public class CustomerManagerTests
         _customerManager.AddCustomer(_testCustomer);
         
         // Act
-        Customer result = _customerManager.SearchByName("Juan");
+        List<Customer> result = _customerManager.SearchByName("Juan");
         
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Name, Is.EqualTo("Juan"));
+        
+        foreach (Customer c in result)
+        {
+            Assert.That(c.Name, Is.EqualTo("Juan"));
+        }
+        
     }
 
     [Test]
@@ -42,13 +47,16 @@ public class CustomerManagerTests
     {
         // Arrange
         _customerManager.AddCustomer(_testCustomer);
-        
+        //REVISAR
         // Act
-        Customer result = _customerManager.SearchByName("JUAN");
+        List<Customer> result = _customerManager.SearchByName("JUAN");
         
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Name, Is.EqualTo("Juan"));
+        foreach (Customer c in result)
+        {
+            Assert.That(c.Name, Is.EqualTo("Juan"));
+        }
     }
 
     
@@ -95,11 +103,16 @@ public class CustomerManagerTests
         _customerManager.AddCustomer(_testCustomer);
         
         // Act
-        Customer result = _customerManager.SearchByFamilyName("Pérez");
+        List<Customer> result = _customerManager.SearchByFamilyName("Pérez");
         
         // Assert
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.FamilyName, Is.EqualTo("Pérez"));
+        Assert.That(result.Count, Is.GreaterThan(0));
+
+        foreach (Customer c in result)
+        {
+            Assert.That(c.FamilyName, Is.EqualTo("Pérez"));
+        }
     }
 
     [Test]
