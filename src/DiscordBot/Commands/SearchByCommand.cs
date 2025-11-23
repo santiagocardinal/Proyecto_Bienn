@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Library;
@@ -5,24 +6,46 @@ using Library;
 namespace Library
 {
     /// <summary>
-    /// Implementa el comando 'searchcustomer' del bot.
-    /// Busca un cliente según su ID dentro del sistema.
+    /// Comando para buscar un cliente por correo electrónico.
+    /// Uso: !searchCustomerByMail correo@ejemplo.com
     /// </summary>
-    public class SearchCustomerCommand : ModuleBase<SocketCommandContext>
+    public class SearchCustomerByMailCommand : ModuleBase<SocketCommandContext>
     {
-        [Command("searchcustomer")]
-        [Summary("Busca un cliente por su ID. Uso: !searchcustomer <id>")]
-        public async Task ExecuteAsync(
-            [Summary("El ID del cliente")] string customerId)
+        [Command("searchCustomerByMail")]
+        [Summary("Busca un cliente por su dirección de correo electrónico.")]
+        public async Task ExecuteAsync(string mail)
         {
-            if (string.IsNullOrWhiteSpace(customerId))
-            {
-                await ReplyAsync("Debes ingresar un ID. Ejemplo: `!searchcustomer C1`");
-                return;
-            }
+            string result = Facade.SearchCostumer_ByMail(mail);
+            await ReplyAsync(result);
+        }
+    }
 
-            string result = Facade.SearchCustomer_ById(customerId);
+    /// <summary>
+    /// Comando para buscar un cliente por apellido.
+    /// Uso: !searchCustomerByFamilyName Apellido
+    /// </summary>
+    public class SearchCustomerByFamilyNameCommand : ModuleBase<SocketCommandContext>
+    {
+        [Command("searchCustomerByFamilyName")]
+        [Summary("Busca un cliente por su apellido.")]
+        public async Task ExecuteAsync(string familyName)
+        {
+            string result = Facade.SearchCostumer_ByFamilyName(familyName);
+            await ReplyAsync(result);
+        }
+    }
 
+    /// <summary>
+    /// Comando para buscar un cliente por ID.
+    /// Uso: !searchCustomerById C1
+    /// </summary>
+    public class SearchCustomerByIdCommand : ModuleBase<SocketCommandContext>
+    {
+        [Command("searchCustomerById")]
+        [Summary("Busca un cliente por su ID y muestra toda su información.")]
+        public async Task ExecuteAsync(string id)
+        {
+            string result = Facade.SearchCustomer_ById(id);
             await ReplyAsync(result);
         }
     }
