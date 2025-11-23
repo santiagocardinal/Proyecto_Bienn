@@ -98,7 +98,13 @@ public class Facade
     {
         try
         {
-            return cm.SearchByName(name).Name;
+            Customer c = cm.SearchByName(name);
+
+            return $"Cliente encontrado:\n" +
+                   $"- ID: {c.Id}\n" +
+                   $"- Nombre: {c.Name} {c.FamilyName}\n" +
+                   $"- Mail: {c.Mail}\n" +
+                   $"- Teléfono: {c.Phone}";
         }
         catch (Exception ex)
         {
@@ -106,17 +112,45 @@ public class Facade
         }
     }
 
+    /*public static string SearchCostumer_ByFamilyName(string familyname)
+    {
+        try
+        {
+            Customer c = cm.SearchByFamilyName(familyname);
+
+            return $"Cliente encontrado:\n" +
+                   $"- ID: {c.Id}\n" +
+                   $"- Nombre: {c.Name} {c.FamilyName}\n" +
+                   $"- Mail: {c.Mail}\n" +
+                   $"- Teléfono: {c.Phone}";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }*/
+    
     public static string SearchCostumer_ByFamilyName(string familyname)
     {
         try
         {
-            return cm.SearchByFamilyName(familyname).FamilyName;
+            List<Customer> customers = cm.SearchByFamilyName(familyname);
+
+            string result = $"Clientes con apellido '{familyname}':\n";
+
+            foreach (Customer c in customers)
+            {
+                result += $"- {c.Name} {c.FamilyName} (ID: {c.Id})\n";
+            }
+
+            return result;
         }
         catch (Exception ex)
         {
             return ex.Message;
         }
     }
+
 
     public static string SearchCostumer_ByPhone(string phone)
     {
@@ -134,7 +168,13 @@ public class Facade
     {
         try
         {
-            return cm.SearchByMail(mail).Mail;
+            Customer c = cm.SearchByMail(mail);
+
+            return $"Cliente encontrado:\n" +
+                   $"- ID: {c.Id}\n" +
+                   $"- Nombre: {c.Name} {c.FamilyName}\n" +
+                   $"- Mail: {c.Mail}\n" +
+                   $"- Teléfono: {c.Phone}";
         }
         catch (Exception ex)
         {

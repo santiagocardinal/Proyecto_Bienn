@@ -58,7 +58,7 @@ public class CustomerManager
         return c;
     }
 
-    public Customer SearchByFamilyName(string familyname)
+    /*public Customer SearchByFamilyName(string familyname)
     {
         Customer c = customers.FirstOrDefault(cu =>
             cu.FamilyName.Equals(familyname, StringComparison.OrdinalIgnoreCase));
@@ -67,7 +67,26 @@ public class CustomerManager
             throw new Exceptions.NotExistingCustomerException();
 
         return c;
+    }*/
+    
+    public List<Customer> SearchByFamilyName(string familyname)
+    {
+        if (string.IsNullOrWhiteSpace(familyname))
+            throw new Exceptions.InvalidFieldException("El apellido no puede estar vacío.");
+
+        // normalizamos
+        string normalized = familyname.Trim().ToLower();
+
+        var list = customers
+            .Where(c => c.FamilyName.Trim().ToLower() == normalized)
+            .ToList();
+
+        if (list.Count == 0)
+            throw new Exceptions.NotExistingCustomerException();
+
+        return list;
     }
+
 
     public Customer SearchByPhone(string phone)
     {
