@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Discord.Commands;
 using Library;
@@ -46,6 +45,36 @@ namespace Library
         public async Task ExecuteAsync(string id)
         {
             string result = Facade.SearchCustomer_ById(id);
+            await ReplyAsync(result);
+        }
+    }
+
+    /// <summary>
+    /// Comando para buscar un cliente por su nombre.
+    /// Uso: !searchCustomerByName Juan
+    /// </summary>
+    public class SearchCustomerByNameCommand : ModuleBase<SocketCommandContext>
+    {
+        [Command("searchCustomerByName")]
+        [Summary("Busca un cliente por su nombre.")]
+        public async Task ExecuteAsync(string name)
+        {
+            string result = Facade.SearchCostumer_ByName(name);
+            await ReplyAsync(result);
+        }
+    }
+
+    /// <summary>
+    /// Comando para buscar un cliente por teléfono.
+    /// Uso: !searchCustomerByPhone 099123456
+    /// </summary>
+    public class SearchCustomerByPhoneCommand : ModuleBase<SocketCommandContext>
+    {
+        [Command("searchCustomerByPhone")]
+        [Summary("Busca un cliente por su número de teléfono.")]
+        public async Task ExecuteAsync(string phone)
+        {
+            string result = Facade.SearchCostumer_ByPhone(phone);
             await ReplyAsync(result);
         }
     }
