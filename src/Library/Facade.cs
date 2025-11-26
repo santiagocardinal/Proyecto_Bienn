@@ -259,7 +259,7 @@ public class Facade
     }
     
     
-    public string CreateTag(string tagId, string tagName, string tagDescription)
+    public static string CreateTag(string tagId, string tagName, string tagDescription)
     {
         try
         {
@@ -286,7 +286,7 @@ public class Facade
     // ---------------------------------------------------------
     //   AGREGAR TAG A CLIENTE
     // ---------------------------------------------------------
-    public string AddTag_Customer(string customerId, string tagId)
+    public static string AddTag_Customer(string customerId, string tagId)
     {
         try
         {

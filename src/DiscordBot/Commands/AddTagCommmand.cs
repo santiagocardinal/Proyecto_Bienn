@@ -18,7 +18,7 @@ namespace Library
             string tagName,
             string tagDescription)
         {
-            string result = Facade.AddTag_Customer(customerId, tagId, tagName, tagDescription);
+            string result = Facade.AddTag_Customer(customerId, tagId);
             await ReplyAsync(result);
         }
     }
