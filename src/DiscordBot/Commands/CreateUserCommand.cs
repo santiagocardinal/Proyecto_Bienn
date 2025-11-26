@@ -26,7 +26,7 @@ namespace Library
             // Validación y parseo de fecha
             if (!DateTime.TryParse(birthDate, out DateTime parsedDate))
             {
-                await ReplyAsync("❌ La fecha debe tener formato válido (por ejemplo: 2000-05-21).");
+                await ReplyAsync("La fecha debe tener formato válido (por ejemplo: 2000-05-21).");
                 return;
             }
 
