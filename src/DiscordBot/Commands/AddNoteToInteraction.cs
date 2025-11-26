@@ -32,12 +32,10 @@ namespace Library
             }
             // 2. Crear la nota
             Note note = new Note(interactionTopic,parsedDate,parsedType);
-
-            // 3. Como el método NO es estático, creamos la fachada
-            Facade facade = new Facade();
+            
 
             // 4. Llamamos al método real de negocio
-            string result = facade.AddNoteToInteraction(
+            string result = Facade.AddNoteToInteraction(
                 customerId,
                 interactionTopic,
                 parsedDate,

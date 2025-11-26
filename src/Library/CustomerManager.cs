@@ -22,16 +22,24 @@ namespace Library;
 public class CustomerManager
 {
     private List<Customer> customers;
+    private List<Tag> tags;
 
     public List<Customer> Customers
     {
         get { return customers; }
         private set { customers = value; }
     }
+    
+    public List<Tag> Tags
+    {
+        get { return tags; }
+        private set { tags = value; }
+    }
 
     public CustomerManager()
     {
         customers = new List<Customer>();
+        tags = new List<Tag>(); 
     }
 
     // ---------------- BÚSQUEDAS ----------------
@@ -318,4 +326,60 @@ public class CustomerManager
 
         return customer.GetInteraction();
     }
+    
+    public bool TagExists(string id)
+    {
+        foreach (Tag tag in tags)
+        {
+            if (tag.Id == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void CreateTag(string id, string name, string description)
+    {
+        if (TagExists(id))
+        {
+            throw new Exceptions.DuplicatedTagException(id);
+        }
+
+        Tag tag = new Tag(id, name, description);
+        tags.Add(tag);
+    }
+
+    public void AddTagToCustomer(string customerId, string tagId)
+    {
+        // 1) Verificar que el cliente exista usando SearchById
+        Customer customer = SearchById(customerId);
+
+        if (customer == null)
+        {
+            throw new Exceptions.NotExistingCustomerException();
+        }
+
+        // 2) Buscar la Tag en la lista global
+        Tag foundTag = null;
+
+        foreach (Tag tag in tags)
+        {
+            if (tag.Id == tagId)
+            {
+                foundTag = tag;
+                break;
+            }
+        }
+
+        if (foundTag == null)
+        {
+            throw new Exceptions.NotExistingTagException(tagId);
+        }
+
+        // 3) Agregar la tag al cliente
+        customer.AddTag(foundTag);
+    }
+
+
 }

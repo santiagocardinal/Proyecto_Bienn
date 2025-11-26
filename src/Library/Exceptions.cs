@@ -66,4 +66,19 @@ public static class Exceptions
         public InvalidDateRangeException()
             : base("La fecha inicial debe ser anterior a la fecha final.") {}
     }
+    
+    
+    // ---  TAGS ---
+    
+    public class DuplicatedTagException : Exception
+    {
+        public DuplicatedTagException(string tagId)
+            : base($"Ya existe una Tag con ID '{tagId}'.") {}
+    }
+    
+    public class NotExistingTagException : Exception
+    {
+        public NotExistingTagException(string tagId)
+            : base($"No existe una Tag con ID '{tagId}'.") {}
+    }
 }

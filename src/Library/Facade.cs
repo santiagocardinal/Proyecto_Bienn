@@ -257,26 +257,23 @@ public class Facade
             return ex.Message;
         }
     }
-
-    // ---------------------------------------------------------
-    //   AGREGAR TAG A CLIENTE
-    // ---------------------------------------------------------
-    public static string AddTag_Customer(string customerId, string tagId, string tagName, string tagDescription)
+    
+    
+    public string CreateTag(string tagId, string tagName, string tagDescription)
     {
         try
         {
-            Customer customer = cm.SearchById(customerId);
+            // Verificaciones básicas
+            if (tagId == null || tagId.Trim() == "")
+                return "El ID de la Tag no puede estar vacío.";
 
-            if (customer == null)
-                throw new Exceptions.NotExistingCustomerException();
+            if (tagName == null || tagName.Trim() == "")
+                return "El nombre de la Tag no puede estar vacío.";
 
-            if (customer.Tags.Any(t => t.Name.Equals(tagName, StringComparison.OrdinalIgnoreCase)))
-                throw new Exceptions.DuplicateTagException(tagName);
+            // Crear la Tag en CustomerManager
+            cm.CreateTag(tagId, tagName, tagDescription);
 
-            Tag tag = new Tag(tagId, tagName, tagDescription);
-            customer.AddTag(tag);
-
-            return $"Etiqueta '{tagName}' agregada correctamente.";
+            return $"La Tag '{tagId}' fue creada correctamente.";
         }
         catch (Exception ex)
         {
@@ -284,10 +281,40 @@ public class Facade
         }
     }
 
+    
+
+    // ---------------------------------------------------------
+    //   AGREGAR TAG A CLIENTE
+    // ---------------------------------------------------------
+    public string AddTag_Customer(string customerId, string tagId)
+    {
+        try
+        {
+            // 1. Verificar que el cliente exista
+            Customer customer = cm.SearchById(customerId);
+
+            // 2. Verificar que la tag exista en el sistema global
+            if (!cm.TagExists(tagId))
+            {
+                return $"La Tag '{tagId}' no existe en el sistema. Créala primero con CreateTag.";
+            }
+
+            // 3. Añadir la tag al cliente
+            cm.AddTagToCustomer(customerId, tagId);
+
+            return $"La Tag '{tagId}' fue añadida correctamente al cliente '{customerId}'.";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+
     // ---------------------------------------------------------
     //   NOTAS A INTERACCIONES
     // ---------------------------------------------------------
-    public string AddNoteToInteraction(string customerId, string interactionTopic, DateTime interactionDate, Note note)
+    public static string AddNoteToInteraction(string customerId, string interactionTopic, DateTime interactionDate, Note note)
     {
         try
         {
