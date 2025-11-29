@@ -129,7 +129,7 @@ public class ExceptionsTests
         string tagName = "VIP";
         
         // Act
-        var exception = new Exceptions.DuplicateTagException(tagName);
+        var exception = new Exceptions.DuplicatedTagException(tagName);
         
         // Assert
         Assert.That(exception, Is.InstanceOf<Exception>());
@@ -141,8 +141,8 @@ public class ExceptionsTests
     public void DuplicateTagException_CanBeThrown()
     {
         // Act & Assert
-        Assert.Throws<Exceptions.DuplicateTagException>(() => 
-            throw new Exceptions.DuplicateTagException("Premium"));
+        Assert.Throws<Exceptions.DuplicatedTagException>(() => 
+            throw new Exceptions.DuplicatedTagException("Premium"));
     }
 
     // ========== INTERACCIONES ==========
