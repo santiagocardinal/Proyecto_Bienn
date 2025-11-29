@@ -56,6 +56,16 @@ public static class Exceptions
         public DuplicateSellerException(string id)
             : base($"Ya existe un vendedor con ID '{id}'.") {}
     }
+    
+    
+    public class SuspendedSellerException : Exception
+    {
+        public SuspendedSellerException(string id)
+            : base($"El vendedor '{id}' está suspendido y no puede realizar esta acción.")
+        {
+        }
+    }
+
 
     // --- TAGS ---
 
