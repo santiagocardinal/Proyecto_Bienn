@@ -1,5 +1,8 @@
 namespace Library;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 /// <summary>
 /// Clase fachada que centraliza las operaciones de clientes, vendedores e interacciones.
@@ -342,39 +345,248 @@ public class Facade
     // ---------------------------------------------------------
     //   OBTENER INTERACCIONES
     // ---------------------------------------------------------
-    public List<Interaction> GetCustomerInteractions(
-        string customerId, string interactionType = null, DateTime? date = null)
+  /// <summary>
+/// Obtiene todas las interacciones de un cliente sin filtros.
+/// </summary>
+public string GetAllCustomerInteractions(string customerId)
+{
+    try
     {
-        try
-        {
-            Customer customer = cm.SearchById(customerId);
-
-            if (customer == null)
-                throw new Exceptions.NotExistingCustomerException();
-
-            List<Interaction> interactions = customer.Interactions;
-
-            if (!string.IsNullOrEmpty(interactionType))
-            {
-                interactions = interactions
-                    .Where(i => i.GetType().Name.Equals(interactionType, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
-            }
-
-            if (date != null)
-            {
-                interactions = interactions
-                    .Where(i => i.Date.Date == date.Value.Date)
-                    .ToList();
-            }
-
-            return interactions;
-        }
-        catch
-        {
-            return new List<Interaction>();
-        }
+        Customer customer = cm.SearchById(customerId);
+        if (customer == null)
+            return "No existe un cliente con el ID: " + customerId;
+            
+        System.Collections.Generic.List<Interaction> interactions = customer.Interactions;
+        return FormatInteractionsMessage(customerId, interactions, null, null);
     }
+    catch (Exceptions.NotExistingCustomerException)
+    {
+        return "No existe un cliente con el ID: " + customerId;
+    }
+    catch (System.Exception ex)
+    {
+        return "Error al obtener las interacciones: " + ex.Message;
+    }
+}
+
+/// <summary>
+/// Obtiene las interacciones de un cliente filtradas por tipo.
+/// </summary>
+public string GetCustomerInteractionsByType(string customerId, string interactionType)
+{
+    try
+    {
+        Customer customer = cm.SearchById(customerId);
+        if (customer == null)
+            return "No existe un cliente con el ID: " + customerId;
+            
+        System.Collections.Generic.List<Interaction> interactions = customer.Interactions;
+        
+        // Filtrar por tipo
+        if (!string.IsNullOrEmpty(interactionType))
+        {
+            System.Collections.Generic.List<Interaction> filtered = new System.Collections.Generic.List<Interaction>();
+            foreach (var interaction in interactions)
+            {
+                if (interaction.GetType().Name.Equals(interactionType, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    filtered.Add(interaction);
+                }
+            }
+            interactions = filtered;
+        }
+        
+        return FormatInteractionsMessage(customerId, interactions, interactionType, null);
+    }
+    catch (Exceptions.NotExistingCustomerException)
+    {
+        return "No existe un cliente con el ID: " + customerId;
+    }
+    catch (System.Exception ex)
+    {
+        return "Error al obtener las interacciones: " + ex.Message;
+    }
+}
+
+/// <summary>
+/// Obtiene las interacciones de un cliente filtradas por fecha.
+/// </summary>
+public string GetCustomerInteractionsByDate(string customerId, string dateString)
+{
+    try
+    {
+        if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
+        {
+            return "Formato de fecha inválido. Usa el formato: YYYY-MM-DD";
+        }
+
+        Customer customer = cm.SearchById(customerId);
+        if (customer == null)
+            return "No existe un cliente con el ID: " + customerId;
+            
+        System.Collections.Generic.List<Interaction> interactions = customer.Interactions;
+        
+        // Filtrar por fecha
+        System.Collections.Generic.List<Interaction> filtered = new System.Collections.Generic.List<Interaction>();
+        foreach (var interaction in interactions)
+        {
+            if (interaction.Date.Date == parsedDate.Date)
+            {
+                filtered.Add(interaction);
+            }
+        }
+        interactions = filtered;
+        
+        return FormatInteractionsMessage(customerId, interactions, null, parsedDate);
+    }
+    catch (Exceptions.NotExistingCustomerException)
+    {
+        return "No existe un cliente con el ID: " + customerId;
+    }
+    catch (System.Exception ex)
+    {
+        return "Error al obtener las interacciones: " + ex.Message;
+    }
+}
+
+/// <summary>
+/// Obtiene las interacciones de un cliente filtradas por tipo y fecha.
+/// </summary>
+public string GetCustomerInteractionsByTypeAndDate(string customerId, string interactionType, string dateString)
+{
+    try
+    {
+        if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
+        {
+            return "Formato de fecha inválido. Usa el formato: YYYY-MM-DD";
+        }
+
+        Customer customer = cm.SearchById(customerId);
+        if (customer == null)
+            return "No existe un cliente con el ID: " + customerId;
+            
+        System.Collections.Generic.List<Interaction> interactions = customer.Interactions;
+        
+        // Filtrar por tipo
+        if (!string.IsNullOrEmpty(interactionType))
+        {
+            System.Collections.Generic.List<Interaction> filteredByType = new System.Collections.Generic.List<Interaction>();
+            foreach (var interaction in interactions)
+            {
+                if (interaction.GetType().Name.Equals(interactionType, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    filteredByType.Add(interaction);
+                }
+            }
+            interactions = filteredByType;
+        }
+        
+        // Filtrar por fecha
+        System.Collections.Generic.List<Interaction> filteredByDate = new System.Collections.Generic.List<Interaction>();
+        foreach (var interaction in interactions)
+        {
+            if (interaction.Date.Date == parsedDate.Date)
+            {
+                filteredByDate.Add(interaction);
+            }
+        }
+        interactions = filteredByDate;
+        
+        return FormatInteractionsMessage(customerId, interactions, interactionType, parsedDate);
+    }
+    catch (Exceptions.NotExistingCustomerException)
+    {
+        return "No existe un cliente con el ID: " + customerId;
+    }
+    catch (System.Exception ex)
+    {
+        return "Error al obtener las interacciones: " + ex.Message;
+    }
+}
+private string FormatInteractionsMessage(
+    string customerId, 
+    System.Collections.Generic.List<Interaction> interactions,
+    string interactionType = null,
+    System.DateTime? filterDate = null)
+{
+    // Si no hay interacciones
+    if (interactions == null || interactions.Count == 0)
+    {
+        string noResultsMsg = "ℹ️ No se encontraron interacciones para el cliente **" + customerId + "**";
+        if (!string.IsNullOrEmpty(interactionType))
+            noResultsMsg += " del tipo **" + interactionType + "**";
+        if (filterDate.HasValue)
+            noResultsMsg += " en la fecha **" + filterDate.Value.ToString("dd/MM/yyyy") + "**";
+        
+        return noResultsMsg;
+    }
+
+    // Construir el mensaje de respuesta
+    System.Text.StringBuilder response = new System.Text.StringBuilder();
+    response.AppendLine("📋 **Historial de Interacciones - Cliente " + customerId + "**");
+    
+    // Mostrar filtros aplicados si hay
+    if (!string.IsNullOrEmpty(interactionType) || filterDate.HasValue)
+    {
+        response.Append("🔍 Filtros aplicados: ");
+        if (!string.IsNullOrEmpty(interactionType))
+            response.Append("Tipo=" + interactionType + " ");
+        if (filterDate.HasValue)
+            response.Append("Fecha=" + filterDate.Value.ToString("dd/MM/yyyy"));
+        response.AppendLine();
+    }
+    
+    response.AppendLine("Total: **" + interactions.Count + "** interacción(es)\n");
+    response.AppendLine("```");
+
+    // Listar cada interacción ordenada por fecha
+    int counter = 1;
+    var orderedInteractions = interactions.OrderByDescending(i => i.Date);
+    foreach (var interaction in orderedInteractions)
+    {
+        response.AppendLine("[" + counter + "] " + interaction.GetType().Name);
+        response.AppendLine("    Fecha:  " + interaction.Date.ToString("dd/MM/yyyy HH:mm"));
+        response.AppendLine("    Tema:   " + interaction.Topic);
+        response.AppendLine("    Tipo:   " + interaction.Type);
+        
+        // Información adicional según el tipo de interacción
+        if (interaction is Quote)
+        {
+            Quote quote = (Quote)interaction;
+            response.AppendLine("    Monto:  $" + quote.Amount.ToString("N2"));
+        }
+        
+        // Acceder a Description de forma segura usando reflexión
+        var descProperty = interaction.GetType().GetProperty("Description");
+        if (descProperty != null)
+        {
+            var descValue = descProperty.GetValue(interaction);
+            if (descValue != null)
+            {
+                string desc = descValue.ToString();
+                if (!string.IsNullOrEmpty(desc))
+                    response.AppendLine("    Desc:   " + desc);
+            }
+        }
+        
+        response.AppendLine();
+        counter++;
+    }
+
+    response.AppendLine("```");
+
+    // Validar longitud del mensaje (límite de Discord: 2000 caracteres)
+    string finalMessage = response.ToString();
+    if (finalMessage.Length > 1990)
+    {
+        return "**Historial de Interacciones - Cliente " + customerId + "**\n" +
+               "Total: **" + interactions.Count + "** interacciones\n\n" +
+               "Demasiadas interacciones para mostrar en un solo mensaje.\n" +
+               "Usa filtros más específicos para ver los detalles.";
+    }
+
+    return finalMessage;
+}
 
     // ---------------------------------------------------------
     //   ÚLTIMA INTERACCIÓN
