@@ -512,7 +512,7 @@ private string FormatInteractionsMessage(
     // Si no hay interacciones
     if (interactions == null || interactions.Count == 0)
     {
-        string noResultsMsg = "ℹ️ No se encontraron interacciones para el cliente **" + customerId + "**";
+        string noResultsMsg = "No se encontraron interacciones para el cliente **" + customerId + "**";
         if (!string.IsNullOrEmpty(interactionType))
             noResultsMsg += " del tipo **" + interactionType + "**";
         if (filterDate.HasValue)
@@ -523,12 +523,12 @@ private string FormatInteractionsMessage(
 
     // Construir el mensaje de respuesta
     System.Text.StringBuilder response = new System.Text.StringBuilder();
-    response.AppendLine("📋 **Historial de Interacciones - Cliente " + customerId + "**");
+    response.AppendLine("**Historial de Interacciones - Cliente " + customerId + "**");
     
     // Mostrar filtros aplicados si hay
     if (!string.IsNullOrEmpty(interactionType) || filterDate.HasValue)
     {
-        response.Append("🔍 Filtros aplicados: ");
+        response.Append("Filtros aplicados: ");
         if (!string.IsNullOrEmpty(interactionType))
             response.Append("Tipo=" + interactionType + " ");
         if (filterDate.HasValue)
