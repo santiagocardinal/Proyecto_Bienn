@@ -14,9 +14,7 @@ namespace Library
         [Summary("Agrega una etiqueta a un cliente usando su ID.")]
         public async Task ExecuteAsync(
             string customerId,
-            string tagId,
-            string tagName,
-            string tagDescription)
+            string tagId)
         {
             string result = Facade.AddTag_Customer(customerId, tagId);
             await ReplyAsync(result);

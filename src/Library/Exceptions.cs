@@ -16,11 +16,31 @@ public static class Exceptions
         public DuplicatedCustomerException(Customer customer)
             : base($"Ya existe un cliente con ID '{customer.Id}'.") {}
     }
+    
+    public class DuplicatedMailException : Exception
+    {
+        public DuplicatedMailException(Customer customer)
+            : base($"Ya existe un cliente con el mail '{customer.Mail}'.") {}
+    }
 
+    public class DuplicatedPhoneException : Exception
+    {
+        public DuplicatedPhoneException(Customer customer)
+            : base($"Ya existe un cliente con el numero '{customer.Phone}'.") {}
+    }
+    
     public class InvalidFieldException : Exception
     {
         public InvalidFieldException(string field)
             : base($"El campo '{field}' no es válido para ser modificado.") {}
+    }
+    
+    public class CustomerNotAssignedToSellerException : Exception
+    {
+        public CustomerNotAssignedToSellerException(string message)
+            : base(message)
+        {
+        }
     }
 
     // --- VENDEDORES ---
@@ -39,11 +59,11 @@ public static class Exceptions
 
     // --- TAGS ---
 
-    public class DuplicateTagException : Exception
+    /*public class DuplicateTagException : Exception
     {
         public DuplicateTagException(string tagName)
             : base($"El cliente ya tiene una etiqueta llamada '{tagName}'.") {}
-    }
+    }*/
 
     // --- INTERACCIONES ---
 

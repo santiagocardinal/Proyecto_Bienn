@@ -18,14 +18,18 @@ namespace Library
             string tagDescription)
         {
             Tag tag = new Tag(tagId, tagName, tagDescription);
-
-            string message =
+            
+            string result = Facade.CreateTag(tagId, tagName, tagDescription);
+            
+            await ReplyAsync(result);
+            
+            /*string message =
                 $"Etiqueta creada:\n" +
                 $"- ID: {tag.Id}\n" +
                 $"- Nombre: {tag.Name}\n" +
-                $"- Descripción: {tag.Description}";
+                $"- Descripción: {tag.Description}";*/
 
-            await ReplyAsync(message);
+            //await ReplyAsync(message);
         }
     }
 }

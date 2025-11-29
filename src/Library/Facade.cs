@@ -432,14 +432,14 @@ public class Facade
     
     public static string CreateSeller(
         string id, string name, string mail, 
-        string phone, string password)
+        string phone)
     {
         try
         {
-            const string adminPassword = "1234"; // la cambiás por la real
+            /*const string adminPassword = "1234"; // la cambiás por la real
 
             if (password != adminPassword)
-                throw new Exception("Contraseña incorrecta. No tienes permisos para crear vendedores.");
+                throw new Exception("Contraseña incorrecta. No tienes permisos para crear vendedores.");*/
 
             Seller seller = new Seller(name, mail, phone, id);
 
@@ -506,9 +506,6 @@ public class Facade
         }
     }
 
-    
-    
-    
     
     
     /// <summary>

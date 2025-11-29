@@ -145,6 +145,12 @@ public class CustomerManager
 
         if (customers.Any(c => c.Id == customer.Id))
             throw new Exceptions.DuplicatedCustomerException(customer);
+        
+        if (customers.Any(c => c.Phone == customer.Phone))
+            throw new Exceptions.DuplicatedPhoneException(customer);
+        
+        if (customers.Any(c => c.Mail == customer.Mail))
+            throw new Exceptions.DuplicatedMailException(customer);
 
         customers.Add(customer);
     }
@@ -216,6 +222,18 @@ public class CustomerManager
         if (interaction == null)
             throw new ArgumentNullException(nameof(interaction));
 
+        // ---------------------------------------------------------
+        // El vendedor debe tener asignado al cliente
+        // ---------------------------------------------------------
+        if (!seller.Customer.Contains(customer))
+        {
+            throw new Exceptions.CustomerNotAssignedToSellerException(
+                $"El cliente '{customer.Id}' no está asignado al vendedor '{seller.Id}'.");
+        }
+
+        // ---------------------------------------------------------
+        // Lógica original
+        // ---------------------------------------------------------
         if (interaction.Type == ExchangeType.Received)
         {
             customer.MarkAsPending();
@@ -229,6 +247,7 @@ public class CustomerManager
         seller.AddInteraction(interaction);
         customer.AddInteraction(interaction);
     }
+
 
     // ---------------- DASHBOARD ----------------
 
@@ -348,6 +367,8 @@ public class CustomerManager
 
         Tag tag = new Tag(id, name, description);
         tags.Add(tag);
+        
+        
     }
 
     public void AddTagToCustomer(string customerId, string tagId)
