@@ -16,7 +16,7 @@ namespace Library
         public async Task ExecuteAsync(
             string date,
             string topic,
-            ExchangeType type,
+            string type,
             string customerId,
             string sellerId)
         {
@@ -26,8 +26,14 @@ namespace Library
                 await ReplyAsync("La fecha ingresada no es válida. Usa el formato YYYY-MM-DD.");
                 return;
             }
+            
+            if (!Enum.TryParse<ExchangeType>(type, true, out var parsedType))
+            {
+                await ReplyAsync("El tipo de interacción no es válido. Usa uno de: Sent, Received, ...");
+                return;
+            }
 
-            string result = Facade.MessageRegister(parsedDate, topic, type, customerId, sellerId);
+            string result = Facade.MessageRegister(parsedDate, topic, parsedType, customerId, sellerId);
             await ReplyAsync(result);
         }
     }

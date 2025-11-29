@@ -641,7 +641,7 @@ public class Facade
                 throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(seller.Id);
+                throw new Exceptions.SellerNotFoundException("null");
 
             Quote foundQuote = customer.Interactions
                 .OfType<Quote>()
