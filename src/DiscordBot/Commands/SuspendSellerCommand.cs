@@ -14,7 +14,7 @@ namespace Library
 
             if (user == null || !user.GuildPermissions.Administrator)
             {
-                await ReplyAsync("❌ No tienes permisos para suspender vendedores.");
+                await ReplyAsync("No tienes permisos para suspender vendedores.");
                 return;
             }
 
