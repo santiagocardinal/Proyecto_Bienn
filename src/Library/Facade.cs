@@ -223,7 +223,7 @@ public class Facade
             Seller seller = sm.SearchById(sellerId);
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(sellerId);
+                throw new Exceptions.SellerNotFoundException(seller.Id);
 
             if (seller.Customer.Count == 0)
                 return "El vendedor no tiene clientes asignados.";
@@ -464,7 +464,7 @@ public class Facade
             Seller seller = sm.SearchById(id);
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(id);
+                throw new Exceptions.SellerNotFoundException(seller.Id);
 
             return $"Vendedor encontrado:\n" +
                    $"- ID: {seller.Id}\n" +
@@ -494,7 +494,7 @@ public class Facade
                 throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(sellerId);
+                throw new Exceptions.SellerNotFoundException(seller.Id);
 
             cm.AssignCustomerToSeller(customer, seller);
 
@@ -641,7 +641,7 @@ public class Facade
                 throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(sellerId);
+                throw new Exceptions.SellerNotFoundException(seller.Id);
 
             Quote foundQuote = customer.Interactions
                 .OfType<Quote>()
