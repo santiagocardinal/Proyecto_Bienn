@@ -249,7 +249,9 @@ public class Facade
     {
         try
         {
-            Seller seller = sm.SearchById(sellerId);
+            //Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
 
             if (seller == null)
                 throw new Exceptions.SellerNotFoundException(seller.Id);
@@ -748,7 +750,8 @@ private string FormatInteractionsMessage(
     {
         try
         {
-            Seller seller = sm.SearchById(id);
+            Seller seller = sm.GetActiveSeller(id);
+            //Seller seller = sm.SearchById(id);
 
             if (seller == null)
                 throw new Exceptions.SellerNotFoundException(seller.Id);
@@ -777,7 +780,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             if (customer == null)
                 throw new Exceptions.NotExistingCustomerException();
@@ -828,7 +833,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             Call call = new Call(date, topic, type, customer);
 
@@ -846,7 +853,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             Meeting meeting = new Meeting(place, date, topic, type, customer);
 
@@ -867,7 +876,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             Message message = new Message(date, topic, type, customer);
 
@@ -885,7 +896,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             Mail mailObj = new Mail(date, topic, type, customer);
 
@@ -903,7 +916,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             // -----------------------------------------
             // VALIDACIÓN: evitar duplicados de Quote
@@ -950,7 +965,9 @@ private string FormatInteractionsMessage(
         try
         {
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.SearchById(sellerId);
+            Seller seller = sm.GetActiveSeller(sellerId);
+
+            //Seller seller = sm.SearchById(sellerId);
 
             if (customer == null)
                 throw new Exceptions.NotExistingCustomerException();
@@ -990,4 +1007,70 @@ private string FormatInteractionsMessage(
             return ex.Message;
         }
     }
+    
+    public static string SuspendSeller(string sellerId)
+    {
+        try
+        {
+            Seller seller = sm.SearchById(sellerId);
+
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException(sellerId);
+
+            sm.SuspendSeller(seller);
+
+            return $"El vendedor '{sellerId}' ha sido suspendido correctamente.";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+    
+    public static string EnableSeller(string sellerId)
+    {
+        try
+        {
+            Seller seller = sm.SearchById(sellerId);
+
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException(sellerId);
+
+            sm.EnableSeller(seller);
+
+            return $"El vendedor '{sellerId}' ha sido habilitado correctamente.";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+    
+    public static string DeleteSeller(string sellerId)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(sellerId))
+                throw new ArgumentException("El ID no puede estar vacío.");
+
+            Seller seller = sm.SearchById(sellerId);
+
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException(sellerId);
+
+            sm.DeleteSeller(seller);
+
+            return
+                "```" +
+                $"***Vendedor '{sellerId}' eliminado correctamente.***" +
+                "```";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
 }

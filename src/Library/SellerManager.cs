@@ -64,6 +64,17 @@ public class SellerManager
 
         seller.IsSuspended = true;
     }
+    
+    public void EnableSeller(Seller seller)
+    {
+        if (seller == null)
+            throw new ArgumentNullException(nameof(seller));
+
+        if (!this.Sellers.Contains(seller))
+            throw new Exceptions.SellerNotFoundException(seller.Id);
+
+        seller.IsSuspended = false;
+    }
 
     /// <summary>
     /// Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta.
@@ -95,4 +106,19 @@ public class SellerManager
             s.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
     }
     
+    public void EnsureSellerIsActive(Seller seller)
+    {
+        if (seller == null)
+            throw new Exceptions.SellerNotFoundException("null");
+
+        if (seller.IsSuspended)
+            throw new Exceptions.SuspendedSellerException(seller.Id);
+    }
+
+    public Seller GetActiveSeller(string id)
+    {
+        Seller seller = SearchById(id);
+        EnsureSellerIsActive(seller);
+        return seller;
+    }
 }
