@@ -28,9 +28,9 @@ public class Facade
         {
             Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
             cm.AddCustomer(c1);
-            return "***Cliente creado correctamente***\n" +
+            return $"***Cliente creado correctamente***\n" +
                    "```\n" +
-                   "_ID_:           " + id + "\n" +
+                   "_ID_:           " + id + "\n" + 
                    "_Nombre_:       " + name + " " + familyName + "\n" +
                    "_Email_:        " + mail + "\n" +
                    "_Teléfono_:     " + phone + "\n" +
@@ -53,14 +53,14 @@ public class Facade
         try
         {
             if (string.IsNullOrWhiteSpace(id))
-                throw new ArgumentException("__El ID no puede estar vacío.__");
+                throw new ArgumentException($"__El ID no puede estar vacío.__");
 
             Customer customerToRemove = cm.SearchById(id);
             // Si no existe, SearchById ya lanza NotExistingCustomerException
 
             cm.Customers.Remove(customerToRemove);
 
-            return "```\n"+
+            return $"```\n"+
                    "***Cliente eliminado correctamente.***"+
                    "```";
         }
@@ -77,7 +77,7 @@ public class Facade
         try
         {
             cm.Modify(id, field, newValue);
-            return "```"+
+            return $"```"+
                    "***Cliente modificado correctamente.***"+
                    "```";
         }
@@ -97,7 +97,7 @@ public class Facade
         {
             Customer c = cm.SearchById(id);
 
-            return"**Cliente buscado por ID:**"+
+            return$"**Cliente buscado por ID:**"+
                   "```"+ 
                 "- _ID_: {c.Id}\n" +
                    "- _Nombre_: {c.Name} {c.FamilyName}\n" +
@@ -143,7 +143,7 @@ public class Facade
                 result += $"- {c.Name} {c.FamilyName} (ID: {c.Id})\n";
             }
 
-            return "***Clinete buscado por su NOMBRE:***" +
+            return $"***Clinete buscado por su NOMBRE:***" +
                    "```"+
                    result+
                     "```";
@@ -189,7 +189,7 @@ public class Facade
                 result += $"- {c.Name} {c.FamilyName} (ID: {c.Id})\n";
             }
 
-            return "***Cliente buscado por su APELLIDO:***"+
+            return $"***Cliente buscado por su APELLIDO:***"+
                 "```"+
                 result +
                 "```";
@@ -207,7 +207,7 @@ public class Facade
         {
             Customer c = cm.SearchByPhone(phone);
 
-            return "***Cliente encontrado por su NUMERO DE TELEFONO:***\n" +
+            return $"***Cliente encontrado por su NUMERO DE TELEFONO:***\n" +
                    "```" +
                    "- _ID_: {c.Id}\n" +
                    "- _Nombre_: {c.Name} {c.FamilyName}\n" +
@@ -227,7 +227,7 @@ public class Facade
         {
             Customer c = cm.SearchByMail(mail);
 
-            return "***Cliente encontrado por su MAIL:***\n" +
+            return $"***Cliente encontrado por su MAIL:***\n" +
                    "```" +
                    "- _ID_: {c.Id}\n" +
                    "- _Nombre_: {c.Name} {c.FamilyName}\n" +
@@ -255,7 +255,7 @@ public class Facade
                 throw new Exceptions.SellerNotFoundException(seller.Id);
 
             if (seller.Customer.Count == 0)
-                return "```" +
+                return $"```" +
                        "**El vendedor no tiene clientes asignados.**" +
                        "```";
 
@@ -265,7 +265,7 @@ public class Facade
                 result += $"- {customer.Name}\n";
             }
 
-            return "***Clientes por vendedor:***"+
+            return $"***Clientes por vendedor:***"+
                 "```" +
                 result +
                 "```";
@@ -284,7 +284,7 @@ public class Facade
         try
         {
             cm.AddCustomer(customer);
-            return "```" +
+            return $"```" +
                    "***Cliente agregado correctamente.***" +
                    "```";
         }
@@ -301,23 +301,23 @@ public class Facade
         {
             // Verificaciones básicas
             if (tagId == null || tagId.Trim() == "")
-                return "```" +
+                return $"```" +
                        "***El ID de la Tag no puede estar vacío.***" +
                        "```";
 
             if (tagName == null || tagName.Trim() == "")
-                return "```" +
+                return $"```" +
                        "***El nombre de la Tag no puede estar vacío.***" +
                        "```";
 
             // Crear la Tag en CustomerManager
             cm.CreateTag(tagId, tagName, tagDescription);
 
-            return "__La Tag:__" +
+            return $"__La Tag:__" +
                    "```"+
                    $"** '{tagId}'**"+
                    "```"+
-                   "Fue creada correctamente.";
+                   $"Fue creada correctamente.";
         }
         catch (Exception ex)
         {
@@ -340,17 +340,17 @@ public class Facade
             // 2. Verificar que la tag exista en el sistema global
             if (!cm.TagExists(tagId))
             {
-                return "__La Tag:__"+
+                return $"__La Tag:__"+
                        "```"+
                  $"**'{tagId}'**"+
                        "```"+
-                 "No existe en el sistema. Créala primero con **CreateTag.**";
+                 $"No existe en el sistema. Créala primero con **CreateTag.**";
             }
 
             // 3. Añadir la tag al cliente
             cm.AddTagToCustomer(customerId, tagId);
 
-            return "__La Tag:__"+
+            return $"__La Tag:__"+
                    "```"+
                    $"**'{tagId}'**"+
                    "```"+
@@ -383,7 +383,7 @@ public class Facade
 
             interaction.AddNote(note);
 
-            return "```" +
+            return $"```" +
                    "***Nota agregada correctamente.***" +
                    "```";
         }
@@ -405,7 +405,7 @@ public string GetAllCustomerInteractions(string customerId)
     {
         Customer customer = cm.SearchById(customerId);
         if (customer == null)
-            return "```" +
+            return $"```" +
                    "No existe un cliente con el ID: **" + customerId + "**" +
                    "```";
             
@@ -414,13 +414,13 @@ public string GetAllCustomerInteractions(string customerId)
     }
     catch (Exceptions.NotExistingCustomerException)
     {
-        return "```" +
+        return $"```" +
                "No existe un cliente con el ID: **" + customerId + "**" +
                "```";
     }
     catch (System.Exception ex)
     {
-        return "```" +
+        return $"```" +
                "**Error al obtener las interacciones:** " + ex.Message +
                "```";
     }
@@ -435,7 +435,7 @@ public string GetCustomerInteractionsByType(string customerId, string interactio
     {
         Customer customer = cm.SearchById(customerId);
         if (customer == null)
-            return "```" +
+            return $"```" +
                    "No existe un cliente con el ID: **" + customerId + "**" +
                    "```";
             
@@ -459,13 +459,13 @@ public string GetCustomerInteractionsByType(string customerId, string interactio
     }
     catch (Exceptions.NotExistingCustomerException)
     {
-        return "```" +
+        return $"```" +
                "No existe un cliente con el ID: **" + customerId + "**" +
                "```";
     }
     catch (System.Exception ex)
     {
-        return "```" +
+        return $"```" +
                "Error al obtener las interacciones: " + ex.Message +
                "```";
     }
@@ -480,14 +480,14 @@ public string GetCustomerInteractionsByDate(string customerId, string dateString
     {
         if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
         {
-            return "```" +
+            return $"```" +
                    "Formato de fecha inválido. Usa el formato: **YYYY-MM-DD**" 
                          + "```";
         }
 
         Customer customer = cm.SearchById(customerId);
         if (customer == null)
-            return "```" +
+            return $"```" +
                    "No existe un cliente con el ID: **" + customerId + "**" +
                    "```";
             
@@ -508,13 +508,13 @@ public string GetCustomerInteractionsByDate(string customerId, string dateString
     }
     catch (Exceptions.NotExistingCustomerException)
     {
-        return "```" +
+        return $"```" +
                "No existe un cliente con el ID: **" + customerId + "**" +
                "```";
     }
     catch (System.Exception ex)
     {
-        return "```" +
+        return $"```" +
                "Error al obtener las interacciones: " + ex.Message +
                "```";
     }
@@ -529,14 +529,14 @@ public string GetCustomerInteractionsByTypeAndDate(string customerId, string int
     {
         if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
         {
-            return "```" +
+            return $"```" +
                    "Formato de fecha inválido. Usa el formato: **YYYY-MM-DD**" +
                    "```";
         }
 
         Customer customer = cm.SearchById(customerId);
         if (customer == null)
-            return "```" +
+            return $"```" +
                    "No existe un cliente con el ID: **" + customerId + "**" +
                    "```";
                    
@@ -572,13 +572,13 @@ public string GetCustomerInteractionsByTypeAndDate(string customerId, string int
     }
     catch (Exceptions.NotExistingCustomerException)
     {
-        return "```" +
+        return $"```" +
                "No existe un cliente con el ID: **" + customerId + "**" +
                "```";
     }
     catch (System.Exception ex)
     {
-        return "```" +
+        return $"```" +
                "Error al obtener las interacciones: " + ex.Message +
                "```";
     }
@@ -592,31 +592,31 @@ private string FormatInteractionsMessage(
     // Si no hay interacciones
     if (interactions == null || interactions.Count == 0)
     {
-        string noResultsMsg = "```" +"No se encontraron interacciones para el cliente **" + customerId + "**" ;
+        string noResultsMsg = $"```" +$"No se encontraron interacciones para el cliente **" + customerId + "**" ;
         if (!string.IsNullOrEmpty(interactionType))
-            noResultsMsg += " del tipo **" + interactionType + "**" +"```";
+            noResultsMsg += $" del tipo **" + interactionType + "**" +"```";
         if (filterDate.HasValue)
-            noResultsMsg += " en la fecha **" + filterDate.Value.ToString("dd/MM/yyyy") + "**" + "```";
+            noResultsMsg += $" en la fecha **" + filterDate.Value.ToString("dd/MM/yyyy") + "**" + "```";
         
         return noResultsMsg;
     }
 
     // Construir el mensaje de respuesta
     System.Text.StringBuilder response = new System.Text.StringBuilder();
-    response.AppendLine("***Historial de Interacciones - Cliente " + customerId + "***");
+    response.AppendLine($"***Historial de Interacciones - Cliente " + customerId + "***");
     
     // Mostrar filtros aplicados si hay
     if (!string.IsNullOrEmpty(interactionType) || filterDate.HasValue)
     {
-        response.Append("__Filtros aplicados:__");
+        response.Append($"__Filtros aplicados:__");
         if (!string.IsNullOrEmpty(interactionType))
-            response.Append("_Tipo_=" + interactionType + " ");
+            response.Append($"_Tipo_=" + interactionType + " ");
         if (filterDate.HasValue)
-            response.Append("_Fecha_=" + filterDate.Value.ToString("dd/MM/yyyy"));
+            response.Append($"_Fecha_=" + filterDate.Value.ToString("dd/MM/yyyy"));
         response.AppendLine();
     }
     
-    response.AppendLine("_Total_: **" + interactions.Count + "** interacción(es)\n");
+    response.AppendLine($"_Total_: **" + interactions.Count + "** interacción(es)\n");
     response.AppendLine("```");
 
     // Listar cada interacción ordenada por fecha
@@ -625,15 +625,15 @@ private string FormatInteractionsMessage(
     foreach (var interaction in orderedInteractions)
     {
         response.AppendLine("[" + counter + "] " + interaction.GetType().Name);
-        response.AppendLine("    _Fecha_:  " + interaction.Date.ToString("dd/MM/yyyy HH:mm"));
-        response.AppendLine("    _Tema_:   " + interaction.Topic);
-        response.AppendLine("    _Tipo_:   " + interaction.Type);
+        response.AppendLine($"    _Fecha_:  " + interaction.Date.ToString("dd/MM/yyyy HH:mm"));
+        response.AppendLine($"    _Tema_:   " + interaction.Topic);
+        response.AppendLine($"    _Tipo_:   " + interaction.Type);
         
         // Información adicional según el tipo de interacción
         if (interaction is Quote)
         {
             Quote quote = (Quote)interaction;
-            response.AppendLine("    _Monto_:  $" + quote.Amount.ToString("N2"));
+            response.AppendLine($"    _Monto_:  $" + quote.Amount.ToString("N2"));
         }
         
         // Acceder a Description de forma segura usando reflexión
@@ -645,7 +645,7 @@ private string FormatInteractionsMessage(
             {
                 string desc = descValue.ToString();
                 if (!string.IsNullOrEmpty(desc))
-                    response.AppendLine("    _Desc_:   " + desc);
+                    response.AppendLine($"    _Desc_:   " + desc);
             }
         }
         
@@ -659,7 +659,7 @@ private string FormatInteractionsMessage(
     string finalMessage = response.ToString();
     if (finalMessage.Length > 1990)
     {
-        return "**Historial de Interacciones - Cliente " + customerId + "**\n" +
+        return $"**Historial de Interacciones - Cliente " + customerId + "**\n" +
                "Total: **" + interactions.Count + "** interacciones\n\n" +
                "Demasiadas interacciones para mostrar en un solo mensaje.\n" +
                "Usa filtros más específicos para ver los detalles.";
@@ -681,8 +681,8 @@ private string FormatInteractionsMessage(
                 throw new Exceptions.NotExistingCustomerException();
 
             if (customer.Interactions.Count == 0)
-                return "```" +
-                       "No hay interacciones registradas." +
+                return $"```" +
+                       "***No hay interacciones registradas.***" +
                        "```";
 
             return customer.GetLastInteraction().ToString();
@@ -708,15 +708,14 @@ private string FormatInteractionsMessage(
             var unanswered = customer.GetUnansweredInteractions();
 
             if (unanswered.Count == 0)
-                return "```" + "" +
-                       "**No hay interacciones sin responder.**" +
+                return $"```" + "**No hay interacciones sin responder.**" +
                        "```";
 
             string report = $"Interacciones sin responder **({unanswered.Count})**:\n";
             foreach (var inter in unanswered)
                 report += $"- {inter}\n";
 
-            return "```" +
+            return $"```" +
                    report +
                    "```";
         }
@@ -741,8 +740,8 @@ private string FormatInteractionsMessage(
 
             sm.CreateSeller(seller);
 
-            return"```"+ 
-                "**Vendedor creado correctamente.**" +
+            return $"```"+ 
+                "***Vendedor creado correctamente.***" +
                    "```";
         }
         catch (Exception ex)
@@ -798,7 +797,7 @@ private string FormatInteractionsMessage(
 
             cm.AssignCustomerToSeller(customer, seller);
 
-            return "```"+ 
+            return $"```"+ 
                 "***Cliente asignado correctamente.***" +
                    "```";
         }
@@ -819,7 +818,7 @@ private string FormatInteractionsMessage(
         try
         {
             cm.RegisterInteraction(customer, seller, interaction);
-            return "```"+
+            return $"```"+
                 "***Interacción registrada correctamente.***"+
             "```";
         }
@@ -865,7 +864,7 @@ private string FormatInteractionsMessage(
         }
         catch (Exception ex)
         {
-            return "***Registro de la Interaccion:***"+
+            return $"***Registro de la Interaccion:***"+
                 "```" +
                    ex.Message +
                    "```";
