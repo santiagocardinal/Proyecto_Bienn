@@ -208,7 +208,7 @@ public class FacadeTests
         Facade.cm.AddCustomer(_testCustomer);
         
         // Act
-        string result = Facade.AddTag_Customer("C1", "T1", "VIP", "Cliente VIP");
+        string result = Facade.AddTag_Customer("C1", "T1");
         
         // Assert
         Assert.That(result, Does.Contain("agregada correctamente"));
@@ -219,10 +219,10 @@ public class FacadeTests
     {
         // Arrange
         Facade.cm.AddCustomer(_testCustomer);
-        Facade.AddTag_Customer("C1", "T1", "VIP", "Cliente VIP");
+        Facade.AddTag_Customer("C1", "T1");
         
         // Act
-        string result = Facade.AddTag_Customer("C1", "T2", "VIP", "Cliente VIP");
+        string result = Facade.AddTag_Customer("C1", "T2");
         
         // Assert
         Assert.That(result, Does.Contain("ya tiene una etiqueta"));
@@ -232,7 +232,7 @@ public class FacadeTests
     public void AddTagCustomer_ReturnsErrorMessage2()
     {
         // Act
-        string result = Facade.AddTag_Customer("C999", "T1", "VIP", "Cliente VIP");
+        string result = Facade.AddTag_Customer("C999", "T1");
         
         // Assert
         Assert.That(result, Does.Contain("No existe"));

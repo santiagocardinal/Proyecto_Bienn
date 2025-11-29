@@ -23,7 +23,6 @@ public class CustomerManager
 {
     private List<Customer> customers;
     private List<Tag> tags;
-
     public List<Customer> Customers
     {
         get { return customers; }
