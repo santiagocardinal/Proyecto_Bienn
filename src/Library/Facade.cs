@@ -27,7 +27,7 @@ public class Facade
         {
             Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
             cm.AddCustomer(c1);
-            return "**Cliente creado correctamente**\n" +
+            return "***Cliente creado correctamente***\n" +
                    "```\n" +
                    "_ID_:           " + id + "\n" +
                    "_Nombre_:       " + name + " " + familyName + "\n" +
