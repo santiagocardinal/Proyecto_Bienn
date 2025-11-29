@@ -609,6 +609,24 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.SearchById(sellerId);
 
+            // -----------------------------------------
+            // VALIDACIÓN: evitar duplicados de Quote
+            // -----------------------------------------
+            bool alreadyExists = customer.Interactions
+                .OfType<Quote>()
+                .Any(q =>
+                    q.Date == date &&
+                    q.Topic == topic &&
+                    q.Type == type &&
+                    Math.Abs(q.Amount - amount) < 0.0001 &&
+                    q.Description == description);
+
+            if (alreadyExists)
+                throw new Exceptions.DuplicateQuoteException();
+
+            // -----------------------------------------
+            // Crear Quote NUEVA
+            // -----------------------------------------
             Quote quote = new Quote(date, topic, type, customer, amount, description);
 
             return RegisterInteraction(quote, customer, seller);
@@ -618,6 +636,7 @@ public class Facade
             return ex.Message;
         }
     }
+
 
     /// <summary>
     /// Genera una venta a partir de una cotización previa (Quote).
@@ -653,6 +672,18 @@ public class Facade
 
             if (foundQuote == null)
                 throw new Exceptions.QuoteNotFoundException();
+            
+            Sale existingSale = customer.Interactions
+                .OfType<Sale>()
+                .FirstOrDefault(s =>
+                    s.Date == date &&
+                    s.Topic == topic &&
+                    s.Type == type &&
+                    s.Product == product &&
+                    s.Amount.Amount == amount);
+
+            if (existingSale != null)
+                throw new Exceptions.DuplicateSaleException();
 
             Sale sale = new Sale(product, foundQuote, date, topic, type, customer);
 

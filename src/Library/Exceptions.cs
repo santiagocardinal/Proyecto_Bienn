@@ -79,6 +79,18 @@ public static class Exceptions
             : base("No se encontró una Quote que coincida con los datos proporcionados.") {}
     }
 
+    public class DuplicateQuoteException : Exception
+    {
+        public DuplicateQuoteException()
+            : base("Ya existe una cotización con los mismos datos."){}
+    }
+
+    public class DuplicateSaleException : Exception
+    {
+        public DuplicateSaleException()
+            : base("Ya existe una venta con los datos proporcionados."){}
+    }
+
     // --- FECHAS ---
 
     public class InvalidDateRangeException : Exception

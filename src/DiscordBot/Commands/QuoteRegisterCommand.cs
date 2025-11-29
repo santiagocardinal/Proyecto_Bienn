@@ -11,9 +11,9 @@ namespace Library
     /// </summary>
     public class RegisterSaleCommand : ModuleBase<SocketCommandContext>
     {
-        [Command("registerSale")]
+        [Command("registerQuote")]
         [Summary("Registra una venta incluyendo qué se vendió, cuándo y cuánto se cobró.")]
-        public async Task ExecuteAsync(string dateString, string topic, string exchangeType, double amount, string description, string customerId, string sellerId)
+        public async Task ExecuteAsync(string dateString, string topic, string exchangeType, string amount, string description, string customerId, string sellerId)
         {
             try
             {
@@ -22,13 +22,20 @@ namespace Library
                     await ReplyAsync("Formato de fecha inválido. Usa el formato: YYYY-MM-DD");
                     return;
                 }
+                
+                if (!double.TryParse(amount, out double parsedAmount))
+                {
+                    await ReplyAsync("Formato de fecha inválido. Usa el formato: YYYY-MM-DD");
+                    return;
+                }
+                
                 if (!Enum.TryParse<ExchangeType>(exchangeType, true, out ExchangeType type))
                 {
                     await ReplyAsync($"Tipo de intercambio inválido. Usa: {string.Join(", ", Enum.GetNames(typeof(ExchangeType)))}");
                     return;
                 }
-                string result = Facade.QuoteRegister(saleDate, topic, type,amount, description, customerId, sellerId);
-                string response = $"**Venta Registrada**\n" +
+                string result = Facade.QuoteRegister(saleDate, topic, type, parsedAmount, description, customerId, sellerId);
+                /*string response = $"**Venta Registrada**\n" +
                                   $"```\n" +
                                   $"Fecha:        {saleDate:dd/MM/yyyy}\n" +
                                   $"Producto:     {topic}\n" +
@@ -38,8 +45,8 @@ namespace Library
                                   $"Vendedor:     {sellerId}\n" +
                                   $"Descripción:  {description}\n" +
                                   $"```\n" +
-                                  $"{result}";
-                await ReplyAsync(response);
+                                  $"{result}";*/
+                await ReplyAsync(result);
             }
             catch (Exception ex)
             {
