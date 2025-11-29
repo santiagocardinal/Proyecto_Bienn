@@ -15,7 +15,7 @@ namespace Library
         public async Task ExecuteAsync(
             string tagId,
             string tagName,
-            string tagDescription)
+            [Remainder] string tagDescription)
         {
             Tag tag = new Tag(tagId, tagName, tagDescription);
             
@@ -27,9 +27,9 @@ namespace Library
                 $"Etiqueta creada:\n" +
                 $"- ID: {tag.Id}\n" +
                 $"- Nombre: {tag.Name}\n" +
-                $"- Descripción: {tag.Description}";*/
+                $"- Descripción: {tag.Description}";
 
-            //await ReplyAsync(message);
+            await ReplyAsync(message);*/
         }
     }
 }
