@@ -1139,4 +1139,73 @@ private string FormatInteractionsMessage(
         }
     }
 
+    public static string GetDashboardFormatted()
+    {
+        var customers = cm.Customers;
+
+        int totalCustomers = customers.Count;
+
+        var recentInteractions = customers
+            .SelectMany(c => c.Interactions)
+            .OrderByDescending(i => i.Date)
+            .Take(5)
+            .ToList();
+
+        var upcomingMeetings = customers
+            .SelectMany(c => c.Interactions)
+            .OfType<Meeting>()
+            .Where(m => m.Date > DateTime.Now)
+            .OrderBy(m => m.Date)
+            .Take(5)
+            .ToList();
+
+        // Construir DTO (si querés usarlo en otros lados)
+        DashboardSummary summary = new DashboardSummary(
+            recentInteractions,
+            upcomingMeetings,
+            totalCustomers
+        );
+
+        // Ahora formatear el mensaje final
+        var sb = new System.Text.StringBuilder();
+
+        sb.AppendLine("**PANEL GENERAL**");
+        sb.AppendLine("--------------------------------------\n");
+
+        sb.AppendLine($"**Clientes totales:** {summary.TotalCustomers}\n");
+
+        sb.AppendLine("🕒 **Interacciones recientes:**");
+        if (summary.RecentInteractions.Count == 0)
+        {
+            sb.AppendLine("- No hay interacciones registradas.\n");
+        }
+        else
+        {
+            foreach (var i in summary.RecentInteractions)
+            {
+                sb.AppendLine(
+                    $"- {i.Date:yyyy-MM-dd} — {i.GetType().Name} — Cliente: {i.Customer.Name}"
+                );
+            }
+            sb.AppendLine();
+        }
+
+        sb.AppendLine("📅 **Próximas reuniones:**");
+        if (summary.UpcomingMeetings.Count == 0)
+        {
+            sb.AppendLine("- No hay reuniones próximas.\n");
+        }
+        else
+        {
+            foreach (var m in summary.UpcomingMeetings)
+            {
+                sb.AppendLine(
+                    $"- {m.Date:yyyy-MM-dd} — {m.Place} — Cliente: {m.Customer.Name}"
+                );
+            }
+        }
+
+        return sb.ToString();
+    }
+
 }
