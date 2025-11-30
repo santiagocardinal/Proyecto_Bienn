@@ -281,7 +281,7 @@ public class Facade
 
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(seller.Id);
+                throw new Exceptions.SellerNullException();
 
             if (seller.Customer.Count == 0)
                 return $"```" +
@@ -781,7 +781,7 @@ private string FormatInteractionsMessage(
             //Seller seller = sm.SearchById(id);
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(seller.Id);
+                throw new Exceptions.SellerNullException();
 
             return $"***Vendedor encontrado por su ID:***\n" +
                    "```" +
@@ -802,7 +802,7 @@ private string FormatInteractionsMessage(
     // ---------------------------------------------------------
     //   ASIGNAR CLIENTE A VENDEDOR
     // ---------------------------------------------------------
-    public static string AssignCustomer(string customerId, string sellerId)
+    /*public static string AssignCustomer(string customerId, string sellerId)
     {
         try
         {
@@ -826,6 +826,90 @@ private string FormatInteractionsMessage(
         catch (Exception ex)
         {
             return ex.Message;
+        }
+    }*/
+    
+    /// <summary>
+    /// Asigna un cliente a un vendedor para distribuir el trabajo en el equipo.
+    /// Historia de usuario: Como vendedor, quiero poder asignar un cliente a otro 
+    /// vendedor para distribuir el trabajo en el equipo.
+    /// </summary>
+    public static string AssignCustomer(string customerId, string sellerId)
+    {
+        try
+        {
+            // Buscar el cliente
+            Customer customer = cm.SearchById(customerId);
+            if (customer == null)
+                throw new Exceptions.NotExistingCustomerException();
+        
+            // Buscar el vendedor
+            Seller seller = sm.SearchById(sellerId);
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException(sellerId);
+        
+            // Realizar la asignación
+            cm.AssignCustomerToSeller(customer, seller);
+        
+            // Mensaje de confirmación con formato
+            return "✅ ***Cliente asignado correctamente***\n\n" +
+                   "**Cliente:**\n" +
+                   "  • ID: " + customer.Id + "\n" +
+                   "  • Nombre: " + customer.Name + " " + customer.FamilyName + "\n" +
+                   "  • Email: " + customer.Mail + "\n\n" +
+                   "**Asignado a vendedor:**\n" +
+                   "  • ID: " + seller.Id + "\n" +
+                   "  • Nombre: " + seller.Name + "\n\n" +
+                   "_Asignación realizada el " + System.DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "_";
+        }
+        catch (Exceptions.NotExistingCustomerException)
+        {
+            return "No existe un cliente con el ID: **" + customerId + "**";
+        }
+        catch (Exceptions.SellerNullException)
+        {
+            return "No existe un vendedor con el ID proporcionado";
+        }
+        catch (System.Exception ex)
+        {
+            return "Error al asignar cliente: " + ex.Message;
+        }
+    }
+    
+    public static string ExchangeCustomer(string customerId, string oldSellerId, string newSellerId)
+    {
+        try
+        {
+            // Buscar el cliente
+            Customer customer = cm.SearchById(customerId);
+            if (customer == null)
+                throw new Exceptions.NotExistingCustomerException();
+
+            // Buscar vendedor anterior
+            Seller oldSeller = sm.SearchById(oldSellerId);
+            if (oldSeller == null)
+                throw new Exceptions.SellerNotFoundException(oldSellerId);
+
+            // Buscar vendedor nuevo
+            Seller newSeller = sm.SearchById(newSellerId);
+            if (newSeller == null)
+                throw new Exceptions.SellerNotFoundException(newSellerId);
+
+            // Remover el cliente del vendedor anterior
+            if (!oldSeller.Customer.Contains(customer))
+                throw new Exception($"El cliente {customerId} no pertenece al vendedor {oldSellerId}.");
+
+            oldSeller.Customer.Remove(customer);
+
+            // Reutilizar tu método AssignCustomer
+            string assignResult = AssignCustomer(customerId, newSellerId);
+
+            // Respuesta final formateada
+            return assignResult;
+        }
+        catch (Exception ex)
+        {
+            return "Error en la reasignación: " + ex.Message;
         }
     }
 
@@ -1014,7 +1098,7 @@ private string FormatInteractionsMessage(
                 throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException("null");
+                throw new Exceptions.SellerNullException();
 
             Quote foundQuote = customer.Interactions
                 .OfType<Quote>()
@@ -1076,7 +1160,7 @@ private string FormatInteractionsMessage(
             Seller seller = sm.SearchById(sellerId);
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(sellerId);
+                throw new Exceptions.SellerNullException();
 
             sm.EnableSeller(seller);
 
@@ -1137,6 +1221,75 @@ private string FormatInteractionsMessage(
         {
             return ex.Message;
         }
+    }
+
+    public static string GetDashboardFormatted()
+    {
+        var customers = cm.Customers;
+
+        int totalCustomers = customers.Count;
+
+        var recentInteractions = customers
+            .SelectMany(c => c.Interactions)
+            .OrderByDescending(i => i.Date)
+            .Take(5)
+            .ToList();
+
+        var upcomingMeetings = customers
+            .SelectMany(c => c.Interactions)
+            .OfType<Meeting>()
+            .Where(m => m.Date > DateTime.Now)
+            .OrderBy(m => m.Date)
+            .Take(5)
+            .ToList();
+
+        // Construir DTO (si querés usarlo en otros lados)
+        DashboardSummary summary = new DashboardSummary(
+            recentInteractions,
+            upcomingMeetings,
+            totalCustomers
+        );
+
+        // Ahora formatear el mensaje final
+        var sb = new System.Text.StringBuilder();
+
+        sb.AppendLine("**PANEL GENERAL**");
+        sb.AppendLine("--------------------------------------\n");
+
+        sb.AppendLine($"**Clientes totales:** {summary.TotalCustomers}\n");
+
+        sb.AppendLine("🕒 **Interacciones recientes:**");
+        if (summary.RecentInteractions.Count == 0)
+        {
+            sb.AppendLine("- No hay interacciones registradas.\n");
+        }
+        else
+        {
+            foreach (var i in summary.RecentInteractions)
+            {
+                sb.AppendLine(
+                    $"- {i.Date:yyyy-MM-dd} — {i.GetType().Name} — Cliente: {i.Customer.Name}"
+                );
+            }
+            sb.AppendLine();
+        }
+
+        sb.AppendLine("📅 **Próximas reuniones:**");
+        if (summary.UpcomingMeetings.Count == 0)
+        {
+            sb.AppendLine("- No hay reuniones próximas.\n");
+        }
+        else
+        {
+            foreach (var m in summary.UpcomingMeetings)
+            {
+                sb.AppendLine(
+                    $"- {m.Date:yyyy-MM-dd} — {m.Place} — Cliente: {m.Customer.Name}"
+                );
+            }
+        }
+
+        return sb.ToString();
     }
 
 }

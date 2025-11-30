@@ -72,6 +72,7 @@ public class SellerManager
 
         if (!this.Sellers.Contains(seller))
             throw new Exceptions.SellerNotFoundException(seller.Id);
+            
 
         seller.IsSuspended = false;
     }
@@ -109,7 +110,7 @@ public class SellerManager
     public void EnsureSellerIsActive(Seller seller)
     {
         if (seller == null)
-            throw new Exceptions.SellerNotFoundException("null");
+            throw new Exceptions.SellerNullException();
 
         if (seller.IsSuspended)
             throw new Exceptions.SuspendedSellerException(seller.Id);

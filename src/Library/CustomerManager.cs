@@ -216,7 +216,10 @@ public class CustomerManager
             throw new Exceptions.NotExistingCustomerException();
 
         if (seller == null)
-            throw new Exceptions.SellerNotFoundException("null");
+        {
+            throw new Exceptions.SellerNullException();
+        }
+            
 
         if (interaction == null)
             throw new ArgumentNullException(nameof(interaction));
@@ -252,13 +255,20 @@ public class CustomerManager
 
     private int GetTotalCustomer() => customers.Count;
 
-    private List<Customer> GetRecentInteraction(TimeSpan lapso)
+    private List<Interaction> GetRecentInteraction(TimeSpan lapso)
     {
-        DateTime now = DateTime.Now;
-
+        DateTime limit = DateTime.Now - lapso;
+        
         return customers
+                .SelectMany(c => c.Interactions)          // juntar todas las interacciones
+                .Where(i => i.Date >= limit)              // solo las recientes
+                .OrderByDescending(i => i.Date)           // más nuevas primero
+                .Take(5)                                  // opcional: máximo 5
+                .ToList();
+        
+        /*return customers
             .Where(c => c.GetLastInteraction() < now - lapso)
-            .ToList();
+            .ToList();*/
     }
 
     private List<Meeting> GetUpcomingMeetings(Customer customer)
@@ -332,7 +342,7 @@ public class CustomerManager
             throw new Exceptions.NotExistingCustomerException();
 
         if (seller == null)
-            throw new Exceptions.SellerNotFoundException("null");
+            throw new Exceptions.SellerNullException();
 
         seller.Customer.Add(customer);
     }

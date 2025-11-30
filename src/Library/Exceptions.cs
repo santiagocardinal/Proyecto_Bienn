@@ -48,7 +48,13 @@ public static class Exceptions
     public class SellerNotFoundException : Exception
     {
         public SellerNotFoundException(string id)
-            : base($"No se encontró el vendedor con ID '{id}'.") {}
+            : base($"No se encontró el vendedor con ID {id}.") {}
+    }
+    
+    public class SellerNullException : Exception
+    {
+        public SellerNullException()
+            : base("No se encontró el vendedor con el ID proporcionado.") {}
     }
 
     public class DuplicateSellerException : Exception

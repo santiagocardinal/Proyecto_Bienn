@@ -14,7 +14,7 @@ namespace Library{
         /// </summary>
         [Command("saleRegister")]
         [Summary(
-            "Registra un sale usando fecha, tema, tipo, ID del cliente y ID del vendedor y una cotizacion previa.")]
+            "Registra un Sale usando fecha, tema, tipo, ID del cliente y ID del vendedor y una cotizacion previa.")]
         public async Task ExecuteAsync(
             string sellerId,
             string customerId,
