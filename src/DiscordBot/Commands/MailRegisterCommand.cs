@@ -21,7 +21,7 @@ namespace Library
             string sellerId)
         {
             // Conversión de fecha desde string a DateTime
-            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            /*if (!DateTime.TryParse(date, out DateTime parsedDate))
             {
                 await ReplyAsync("La fecha ingresada no es válida. Usa el formato YYYY-MM-DD.");
                 return;
@@ -31,9 +31,9 @@ namespace Library
             {
                 await ReplyAsync("El tipo de interacción no es válido. Usa uno de: Sent, Received, ...");
                 return;
-            }
+            }*/
 
-            string result = Facade.MailRegister(parsedDate, topic, parsedType, customerId, sellerId);
+            string result = Facade.MailRegister(date, topic, type, customerId, sellerId);
             await ReplyAsync(result);
         }
     }

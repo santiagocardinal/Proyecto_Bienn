@@ -13,11 +13,11 @@ namespace Library
     {
         [Command("quoteRegister")]
         [Summary("Registra una venta incluyendo qué se vendió, cuándo y cuánto se cobró.")]
-        public async Task ExecuteAsync(string dateString, string topic, string exchangeType, string amount, string description, string customerId, string sellerId)
+        public async Task ExecuteAsync(string date, string topic, string exchangeType, string amount, string description, string customerId, string sellerId)
         {
             try
             {
-                if (!DateTime.TryParse(dateString, out DateTime saleDate))
+                /*if (!DateTime.TryParse(dateString, out DateTime saleDate))
                 {
                     await ReplyAsync("Formato de fecha inválido. Usa el formato: YYYY-MM-DD");
                     return;
@@ -33,19 +33,8 @@ namespace Library
                 {
                     await ReplyAsync($"Tipo de intercambio inválido. Usa: {string.Join(", ", Enum.GetNames(typeof(ExchangeType)))}");
                     return;
-                }
-                string result = Facade.QuoteRegister(saleDate, topic, type, parsedAmount, description, customerId, sellerId);
-                /*string response = $"**Venta Registrada**\n" +
-                                  $"```\n" +
-                                  $"Fecha:        {saleDate:dd/MM/yyyy}\n" +
-                                  $"Producto:     {topic}\n" +
-                                  $"Monto:        ${amount:N2}\n" +
-                                  $"Tipo:         {type}\n" +
-                                  $"Cliente:      {customerId}\n" +
-                                  $"Vendedor:     {sellerId}\n" +
-                                  $"Descripción:  {description}\n" +
-                                  $"```\n" +
-                                  $"{result}";*/
+                }*/
+                string result = Facade.QuoteRegister(date, topic, exchangeType, amount, description, customerId, sellerId);
                 await ReplyAsync(result);
             }
             catch (Exception ex)

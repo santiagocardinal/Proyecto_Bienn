@@ -25,7 +25,7 @@ namespace Library{
             string product)
         {
             // Conversión de fecha desde string a DateTime
-            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            /*if (!DateTime.TryParse(date, out DateTime parsedDate))
             {
                 await ReplyAsync("La fecha ingresada no es válida. Usa el formato YYYY-MM-DD.");
                 return;
@@ -41,9 +41,9 @@ namespace Library{
             {
                 await ReplyAsync("Se debe ingresar un monto en pesos en el formato 100.0");
                 return;
-            }
+            }*/
 
-            string result = Facade.SaleFromQuote(sellerId, customerId, parsedDate, topic, parsedType, parsedAmount, product);
+            string result = Facade.SaleFromQuote(sellerId, customerId, date, topic, type, amount, product);
             await ReplyAsync(result);
         }
     }

@@ -13,6 +13,35 @@ public class Facade
 {
     public static CustomerManager cm = Singleton<CustomerManager>.GetInstance();
     public static SellerManager sm = Singleton<SellerManager>.GetInstance();
+    
+    
+    public static DateTime ParseDate(string dateString)
+    {
+        if (!DateTime.TryParse(dateString, out DateTime date))
+            throw new Exception("Formato de fecha inválido. Usa el formato: YYYY-MM-DD.");
+
+        return date;
+    }
+    
+    public static double ParseDouble(string value)
+    {
+        if (!double.TryParse(value, out double number))
+            throw new Exception("Formato de número inválido. Usa solo valores numéricos (ej: 1500.75).");
+
+        return number;
+    }
+
+    public static ExchangeType ParseExchangeType(string typeString)
+    {
+        if (!Enum.TryParse<ExchangeType>(typeString, true, out ExchangeType type))
+            throw new Exception(
+                "Tipo de intercambio inválido. Usa uno de: " +
+                string.Join(", ", Enum.GetNames(typeof(ExchangeType)))
+            );
+
+        return type;
+    }
+    
 
     
     /// <summary>
@@ -825,11 +854,14 @@ private string FormatInteractionsMessage(
     
     // --------------------------- REGISTROS ---------------------------
 
-    public static string CallRegister(DateTime date, string topic, ExchangeType type, string customerId,
+    public static string CallRegister(string dateStr, string topic, string typeStr, string customerId,
         string sellerId)
     {
         try
         {
+            DateTime date = ParseDate(dateStr);
+            ExchangeType type = ParseExchangeType(typeStr);
+            
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
@@ -845,11 +877,14 @@ private string FormatInteractionsMessage(
         }
     }
 
-    public static string MeetingRegister(string place, DateTime date, string topic, ExchangeType type,
+    public static string MeetingRegister(string place, string dateStr, string topic, string typeStr,
         string customerId, string sellerId)
     {
         try
         {
+            DateTime date = ParseDate(dateStr);
+            ExchangeType type = ParseExchangeType(typeStr);
+            
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
@@ -868,11 +903,14 @@ private string FormatInteractionsMessage(
         }
     }
 
-    public static string MessageRegister(DateTime date, string topic, ExchangeType type, string customerId,
+    public static string MessageRegister(string dateStr, string topic, string typeStr, string customerId,
         string sellerId)
     {
         try
         {
+            DateTime date = ParseDate(dateStr);
+            ExchangeType type = ParseExchangeType(typeStr);
+            
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
@@ -888,11 +926,13 @@ private string FormatInteractionsMessage(
         }
     }
 
-    public static string MailRegister(DateTime date, string topic, ExchangeType type, string customerId,
-        string sellerId)
+    public static string MailRegister(string dateStr, string topic, string typeStr, string customerId, string sellerId)
     {
         try
         {
+            DateTime date = ParseDate(dateStr);
+            ExchangeType type = ParseExchangeType(typeStr);
+            
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
@@ -908,11 +948,16 @@ private string FormatInteractionsMessage(
         }
     }
 
-    public static string QuoteRegister(DateTime date, string topic, ExchangeType type, double amount,
+    public static string QuoteRegister(
+        string dateStr, string topic, string typeStr, string amountStr,
         string description, string customerId, string sellerId)
     {
         try
         {
+            DateTime date = ParseDate(dateStr);
+            ExchangeType type = ParseExchangeType(typeStr);
+            double amount = ParseDouble(amountStr);
+            
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
@@ -952,16 +997,14 @@ private string FormatInteractionsMessage(
     /// Verifica que la cotización coincida con los datos provistos antes de crear la venta.
     /// </summary>
     public static string SaleFromQuote(
-        string sellerId,
-        string customerId,
-        DateTime date,
-        string topic,
-        ExchangeType type,
-        double amount,
-        string product)
+        string dateStr, string topic, string typeStr, string amountStr,
+        string product, string customerId, string sellerId)
     {
         try
         {
+            DateTime date = ParseDate(dateStr);
+            double amount = ParseDouble(amountStr);
+            ExchangeType type = ParseExchangeType(typeStr);
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
@@ -1074,15 +1117,12 @@ private string FormatInteractionsMessage(
     }
 
     
-    public static string GetTotalSales(string startDate, string endDate)
+    public static string GetTotalSales(string startStr, string endStr)
     {
         try
         {
-            if (!DateTime.TryParse(startDate, out DateTime start))
-                return "Fecha inicial inválida (usa YYYY-MM-DD).";
-
-            if (!DateTime.TryParse(endDate, out DateTime end))
-                return "Fecha final inválida (usa YYYY-MM-DD).";
+            DateTime start = ParseDate(startStr);
+            DateTime end = ParseDate(endStr);
 
             var sales = sm.GetSalesBetween(start, end);
 

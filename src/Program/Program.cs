@@ -21,8 +21,13 @@ namespace Program
             Facade.cm.AddCustomer(new Customer("C1", "Juan", "Perez", "mail@mail.com", "099", "M", DateTime.Now));
             Facade.sm.CreateSeller(new Seller("Carlos", "carlos@mail.com", "099111222", "S1"));
             Facade.AssignCustomer("C1", "S1");
-            DateTime fecha = new DateTime(2025, 03, 10);
-            Facade.MailRegister(fecha, "Compra", ExchangeType.Sent, "C1", "S1");
+            
+            //DateTime fecha = new DateTime(2025, 03, 10);
+            
+            string fecha = "2025-11-30";
+            string type = "sent";
+            
+            Facade.MailRegister(fecha, "Compra", type, "C1", "S1");
             
             if (args.Length != 0)
             {

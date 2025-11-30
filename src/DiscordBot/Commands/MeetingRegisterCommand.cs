@@ -17,18 +17,18 @@ namespace Library
             string place,
             string date,
             string topic,
-            ExchangeType type,
+            string type,
             string customerId,
             string sellerId)
         {
             // Conversión de fecha
-            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            /*if (!DateTime.TryParse(date, out DateTime parsedDate))
             {
                 await ReplyAsync("La fecha ingresada no es válida. Usa el formato YYYY-MM-DD.");
                 return;
-            }
+            }*/
 
-            string result = Facade.MeetingRegister(place, parsedDate, topic, type, customerId, sellerId);
+            string result = Facade.MeetingRegister(place, date, topic, type, customerId, sellerId);
             await ReplyAsync(result);
         }
     }

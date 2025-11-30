@@ -16,18 +16,18 @@ namespace Library
         public async Task ExecuteAsync(
             string date,
             string topic,
-            ExchangeType type,
+            string type,
             string customerId,
             string sellerId)
         {
             // Convertir fecha desde string → DateTime
-            if (!DateTime.TryParse(date, out DateTime parsedDate))
+            /*if (!DateTime.TryParse(date, out DateTime parsedDate))
             {
                 await ReplyAsync("La fecha ingresada no es válida. Usa el formato YYYY-MM-DD.");
                 return;
-            }
+            }*/
 
-            string result = Facade.CallRegister(parsedDate, topic, type, customerId, sellerId);
+            string result = Facade.CallRegister(date, topic, type, customerId, sellerId);
             await ReplyAsync(result);
         }
     }
