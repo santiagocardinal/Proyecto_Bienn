@@ -30,7 +30,6 @@ namespace Library
                 return;
             }
 
-            // Llamamos directamente a tu fachada
             string result = Facade.CreateCustomer(
                 id,
                 name,

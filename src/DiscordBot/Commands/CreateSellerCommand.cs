@@ -49,7 +49,7 @@ namespace Library
             // 2. Llamar a la fachada
             // ---------------------------
             string result = Facade.CreateSeller(id, name, mail, phone); 
-            // ⚠️ Pasé "1234" porque tu Facade lo exige.
+            // Pasé "1234" porque tu Facade lo exige.
             // Si querés que no use password, te lo ajusto después.
 
             // ---------------------------
