@@ -56,3 +56,42 @@ En esta segunda entrega pudimos ver reflejado el crecimiento del equipo tanto a 
 > [!NOTE]
 > En el siguiente link se podrán encontrar con la web de la documentación:
 > https://santiagocardinal.github.io/Proyecto_Bienn/html/index.html
+>
+
+ ## Entrega Final
+
+En esta tercera y última entrega seguimos incorporando nuevas herramientas y consolidando todo lo trabajado a lo largo del proyecto. El foco principal fue integrar nuestro **CRM con Discord**, lo que nos obligó a adaptar el sistema a un entorno real de interacción y a pensar cuidadosamente cómo presentar la información de forma clara y útil para el usuario final.
+
+**Trabajo Técnico**
+
+Mantuvimos el uso de los patrones `Facade` (aunque le tuvimos que modificar algunos aspectos para que el programa funcione correctamente) y `Singleton`. La fachada volvió a ser clave para simplificar la interacción entre el usuario y el sistema, especialmente ahora que todo se gestiona mediante comandos de Discord. 
+
+La integración con Discord nos llevó a trabajar exclusivamente con inputs en formato _string_, los cuales debían ser validados, divididos y convertidos en objetos internos del sistema. 
+
+ Para lograr un funcionamiento claro y mantenible, organizamos todos los comandos de forma ordenada, asegurándonos de que cada uno cumpliera una única responsabilidad. 
+
+ **Organización del Equipo**
+ En comparación con las entregas anteriores, sentimos que esta fue la más ordenada a nivel grupal. La experiencia previa trabajando juntos se notó claramente: 
+
+- Repartimos las tareas con más criterio, 
+
+- La comunicación fue más fluida, 
+
+- Cada integrante tuvo mayor autonomía sin perder la coordinación general del equipo. 
+
+**Desafíos**
+
+La activación del bot fue una de las etapas que más trabajo nos dio. Aunque en teoría parecía sencillo crear el bot, obtener el token y conectarlo al proyecto en la práctica fue un proceso repleto de detalles finos que ajustar. 
+
+El primer obstáculo fue la configuración inicial del bot en el panel de Discord. A pesar de seguir la documentación oficial, muchas de las opciones de permisos estaban repartidas en distintas secciones, lo que nos obligó a revisarlo todo manualmente varias veces. Tras varias lecturas del documento de inicialización y gracias al apoyo de compañeros, finalmente logramos activar el bot sin fallas. 
+
+Otro punto desafiante fue la interacción entre el bot y nuestra fachada. Hubo momentos en los que el bot recibía los datos correctamente, pero el parseo fallaba; esto nos llevó a revisar la forma en que dividíamos los parámetros y cómo manejábamos los distintos casos de error. 
+
+**Reflexión Final** 
+
+Cerramos el proyecto con la sensación de __haber crecido mucho__ desde el inicio. Pasamos por varias etapas: `diseño de clases`, `pruebas unitarias`, `documentación`, `patrones de diseño`, `manejo de GitHub` y, finalmente, `integración con un entorno real como Discord`. 
+
+ 
+ 
+
+
