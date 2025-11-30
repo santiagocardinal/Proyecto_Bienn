@@ -11,7 +11,7 @@ namespace Library
     /// </summary>
     public class RegisterSaleCommand : ModuleBase<SocketCommandContext>
     {
-        [Command("registerQuote")]
+        [Command("quoteRegister")]
         [Summary("Registra una venta incluyendo qué se vendió, cuándo y cuánto se cobró.")]
         public async Task ExecuteAsync(string dateString, string topic, string exchangeType, string amount, string description, string customerId, string sellerId)
         {

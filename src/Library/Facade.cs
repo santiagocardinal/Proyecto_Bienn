@@ -98,12 +98,10 @@ public class Facade
             Customer c = cm.SearchById(id);
 
             return$"***Cliente buscado por ID:***"+
-                  "```"+ 
-                "   ID: {c.Id}\n" +
-                   "    Nombre: {c.Name} {c.FamilyName}\n" +
-                   "    Mail: {c.Mail}\n" +
-                   "    Teléfono: {c.Phone}"+
-                   "```";
+                $"   ID: {c.Id}\n" +
+                   $"    Nombre: {c.Name} {c.FamilyName}\n" +
+                   $"    Mail: {c.Mail}\n" +
+                   $"    Teléfono: {c.Phone}";
         }
         catch (Exception ex)
         {
@@ -1045,6 +1043,8 @@ private string FormatInteractionsMessage(
         {
             return ex.Message;
         }
+        
+        
     }
 
     
@@ -1068,6 +1068,32 @@ private string FormatInteractionsMessage(
                 "```";
         }
         catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
+    
+    public static string GetTotalSales(string startDate, string endDate)
+    {
+        try
+        {
+            if (!DateTime.TryParse(startDate, out DateTime start))
+                return "Fecha inicial inválida (usa YYYY-MM-DD).";
+
+            if (!DateTime.TryParse(endDate, out DateTime end))
+                return "Fecha final inválida (usa YYYY-MM-DD).";
+
+            var sales = sm.GetSalesBetween(start, end);
+
+            if (sales.Count == 0)
+                return $"No hubo ventas entre {start:yyyy-MM-dd} y {end:yyyy-MM-dd}.";
+
+            double total = sales.Sum(s => s.Amount.Amount);
+
+            return $"Total de ventas entre {start:yyyy-MM-dd} y {end:yyyy-MM-dd}: **USD {total:F2}**";
+        }
+        catch(Exception ex)
         {
             return ex.Message;
         }

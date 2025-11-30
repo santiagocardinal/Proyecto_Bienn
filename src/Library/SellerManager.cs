@@ -121,4 +121,20 @@ public class SellerManager
         EnsureSellerIsActive(seller);
         return seller;
     }
+    
+    public List<Sale> GetAllSales()
+    {
+        return sellers
+            .SelectMany(s => s.Interactions)
+            .OfType<Sale>()
+            .ToList();
+    }
+    
+    public List<Sale> GetSalesBetween(DateTime start, DateTime end)
+    {
+        return GetAllSales()
+            .Where(s => s.Date >= start && s.Date <= end)
+            .ToList();
+    }
+
 }
