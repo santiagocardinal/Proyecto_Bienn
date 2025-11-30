@@ -18,17 +18,17 @@ namespace Library
         {
             var customers = Facade.cm.Customers;
 
-            // 1️⃣ Clientes totales
+            //  Clientes totales
             int totalCustomers = customers.Count;
 
-            // 2️⃣ Interacciones recientes (últimas 5)
+            //  Interacciones recientes (últimas 5)
             var recentInteractions = customers
                 .SelectMany(c => c.Interactions)
                 .OrderByDescending(i => i.Date)
                 .Take(5)
                 .ToList();
 
-            // 3️⃣ Próximas reuniones (solo Meeting en el futuro)
+            // Próximas reuniones (solo Meeting en el futuro)
             var upcomingMeetings = customers
                 .SelectMany(c => c.Interactions)
                 .OfType<Meeting>()
@@ -38,11 +38,11 @@ namespace Library
                 .ToList();
 
             // Construcción del mensaje final
-            string msg = "📊 **PANEL GENERAL**\n";
+            string msg = "**PANEL GENERAL**\n";
             msg += "--------------------------------------\n\n";
 
             // Clientes totales
-            msg += $"👥 **Clientes totales:** {totalCustomers}\n\n";
+            msg += $"**Clientes totales:** {totalCustomers}\n\n";
 
             // Interacciones recientes
             msg += "🕒 **Interacciones recientes:**\n";
@@ -61,7 +61,7 @@ namespace Library
             msg += "\n";
 
             // Próximas reuniones
-            msg += "📅 **Próximas reuniones:**\n";
+            msg += "**Próximas reuniones:**\n";
             if (upcomingMeetings.Count == 0)
             {
                 msg += "- No hay reuniones próximas.\n";
