@@ -109,6 +109,7 @@ public class SellerCommand
         }
     }
     
+    /// Uso: !enableSeller S1
     public class EnableSellerCommand : ModuleBase<SocketCommandContext>
     {
         [Command("enableSeller")]
