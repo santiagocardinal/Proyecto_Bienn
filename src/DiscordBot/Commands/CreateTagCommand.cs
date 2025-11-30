@@ -23,13 +23,6 @@ namespace Library
             
             await ReplyAsync(result);
             
-            /*string message =
-                $"Etiqueta creada:\n" +
-                $"- ID: {tag.Id}\n" +
-                $"- Nombre: {tag.Name}\n" +
-                $"- Descripción: {tag.Description}";
-
-            await ReplyAsync(message);*/
         }
     }
 }

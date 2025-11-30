@@ -4,6 +4,10 @@ using Discord.WebSocket;
 
 namespace Library
 {
+    /*/// <summary>
+    /// Comando para eliminar sellers, lo puede ejecutar unicamente un seller administrador del servidor
+    /// Uso: !deleteSeller S1
+    /// </summary>
     public class DeleteSellerCommand : ModuleBase<SocketCommandContext>
     {
         [Command("deleteSeller")]
@@ -21,5 +25,5 @@ namespace Library
             string result = Facade.DeleteSeller(sellerId);
             await ReplyAsync(result);
         }
-    }
+    }*/
 }

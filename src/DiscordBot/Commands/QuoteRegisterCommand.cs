@@ -6,8 +6,8 @@ using Library;
 namespace Library
 {
     /// <summary>
-    /// Comando para registrar una venta a un cliente.
-    /// Uso: !registerSale 2025-11-29 "Producto X" efectivo 1500.50 "Venta de productos" C001 V001
+    /// Comando para registrar una cotizacion para un cliente.
+    /// Uso: !quoteRegister 2025-11-29 "Cotizacion producto X" 1500.50 Sent C001 V001
     /// </summary>
     public class RegisterSaleCommand : ModuleBase<SocketCommandContext>
     {

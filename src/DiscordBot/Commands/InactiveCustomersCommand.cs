@@ -14,6 +14,15 @@ namespace Library
     public class InactiveCustomersCommand : ModuleBase<SocketCommandContext>
     {
         [Command("inactiveCustomers")]
+        [Summary("Muestra los clientes que no tienen interacciones recientes.")]
+        public async Task ExecuteAsync(int days)
+        {
+            string result = Facade.GetInactiveCustomersFormatted(days);
+            await ReplyAsync(result);
+        }
+
+        
+        /*[Command("inactiveCustomers")]
         [Summary("Muestra los clientes que no tienen interacciones recientes en los últimos X días.")]
         public async Task ExecuteAsync(int days)
         {
@@ -44,6 +53,6 @@ namespace Library
             result += string.Join("\n", inactive);
 
             await ReplyAsync(result);
-        }
+        }*/
     }
 }

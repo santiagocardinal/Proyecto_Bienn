@@ -23,14 +23,13 @@ namespace Library
             string gender,
             string birthDate) // lo recibimos como string y lo convertimos
         {
-            // Validación y parseo de fecha
-            if (!DateTime.TryParse(birthDate, out DateTime parsedDate))
+            
+            /*if (!DateTime.TryParse(birthDate, out DateTime parsedDate))
             {
                 await ReplyAsync("La fecha debe tener formato válido (por ejemplo: 2000-05-21).");
                 return;
-            }
-
-            // Llamamos directamente a tu fachada
+            }*/
+            
             string result = Facade.CreateCustomer(
                 id,
                 name,
@@ -38,7 +37,7 @@ namespace Library
                 mail,
                 phone,
                 gender,
-                parsedDate
+                birthDate
             );
 
             await ReplyAsync(result);

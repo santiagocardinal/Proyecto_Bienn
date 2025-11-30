@@ -51,11 +51,12 @@ public class Facade
 
     public static string CreateCustomer(
         string id, string name, string familyName,
-        string mail, string phone, string gender, DateTime birthDate)
+        string mail, string phone, string gender, string birthDate)
     {
         try
         {
-            Customer c1 = new Customer(id, name, familyName, mail, phone, gender, birthDate);
+            DateTime date = ParseDate(birthDate);
+            Customer c1 = new Customer(id, name, familyName, mail, phone, gender, date);
             cm.AddCustomer(c1);
             return $"***Cliente creado correctamente***\n" +
                    "```\n" +
@@ -64,7 +65,7 @@ public class Facade
                    $"Email:        " + mail + "\n" +
                    $"Teléfono:     " + phone + "\n" +
                    $"Género:       " + gender + "\n" +
-                   $"Fecha Nac.:   " + birthDate.ToString("dd/MM/yyyy") + "\n" +
+                   $"Fecha Nac.:   " + date.ToString("dd/MM/yyyy") + "\n" +
                    "```";
         }
         catch (Exception ex)
@@ -493,16 +494,17 @@ public string GetCustomerInteractionsByType(string customerId, string interactio
 /// <summary>
 /// Obtiene las interacciones de un cliente filtradas por fecha.
 /// </summary>
-public string GetCustomerInteractionsByDate(string customerId, string dateString)
+public string GetCustomerInteractionsByDate(string customerId, string dateStr)
 {
     try
     {
-        if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
+        DateTime date = ParseDate(dateStr);
+        /*if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
         {
             return $"```" +
                    "Formato de fecha inválido. Usa el formato: YYYY-MM-DD" 
                          +"\n"+ "```";
-        }
+        }*/
 
         Customer customer = cm.SearchById(customerId);
         if (customer == null)
@@ -516,14 +518,14 @@ public string GetCustomerInteractionsByDate(string customerId, string dateString
         System.Collections.Generic.List<Interaction> filtered = new System.Collections.Generic.List<Interaction>();
         foreach (var interaction in interactions)
         {
-            if (interaction.Date.Date == parsedDate.Date)
+            if (interaction.Date.Date == date.Date)
             {
                 filtered.Add(interaction);
             }
         }
         interactions = filtered;
         
-        return FormatInteractionsMessage(customerId, interactions, null, parsedDate);
+        return FormatInteractionsMessage(customerId, interactions, null, date);
     }
     catch (Exceptions.NotExistingCustomerException)
     {
@@ -542,16 +544,17 @@ public string GetCustomerInteractionsByDate(string customerId, string dateString
 /// <summary>
 /// Obtiene las interacciones de un cliente filtradas por tipo y fecha.
 /// </summary>
-public string GetCustomerInteractionsByTypeAndDate(string customerId, string interactionType, string dateString)
+public string GetCustomerInteractionsByTypeAndDate(string customerId, string interactionType, string dateStr)
 {
     try
     {
-        if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
+        DateTime date = ParseDate(dateStr);
+        /*if (!System.DateTime.TryParse(dateString, out System.DateTime parsedDate))
         {
             return $"```" +
                    "Formato de fecha inválido. Usa el formato: YYYY-MM-DD" + "\n"+
                    "```";
-        }
+        }*/
 
         Customer customer = cm.SearchById(customerId);
         if (customer == null)
@@ -580,14 +583,14 @@ public string GetCustomerInteractionsByTypeAndDate(string customerId, string int
         System.Collections.Generic.List<Interaction> filteredByDate = new System.Collections.Generic.List<Interaction>();
         foreach (var interaction in interactions)
         {
-            if (interaction.Date.Date == parsedDate.Date)
+            if (interaction.Date.Date == date.Date)
             {
                 filteredByDate.Add(interaction);
             }
         }
         interactions = filteredByDate;
         
-        return FormatInteractionsMessage(customerId, interactions, interactionType, parsedDate);
+        return FormatInteractionsMessage(customerId, interactions, interactionType, date);
     }
     catch (Exceptions.NotExistingCustomerException)
     {
@@ -1291,5 +1294,37 @@ private string FormatInteractionsMessage(
 
         return sb.ToString();
     }
+
+    public static string GetInactiveCustomersFormatted(int days)
+    {
+        try
+        {
+            if (days <= 0)
+                throw new Exception("El número de días debe ser mayor a cero.");
+
+            var inactiveList = cm.GetInactiveCustomers(days);
+
+            if (inactiveList.Count == 0)
+                return $"Todos los clientes han tenido interacción en los últimos {days} días.";
+
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine($"**Clientes sin interacción en más de {days} días:**");
+            sb.AppendLine("```");
+
+            foreach (var c in inactiveList)
+            {
+                sb.AppendLine($"{c.Name} {c.FamilyName} — ID: {c.Id}");
+            }
+
+            sb.AppendLine("```");
+
+            return sb.ToString();
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
 
 }

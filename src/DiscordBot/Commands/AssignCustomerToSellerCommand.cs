@@ -6,7 +6,7 @@ namespace Library
 {
     /// <summary>
     /// Comando para asignar un cliente a otro vendedor dentro del equipo.
-    /// Uso: !assignCustomerToSeller C1 V3
+    /// Uso: !exchangeCustomer C1 V3
     /// </summary>
     public class AssignCustomerToSellerCommand : ModuleBase<SocketCommandContext>
     {

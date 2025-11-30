@@ -180,7 +180,17 @@ public class Customer
         return result;
     }
     
-    public DateTime GetLastInteraction()
+    
+    public DateTime? GetLastInteraction()
+    {
+        if (_interactions == null || _interactions.Count == 0)
+            return null;
+
+        return _interactions.Max(i => i.Date);
+    }
+
+    
+    /*public DateTime GetLastInteraction()
     {
         if (this._interactions == null || this._interactions.Count == 0)
         {
@@ -198,7 +208,7 @@ public class Customer
         }
 
         return last_interaction;
-    }
+    }*/
     
     public void Deactivate()
     {

@@ -6,6 +6,10 @@ using Library;
 
 namespace Library
 {
+    
+    /// <summary>
+    /// Comando para mostrar la cantidad de ventas en un periodo dado
+    /// </summary>
     public class TotalSalesCommand : ModuleBase<SocketCommandContext>
     {
         [Command("totalSales")]

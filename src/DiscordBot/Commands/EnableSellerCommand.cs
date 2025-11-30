@@ -4,6 +4,10 @@ using Discord.WebSocket;
 
 namespace Library
 {
+    /// <summary>
+    /// Comando para habiliar sellers, lo puede ejecutar unicamente un seller administrador del servidor
+    /// Uso: !enableSeller S1
+    /// </summary>
     public class EnableSellerCommand : ModuleBase<SocketCommandContext>
     {
         [Command("enableSeller")]
@@ -11,15 +15,12 @@ namespace Library
         public async Task ExecuteAsync(string sellerId)
         {
             var user = Context.User as SocketGuildUser;
-
-            // Verificar permisos de administrador
+            
             if (user == null || !user.GuildPermissions.Administrator)
             {
                 await ReplyAsync("No tienes permisos para habilitar vendedores.");
                 return;
             }
-
-            // Ejecutar operación en la fachada
             string result = Facade.EnableSeller(sellerId);
             await ReplyAsync(result);
         }

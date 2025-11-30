@@ -4,7 +4,7 @@ using Discord.WebSocket;
 
 namespace Library
 {
-    public class SuspendSellerCommand : ModuleBase<SocketCommandContext>
+    /*public class SuspendSellerCommand : ModuleBase<SocketCommandContext>
     {
         [Command("suspendSeller")]
         [Summary("Suspende un vendedor por ID (solo administradores).")]
@@ -21,5 +21,5 @@ namespace Library
             string result = Facade.SuspendSeller(sellerId);
             await ReplyAsync(result);
         }
-    }
+    }*/
 }

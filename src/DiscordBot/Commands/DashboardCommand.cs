@@ -9,6 +9,7 @@ namespace Library
     /// <summary>
     /// Panel de resumen general del sistema.
     /// Muestra clientes totales, interacciones recientes y reuniones próximas.
+    /// Uso: !dashboard
     /// </summary>
     public class DashboardCommand : ModuleBase<SocketCommandContext>
     {
