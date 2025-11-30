@@ -108,4 +108,22 @@ public class SellerCommand
             await ReplyAsync(result);
         }
     }
+    
+    public class EnableSellerCommand : ModuleBase<SocketCommandContext>
+    {
+        [Command("enableSeller")]
+        [Summary("Habilita un vendedor por ID (solo administradores).")]
+        public async Task ExecuteAsync(string sellerId)
+        {
+            var user = Context.User as SocketGuildUser;
+            
+            if (user == null || !user.GuildPermissions.Administrator)
+            {
+                await ReplyAsync("No tienes permisos para habilitar vendedores.");
+                return;
+            }
+            string result = Facade.EnableSeller(sellerId);
+            await ReplyAsync(result);
+        }
+    }
 }
