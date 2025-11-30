@@ -8,7 +8,7 @@ namespace Library
     /// Comando para habiliar sellers, lo puede ejecutar unicamente un seller administrador del servidor
     /// Uso: !enableSeller S1
     /// </summary>
-    public class EnableSellerCommand : ModuleBase<SocketCommandContext>
+    /*public class EnableSellerCommand : ModuleBase<SocketCommandContext>
     {
         [Command("enableSeller")]
         [Summary("Habilita un vendedor por ID (solo administradores).")]
@@ -24,5 +24,5 @@ namespace Library
             string result = Facade.EnableSeller(sellerId);
             await ReplyAsync(result);
         }
-    }
+    }*/
 }
