@@ -10,11 +10,11 @@ namespace Library
     /// </summary>
     public class AssignCustomerToSellerCommand : ModuleBase<SocketCommandContext>
     {
-        [Command("assignCustomerToSeller")]
+        [Command("exchangeCustomer")]
         [Summary("Asigna un cliente a un vendedor para redistribuir el trabajo.")]
-        public async Task ExecuteAsync(string customerId, string sellerId)
+        public async Task ExecuteAsync(string customerId, string oldSellerId, string newSellerId)
         {
-            string result = Facade.AssignCustomer(customerId, sellerId);
+            string result = Facade.ExchangeCustomer(customerId, oldSellerId, newSellerId);
             await ReplyAsync(result);
         }
     }

@@ -281,7 +281,7 @@ public class Facade
 
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(seller.Id);
+                throw new Exceptions.SellerNullException();
 
             if (seller.Customer.Count == 0)
                 return $"```" +
@@ -781,7 +781,7 @@ private string FormatInteractionsMessage(
             //Seller seller = sm.SearchById(id);
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(seller.Id);
+                throw new Exceptions.SellerNullException();
 
             return $"***Vendedor encontrado por su ID:***\n" +
                    "```" +
@@ -866,15 +866,53 @@ private string FormatInteractionsMessage(
         {
             return "No existe un cliente con el ID: **" + customerId + "**";
         }
-        catch (Exceptions.SellerNotFoundException)
+        catch (Exceptions.SellerNullException)
         {
-            return "No existe un vendedor con el ID: **" + sellerId + "**";
+            return "No existe un vendedor con el ID proporcionado";
         }
         catch (System.Exception ex)
         {
             return "Error al asignar cliente: " + ex.Message;
         }
     }
+    
+    public static string ExchangeCustomer(string customerId, string oldSellerId, string newSellerId)
+    {
+        try
+        {
+            // Buscar el cliente
+            Customer customer = cm.SearchById(customerId);
+            if (customer == null)
+                throw new Exceptions.NotExistingCustomerException();
+
+            // Buscar vendedor anterior
+            Seller oldSeller = sm.SearchById(oldSellerId);
+            if (oldSeller == null)
+                throw new Exceptions.SellerNotFoundException(oldSellerId);
+
+            // Buscar vendedor nuevo
+            Seller newSeller = sm.SearchById(newSellerId);
+            if (newSeller == null)
+                throw new Exceptions.SellerNotFoundException(newSellerId);
+
+            // Remover el cliente del vendedor anterior
+            if (!oldSeller.Customer.Contains(customer))
+                throw new Exception($"El cliente {customerId} no pertenece al vendedor {oldSellerId}.");
+
+            oldSeller.Customer.Remove(customer);
+
+            // Reutilizar tu método AssignCustomer
+            string assignResult = AssignCustomer(customerId, newSellerId);
+
+            // Respuesta final formateada
+            return assignResult;
+        }
+        catch (Exception ex)
+        {
+            return "Error en la reasignación: " + ex.Message;
+        }
+    }
+
     
     
     /// <summary>
@@ -1060,7 +1098,7 @@ private string FormatInteractionsMessage(
                 throw new Exceptions.NotExistingCustomerException();
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException("null");
+                throw new Exceptions.SellerNullException();
 
             Quote foundQuote = customer.Interactions
                 .OfType<Quote>()
@@ -1122,7 +1160,7 @@ private string FormatInteractionsMessage(
             Seller seller = sm.SearchById(sellerId);
 
             if (seller == null)
-                throw new Exceptions.SellerNotFoundException(sellerId);
+                throw new Exceptions.SellerNullException();
 
             sm.EnableSeller(seller);
 

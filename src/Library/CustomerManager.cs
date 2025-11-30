@@ -216,7 +216,10 @@ public class CustomerManager
             throw new Exceptions.NotExistingCustomerException();
 
         if (seller == null)
-            throw new Exceptions.SellerNotFoundException("null");
+        {
+            throw new Exceptions.SellerNullException();
+        }
+            
 
         if (interaction == null)
             throw new ArgumentNullException(nameof(interaction));
@@ -339,7 +342,7 @@ public class CustomerManager
             throw new Exceptions.NotExistingCustomerException();
 
         if (seller == null)
-            throw new Exceptions.SellerNotFoundException("null");
+            throw new Exceptions.SellerNullException();
 
         seller.Customer.Add(customer);
     }
