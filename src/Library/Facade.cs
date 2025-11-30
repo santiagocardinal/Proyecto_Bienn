@@ -360,16 +360,16 @@ public class Facade
     {
         try
         {
-            // 1. Verificar que el cliente exista
+            // Verificar que el cliente exista
             Customer customer = cm.SearchById(customerId);
 
-            // 2. Verificar que la tag exista en el sistema global
+            //  Verificar que la tag exista en el sistema global
             if (!cm.TagExists(tagId))
             {
                 return $"__La Tag__:\n ** '{tagId}'**\n No existe en el sistema. Créala primero con **CreateTag.**";
             }
 
-            // 3. Añadir la tag al cliente
+            // Añadir la tag al cliente
             cm.AddTagToCustomer(customerId, tagId);
 
             return $"```" +

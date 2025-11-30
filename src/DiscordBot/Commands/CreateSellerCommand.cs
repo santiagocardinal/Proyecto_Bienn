@@ -6,7 +6,7 @@ using Library;
 namespace Library;*/
 
 
-/*using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord.Commands;
@@ -18,7 +18,7 @@ namespace Library
     ///Comando para registrar una seller, solo se genera un nuevo seller si el usuario que lo ejecuta es administrador.
     /// Uso: !createSeller S1 Raul raul@mail.com 099333666
     /// </summary>
-    public class CreateSellerCommand : ModuleBase<SocketCommandContext>
+    /*public class CreateSellerCommand : ModuleBase<SocketCommandContext>
     {
         [Command("createSeller")]
         [Summary("Crea un nuevo vendedor (solo administradores).")]
@@ -56,8 +56,9 @@ namespace Library
         /// </summary>
         private bool UserIsAdmin(SocketGuildUser user)
         {
+            // Permiso REAL de Discord (la forma correcta)
             return user.GuildPermissions.Administrator;
         }
-    }
+    }*/
 }
-*/
+
