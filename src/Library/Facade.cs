@@ -802,7 +802,7 @@ private string FormatInteractionsMessage(
     // ---------------------------------------------------------
     //   ASIGNAR CLIENTE A VENDEDOR
     // ---------------------------------------------------------
-    public static string AssignCustomer(string customerId, string sellerId)
+    /*public static string AssignCustomer(string customerId, string sellerId)
     {
         try
         {
@@ -827,8 +827,54 @@ private string FormatInteractionsMessage(
         {
             return ex.Message;
         }
+    }*/
+    
+    /// <summary>
+    /// Asigna un cliente a un vendedor para distribuir el trabajo en el equipo.
+    /// Historia de usuario: Como vendedor, quiero poder asignar un cliente a otro 
+    /// vendedor para distribuir el trabajo en el equipo.
+    /// </summary>
+    public static string AssignCustomer(string customerId, string sellerId)
+    {
+        try
+        {
+            // Buscar el cliente
+            Customer customer = cm.SearchById(customerId);
+            if (customer == null)
+                throw new Exceptions.NotExistingCustomerException();
+        
+            // Buscar el vendedor
+            Seller seller = sm.SearchById(sellerId);
+            if (seller == null)
+                throw new Exceptions.SellerNotFoundException(sellerId);
+        
+            // Realizar la asignación
+            cm.AssignCustomerToSeller(customer, seller);
+        
+            // Mensaje de confirmación con formato
+            return "✅ ***Cliente asignado correctamente***\n\n" +
+                   "**Cliente:**\n" +
+                   "  • ID: " + customer.Id + "\n" +
+                   "  • Nombre: " + customer.Name + " " + customer.FamilyName + "\n" +
+                   "  • Email: " + customer.Mail + "\n\n" +
+                   "**Asignado a vendedor:**\n" +
+                   "  • ID: " + seller.Id + "\n" +
+                   "  • Nombre: " + seller.Name + "\n\n" +
+                   "_Asignación realizada el " + System.DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "_";
+        }
+        catch (Exceptions.NotExistingCustomerException)
+        {
+            return "No existe un cliente con el ID: **" + customerId + "**";
+        }
+        catch (Exceptions.SellerNotFoundException)
+        {
+            return "No existe un vendedor con el ID: **" + sellerId + "**";
+        }
+        catch (System.Exception ex)
+        {
+            return "Error al asignar cliente: " + ex.Message;
+        }
     }
-
     
     
     /// <summary>
