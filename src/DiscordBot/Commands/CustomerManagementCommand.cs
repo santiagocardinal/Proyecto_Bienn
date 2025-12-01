@@ -9,7 +9,7 @@ namespace Library
     /// Comando para crear un nuevo cliente desde Discord.
     /// Uso: !createCustomer ID Nombre Apellido Mail Teléfono Genero yyyy-MM-dd
     /// </summary>
-    public class CustomerCommand : ModuleBase<SocketCommandContext>
+    public class CustomerManagementCommand : ModuleBase<SocketCommandContext>
     {
         [Command("createCustomer")]
         [Summary("Crea un cliente en el sistema usando la fachada.")]
@@ -139,6 +139,32 @@ namespace Library
         public async Task ExecuteAsyncGetCustomerBySellerIdCommand(string sellerId)
         {
             string result = Facade.ShowCustomers_BySellerId(sellerId);
+            await ReplyAsync(result);
+        }
+
+        /// <summary>
+        /// Comando para asignar un cliente a un vendedor.
+        /// Uso: !assignCustomer C001 V001
+        /// </summary>
+        [Command("assignCustomer")]
+        [Summary("Asigna un cliente a un vendedor para distribuir el trabajo en el equipo.")]
+        public async Task AssignCustomerCommand(
+            string customerId,
+            string sellerId)
+        {
+            string result = Facade.AssignCustomer(customerId, sellerId);
+            await ReplyAsync(result);
+        }
+
+        /// <summary>
+        /// Comando para asignar un cliente a otro vendedor dentro del equipo.
+        /// Uso: !exchangeCustomer C1 V3
+        /// </summary>
+        [Command("exchangeCustomer")]
+        [Summary("Asigna un cliente a un vendedor para redistribuir el trabajo.")]
+        public async Task AssignCustomerToSellerCommand(string customerId, string oldSellerId, string newSellerId)
+        {
+            string result = Facade.ExchangeCustomer(customerId, oldSellerId, newSellerId);
             await ReplyAsync(result);
         }
     }

@@ -5,7 +5,7 @@ using Library;
 
 namespace Library
 {
-    /// <summary>
+    /*/// <summary>
     /// Comando para agregar una nota a una interacción existente.
     /// Uso: !addNoteToInteraction C1 "Tema" 2025-03-10 "Contenido de la nota"
     /// </summary>
@@ -43,5 +43,5 @@ namespace Library
 
             await ReplyAsync(result);
         }
-    }
+    }*/
 }

@@ -76,44 +76,43 @@ namespace Library
             await ReplyAsync(result);
         }
 
+        
         /// <summary>
-        /// Comando para registrar una cotizacion para un cliente.
-        /// Uso: !quoteRegister 2025-11-29 "Cotizacion producto X" 1500.50 Sent C001 V001
+        /// Comando para agregar una nota a una interacción existente.
+        /// Uso: !addNoteToInteraction C1 "Tema" 2025-03-10 "Contenido de la nota"
         /// </summary>
-        [Command("quoteRegister")]
-        [Summary("Registra una venta incluyendo qué se vendió, cuándo y cuánto se cobró.")]
-        public async Task RegisterSaleCommand(string date, string topic, string exchangeType, string amount,
-            string description, string customerId, string sellerId)
-        {
-            try
-            {
-                string result =
-                    Facade.QuoteRegister(date, topic, exchangeType, amount, description, customerId, sellerId);
-                await ReplyAsync(result);
-            }
-            catch (Exception ex)
-            {
-                await ReplyAsync($"Error al registrar la venta: {ex.Message}");
-            }
-        }
-
-        /// <summary>
-        /// Comando para registrar un sale entre un cliente y un vendedor.
-        /// Uso: !saleRegister S1 C1 2025-11-29 Compra Sent 1500.5 Casa
-        /// </summary>
-        [Command("saleRegister")]
-        [Summary(
-            "Registra un Sale usando fecha, tema, tipo, ID del cliente y ID del vendedor y una cotizacion previa.")]
-        public async Task SaleRegisterCommand(
-            string sellerId,
+        [Command("addNoteToInteraction")]
+        [Summary("Agrega una nota a una interacción identificada por tópico y fecha.")]
+        public async Task AddNoteToInteractionCommand(
             string customerId,
-            string date,
-            string topic,
-            string type,
-            string amount,
-            string product)
+            string interactionTopic,
+            string interactionDate,
+            string interactionType)
         {
-            string result = Facade.SaleFromQuote(sellerId, customerId, date, topic, type, amount, product);
+            // 1. Convertir la fecha
+            if (!DateTime.TryParse(interactionDate, out DateTime parsedDate))
+            {
+                await ReplyAsync("La fecha ingresada no es válida. Usa formato YYYY-MM-DD.");
+                return;
+            }
+
+            if (!Enum.TryParse<ExchangeType>(interactionType, true, out var parsedType))
+            {
+                await ReplyAsync("El tipo de interacción no es válido. Usa uno de: Sent, Received, ...");
+                return;
+            }
+
+            // 2. Crear la nota
+            Note note = new Note(interactionTopic, parsedDate, parsedType);
+
+
+            // 4. Llamamos al método real de negocio
+            string result = Facade.AddNoteToInteraction(
+                customerId,
+                interactionTopic,
+                parsedDate,
+                note);
+
             await ReplyAsync(result);
         }
     }
