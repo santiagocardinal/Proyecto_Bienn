@@ -86,7 +86,7 @@ public class ExceptionsTests
         // Assert
         Assert.That(exception, Is.InstanceOf<Exception>());
         Assert.That(exception.Message, Does.Contain(sellerId));
-        Assert.That(exception.Message, Is.EqualTo("No se encontró el vendedor con ID 'S123'."));
+        Assert.That(exception.Message, Is.EqualTo("No se encontró el vendedor con ID S123."));
     }
 
     [Test]
@@ -134,7 +134,7 @@ public class ExceptionsTests
         // Assert
         Assert.That(exception, Is.InstanceOf<Exception>());
         Assert.That(exception.Message, Does.Contain(tagName));
-        Assert.That(exception.Message, Is.EqualTo("El cliente ya tiene una etiqueta llamada 'VIP'."));
+        Assert.That(exception.Message, Is.EqualTo("Ya existe una Tag con ID 'VIP'."));
     }
 
     [Test]
