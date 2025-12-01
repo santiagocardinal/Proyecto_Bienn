@@ -347,7 +347,7 @@ public class CustomerTest
         customer.AddInteraction(meeting1);
         customer.AddInteraction(quote1);
 
-        List<Meeting> meetings = customer.GetInteractionsByType<Meeting>();
+        List<Interaction> meetings = customer.GetInteractionsByTypeName("meeting");
 
         Assert.That(meetings.Count, Is.EqualTo(1));
         Assert.That(meetings[0], Is.EqualTo(meeting1));
@@ -406,7 +406,7 @@ public class CustomerTest
         customer.AddInteraction(interaction2);
         customer.AddInteraction(interaction3);
 
-        DateTime lastInteraction = customer.GetLastInteraction();
+        DateTime? lastInteraction = customer.GetLastInteraction();
 
         Assert.That(lastInteraction, Is.EqualTo(new DateTime(2025, 10, 25)));
     }
@@ -414,19 +414,13 @@ public class CustomerTest
     [Test]
     public void Customer_NoInteractions()
     {
-        string id = "12345678";
-        string name = "Pablo";
-        string familyName = "Josemaria";
-        string mail = "pablojosemaria7@gmail.com";
-        string phone = "98123123";
-        string gender = "Masculino";
-        DateTime birthDate = new DateTime(1993, 11, 07);
+        var customer = new Customer("123", "Pablo", "Josemaria", "mail", "98123", "M", new DateTime(1993, 11, 07));
 
-        var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
+        var result = customer.GetLastInteraction();
 
-        Assert.Throws<InvalidOperationException>(() => customer.GetLastInteraction());
+        Assert.That(result, Is.Null);
     }
-
+    
     [Test]
     public void Customer_GetUnansweredInteractions()
     {
