@@ -276,6 +276,113 @@ public class Customer
         return unanswered;
     }
     
+    // Obtener las últimas 5 interacciones
+    public List<Interaction> GetRecentInteractions()
+    {
+        List<Interaction> result = new List<Interaction>();
+    
+        // Ordenar por fecha (más recientes primero)
+        List<Interaction> ordenadas = new List<Interaction>(_interactions);
+        ordenadas.Sort((a, b) => b.Date.CompareTo(a.Date));
+    
+        // Tomar solo las primeras 5
+        for (int i = 0; i < 5 && i < ordenadas.Count; i++)
+        {
+            result.Add(ordenadas[i]);
+        }
+    
+        return result;
+    }
+
+// Obtener las próximas 5 reuniones
+    public List<Meeting> GetUpcomingMeetings()
+    {
+        List<Meeting> reuniones = new List<Meeting>();
+    
+        // Buscar solo las reuniones que son en el futuro
+        foreach (var interaction in _interactions)
+        {
+            if (interaction is Meeting meeting && meeting.Date > DateTime.Now)
+            {
+                reuniones.Add(meeting);
+            }
+        }
+    
+        // Ordenar por fecha (más próximas primero)
+        reuniones.Sort((a, b) => a.Date.CompareTo(b.Date));
+    
+        // Tomar solo las primeras 5
+        List<Meeting> result = new List<Meeting>();
+        for (int i = 0; i < 5 && i < reuniones.Count; i++)
+        {
+            result.Add(reuniones[i]);
+        }
+    
+        return result;
+    }
+    
+    
+    // En la clase Customer
+    public bool HasQuote(DateTime date, string topic, ExchangeType type, double amount, string description)
+    {
+        foreach (var interaction in _interactions)
+        {
+            if (interaction is Quote quote)
+            {
+                if (quote.Date == date && 
+                    quote.Topic == topic && 
+                    quote.Type == type && 
+                    Math.Abs(quote.Amount - amount) < 0.0001 && 
+                    quote.Description == description)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    // Modifica FindQuote en Customer para incluir description
+    public Quote FindQuote(DateTime date, string topic, ExchangeType type, double amount, string description = null)
+    {
+        foreach (var interaction in _interactions)
+        {
+            if (interaction is Quote quote)
+            {
+                bool matches = quote.Date == date && 
+                               quote.Topic == topic && 
+                               quote.Type == type && 
+                               Math.Abs(quote.Amount - amount) < 0.0001;
+            
+                // Si se proporciona description, también validarla
+                if (description != null)
+                    matches = matches && quote.Description == description;
+            
+                if (matches)
+                    return quote;
+            }
+        }
+        return null;
+    }
+
+    public bool HasSale(DateTime date, string topic, ExchangeType type, string product, double amount)
+    {
+        foreach (var interaction in _interactions)
+        {
+            if (interaction is Sale sale)
+            {
+                if (sale.Date == date && 
+                    sale.Topic == topic && 
+                    sale.Type == type && 
+                    sale.Product == product && 
+                    sale.Amount.Amount == amount)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     
     public override string ToString()
     {

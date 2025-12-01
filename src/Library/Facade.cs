@@ -811,6 +811,8 @@ public class Facade
         }
     }
 
+    
+    
     public static string QuoteRegister(
         string dateStr, string topic, string typeStr, string amountStr,
         string description, string customerId, string sellerId)
@@ -824,41 +826,28 @@ public class Facade
             Customer customer = cm.SearchById(customerId);
             Seller seller = sm.GetActiveSeller(sellerId);
 
-            //Seller seller = sm.SearchById(sellerId);
-
-            // -----------------------------------------
-            // VALIDACIÓN: evitar duplicados de Quote
-            // -----------------------------------------
-            bool alreadyExists = customer.Interactions
-                .OfType<Quote>()
-                .Any(q =>
-                    q.Date == date &&
-                    q.Topic == topic &&
-                    q.Type == type &&
-                    Math.Abs(q.Amount - amount) < 0.0001 &&
-                    q.Description == description);
-
-            if (alreadyExists)
+            // Validar duplicado
+            if (customer.FindQuote(date, topic, type, amount, description) != null)
                 throw new Exceptions.DuplicateQuoteException();
 
-            // -----------------------------------------
-            // Crear Quote NUEVA
-            // -----------------------------------------
+            // Crear cotización
             Quote quote = new Quote(date, topic, type, customer, amount, description);
 
             return RegisterInteraction(quote, customer, seller);
         }
         catch (Exception ex)
         {
-            return ex.Message;
+            return "Error: " + ex.Message;
         }
     }
-
-
+    
+   
     /// <summary>
     /// Genera una venta a partir de una cotización previa (Quote).
     /// Verifica que la cotización coincida con los datos provistos antes de crear la venta.
     /// </summary>
+    
+    
     public static string SaleFromQuote(
         string dateStr, string topic, string typeStr, string amountStr,
         string product, string customerId, string sellerId)
@@ -868,47 +857,32 @@ public class Facade
             DateTime date = ParseDate(dateStr);
             double amount = ParseDouble(amountStr);
             ExchangeType type = ParseExchangeType(typeStr);
+        
             Customer customer = cm.SearchById(customerId);
-            Seller seller = sm.GetActiveSeller(sellerId);
-
-            //Seller seller = sm.SearchById(sellerId);
-
             if (customer == null)
                 throw new Exceptions.NotExistingCustomerException();
 
+            Seller seller = sm.GetActiveSeller(sellerId);
             if (seller == null)
                 throw new Exceptions.SellerNullException();
 
-            Quote foundQuote = customer.Interactions
-                .OfType<Quote>()
-                .FirstOrDefault(q =>
-                    q.Date == date &&
-                    q.Topic == topic &&
-                    q.Type == type &&
-                    Math.Abs(q.Amount - amount) < 0.0001);
-
+            // Buscar la cotización
+            Quote foundQuote = customer.FindQuote(date, topic, type, amount);
             if (foundQuote == null)
                 throw new Exceptions.QuoteNotFoundException();
 
-            Sale existingSale = customer.Interactions
-                .OfType<Sale>()
-                .FirstOrDefault(s =>
-                    s.Date == date &&
-                    s.Topic == topic &&
-                    s.Type == type &&
-                    s.Product == product &&
-                    s.Amount.Amount == amount);
-
-            if (existingSale != null)
+            // Verificar si ya existe la venta
+            if (customer.HasSale(date, topic, type, product, amount))
                 throw new Exceptions.DuplicateSaleException();
 
+            // Crear la venta
             Sale sale = new Sale(product, foundQuote, date, topic, type, customer);
 
             return RegisterInteraction(sale, customer, seller);
         }
         catch (Exception ex)
         {
-            return ex.Message;
+            return "Error: " + ex.Message;
         }
     }
 
@@ -999,76 +973,7 @@ public class Facade
             return ex.Message;
         }
     }
-
-    public static string GetDashboardFormatted()
-    {
-        var customers = cm.Customers;
-
-        int totalCustomers = customers.Count;
-
-        var recentInteractions = customers
-            .SelectMany(c => c.Interactions)
-            .OrderByDescending(i => i.Date)
-            .Take(5)
-            .ToList();
-
-        var upcomingMeetings = customers
-            .SelectMany(c => c.Interactions)
-            .OfType<Meeting>()
-            .Where(m => m.Date > DateTime.Now)
-            .OrderBy(m => m.Date)
-            .Take(5)
-            .ToList();
-
-        // Construir DTO (si querés usarlo en otros lados)
-        DashboardSummary summary = new DashboardSummary(
-            recentInteractions,
-            upcomingMeetings,
-            totalCustomers
-        );
-
-        // Ahora formatear el mensaje final
-        var sb = new System.Text.StringBuilder();
-
-        sb.AppendLine("**PANEL GENERAL**");
-        sb.AppendLine("--------------------------------------\n");
-
-        sb.AppendLine($"**Clientes totales:** {summary.TotalCustomers}\n");
-
-        sb.AppendLine("🕒 **Interacciones recientes:**");
-        if (summary.RecentInteractions.Count == 0)
-        {
-            sb.AppendLine("- No hay interacciones registradas.\n");
-        }
-        else
-        {
-            foreach (var i in summary.RecentInteractions)
-            {
-                sb.AppendLine(
-                    $"- {i.Date:yyyy-MM-dd} — {i.GetType().Name} — Cliente: {i.Customer.Name}"
-                );
-            }
-
-            sb.AppendLine();
-        }
-
-        sb.AppendLine("📅 **Próximas reuniones:**");
-        if (summary.UpcomingMeetings.Count == 0)
-        {
-            sb.AppendLine("- No hay reuniones próximas.\n");
-        }
-        else
-        {
-            foreach (var m in summary.UpcomingMeetings)
-            {
-                sb.AppendLine(
-                    $"- {m.Date:yyyy-MM-dd} — {m.Place} — Cliente: {m.Customer.Name}"
-                );
-            }
-        }
-
-        return sb.ToString();
-    }
+    
 
     public static string GetInactiveCustomersFormatted(int days)
     {
@@ -1098,6 +1003,51 @@ public class Facade
         catch (Exception ex)
         {
             return ex.Message;
+        }
+    }
+    
+    public static string GetDashboardFormatted()
+    {
+        try
+        {
+            DashboardSummary summary = cm.GetDashboard();
+
+            string mensaje = "**PANEL GENERAL**\n";
+            mensaje += "--------------------------------------\n\n";
+            mensaje += "**Clientes totales:** " + summary.TotalCustomers + "\n\n";
+
+            mensaje += "**Interacciones recientes:**\n";
+            if (summary.RecentInteractions.Count == 0)
+            {
+                mensaje += "- No hay interacciones registradas.\n\n";
+            }
+            else
+            {
+                foreach (var i in summary.RecentInteractions)
+                {
+                    mensaje += "- " + i.Date.ToString("yyyy-MM-dd") + " — " + i.GetType().Name + "\n";
+                }
+                mensaje += "\n";
+            }
+
+            mensaje += "**Próximas reuniones:**\n";
+            if (summary.UpcomingMeetings.Count == 0)
+            {
+                mensaje += "- No hay reuniones próximas.\n";
+            }
+            else
+            {
+                foreach (var m in summary.UpcomingMeetings)
+                {
+                    mensaje += "- " + m.Date.ToString("yyyy-MM-dd") + " — " + m.Place + "\n";
+                }
+            }
+
+            return mensaje;
+        }
+        catch (Exception ex)
+        {
+            return "Error al obtener el dashboard: " + ex.Message;
         }
     }
 }

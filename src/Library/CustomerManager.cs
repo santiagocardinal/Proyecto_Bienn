@@ -40,6 +40,8 @@ public class CustomerManager
         customers = new List<Customer>();
         tags = new List<Tag>(); 
     }
+    
+    private int GetTotalCustomer() => customers.Count;
 
     // ---------------- BÚSQUEDAS ----------------
 
@@ -253,9 +255,76 @@ public class CustomerManager
 
     // ---------------- DASHBOARD ----------------
 
-    private int GetTotalCustomer() => customers.Count;
+    
+    // Obtener las últimas 5 interacciones de TODOS los clientes
+    private List<Interaction> GetRecentInteractions()
+    {
+        List<Interaction> todasInteracciones = new List<Interaction>();
+    
+        // Juntar todas las interacciones de todos los clientes
+        foreach (var customer in customers)
+        {
+            todasInteracciones.AddRange(customer.Interactions);
+        }
+    
+        // Ordenar por fecha (más recientes primero)
+        todasInteracciones.Sort((a, b) => b.Date.CompareTo(a.Date));
+    
+        // Tomar solo las primeras 5
+        List<Interaction> result = new List<Interaction>();
+        for (int i = 0; i < 5 && i < todasInteracciones.Count; i++)
+        {
+            result.Add(todasInteracciones[i]);
+        }
+    
+        return result;
+    }
 
-    private List<Interaction> GetRecentInteraction(TimeSpan lapso)
+    // Obtener las próximas 5 reuniones de TODOS los clientes
+    private List<Meeting> GetUpcomingMeetings()
+    {
+        List<Meeting> reuniones = new List<Meeting>();
+        DateTime now = DateTime.Now;
+    
+        // Buscar reuniones futuras de todos los clientes
+        foreach (var customer in customers)
+        {
+            foreach (var interaction in customer.Interactions)
+            {
+                if (interaction is Meeting meeting && meeting.Date > now)
+                {
+                    reuniones.Add(meeting);
+                }
+            }
+        }
+    
+        // Ordenar por fecha (más próximas primero)
+        reuniones.Sort((a, b) => a.Date.CompareTo(b.Date));
+    
+        // Tomar solo las primeras 5
+        List<Meeting> result = new List<Meeting>();
+        for (int i = 0; i < 5 && i < reuniones.Count; i++)
+        {
+            result.Add(reuniones[i]);
+        }
+    
+        return result;
+    }
+
+    public DashboardSummary GetDashboard()
+    {
+        var total = GetTotalCustomer();
+        var recent = GetRecentInteractions();
+        var upcoming = GetUpcomingMeetings();
+
+        return new DashboardSummary(recent, upcoming, total);
+    }
+    
+    
+    
+    //
+
+    /*private List<Interaction> GetRecentInteraction(TimeSpan lapso)
     {
         DateTime limit = DateTime.Now - lapso;
         
@@ -269,9 +338,9 @@ public class CustomerManager
         /*return customers
             .Where(c => c.GetLastInteraction() < now - lapso)
             .ToList();*/
-    }
+    //}*/
 
-    private List<Meeting> GetUpcomingMeetings(Customer customer)
+    /*private List<Meeting> GetUpcomingMeetings(Customer customer)
     {
         DateTime now = DateTime.Now;
 
@@ -293,11 +362,11 @@ public class CustomerManager
             upcoming.AddRange(GetUpcomingMeetings(c));
 
         return new DashboardSummary(recent, upcoming, total);
-    }
+    }*/
 
     // ---------------- CLIENTES INACTIVOS ----------------
 
-    public List<Customer> GetInactiveCustomers(int days)
+    /* List<Customer> GetInactiveCustomers(int days)
     {
         List<Customer> inactive = new List<Customer>();
         TimeSpan lapso = TimeSpan.FromDays(days);
@@ -313,6 +382,37 @@ public class CustomerManager
             {
                 customer.Deactivate();
                 inactive.Add(customer);
+            }
+        }
+
+        return inactive;
+    }*/
+    
+    
+    
+    
+    public List<Customer> GetInactiveCustomers(int days)
+    {
+        List<Customer> inactive = new List<Customer>();
+        DateTime limite = DateTime.Now.AddDays(-days);
+
+        foreach (var customer in customers)
+        {
+            // Criterio 1: Si el cliente ya está marcado como inactivo
+            if (!customer.CheckIsActive())
+            {
+                inactive.Add(customer);
+            }
+            // Criterio 2: Si la última interacción fue antes del límite
+            else
+            {
+                DateTime? ultimaFecha = customer.GetLastInteraction();
+            
+                if (ultimaFecha == null || ultimaFecha.Value < limite)
+                {
+                    customer.Deactivate();
+                    inactive.Add(customer);
+                }
             }
         }
 
