@@ -55,7 +55,7 @@ namespace Library
         /// </summary>
         [Command("totalSales")]
         [Summary("Muestra el total de ventas entre dos fechas.")]
-        public async Task ExecuteAsync(string startDate, string endDate)
+        public async Task TotalSalesCommand(string startDate, string endDate)
         {
             string result = Facade.GetTotalSales(startDate, endDate);
             await ReplyAsync(result);

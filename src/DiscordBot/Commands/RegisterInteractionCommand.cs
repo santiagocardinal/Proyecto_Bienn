@@ -81,14 +81,15 @@ namespace Library
         /// Comando para agregar una nota a una interacción existente.
         /// Uso: !addNoteToInteraction C1 "Tema" 2025-03-10 "Contenido de la nota"
         /// </summary>
-        [Command("addNoteToInteraction")]
+        /*[Command("addNoteToInteraction")]
         [Summary("Agrega una nota a una interacción identificada por tópico y fecha.")]
+        
         public async Task AddNoteToInteractionCommand(
             string customerId,
             string interactionTopic,
             string interactionDate,
             string interactionType)
-        {
+        /*{
             // 1. Convertir la fecha
             if (!DateTime.TryParse(interactionDate, out DateTime parsedDate))
             {
@@ -114,6 +115,6 @@ namespace Library
                 note);
 
             await ReplyAsync(result);
-        }
+        }*/
     }
 }

@@ -19,6 +19,8 @@ public class SellerCommand : ModuleBase<SocketCommandContext>
         string mail,
         string phone)
     {
+       //Esto es lo que verifica si el admin corresponde al admin del servidor.
+       
         var author = Context.User as SocketGuildUser;
 
         if (author == null)

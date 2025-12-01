@@ -452,7 +452,7 @@ public class Facade
                    "```";
         }
     }
-
+    
     public string GetCustomerInteractionsByTypeAndDate(string customerId, string interactionType, string dateStr)
     {
         try
@@ -974,7 +974,6 @@ public class Facade
         }
     }
     
-
     public static string GetInactiveCustomersFormatted(int days)
     {
         try
@@ -1005,6 +1004,35 @@ public class Facade
             return ex.Message;
         }
     }
+    public static string GetUnansweredCustomersFormatted(int days)
+    {
+        try
+        {
+            if (days <= 0)
+                return "Debes ingresar un número de días mayor a cero.";
+
+            DateTime limit = DateTime.Now.AddDays(-days);
+        
+            var resultList = cm.Customers
+                .Where(c => c.GetUnansweredInteractions().Any(i => i.Date < limit))
+                .Select(c => $"- {c.Name} {c.FamilyName} (ID: {c.Id})")
+                .ToList();
+
+            if (resultList.Count == 0)
+                return $"No hay clientes con interacciones sin responder de hace más de {days} días.";
+
+            string message = $"**Clientes con interacciones sin responder desde hace más de {days} días:**\n```\n" +
+                             string.Join("\n", resultList) +
+                             "\n```";
+
+            return message;
+        }
+        catch (Exception ex)
+        {
+            return $"**Error**: {ex.Message}";
+        }
+    }
+    
     
     public static string GetDashboardFormatted()
     {

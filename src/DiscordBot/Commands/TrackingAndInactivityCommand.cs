@@ -11,17 +11,17 @@ namespace Library
     /// en un rango de días especificado.
     /// Uso: !inactiveCustomers 30
     /// </summary>
-    public class InactiveCustomersCommand : ModuleBase<SocketCommandContext>
+    public class TrackingAndInactivityCommand : ModuleBase<SocketCommandContext>
     {
         [Command("inactiveCustomers")]
         [Summary("Muestra los clientes que no tienen interacciones recientes.")]
-        public async Task ExecuteAsync(int days)
+        public async Task InactiveCustomersCommnad(int days)
         {
             string result = Facade.GetInactiveCustomersFormatted(days);
             await ReplyAsync(result);
         }
 
-        
+
         /*[Command("inactiveCustomers")]
         [Summary("Muestra los clientes que no tienen interacciones recientes en los últimos X días.")]
         public async Task ExecuteAsync(int days)
@@ -53,6 +53,45 @@ namespace Library
             result += string.Join("\n", inactive);
 
             await ReplyAsync(result);
-        }*/
+        }*/ 
+        
+        [Command("unansweredCustomers")]
+        [Summary("Muestra los clientes con interacciones sin responder más viejas que X días.")]
+        public async Task UnansweredCustomersAsync(int days)
+        {
+            string result = Facade.GetUnansweredCustomersFormatted(days);
+            await ReplyAsync(result);
+        }
     }
+
+   
+
+/*if (days <= 0)
+{
+    await ReplyAsync("Debes ingresar un número de días mayor a cero.");
+    return;
+
+}
+
+DateTime limit = DateTime.Now.AddDays(-days);
+var customers = Facade.cm.Customers;
+
+var resultList = customers
+    .Where(c =>
+        c.GetUnansweredInteractions().Any(i => i.Date < limit)).Select(c => $"- {c.Name} (ID: {c.Id})").ToList();
+
+if (resultList.Count == 0)
+{
+    await ReplyAsync($"No hay clientes con interacciones sin responder de hace más de {days} días.");
+    return;
+}
+
+string message =
+    $"Clientes con interacciones sin responder desde hace más de {days} días:\n" +
+    string.Join("\n", resultList);
+
+        await ReplyAsync(message);
+}*/
+        
+
 }

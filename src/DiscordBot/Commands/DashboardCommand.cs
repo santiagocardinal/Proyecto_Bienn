@@ -15,7 +15,7 @@ namespace Library
     {
         [Command("dashboard")]
         [Summary("Muestra un panel general con totales, interacciones recientes y reuniones próximas.")]
-        public async Task ExecuteAsync()
+        public async Task Dashboard()
         {
             string result = Facade.GetDashboardFormatted();
 
@@ -60,7 +60,7 @@ namespace Library
         msg += $"**Clientes totales:** {totalCustomers}\n\n";
 
         // Interacciones recientes
-        msg += "🕒 **Interacciones recientes:**\n";
+        msg += " **Interacciones recientes:**\n";
         if (recentInteractions.Count == 0)
         {
             msg += "- No hay interacciones registradas.\n";
