@@ -414,19 +414,13 @@ public class CustomerTest
     [Test]
     public void Customer_NoInteractions()
     {
-        string id = "12345678";
-        string name = "Pablo";
-        string familyName = "Josemaria";
-        string mail = "pablojosemaria7@gmail.com";
-        string phone = "98123123";
-        string gender = "Masculino";
-        DateTime birthDate = new DateTime(1993, 11, 07);
+        var customer = new Customer("123", "Pablo", "Josemaria", "mail", "98123", "M", new DateTime(1993, 11, 07));
 
-        var customer = new Customer(id, name, familyName, mail, phone, gender, birthDate);
+        var result = customer.GetLastInteraction();
 
-        Assert.Throws<InvalidOperationException>(() => customer.GetLastInteraction());
+        Assert.That(result, Is.Null);
     }
-
+    
     [Test]
     public void Customer_GetUnansweredInteractions()
     {

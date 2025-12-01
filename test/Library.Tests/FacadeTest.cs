@@ -39,7 +39,7 @@ public class FacadeTests
         Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
         
         // Act
-        string result = Facade.CreateCustomer("C1", "Pedro", "García", "pedro@mail.com", "099999999", "M", "2005-05-10");
+        string result = Facade.CreateCustomer("C1", "Pedro", "García", "pedro@mail.com", "099999999", "M", "2007-01-29");
         
         // Assert
         Assert.That(result, Does.Contain("Ya existe un cliente"));
@@ -99,7 +99,7 @@ public class FacadeTests
     public void SearchCustomer_ByFamilyName_ReturnsFamilyName()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2007-01-29");
         
         // Act
         string result = Facade.SearchCostumer_ByFamilyName("Pérez");
