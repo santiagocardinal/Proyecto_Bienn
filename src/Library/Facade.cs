@@ -56,15 +56,13 @@ public class Facade
             DateTime date = ParseDate(birthDate);
             Customer c1 = new Customer(id, name, familyName, mail, phone, gender, date);
             cm.AddCustomer(c1);
-            return $"***Cliente creado correctamente***\n" +
-                   "```\n" +
+            return $"Cliente creado correctamente\n" +
                    $"ID:           " + id + "\n" +
                    $"Nombre:       " + name + " " + familyName + "\n" +
                    $"Email:        " + mail + "\n" +
                    $"Teléfono:     " + phone + "\n" +
                    $"Género:       " + gender + "\n" +
-                   $"Fecha Nac.:   " + date.ToString("dd/MM/yyyy") + "\n" +
-                   "```";
+                   $"Fecha Nac.:   " + date.ToString("dd/MM/yyyy");
         }
         catch (Exception ex)
         {
@@ -81,16 +79,14 @@ public class Facade
         try
         {
             if (string.IsNullOrWhiteSpace(id))
-                throw new ArgumentException($"***El ID no puede estar vacío.***");
+                throw new ArgumentException($"El ID no puede estar vacío.");
 
             Customer customerToRemove = cm.SearchById(id);
             // Si no existe, SearchById ya lanza NotExistingCustomerException
 
             cm.Customers.Remove(customerToRemove);
 
-            return $"```\n" +
-                   "Cliente eliminado correctamente." +
-                   "```";
+            return $"Cliente eliminado correctamente.";
         }
         catch (Exception ex)
         {
@@ -106,9 +102,7 @@ public class Facade
         try
         {
             cm.Modify(id, field, newValue);
-            return $"```" +
-                   "Cliente modificado correctamente." +
-                   "```";
+            return $"Cliente modificado correctamente." ;
         }
         catch (Exception ex)
         {
@@ -126,7 +120,7 @@ public class Facade
         {
             Customer c = cm.SearchById(id);
 
-            return $"***Cliente buscado por ID:***" +
+            return $"Cliente buscado por ID:\n" +
                    $"   ID: {c.Id}\n" +
                    $"    Nombre: {c.Name} {c.FamilyName}\n" +
                    $"    Mail: {c.Mail}\n" +
@@ -151,10 +145,7 @@ public class Facade
                 result += $"- {c.Name} {c.FamilyName} (ID: {c.Id})\n";
             }
 
-            return $"***Clinete buscado por su NOMBRE:***" +
-                   "```" +
-                   result +
-                   "```";
+            return $"Clinete buscado por su NOMBRE:\n" + result;
         }
         catch (Exception ex)
         {
@@ -176,10 +167,7 @@ public class Facade
                 result += $"- {c.Name} {c.FamilyName} (ID: {c.Id})\n";
             }
 
-            return $"***Cliente buscado por su APELLIDO:***" +
-                   "```" +
-                   result +
-                   "```";
+            return $"Cliente buscado por su APELLIDO:\n" + result;
         }
         catch (Exception ex)
         {
@@ -194,13 +182,11 @@ public class Facade
         {
             Customer c = cm.SearchByPhone(phone);
 
-            return $"***Cliente encontrado por su NUMERO DE TELEFONO:***\n" +
-                   "```\n" +
+            return $"Cliente encontrado por su NUMERO DE TELEFONO:\n" + 
                    "ID:       " + c.Id + "\n" +
                    "Nombre:   " + c.Name + " " + c.FamilyName + "\n" +
                    "Mail:     " + c.Mail + "\n" +
-                   "Teléfono: " + c.Phone + "\n" +
-                   "```";
+                   "Teléfono: " + c.Phone;
         }
         catch (Exception ex)
         {
@@ -214,13 +200,11 @@ public class Facade
         {
             Customer c = cm.SearchByMail(mail);
 
-            return "***Cliente encontrado por su MAIL:***\n" +
-                   "```\n" +
+            return "Cliente encontrado por su MAIL:\n" +
                    "ID:       " + c.Id + "\n" +
                    "Nombre:   " + c.Name + " " + c.FamilyName + "\n" +
                    "Mail:     " + c.Mail + "\n" +
-                   "Teléfono: " + c.Phone + "\n" +
-                   "```";
+                   "Teléfono: " + c.Phone;
         }
         catch (Exception ex)
         {
@@ -244,9 +228,7 @@ public class Facade
                 throw new Exceptions.SellerNullException();
 
             if (seller.Customer.Count == 0)
-                return $"```" +
-                       "El vendedor no tiene clientes asignados." +
-                       "```";
+                return $"El vendedor no tiene clientes asignados.";
 
             string result = "";
             foreach (Customer customer in seller.Customer)
@@ -254,10 +236,8 @@ public class Facade
                 result += $"- {customer.Name}\n";
             }
 
-            return $"***Clientes por vendedor:***" +
-                   "```" +
-                   result +
-                   "```";
+            return $"Clientes por vendedor:\n" +
+                   result;
         }
         catch (Exception ex)
         {
@@ -273,9 +253,7 @@ public class Facade
         try
         {
             cm.AddCustomer(customer);
-            return $"```" +
-                   "Cliente agregado correctamente." +
-                   "```";
+            return $"Cliente agregado correctamente.";
         }
         catch (Exception ex)
         {
@@ -290,19 +268,15 @@ public class Facade
         {
             // Verificaciones básicas
             if (tagId == null || tagId.Trim() == "")
-                return $"```" +
-                       "El ID de la Tag no puede estar vacío." +
-                       "```";
+                return $"El ID de la Tag no puede estar vacío.";
 
             if (tagName == null || tagName.Trim() == "")
-                return $"```" +
-                       "***El nombre de la Tag no puede estar vacío.***" +
-                       "```";
+                return $"El nombre de la Tag no puede estar vacío.";
 
             // Crear la Tag en CustomerManager
             cm.CreateTag(tagId, tagName, tagDescription);
 
-            return $"__La Tag__:\n ***'{tagId}'*** \n Fue creada correctamente.";
+            return $"La Tag:\n '{tagId}' \n Fue creada correctamente.";
         }
         catch (Exception ex)
         {
@@ -324,15 +298,13 @@ public class Facade
             //  Verificar que la tag exista en el sistema global
             if (!cm.TagExists(tagId))
             {
-                return $"__La Tag__:\n ** '{tagId}'**\n No existe en el sistema. Créala primero con **CreateTag.**";
+                return $"La Tag:\n  '{tagId}'\n No existe en el sistema. Créala primero con CreateTag.";
             }
 
             // Añadir la tag al cliente
             cm.AddTagToCustomer(customerId, tagId);
 
-            return $"```" +
-                   $"__La Tag__: \n **'{tagId}'** \n Fue añadida correctamente al cliente **'{customerId}'**+" +
-                   $"```";
+            return $"La Tag: \n '{tagId}' \n Fue añadida correctamente al cliente '{customerId}'.";
         }
         catch (Exception ex)
         {
@@ -362,9 +334,7 @@ public class Facade
 
             interaction.AddNote(note);
 
-            return "```" +
-                   "Nota agregada correctamente." +
-                   "```";
+            return "Nota agregada correctamente.";
         }
         catch (Exception ex)
         {
@@ -384,24 +354,18 @@ public class Facade
         {
             Customer customer = cm.SearchById(customerId);
             if (customer == null)
-                return $"```" +
-                       "No existe un cliente con el ID: " + customerId + "\n" +
-                       "```";
+                return $"No existe un cliente con el ID: " + customerId + "\n";
 
             System.Collections.Generic.List<Interaction> interactions = customer.Interactions;
             return FormatInteractionsMessage(customerId, interactions);
         }
         catch (Exceptions.NotExistingCustomerException)
         {
-            return $"```" +
-                   "No existe un cliente con el ID: " + customerId + "\n" +
-                   "```";
+            return $"No existe un cliente con el ID: " + customerId + "\n";
         }
         catch (System.Exception ex)
         {
-            return $"```" +
-                   "**Error al obtener las interacciones:** " + ex.Message +
-                   "```";
+            return $"Error al obtener las interacciones: " + ex.Message;
         }
     }
 
@@ -412,9 +376,7 @@ public class Facade
         {
             Customer customer = cm.SearchById(customerId);
             if (customer == null)
-                return "\n" +
-                       "No existe un cliente con el ID: " + customerId + "\n" +
-                       "\n";
+                return "No existe un cliente con el ID: " + customerId + "\n";
 
             List<Interaction> interactions = string.IsNullOrEmpty(interactionType)
                 ? customer.Interactions
@@ -424,9 +386,7 @@ public class Facade
         }
         catch (System.Exception ex)
         {
-            return "\n" +
-                   "Error al obtener las interacciones: " + ex.Message + "\n" +
-                   "\n";
+            return "Error al obtener las interacciones: " + ex.Message + "\n";
         }
     }
 
@@ -437,9 +397,7 @@ public class Facade
             DateTime date = ParseDate(dateStr);
             Customer customer = cm.SearchById(customerId);
             if (customer == null)
-                return "```\n" +
-                       "No existe un cliente con el ID: " + customerId + "\n" +
-                       "```";
+                return "No existe un cliente con el ID: " + customerId + "\n";
 
             List<Interaction> interactions = customer.GetInteractionsByDate(date);
 
@@ -447,9 +405,7 @@ public class Facade
         }
         catch (System.Exception ex)
         {
-            return "```\n" +
-                   "Error al obtener las interacciones: " + ex.Message + "\n" +
-                   "```";
+            return "Error al obtener las interacciones: " + ex.Message + "\n";
         }
     }
     
@@ -460,9 +416,7 @@ public class Facade
             DateTime date = ParseDate(dateStr);
             Customer customer = cm.SearchById(customerId);
             if (customer == null)
-                return "```\n" +
-                       "No existe un cliente con el ID: " + customerId + "\n" +
-                       "```";
+                return "No existe un cliente con el ID: " + customerId + "\n";
 
             List<Interaction> interactions = customer.GetInteractionsByTypeAndDate(interactionType, date);
 
@@ -470,9 +424,7 @@ public class Facade
         }
         catch (System.Exception ex)
         {
-            return "```\n" +
-                   "Error al obtener las interacciones: " + ex.Message + "\n" +
-                   "```";
+            return "Error al obtener las interacciones: " + ex.Message + "\n";
         }
     }
 
@@ -510,9 +462,7 @@ public class Facade
                 throw new Exceptions.NotExistingCustomerException();
 
             if (customer.Interactions.Count == 0)
-                return $"```" +
-                       "No hay interacciones registradas." +
-                       "```";
+                return $"No hay interacciones registradas.";
 
             return customer.GetLastInteraction().ToString();
         }
@@ -537,16 +487,13 @@ public class Facade
             var unanswered = customer.GetUnansweredInteractions();
 
             if (unanswered.Count == 0)
-                return $"```" + "No hay interacciones sin responder." +
-                       "```";
+                return $"No hay interacciones sin responder.";
 
-            string report = $"Interacciones sin responder **({unanswered.Count})**:\n";
+            string report = $"Interacciones sin responder ({unanswered.Count}):\n";
             foreach (var inter in unanswered)
                 report += $"- {inter}\n";
 
-            return $"```" +
-                   report +
-                   "```";
+            return  report;
         }
         catch (Exception ex)
         {
@@ -569,9 +516,7 @@ public class Facade
 
             sm.CreateSeller(seller);
 
-            return $"```" +
-                   "Vendedor creado correctamente." +
-                   "```";
+            return $"Vendedor creado correctamente.";
         }
         catch (Exception ex)
         {
@@ -593,14 +538,12 @@ public class Facade
             if (seller == null)
                 throw new Exceptions.SellerNullException();
 
-            return $"***Vendedor encontrado por su ID:***\n" +
-                   "```" +
+            return $"Vendedor encontrado por su ID:\n" +
                    $"   ID: {seller.Id}\n" +
                    $"   Nombre: {seller.Name}\n" +
                    $"   Mail: {seller.Mail}\n" +
                    $"   Teléfono: {seller.Phone}\n" +
-                   $"   Suspendido: {(seller.IsSuspended ? "Sí" : "No")}" +
-                   "```";
+                   $"   Suspendido: {(seller.IsSuspended ? "Sí" : "No")}";
         }
         catch (Exception ex)
         {
@@ -633,15 +576,15 @@ public class Facade
             cm.AssignCustomerToSeller(customer, seller);
 
             // Mensaje de confirmación con formato
-            return "***Cliente asignado correctamente***\n\n" +
-                   "**Cliente:**\n" +
+            return "Cliente asignado correctamente\n\n" +
+                   "Cliente:\n" +
                    "  • ID: " + customer.Id + "\n" +
                    "  • Nombre: " + customer.Name + " " + customer.FamilyName + "\n" +
                    "  • Email: " + customer.Mail + "\n\n" +
-                   "**Asignado a vendedor:**\n" +
+                   "Asignado a vendedor:\n" +
                    "  • ID: " + seller.Id + "\n" +
                    "  • Nombre: " + seller.Name + "\n\n" +
-                   "_Asignación realizada el " + System.DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "_";
+                   "Asignación realizada el " + System.DateTime.Now.ToString("dd/MM/yyyy HH:mm") + "";
         }
         catch (Exceptions.NotExistingCustomerException)
         {
@@ -704,9 +647,7 @@ public class Facade
         try
         {
             cm.RegisterInteraction(customer, seller, interaction);
-            return $"```" +
-                   "Interacción registrada correctamente." +
-                   "```";
+            return $"Interacción registrada correctamente.";
         }
         catch (Exception ex)
         {
@@ -759,10 +700,7 @@ public class Facade
         }
         catch (Exception ex)
         {
-            return $"***Registro de la Interaccion:***" +
-                   "```" +
-                   ex.Message +
-                   "```";
+            return $"Registro de la Interaccion:\n" +ex.Message;
         }
     }
 
@@ -940,10 +878,7 @@ public class Facade
 
             sm.DeleteSeller(seller);
 
-            return
-                "```" +
-                $"***Vendedor '{sellerId}' eliminado correctamente.***" +
-                "```";
+            return $"Vendedor '{sellerId}' eliminado correctamente.";
         }
         catch (Exception ex)
         {
@@ -966,7 +901,7 @@ public class Facade
 
             double total = sales.Sum(s => s.Amount.Amount);
 
-            return $"Total de ventas entre {start:yyyy-MM-dd} y {end:yyyy-MM-dd}: **USD {total:F2}**";
+            return $"Total de ventas entre {start:yyyy-MM-dd} y {end:yyyy-MM-dd}: USD {total:F2}";
         }
         catch (Exception ex)
         {
@@ -988,15 +923,12 @@ public class Facade
 
             var sb = new System.Text.StringBuilder();
             sb.AppendLine($"**Clientes sin interacción en más de {days} días:**");
-            sb.AppendLine("```");
 
             foreach (var c in inactiveList)
             {
                 sb.AppendLine($"{c.Name} {c.FamilyName} — ID: {c.Id}");
             }
-
-            sb.AppendLine("```");
-
+            
             return sb.ToString();
         }
         catch (Exception ex)
@@ -1021,15 +953,14 @@ public class Facade
             if (resultList.Count == 0)
                 return $"No hay clientes con interacciones sin responder de hace más de {days} días.";
 
-            string message = $"**Clientes con interacciones sin responder desde hace más de {days} días:**\n```\n" +
-                             string.Join("\n", resultList) +
-                             "\n```";
+            string message = $"Clientes con interacciones sin responder desde hace más de {days} días:\n" +
+                             string.Join("\n", resultList);
 
             return message;
         }
         catch (Exception ex)
         {
-            return $"**Error**: {ex.Message}";
+            return $"Error: {ex.Message}";
         }
     }
     
@@ -1040,14 +971,14 @@ public class Facade
         {
             DashboardSummary summary = cm.GetDashboard();
 
-            string mensaje = "**PANEL GENERAL**\n";
+            string mensaje = "PANEL GENERAL\n";
             mensaje += "--------------------------------------\n\n";
-            mensaje += "**Clientes totales:** " + summary.TotalCustomers + "\n\n";
+            mensaje += "Clientes totales: " + summary.TotalCustomers + "\n\n";
 
-            mensaje += "**Interacciones recientes:**\n";
+            mensaje += "Interacciones recientes:\n";
             if (summary.RecentInteractions.Count == 0)
             {
-                mensaje += "- No hay interacciones registradas.\n\n";
+                mensaje += "No hay interacciones registradas.\n\n";
             }
             else
             {
@@ -1058,10 +989,10 @@ public class Facade
                 mensaje += "\n";
             }
 
-            mensaje += "**Próximas reuniones:**\n";
+            mensaje += "Próximas reuniones:\n";
             if (summary.UpcomingMeetings.Count == 0)
             {
-                mensaje += "- No hay reuniones próximas.\n";
+                mensaje += "No hay reuniones próximas.\n";
             }
             else
             {
