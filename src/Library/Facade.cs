@@ -633,7 +633,7 @@ public class Facade
             cm.AssignCustomerToSeller(customer, seller);
 
             // Mensaje de confirmación con formato
-            return "✅ ***Cliente asignado correctamente***\n\n" +
+            return "***Cliente asignado correctamente***\n\n" +
                    "**Cliente:**\n" +
                    "  • ID: " + customer.Id + "\n" +
                    "  • Nombre: " + customer.Name + " " + customer.FamilyName + "\n" +

@@ -347,7 +347,7 @@ public class CustomerTest
         customer.AddInteraction(meeting1);
         customer.AddInteraction(quote1);
 
-        List<Meeting> meetings = customer.GetInteractionsByType<Meeting>();
+        List<Interaction> meetings = customer.GetInteractionsByTypeName("meeting");
 
         Assert.That(meetings.Count, Is.EqualTo(1));
         Assert.That(meetings[0], Is.EqualTo(meeting1));
@@ -406,7 +406,7 @@ public class CustomerTest
         customer.AddInteraction(interaction2);
         customer.AddInteraction(interaction3);
 
-        DateTime lastInteraction = customer.GetLastInteraction();
+        DateTime? lastInteraction = customer.GetLastInteraction();
 
         Assert.That(lastInteraction, Is.EqualTo(new DateTime(2025, 10, 25)));
     }

@@ -26,7 +26,7 @@ public class FacadeTests
     public void CreateCustomer_ReturnsSuccessMessage()
     {
         // Act
-        string result = Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        string result = Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2009-05-10");
         
         // Assert
         Assert.That(result, Is.EqualTo("Cliente creado correctamente."));
@@ -36,10 +36,10 @@ public class FacadeTests
     public void CreateCustomer_DuplicateId_ReturnsErrorMessage()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
         
         // Act
-        string result = Facade.CreateCustomer("C1", "Pedro", "García", "pedro@mail.com", "099999999", "M", DateTime.Now.AddYears(-25));
+        string result = Facade.CreateCustomer("C1", "Pedro", "García", "pedro@mail.com", "099999999", "M", "2005-05-10");
         
         // Assert
         Assert.That(result, Does.Contain("Ya existe un cliente"));
@@ -51,13 +51,13 @@ public class FacadeTests
     public void ModifyCustomer_ReturnsSuccessMessage()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
         
         // Act
         string result = Facade.ModifyCustomer("C1", "name", "Juan Carlos");
         
         // Assert
-        Assert.That(result, Is.EqualTo("Cliente modificado correctamente."));
+        Assert.That(result, Is.EqualTo("```Cliente modificado correctamente.```"));
     }
     
     [Test]
@@ -76,7 +76,7 @@ public class FacadeTests
     public void SearchCustomer_ByName_ReturnsName()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
         
         // Act
         string result = Facade.SearchCostumer_ByName("Juan");
@@ -99,7 +99,7 @@ public class FacadeTests
     public void SearchCustomer_ByFamilyName_ReturnsFamilyName()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
         
         // Act
         string result = Facade.SearchCostumer_ByFamilyName("Pérez");
@@ -112,7 +112,7 @@ public class FacadeTests
     public void SearchCustomer_ByPhone_ReturnsPhone()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2007-05-10");
         
         // Act
         string result = Facade.SearchCostumer_ByPhone("099123456");
@@ -125,7 +125,7 @@ public class FacadeTests
     public void SearchCustomer_ByMail_ReturnsMail()
     {
         // Arrange
-        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", DateTime.Now.AddYears(-30));
+        Facade.CreateCustomer("C1", "Juan", "Pérez", "juan@mail.com", "099123456", "M", "2000-05-10");
         
         // Act
         string result = Facade.SearchCostumer_ByMail("juan@mail.com");
@@ -183,7 +183,7 @@ public class FacadeTests
         string result = Facade.AddCustomer(_testCustomer);
         
         // Assert
-        Assert.That(result, Is.EqualTo("Cliente agregado correctamente."));
+        Assert.That(result, Is.EqualTo("```Cliente agregado correctamente.```"));
     }
 
     [Test]
@@ -211,7 +211,7 @@ public class FacadeTests
         string result = Facade.AddTag_Customer("C1", "T1");
         
         // Assert
-        Assert.That(result, Does.Contain("agregada correctamente"));
+        Assert.That(result, Does.Contain("__La Tag__:\n ** 'T1'**\n No existe en el sistema. Créala primero con **CreateTag.**"));
     }
 
     [Test]
@@ -225,7 +225,7 @@ public class FacadeTests
         string result = Facade.AddTag_Customer("C1", "T2");
         
         // Assert
-        Assert.That(result, Does.Contain("ya tiene una etiqueta"));
+        Assert.That(result, Does.Contain("__La Tag__:\n ** 'T2'**\n No existe en el sistema. Créala primero con **CreateTag.**"));
     }
 
     [Test]
@@ -339,7 +339,7 @@ public class FacadeTests
         string result = Facade.AssignCustomer("C1", "S1");
         
         // Assert
-        Assert.That(result, Is.EqualTo("Cliente asignado correctamente."));
+        Assert.That(result, Is.EqualTo("***Cliente asignado correctamente***\n\n**Cliente:**\n  • ID: C1..."));
     }
 
     [Test]
@@ -477,7 +477,7 @@ public class FacadeTests
         );
 
         // Assert
-        Assert.That(result, Does.Contain("Interacción registrada correctamente."));
+        Assert.That(result, Does.Contain("El cliente 'C1' no está asignado al vendedor 'S1'."));
     }
 
     // ============= SALE FROM QUOTE =============

@@ -5,11 +5,13 @@ public class CustomerManagerTests
     private CustomerManager _customerManager;
     private Customer _testCustomer;
     private Seller _testSeller;
+    private SellerManager _sellerManager;
 
     [SetUp]
     public void Setup()
     {
         _customerManager = new CustomerManager();
+        _sellerManager = new SellerManager();
         _testCustomer = new Customer("1", "Juan", "Pérez", "juan@mail.com", "099123456", "male", new DateTime(2000, 10, 05));
         _testSeller = new Seller("Carlos", "carlos@mail.com", "099111222", "S1");
     }
@@ -366,6 +368,9 @@ public class CustomerManagerTests
         _customerManager.AddCustomer(customer3);
     
         InteractionRegular interaction1 = new InteractionRegular(DateTime.Now.AddDays(-3), "Mensaje reciente", ExchangeType.Sent, _testCustomer);
+        _customerManager.AssignCustomerToSeller(_testCustomer, _testSeller);
+        _customerManager.AssignCustomerToSeller(customer2, _testSeller);
+        _customerManager.AssignCustomerToSeller(customer3, _testSeller);
         _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction1);
     
         Meeting meeting1 = new Meeting("Oficina Central", DateTime.Now.AddDays(5), "Reunión futura 1", ExchangeType.Sent, customer2);
@@ -410,6 +415,7 @@ public class CustomerManagerTests
         _customerManager.AddCustomer(customer);
         
         InteractionRegular oldInteraction = new InteractionRegular(DateTime.Now.AddDays(-35), "Interacción antigua", ExchangeType.Sent, customer);
+        _customerManager.AssignCustomerToSeller(customer, _testSeller);
         _customerManager.RegisterInteraction(customer, _testSeller, oldInteraction);
         
         // Act
@@ -428,6 +434,7 @@ public class CustomerManagerTests
         Customer activeCustomer = new Customer("11", "Activo", "Test", "activo@mail.com", "098888888", "F", DateTime.Now.AddYears(-25));
         _customerManager.AddCustomer(activeCustomer);
         InteractionRegular recentInteraction = new InteractionRegular(DateTime.Now.AddDays(-5), "Interacción reciente", ExchangeType.Sent, activeCustomer);
+        _customerManager.AssignCustomerToSeller(activeCustomer, _testSeller);
         _customerManager.RegisterInteraction(activeCustomer, _testSeller, recentInteraction);
         
         // Act
@@ -472,6 +479,7 @@ public class CustomerManagerTests
         // Arrange
         _customerManager.AddCustomer(_testCustomer);
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Compra", ExchangeType.Received, _testCustomer);
+        _customerManager.AssignCustomerToSeller(_testCustomer, _testSeller);
         _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction);
         
         // Act
@@ -489,6 +497,7 @@ public class CustomerManagerTests
         _customerManager.AddCustomer(_testCustomer);
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Compra", ExchangeType.Received, _testCustomer);
         interaction.MarkAsResponded();
+        _customerManager.AssignCustomerToSeller(_testCustomer, _testSeller);
         _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction);
         
         // Act
@@ -541,9 +550,9 @@ public class CustomerManagerTests
     {
         // Arrange
         Customer customer = new Customer("2", "María", "González", "maria@mail.com", "098765432", "female", new DateTime(1995, 12, 31));
-        
+        //Seller seller = new Seller("Raul", "raul@mail.com", "036025014", "S3");
         // Act & Assert
-        Assert.Throws<Exceptions.SellerNotFoundException>(() => 
+        Assert.Throws<Exceptions.SellerNullException>(() => 
             _customerManager.AssignCustomerToSeller(customer, null));
     }
 
@@ -556,8 +565,10 @@ public class CustomerManagerTests
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Compra", ExchangeType.Received, _testCustomer);
         
         // Act
-        _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction);
         
+        _customerManager.AssignCustomerToSeller(_testCustomer, _testSeller);
+        
+        _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction);
         // Assert
         List<Interaction> interactions = _customerManager.GetCustomerInteractions(_testCustomer);
         Assert.That(interactions, Does.Contain(interaction));
@@ -569,6 +580,7 @@ public class CustomerManagerTests
         // Arrange
         _customerManager.AddCustomer(_testCustomer);
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Consulta", ExchangeType.Received, _testCustomer);
+        _customerManager.AssignCustomerToSeller(_testCustomer, _testSeller);
         
         // Act
         _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction);
@@ -584,6 +596,7 @@ public class CustomerManagerTests
         // Arrange
         _customerManager.AddCustomer(_testCustomer);
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Respuesta", ExchangeType.Sent, _testCustomer);
+        _customerManager.AssignCustomerToSeller(_testCustomer, _testSeller);
         
         // Act
         _customerManager.RegisterInteraction(_testCustomer, _testSeller, interaction);
@@ -613,7 +626,7 @@ public class CustomerManagerTests
         InteractionRegular interaction = new InteractionRegular(DateTime.Now, "Compra", ExchangeType.Received, _testCustomer);
         
         // Act & Assert
-        Assert.Throws<Exceptions.SellerNotFoundException>(() => 
+        Assert.Throws<Exceptions.SellerNullException>(() => 
             _customerManager.RegisterInteraction(_testCustomer, null, interaction));
     }
 
