@@ -6,6 +6,7 @@ namespace Library;
 
 public class SellerCommand : ModuleBase<SocketCommandContext>
 {
+    
     ///<summary>
     ///Comando para registrar una seller, solo se genera un nuevo seller si el usuario que lo ejecuta es administrador.
     /// Uso: !createSeller S1 Raul raul@mail.com 099333666
