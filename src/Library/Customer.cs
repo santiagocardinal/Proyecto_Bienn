@@ -150,18 +150,17 @@ public class Customer
     /// </summary>
     /// <typeparam name="T">Tipo de interacción (por ejemplo: Sale, Meeting, Call).</typeparam>
     /// <returns>Lista de interacciones del tipo solicitado.</returns>
-    public List<T> GetInteractionsByType<T>() where T : Interaction
+    
+    public List<Interaction> GetInteractionsByTypeName(string typeName)
     {
-        List<T> result = new List<T>();
-
+        List<Interaction> result = new List<Interaction>();
         foreach (var interaction in _interactions)
         {
-            if (interaction is T typedInteraction)
+            if (interaction.GetType().Name.Equals(typeName, StringComparison.OrdinalIgnoreCase))
             {
-                result.Add(typedInteraction);
+                result.Add(interaction);
             }
         }
-
         return result;
     }
     
@@ -177,6 +176,23 @@ public class Customer
             }
         }
 
+        return result;
+    }
+    
+    public List<Interaction> GetInteractionsByTypeAndDate(string typeName, DateTime date)
+    {
+        List<Interaction> result = new List<Interaction>();
+        foreach (var interaction in _interactions)
+        {
+            bool matchesType = string.IsNullOrEmpty(typeName) || 
+                               interaction.GetType().Name.Equals(typeName, StringComparison.OrdinalIgnoreCase);
+            bool matchesDate = interaction.Date.Date == date.Date;
+        
+            if (matchesType && matchesDate)
+            {
+                result.Add(interaction);
+            }
+        }
         return result;
     }
     
