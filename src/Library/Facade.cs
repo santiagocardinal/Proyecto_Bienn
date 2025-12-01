@@ -1061,7 +1061,7 @@ private string FormatInteractionsMessage(
                     q.Type == type &&
                     Math.Abs(q.Amount - amount) < 0.0001 &&
                     q.Description == description);
-
+                
             if (alreadyExists)
                 throw new Exceptions.DuplicateQuoteException();
 
