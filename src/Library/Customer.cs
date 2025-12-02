@@ -349,7 +349,6 @@ public class Customer
             if (interaction is Quote quote)
             {
                 bool matches = quote.Date == date && 
-                               quote.Topic == topic && 
                                quote.Type == type && 
                                Math.Abs(quote.Amount - amount) < 0.0001;
             

@@ -789,7 +789,7 @@ public class Facade
     
     public static string SaleFromQuote(
         string dateStr, string topic, string typeStr, string amountStr,
-        string product, string customerId, string sellerId)
+        string descripcion, string customerId, string sellerId)
     {
         try
         {
@@ -811,11 +811,11 @@ public class Facade
                 throw new Exceptions.QuoteNotFoundException();
 
             // Verificar si ya existe la venta
-            if (customer.HasSale(date, topic, type, product, amount))
+            if (customer.HasSale(date, descripcion, type, topic, amount))
                 throw new Exceptions.DuplicateSaleException();
 
             // Crear la venta
-            Sale sale = new Sale(product, foundQuote, date, topic, type, customer);
+            Sale sale = new Sale(topic, foundQuote, date, descripcion, type, customer);
 
             return RegisterInteraction(sale, customer, seller);
         }

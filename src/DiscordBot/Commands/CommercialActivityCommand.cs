@@ -14,13 +14,13 @@ namespace Library
         /// </summary>
         [Command("quoteRegister")]
         [Summary("Registra una venta incluyendo qué se vendió, cuándo y cuánto se cobró.")]
-        public async Task RegisterSaleCommand(string date, string topic, string exchangeType, string amount,
+        public async Task RegisterQuoteCommand(string date, string product, string exchangeType, string amount,
             string description, string customerId, string sellerId)
         {
             try
             {
                 string result =
-                    Facade.QuoteRegister(date, topic, exchangeType, amount, description, customerId, sellerId);
+                    Facade.QuoteRegister(date, product, exchangeType, amount, description, customerId, sellerId);
                 await ReplyAsync(result);
             }
             catch (Exception ex)
@@ -43,9 +43,9 @@ namespace Library
             string topic,
             string type,
             string amount,
-            string product)
+            string descripcion)
         {
-            string result = Facade.SaleFromQuote(sellerId, customerId, date, topic, type, amount, product);
+            string result = Facade.SaleFromQuote(date, topic, type, amount, descripcion, customerId, sellerId);
             await ReplyAsync(result);
         }
         
