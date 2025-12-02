@@ -35,7 +35,8 @@ public class Sale : Interaction
                ExchangeType type, Customer _customer) 
       : base(date, topic, type, _customer)
    {
-      this.product = product;
+      this.product = product;!saleRegister S1 C1  2025-03-10 Compra Received 1300 Laptop
+
       this.Amount = amount;
    }
    
