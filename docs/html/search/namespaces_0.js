@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['library_0',['Library',['../namespace_library.html',1,'']]],
-  ['library_3a_3atests_1',['Tests',['../namespace_library_1_1_tests.html',1,'Library']]]
+  ['discordbot_0',['DiscordBot',['../namespace_discord_bot.html',1,'']]],
+  ['discordbot_3a_3aservices_1',['Services',['../namespace_discord_bot_1_1_services.html',1,'DiscordBot']]]
 ];

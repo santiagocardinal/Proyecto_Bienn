@@ -1,0 +1,81 @@
+\doxysection{Library.\+Register\+Interaction\+Command Class Reference}
+\hypertarget{class_library_1_1_register_interaction_command}{}\label{class_library_1_1_register_interaction_command}\index{Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}}
+Inheritance diagram for Library.\+Register\+Interaction\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_library_1_1_register_interaction_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_register_interaction_command_a1c51ecab4b6cd105e76cc9e7e99fbf5a}{Call\+Register\+Command}} (string date, string topic, string type, string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para registrar una llamada entre un cliente y un vendedor. Uso\+: !call\+Register 2025-\/01-\/20 Tema\+De\+La\+Llamada Incoming C1 V1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_register_interaction_command_a624fa0eb9236ea1daa697ca4bacab43a}{Mail\+Register\+Command}} (string date, string topic, string type, string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para registrar un mail entre un cliente y un vendedor. Uso\+: !mail\+Register 2025-\/03-\/10 Tema\+Del\+Mail Incoming C1 V1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_register_interaction_command_adc2fdd89ce1c94c58930dd2959d8712b}{Meeting\+Register\+Command}} (string place, string date, string topic, string type, string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para registrar una reunión entre un cliente y un vendedor. Uso\+: !meeting\+Register Oficina 2025-\/03-\/15 Reunion\+Presencial C1 V1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_register_interaction_command_a968a884e2d92da74d5a2aa736297dddb}{Message\+Register\+Command}} (string date, string topic, string type, string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para registrar un mensaje entre un cliente y un vendedor. Uso\+: !message\+Register 2025-\/03-\/10 Tema\+Del\+Mensaje Incoming C1 V1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_register_interaction_command_ae7fb09aa27b0164e4bc6318b950936ea}{Add\+Note\+To\+Interaction\+Command}} (string customer\+Id, string interaction\+Type, string interaction\+Topic, string interaction\+Date)
+\begin{DoxyCompactList}\small\item\em Comando para agregar una nota a una interacción existente. Uso\+: !add\+Note\+To\+Interaction C1 "{}\+Tema"{} 2025-\/03-\/10 "{}\+Contenido de la nota"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_register_interaction_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_register_interaction_command_ae7fb09aa27b0164e4bc6318b950936ea}\index{Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}!AddNoteToInteractionCommand@{AddNoteToInteractionCommand}}
+\index{AddNoteToInteractionCommand@{AddNoteToInteractionCommand}!Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}}
+\doxysubsubsection{\texorpdfstring{AddNoteToInteractionCommand()}{AddNoteToInteractionCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_register_interaction_command_ae7fb09aa27b0164e4bc6318b950936ea} 
+async Task Library.\+Register\+Interaction\+Command.\+Add\+Note\+To\+Interaction\+Command (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{interaction\+Type}{, }\item[{string}]{interaction\+Topic}{, }\item[{string}]{interaction\+Date}{}\end{DoxyParamCaption})}
+
+
+
+Comando para agregar una nota a una interacción existente. Uso\+: !add\+Note\+To\+Interaction C1 "{}\+Tema"{} 2025-\/03-\/10 "{}\+Contenido de la nota"{}. 
+
+\Hypertarget{class_library_1_1_register_interaction_command_a1c51ecab4b6cd105e76cc9e7e99fbf5a}\index{Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}!CallRegisterCommand@{CallRegisterCommand}}
+\index{CallRegisterCommand@{CallRegisterCommand}!Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}}
+\doxysubsubsection{\texorpdfstring{CallRegisterCommand()}{CallRegisterCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_register_interaction_command_a1c51ecab4b6cd105e76cc9e7e99fbf5a} 
+async Task Library.\+Register\+Interaction\+Command.\+Call\+Register\+Command (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{topic}{, }\item[{string}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar una llamada entre un cliente y un vendedor. Uso\+: !call\+Register 2025-\/01-\/20 Tema\+De\+La\+Llamada Incoming C1 V1. 
+
+\Hypertarget{class_library_1_1_register_interaction_command_a624fa0eb9236ea1daa697ca4bacab43a}\index{Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}!MailRegisterCommand@{MailRegisterCommand}}
+\index{MailRegisterCommand@{MailRegisterCommand}!Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}}
+\doxysubsubsection{\texorpdfstring{MailRegisterCommand()}{MailRegisterCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_register_interaction_command_a624fa0eb9236ea1daa697ca4bacab43a} 
+async Task Library.\+Register\+Interaction\+Command.\+Mail\+Register\+Command (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{topic}{, }\item[{string}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar un mail entre un cliente y un vendedor. Uso\+: !mail\+Register 2025-\/03-\/10 Tema\+Del\+Mail Incoming C1 V1. 
+
+\Hypertarget{class_library_1_1_register_interaction_command_adc2fdd89ce1c94c58930dd2959d8712b}\index{Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}!MeetingRegisterCommand@{MeetingRegisterCommand}}
+\index{MeetingRegisterCommand@{MeetingRegisterCommand}!Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}}
+\doxysubsubsection{\texorpdfstring{MeetingRegisterCommand()}{MeetingRegisterCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_register_interaction_command_adc2fdd89ce1c94c58930dd2959d8712b} 
+async Task Library.\+Register\+Interaction\+Command.\+Meeting\+Register\+Command (\begin{DoxyParamCaption}\item[{string}]{place}{, }\item[{string}]{date}{, }\item[{string}]{topic}{, }\item[{string}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar una reunión entre un cliente y un vendedor. Uso\+: !meeting\+Register Oficina 2025-\/03-\/15 Reunion\+Presencial C1 V1. 
+
+\Hypertarget{class_library_1_1_register_interaction_command_a968a884e2d92da74d5a2aa736297dddb}\index{Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}!MessageRegisterCommand@{MessageRegisterCommand}}
+\index{MessageRegisterCommand@{MessageRegisterCommand}!Library.RegisterInteractionCommand@{Library.RegisterInteractionCommand}}
+\doxysubsubsection{\texorpdfstring{MessageRegisterCommand()}{MessageRegisterCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_register_interaction_command_a968a884e2d92da74d5a2aa736297dddb} 
+async Task Library.\+Register\+Interaction\+Command.\+Message\+Register\+Command (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{topic}{, }\item[{string}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar un mensaje entre un cliente y un vendedor. Uso\+: !message\+Register 2025-\/03-\/10 Tema\+Del\+Mensaje Incoming C1 V1. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Discord\+Bot/\+Commands/\mbox{\hyperlink{_register_interaction_command_8cs}{Register\+Interaction\+Command.\+cs}}\end{DoxyCompactItemize}

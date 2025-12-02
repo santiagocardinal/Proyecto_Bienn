@@ -1,0 +1,157 @@
+\doxysection{Library.\+Customer\+Management\+Command Class Reference}
+\hypertarget{class_library_1_1_customer_management_command}{}\label{class_library_1_1_customer_management_command}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+
+
+Comando para crear un nuevo cliente desde Discord. Uso\+: !create\+Customer ID Nombre Apellido \doxylink{class_library_1_1_mail}{Mail} Teléfono Genero yyyy-\/\+MM-\/dd.  
+
+
+Inheritance diagram for Library.\+Customer\+Management\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_library_1_1_customer_management_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_ac366f9e03b31c76e4269f8b34dd21710}{Create\+Customer\+Command}} (string id, string name, string family\+Name, string mail, string phone, string gender, string birth\+Date)
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a2daaab7b6cda6c17d01826b951438e9a}{Modify\+Customer\+By\+Id}} (string id, string field, string new\+Value)
+\begin{DoxyCompactList}\small\item\em Comando para modificar los datos de un cliente por Id. Uso\+: !modify\+Customer id field new\+Value. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a7d435ce69e0f8679353531c0ac1b5496}{Delete\+Customer\+Command}} (string id=null)
+\begin{DoxyCompactList}\small\item\em Elimina un cliente del CRM por ID. Uso\+: !delete\+Customer C1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_ac91380de032e0022ce96a89cf33784d4}{Search\+Customer\+By\+Mail\+Command}} (string mail)
+\begin{DoxyCompactList}\small\item\em Comando para buscar un cliente por correo electrónico. Uso\+: !search\+Customer\+By\+Mail \href{mailto:correo@ejemplo.com}{\texttt{correo@ejemplo.\+com}}. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a9ab00cf9cb9e4b8477a74fb7bc50dca4}{Search\+Customer\+By\+Family\+Name\+Command}} (string family\+Name)
+\begin{DoxyCompactList}\small\item\em Comando para buscar un cliente por apellido. Uso\+: !search\+Customer\+By\+Family\+Name Apellido. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a4b200df9f432cd6416fabb081f8e1dca}{Search\+Customer\+By\+Id\+Command}} (string id)
+\begin{DoxyCompactList}\small\item\em Comando para buscar un cliente por ID. Uso\+: !search\+Customer\+By\+Id C1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_aec26203d67308f0cbe066697d9cbff18}{Search\+Customer\+By\+Name\+Command}} (string name)
+\begin{DoxyCompactList}\small\item\em Comando para buscar un cliente por su nombre. Uso\+: !search\+Customer\+By\+Name Juan. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a595327c17bf1104e55b2f6d2e00e5e67}{Search\+Customer\+By\+Phone\+Command}} (string phone)
+\begin{DoxyCompactList}\small\item\em Comando para buscar un cliente por teléfono. Uso\+: !search\+Customer\+By\+Phone 099123456. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a24fe95f237c4dadd91eb0cfcac930eab}{Execute\+Async\+Get\+Customer\+By\+Seller\+Id\+Command}} (string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para obtener todos los clientes asignados a un vendedor. Uso\+: !get\+Customer\+By\+Seller\+Id V1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_ad9cf863a1e0b7c0afe8cc44e1704062c}{Assign\+Customer\+Command}} (string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para asignar un cliente a un vendedor. Uso\+: !assign\+Customer C001 V001. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_customer_management_command_a4e105cff358e4011967c3c58f94f5eda}{Assign\+Customer\+To\+Seller\+Command}} (string customer\+Id, string old\+Seller\+Id, string new\+Seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para asignar un cliente a otro vendedor dentro del equipo. Uso\+: !exchange\+Customer C1 V3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Comando para crear un nuevo cliente desde Discord. Uso\+: !create\+Customer ID Nombre Apellido \doxylink{class_library_1_1_mail}{Mail} Teléfono Genero yyyy-\/\+MM-\/dd. 
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_customer_management_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_customer_management_command_ad9cf863a1e0b7c0afe8cc44e1704062c}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!AssignCustomerCommand@{AssignCustomerCommand}}
+\index{AssignCustomerCommand@{AssignCustomerCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{AssignCustomerCommand()}{AssignCustomerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_ad9cf863a1e0b7c0afe8cc44e1704062c} 
+async Task Library.\+Customer\+Management\+Command.\+Assign\+Customer\+Command (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para asignar un cliente a un vendedor. Uso\+: !assign\+Customer C001 V001. 
+
+\Hypertarget{class_library_1_1_customer_management_command_a4e105cff358e4011967c3c58f94f5eda}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!AssignCustomerToSellerCommand@{AssignCustomerToSellerCommand}}
+\index{AssignCustomerToSellerCommand@{AssignCustomerToSellerCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{AssignCustomerToSellerCommand()}{AssignCustomerToSellerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a4e105cff358e4011967c3c58f94f5eda} 
+async Task Library.\+Customer\+Management\+Command.\+Assign\+Customer\+To\+Seller\+Command (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{old\+Seller\+Id}{, }\item[{string}]{new\+Seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para asignar un cliente a otro vendedor dentro del equipo. Uso\+: !exchange\+Customer C1 V3. 
+
+\Hypertarget{class_library_1_1_customer_management_command_ac366f9e03b31c76e4269f8b34dd21710}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!CreateCustomerCommand@{CreateCustomerCommand}}
+\index{CreateCustomerCommand@{CreateCustomerCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{CreateCustomerCommand()}{CreateCustomerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_ac366f9e03b31c76e4269f8b34dd21710} 
+async Task Library.\+Customer\+Management\+Command.\+Create\+Customer\+Command (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{family\+Name}{, }\item[{string}]{mail}{, }\item[{string}]{phone}{, }\item[{string}]{gender}{, }\item[{string}]{birth\+Date}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_management_command_a7d435ce69e0f8679353531c0ac1b5496}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!DeleteCustomerCommand@{DeleteCustomerCommand}}
+\index{DeleteCustomerCommand@{DeleteCustomerCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{DeleteCustomerCommand()}{DeleteCustomerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a7d435ce69e0f8679353531c0ac1b5496} 
+async Task Library.\+Customer\+Management\+Command.\+Delete\+Customer\+Command (\begin{DoxyParamCaption}\item[{string}]{id}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+
+
+
+Elimina un cliente del CRM por ID. Uso\+: !delete\+Customer C1. 
+
+\Hypertarget{class_library_1_1_customer_management_command_a24fe95f237c4dadd91eb0cfcac930eab}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!ExecuteAsyncGetCustomerBySellerIdCommand@{ExecuteAsyncGetCustomerBySellerIdCommand}}
+\index{ExecuteAsyncGetCustomerBySellerIdCommand@{ExecuteAsyncGetCustomerBySellerIdCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{ExecuteAsyncGetCustomerBySellerIdCommand()}{ExecuteAsyncGetCustomerBySellerIdCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a24fe95f237c4dadd91eb0cfcac930eab} 
+async Task Library.\+Customer\+Management\+Command.\+Execute\+Async\+Get\+Customer\+By\+Seller\+Id\+Command (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para obtener todos los clientes asignados a un vendedor. Uso\+: !get\+Customer\+By\+Seller\+Id V1. 
+
+\Hypertarget{class_library_1_1_customer_management_command_a2daaab7b6cda6c17d01826b951438e9a}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!ModifyCustomerById@{ModifyCustomerById}}
+\index{ModifyCustomerById@{ModifyCustomerById}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{ModifyCustomerById()}{ModifyCustomerById()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a2daaab7b6cda6c17d01826b951438e9a} 
+async Task Library.\+Customer\+Management\+Command.\+Modify\+Customer\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{field}{, }\item[{string}]{new\+Value}{}\end{DoxyParamCaption})}
+
+
+
+Comando para modificar los datos de un cliente por Id. Uso\+: !modify\+Customer id field new\+Value. 
+
+\Hypertarget{class_library_1_1_customer_management_command_a9ab00cf9cb9e4b8477a74fb7bc50dca4}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!SearchCustomerByFamilyNameCommand@{SearchCustomerByFamilyNameCommand}}
+\index{SearchCustomerByFamilyNameCommand@{SearchCustomerByFamilyNameCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{SearchCustomerByFamilyNameCommand()}{SearchCustomerByFamilyNameCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a9ab00cf9cb9e4b8477a74fb7bc50dca4} 
+async Task Library.\+Customer\+Management\+Command.\+Search\+Customer\+By\+Family\+Name\+Command (\begin{DoxyParamCaption}\item[{string}]{family\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Comando para buscar un cliente por apellido. Uso\+: !search\+Customer\+By\+Family\+Name Apellido. 
+
+\Hypertarget{class_library_1_1_customer_management_command_a4b200df9f432cd6416fabb081f8e1dca}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!SearchCustomerByIdCommand@{SearchCustomerByIdCommand}}
+\index{SearchCustomerByIdCommand@{SearchCustomerByIdCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{SearchCustomerByIdCommand()}{SearchCustomerByIdCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a4b200df9f432cd6416fabb081f8e1dca} 
+async Task Library.\+Customer\+Management\+Command.\+Search\+Customer\+By\+Id\+Command (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para buscar un cliente por ID. Uso\+: !search\+Customer\+By\+Id C1. 
+
+\Hypertarget{class_library_1_1_customer_management_command_ac91380de032e0022ce96a89cf33784d4}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!SearchCustomerByMailCommand@{SearchCustomerByMailCommand}}
+\index{SearchCustomerByMailCommand@{SearchCustomerByMailCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{SearchCustomerByMailCommand()}{SearchCustomerByMailCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_ac91380de032e0022ce96a89cf33784d4} 
+async Task Library.\+Customer\+Management\+Command.\+Search\+Customer\+By\+Mail\+Command (\begin{DoxyParamCaption}\item[{string}]{mail}{}\end{DoxyParamCaption})}
+
+
+
+Comando para buscar un cliente por correo electrónico. Uso\+: !search\+Customer\+By\+Mail \href{mailto:correo@ejemplo.com}{\texttt{correo@ejemplo.\+com}}. 
+
+\Hypertarget{class_library_1_1_customer_management_command_aec26203d67308f0cbe066697d9cbff18}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!SearchCustomerByNameCommand@{SearchCustomerByNameCommand}}
+\index{SearchCustomerByNameCommand@{SearchCustomerByNameCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{SearchCustomerByNameCommand()}{SearchCustomerByNameCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_aec26203d67308f0cbe066697d9cbff18} 
+async Task Library.\+Customer\+Management\+Command.\+Search\+Customer\+By\+Name\+Command (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Comando para buscar un cliente por su nombre. Uso\+: !search\+Customer\+By\+Name Juan. 
+
+\Hypertarget{class_library_1_1_customer_management_command_a595327c17bf1104e55b2f6d2e00e5e67}\index{Library.CustomerManagementCommand@{Library.CustomerManagementCommand}!SearchCustomerByPhoneCommand@{SearchCustomerByPhoneCommand}}
+\index{SearchCustomerByPhoneCommand@{SearchCustomerByPhoneCommand}!Library.CustomerManagementCommand@{Library.CustomerManagementCommand}}
+\doxysubsubsection{\texorpdfstring{SearchCustomerByPhoneCommand()}{SearchCustomerByPhoneCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_management_command_a595327c17bf1104e55b2f6d2e00e5e67} 
+async Task Library.\+Customer\+Management\+Command.\+Search\+Customer\+By\+Phone\+Command (\begin{DoxyParamCaption}\item[{string}]{phone}{}\end{DoxyParamCaption})}
+
+
+
+Comando para buscar un cliente por teléfono. Uso\+: !search\+Customer\+By\+Phone 099123456. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Discord\+Bot/\+Commands/\mbox{\hyperlink{_customer_management_command_8cs}{Customer\+Management\+Command.\+cs}}\end{DoxyCompactItemize}

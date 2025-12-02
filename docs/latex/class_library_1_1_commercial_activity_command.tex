@@ -1,0 +1,57 @@
+\doxysection{Library.\+Commercial\+Activity\+Command Class Reference}
+\hypertarget{class_library_1_1_commercial_activity_command}{}\label{class_library_1_1_commercial_activity_command}\index{Library.CommercialActivityCommand@{Library.CommercialActivityCommand}}
+Inheritance diagram for Library.\+Commercial\+Activity\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_library_1_1_commercial_activity_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_commercial_activity_command_ac7fe82bc61d230fe2eff8799f30a5a29}{Register\+Sale\+Command}} (string date, string topic, string exchange\+Type, string amount, string description, string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para registrar una cotizacion para un cliente. Uso\+: !quote\+Register 2025-\/11-\/29 "{}\+Cotizacion producto X"{} 1500.\+50 Sent C001 V001. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_commercial_activity_command_a65479eb1ede23fa7f18077fdc490dc2e}{Sale\+Register\+Command}} (string seller\+Id, string customer\+Id, string date, string topic, string type, string amount, string product)
+\begin{DoxyCompactList}\small\item\em Comando para registrar un sale entre un cliente y un vendedor. Uso\+: !sale\+Register S1 C1 2025-\/11-\/29 Compra Sent 1500.\+5 Casa. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_commercial_activity_command_afe71ede5f46b158150b68aa5bef51435}{Total\+Sales\+Command}} (string start\+Date, string end\+Date)
+\begin{DoxyCompactList}\small\item\em Comando para mostrar la cantidad de ventas en un periodo dado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_commercial_activity_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_commercial_activity_command_ac7fe82bc61d230fe2eff8799f30a5a29}\index{Library.CommercialActivityCommand@{Library.CommercialActivityCommand}!RegisterSaleCommand@{RegisterSaleCommand}}
+\index{RegisterSaleCommand@{RegisterSaleCommand}!Library.CommercialActivityCommand@{Library.CommercialActivityCommand}}
+\doxysubsubsection{\texorpdfstring{RegisterSaleCommand()}{RegisterSaleCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_commercial_activity_command_ac7fe82bc61d230fe2eff8799f30a5a29} 
+async Task Library.\+Commercial\+Activity\+Command.\+Register\+Sale\+Command (\begin{DoxyParamCaption}\item[{string}]{date}{, }\item[{string}]{topic}{, }\item[{string}]{exchange\+Type}{, }\item[{string}]{amount}{, }\item[{string}]{description}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar una cotizacion para un cliente. Uso\+: !quote\+Register 2025-\/11-\/29 "{}\+Cotizacion producto X"{} 1500.\+50 Sent C001 V001. 
+
+\Hypertarget{class_library_1_1_commercial_activity_command_a65479eb1ede23fa7f18077fdc490dc2e}\index{Library.CommercialActivityCommand@{Library.CommercialActivityCommand}!SaleRegisterCommand@{SaleRegisterCommand}}
+\index{SaleRegisterCommand@{SaleRegisterCommand}!Library.CommercialActivityCommand@{Library.CommercialActivityCommand}}
+\doxysubsubsection{\texorpdfstring{SaleRegisterCommand()}{SaleRegisterCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_commercial_activity_command_a65479eb1ede23fa7f18077fdc490dc2e} 
+async Task Library.\+Commercial\+Activity\+Command.\+Sale\+Register\+Command (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{date}{, }\item[{string}]{topic}{, }\item[{string}]{type}{, }\item[{string}]{amount}{, }\item[{string}]{product}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar un sale entre un cliente y un vendedor. Uso\+: !sale\+Register S1 C1 2025-\/11-\/29 Compra Sent 1500.\+5 Casa. 
+
+\Hypertarget{class_library_1_1_commercial_activity_command_afe71ede5f46b158150b68aa5bef51435}\index{Library.CommercialActivityCommand@{Library.CommercialActivityCommand}!TotalSalesCommand@{TotalSalesCommand}}
+\index{TotalSalesCommand@{TotalSalesCommand}!Library.CommercialActivityCommand@{Library.CommercialActivityCommand}}
+\doxysubsubsection{\texorpdfstring{TotalSalesCommand()}{TotalSalesCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_commercial_activity_command_afe71ede5f46b158150b68aa5bef51435} 
+async Task Library.\+Commercial\+Activity\+Command.\+Total\+Sales\+Command (\begin{DoxyParamCaption}\item[{string}]{start\+Date}{, }\item[{string}]{end\+Date}{}\end{DoxyParamCaption})}
+
+
+
+Comando para mostrar la cantidad de ventas en un periodo dado. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Discord\+Bot/\+Commands/\mbox{\hyperlink{_commercial_activity_command_8cs}{Commercial\+Activity\+Command.\+cs}}\end{DoxyCompactItemize}

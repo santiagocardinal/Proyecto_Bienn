@@ -1,0 +1,69 @@
+\doxysection{Library.\+Seller\+Command Class Reference}
+\hypertarget{class_library_1_1_seller_command}{}\label{class_library_1_1_seller_command}\index{Library.SellerCommand@{Library.SellerCommand}}
+Inheritance diagram for Library.\+Seller\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_library_1_1_seller_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_seller_command_a8d21847fc3bf094170422a16b7cd86c1}{Create\+Seller\+Command}} (string id, string name, string mail, string phone)
+\begin{DoxyCompactList}\small\item\em Comando para registrar una seller, solo se genera un nuevo seller si el usuario que lo ejecuta es administrador. Uso\+: !create\+Seller S1 Raul \href{mailto:raul@mail.com}{\texttt{raul@mail.\+com}} 099333666 /summary\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_seller_command_a9548a58f7423408da4d071e63108971e}{Search\+Seller\+By\+Id\+Command}} (string id)
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_seller_command_aacec2cefb645f38200462a1283e8ec1d}{Suspend\+Seller\+Command}} (string seller\+Id)
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_seller_command_a2a2e6269cbbaefad0f5dc4da500dd87c}{Delete\+Seller\+Command}} (string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para eliminar sellers, lo puede ejecutar unicamente un seller administrador del servidor Uso\+: !delete\+Seller S1. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_seller_command_a9b3ccf6fad41777e93224ee96c314e2c}{Enable\+Seller\+Command}} (string seller\+Id)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_seller_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_seller_command_a8d21847fc3bf094170422a16b7cd86c1}\index{Library.SellerCommand@{Library.SellerCommand}!CreateSellerCommand@{CreateSellerCommand}}
+\index{CreateSellerCommand@{CreateSellerCommand}!Library.SellerCommand@{Library.SellerCommand}}
+\doxysubsubsection{\texorpdfstring{CreateSellerCommand()}{CreateSellerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_command_a8d21847fc3bf094170422a16b7cd86c1} 
+async Task Library.\+Seller\+Command.\+Create\+Seller\+Command (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{mail}{, }\item[{string}]{phone}{}\end{DoxyParamCaption})}
+
+
+
+Comando para registrar una seller, solo se genera un nuevo seller si el usuario que lo ejecuta es administrador. Uso\+: !create\+Seller S1 Raul \href{mailto:raul@mail.com}{\texttt{raul@mail.\+com}} 099333666 /summary\texorpdfstring{$>$}{>} 
+
+\Hypertarget{class_library_1_1_seller_command_a2a2e6269cbbaefad0f5dc4da500dd87c}\index{Library.SellerCommand@{Library.SellerCommand}!DeleteSellerCommand@{DeleteSellerCommand}}
+\index{DeleteSellerCommand@{DeleteSellerCommand}!Library.SellerCommand@{Library.SellerCommand}}
+\doxysubsubsection{\texorpdfstring{DeleteSellerCommand()}{DeleteSellerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_command_a2a2e6269cbbaefad0f5dc4da500dd87c} 
+async Task Library.\+Seller\+Command.\+Delete\+Seller\+Command (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para eliminar sellers, lo puede ejecutar unicamente un seller administrador del servidor Uso\+: !delete\+Seller S1. 
+
+\Hypertarget{class_library_1_1_seller_command_a9b3ccf6fad41777e93224ee96c314e2c}\index{Library.SellerCommand@{Library.SellerCommand}!EnableSellerCommand@{EnableSellerCommand}}
+\index{EnableSellerCommand@{EnableSellerCommand}!Library.SellerCommand@{Library.SellerCommand}}
+\doxysubsubsection{\texorpdfstring{EnableSellerCommand()}{EnableSellerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_command_a9b3ccf6fad41777e93224ee96c314e2c} 
+async Task Library.\+Seller\+Command.\+Enable\+Seller\+Command (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_command_a9548a58f7423408da4d071e63108971e}\index{Library.SellerCommand@{Library.SellerCommand}!SearchSellerByIdCommand@{SearchSellerByIdCommand}}
+\index{SearchSellerByIdCommand@{SearchSellerByIdCommand}!Library.SellerCommand@{Library.SellerCommand}}
+\doxysubsubsection{\texorpdfstring{SearchSellerByIdCommand()}{SearchSellerByIdCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_command_a9548a58f7423408da4d071e63108971e} 
+async Task Library.\+Seller\+Command.\+Search\+Seller\+By\+Id\+Command (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
+
+summary\texorpdfstring{$>$}{>} Comando para suspender un seller por su id, solo lo puede ejecutar el usuario administrador del servidor. Uso\+: !suspend\+Seller S1 /summary\texorpdfstring{$>$}{>} \Hypertarget{class_library_1_1_seller_command_aacec2cefb645f38200462a1283e8ec1d}\index{Library.SellerCommand@{Library.SellerCommand}!SuspendSellerCommand@{SuspendSellerCommand}}
+\index{SuspendSellerCommand@{SuspendSellerCommand}!Library.SellerCommand@{Library.SellerCommand}}
+\doxysubsubsection{\texorpdfstring{SuspendSellerCommand()}{SuspendSellerCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_command_aacec2cefb645f38200462a1283e8ec1d} 
+async Task Library.\+Seller\+Command.\+Suspend\+Seller\+Command (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Discord\+Bot/\+Commands/\mbox{\hyperlink{_seller_command_8cs}{Seller\+Command.\+cs}}\end{DoxyCompactItemize}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Chatbot CRM: Class Members - Functions</title>
+<title>C4W-BOT: Class Members - Functions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Chatbot CRM<span id="projectnumber">&#160;v2</span>
+   <div id="projectname">C4W-BOT
    </div>
   </td>
  </tr>
@@ -93,29 +93,239 @@ $(function(){initNavTree('functions_func.html','',''); });
 <h3 class="doxsection"><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>Activate()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a3c9e8377759ecfaa93df0a75a3c352a5">Library.Customer</a></li>
 <li>AddCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#aa4ef992979334a70543b13aec3a20948">Library.CustomerManager</a>, <a class="el" href="class_library_1_1_facade.html#a6952548a8b4b185191af9edf31af883a">Library.Facade</a></li>
-<li>AddCustomer_DuplicateCustomer_ReturnsErrorMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a36c41f9f0ed38e1cec39ad4bd2b71dd5">Library.Tests.FacadeTests</a></li>
-<li>AddCustomer_DuplicateId_ThrowsException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#aa43eefa85a966f5016e8ebc0a64e9dc1">Library.Tests.CustomerManagerTests</a></li>
-<li>AddCustomer_NullCustomer_ThrowsArgumentNullException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#ab2a9d59d4769053ffd282442f4990503">Library.Tests.CustomerManagerTests</a></li>
-<li>AddCustomer_ValidCustomer_AddsSuccessfully()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a434748d2c9c80fb210eeca38d0d2a409">Library.Tests.CustomerManagerTests</a></li>
-<li>AddCustomer_ValidCustomer_ReturnsSuccessMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a3acb2b780a09cb26c8e302fb0d6b49c3">Library.Tests.FacadeTests</a></li>
-<li>AddInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a0729924fcb3edcf4475d11dc7b29eaaa">Library.Customer</a>, <a class="el" href="class_library_1_1_seller.html#a2f5b1575143e04af8e20c98be90ac805">Library.Seller</a>, <a class="el" href="class_library_1_1_tests_1_1_seller_tests.html#ad3faa1adbab2cc92b9d6b738570dcce3">Library.Tests.SellerTests</a></li>
+<li>AddInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a0729924fcb3edcf4475d11dc7b29eaaa">Library.Customer</a>, <a class="el" href="class_library_1_1_seller.html#a2f5b1575143e04af8e20c98be90ac805">Library.Seller</a></li>
 <li>AddNote()&#160;:&#160;<a class="el" href="class_library_1_1_interaction.html#ad87d6c9cfee9a91e65439c629c2bd833">Library.Interaction</a></li>
-<li>AddNoteToInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a9db9756e3a9355e961b977bf2a33150e">Library.Facade</a></li>
+<li>AddNoteToInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ac1eb07b29b76bf428c6bc4270cfffa92">Library.Facade</a></li>
+<li>AddNoteToInteractionCommand()&#160;:&#160;<a class="el" href="class_library_1_1_register_interaction_command.html#ae7fb09aa27b0164e4bc6318b950936ea">Library.RegisterInteractionCommand</a></li>
 <li>AddTag()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a842db811995282a6a3fa41523fd18a12">Library.Customer</a></li>
-<li>AddTag_Customer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ad792518f01dcffdce68c4e50fd4663db">Library.Facade</a></li>
-<li>AddTagCustomer_ReturnsErrorMessage1()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a3e2fa9ba63d6bb705acca791a8229f9d">Library.Tests.FacadeTests</a></li>
-<li>AddTagCustomer_ReturnsErrorMessage2()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a6447b655831b58c9c6abc4ce1c97af6c">Library.Tests.FacadeTests</a></li>
-<li>AddTagCustomer_ReturnsSuccessMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#af6f560c84800d96562a7767e56c924fe">Library.Tests.FacadeTests</a></li>
+<li>AddTag_Customer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a8271039e2e4770560fe4f9cb0a83323e">Library.Facade</a></li>
+<li>AddTagCommand()&#160;:&#160;<a class="el" href="class_library_1_1_tag_command.html#a8262c14644e1ab33013a4b461980c85e">Library.TagCommand</a></li>
+<li>AddTagToCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#adeb5ffe4838f102999677371fc322964">Library.CustomerManager</a></li>
 <li>Admin()&#160;:&#160;<a class="el" href="class_library_1_1_admin.html#a35746e4534ce62c3f37a9199ddba27c1">Library.Admin</a></li>
-<li>Admin_CanBeCompared()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_admin_tests.html#a91d81af01a7d410ba0b92c1b56d1b40f">Library.Tests.AdminTests</a></li>
 <li>AssignCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ae1e3f94bac06533dd422a2b47d9780be">Library.Facade</a></li>
-<li>AssignCustomer_ReturnsErrorMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a4ad3205b73d1e502b7be749a59087f74">Library.Tests.FacadeTests</a></li>
-<li>AssignCustomer_ReturnsSuccessMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#aa094611e1ee1f855a1e91df76b2b7974">Library.Tests.FacadeTests</a></li>
-<li>AssignCustomer_SellerNotFound_ReturnsErrorMessage()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_facade_tests.html#a0c0822783e9992aaff3c3feef2afae38">Library.Tests.FacadeTests</a></li>
+<li>AssignCustomerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#ad9cf863a1e0b7c0afe8cc44e1704062c">Library.CustomerManagementCommand</a></li>
 <li>AssignCustomerToSeller()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ab1d2c974be1dd9f20edc99850fad0456">Library.CustomerManager</a></li>
-<li>AssignCustomerToSeller_NullCustomer_ThrowsException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a63b2f736a6cf1a31e1246268c3c6c383">Library.Tests.CustomerManagerTests</a></li>
-<li>AssignCustomerToSeller_NullSeller_ThrowsException()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#a5a210ca3bd753caab0652b33b4500d39">Library.Tests.CustomerManagerTests</a></li>
-<li>AssignCustomerToSeller_ValidCustomerAndSeller_AssignsSuccessfully()&#160;:&#160;<a class="el" href="class_library_1_1_tests_1_1_customer_manager_tests.html#afbbb4fa9f4cf0f500d89ef1578c01464">Library.Tests.CustomerManagerTests</a></li>
+<li>AssignCustomerToSellerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a4e105cff358e4011967c3c58f94f5eda">Library.CustomerManagementCommand</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>Bot()&#160;:&#160;<a class="el" href="class_discord_bot_1_1_services_1_1_bot.html#a42a0dbf995f181a90cf8956ef827373d">DiscordBot.Services.Bot</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>Call()&#160;:&#160;<a class="el" href="class_library_1_1_call.html#abaff1a05575c3b55481c83aa9a819649">Library.Call</a></li>
+<li>CallRegister()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a9753d8166c340b82c49028bd96fb7239">Library.Facade</a></li>
+<li>CallRegisterCommand()&#160;:&#160;<a class="el" href="class_library_1_1_register_interaction_command.html#a1c51ecab4b6cd105e76cc9e7e99fbf5a">Library.RegisterInteractionCommand</a></li>
+<li>CheckIsActive()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a2c10391fa5ccc6d1955a067697a6c5d2">Library.Customer</a></li>
+<li>CreateCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a3c240d872c9a6efff8b56af334fb82a7">Library.Facade</a></li>
+<li>CreateCustomerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#ac366f9e03b31c76e4269f8b34dd21710">Library.CustomerManagementCommand</a></li>
+<li>CreateSeller()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a0cdffef8abebe5fe7d9ef33446e264a5">Library.Facade</a>, <a class="el" href="class_library_1_1_seller_manager.html#a7c3e8e3ca2add167cb40bc24a1a6007a">Library.SellerManager</a></li>
+<li>CreateSellerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_seller_command.html#a8d21847fc3bf094170422a16b7cd86c1">Library.SellerCommand</a></li>
+<li>CreateTag()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a4fae16e6267570560653b08783ac06e1">Library.CustomerManager</a>, <a class="el" href="class_library_1_1_facade.html#a4cc5e3390f29f06de059fdcc28901d29">Library.Facade</a></li>
+<li>CreateTagCommand()&#160;:&#160;<a class="el" href="class_library_1_1_tag_command.html#ab28145610f155ae153258982ca998f36">Library.TagCommand</a></li>
+<li>Customer()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a07a7ba8b9f02eae9d3d3ff4c58b3b764">Library.Customer</a></li>
+<li>CustomerManager()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ae5e99383ec2a0358fd4292bd8f6138d4">Library.CustomerManager</a></li>
+<li>CustomerNotAssignedToSellerException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_customer_not_assigned_to_seller_exception.html#ab469b9cc0e20c208ceee697657c86f33">Library.Exceptions.CustomerNotAssignedToSellerException</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_d" name="index_d"></a>- d -</h3><ul>
+<li>Dashboard()&#160;:&#160;<a class="el" href="class_library_1_1_dashboard_command.html#a0da59b43d430bce3ad006acf03b3b5e1">Library.DashboardCommand</a></li>
+<li>DashboardSummary()&#160;:&#160;<a class="el" href="class_library_1_1_dashboard_summary.html#aea5d199f32d2bb3fab94a8c9662a6c7a">Library.DashboardSummary</a></li>
+<li>Deactivate()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a0bd8fc752cc56f35b471adb3896df141">Library.Customer</a></li>
+<li>Delete()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a045be0f378c3989714a90ae7c30c384e">Library.CustomerManager</a></li>
+<li>DeleteCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ad76de5f199da8f7647daa470e381f458">Library.Facade</a></li>
+<li>DeleteCustomerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a7d435ce69e0f8679353531c0ac1b5496">Library.CustomerManagementCommand</a></li>
+<li>DeleteSeller()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#adc0a3814a62079182aba7d7d7ae50871">Library.Facade</a>, <a class="el" href="class_library_1_1_seller_manager.html#a9875fe407df8419380c4d7c4d6e606cd">Library.SellerManager</a></li>
+<li>DeleteSellerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_seller_command.html#a2a2e6269cbbaefad0f5dc4da500dd87c">Library.SellerCommand</a></li>
+<li>DuplicatedCustomerException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicated_customer_exception.html#aaa3baecc405aa13dbe2e0b58d8a87c3d">Library.Exceptions.DuplicatedCustomerException</a></li>
+<li>DuplicatedMailException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicated_mail_exception.html#a86812916703471cfd20539cf4d8b803f">Library.Exceptions.DuplicatedMailException</a></li>
+<li>DuplicatedPhoneException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicated_phone_exception.html#ad98b0a13612b96695c0f0e016a9109bf">Library.Exceptions.DuplicatedPhoneException</a></li>
+<li>DuplicatedTagException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicated_tag_exception.html#a249f1f54f1515e22cd022f115877254b">Library.Exceptions.DuplicatedTagException</a></li>
+<li>DuplicateQuoteException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicate_quote_exception.html#af5e1bcf91f4f5d701a446c90255b2e45">Library.Exceptions.DuplicateQuoteException</a></li>
+<li>DuplicateSaleException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicate_sale_exception.html#ad2e3d9f6c06a619b3379b45b678d52ae">Library.Exceptions.DuplicateSaleException</a></li>
+<li>DuplicateSellerException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_duplicate_seller_exception.html#a4417e29393571981a7b324a3d80e4526">Library.Exceptions.DuplicateSellerException</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_e" name="index_e"></a>- e -</h3><ul>
+<li>EnableSeller()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a0b23c642e7afd7e1eca9d5a9a4be4543">Library.Facade</a>, <a class="el" href="class_library_1_1_seller_manager.html#aca1e7356424e40d26f3e5f84e6a9f246">Library.SellerManager</a></li>
+<li>EnableSellerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_seller_command.html#a9b3ccf6fad41777e93224ee96c314e2c">Library.SellerCommand</a></li>
+<li>EnsureSellerIsActive()&#160;:&#160;<a class="el" href="class_library_1_1_seller_manager.html#aaa6fd1c9f4a6b699210af50514e07ed7">Library.SellerManager</a></li>
+<li>ExchangeCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#afe8e96092d3080a3367892dd69354331">Library.Facade</a></li>
+<li>ExecuteAsync()&#160;:&#160;<a class="el" href="class_library_1_1_ping_command.html#af8453a809c9ad4b0cc08287d2af70386">Library.PingCommand</a>, <a class="el" href="class_library_1_1_show_customers_by_seller_id_command.html#acabcbf781398df7e3e7dbb85ca617e99">Library.ShowCustomersBySellerIdCommand</a>, <a class="el" href="class_library_1_1_user_info_command.html#a51c0e1d9242aae9395236c9dad6442e5">Library.UserInfoCommand</a></li>
+<li>ExecuteAsyncGetCustomerBySellerIdCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a24fe95f237c4dadd91eb0cfcac930eab">Library.CustomerManagementCommand</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>FindInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#ae86597a565f8d84cdfd82c93ea3dacd3">Library.Customer</a></li>
+<li>FindQuote()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#adbdad7eb27f7f45ff724ef89f2e81163">Library.Customer</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_g" name="index_g"></a>- g -</h3><ul>
+<li>GetActiveSeller()&#160;:&#160;<a class="el" href="class_library_1_1_seller_manager.html#a1eccb569d2daf6601f34c1b45a2cdd7e">Library.SellerManager</a></li>
+<li>GetAllCustomerInteractions()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a85104c951b4a8deba41e997b3f4338cc">Library.Facade</a></li>
+<li>GetAllSales()&#160;:&#160;<a class="el" href="class_library_1_1_seller_manager.html#a0b095995a3313bd1f42958c0f0ca0e71">Library.SellerManager</a></li>
+<li>GetCustomerInteractions()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a0a735c63e50f4517557942b29b341c4e">Library.CustomerManager</a></li>
+<li>GetCustomerInteractionsByDate()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a7aa7e4e94627200bb8ca371d3faa6f19">Library.Facade</a></li>
+<li>GetCustomerInteractionsByType()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a48710accb5ca100102ff5b85ea48d405">Library.Facade</a></li>
+<li>GetCustomerInteractionsByTypeAndDate()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ad403856f79c17ab4ad7e94f27ed5956b">Library.Facade</a></li>
+<li>GetDashboard()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a72fbed6f04c371de9f5cbe23d363a64f">Library.CustomerManager</a></li>
+<li>GetDashboardFormatted()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a42ecb96fc07f0d2668156b850a76d43d">Library.Facade</a></li>
+<li>GetInactiveCustomers()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a54a8bead451cd691840ff2e46bda8691">Library.CustomerManager</a></li>
+<li>GetInactiveCustomersFormatted()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a693288c281f29e44a68732c4f5390b3e">Library.Facade</a></li>
+<li>GetInstance()&#160;:&#160;<a class="el" href="class_library_1_1_singleton-1-g.html#a50cff23e4ac14b007e55eb391a8ba7d1">Library.Singleton&lt; T &gt;</a></li>
+<li>GetInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#ab8eb111c1155a054819e98e22bcdd570">Library.Customer</a></li>
+<li>GetInteractionsByDate()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a6d42d50871da14323026a9620813ed05">Library.Customer</a></li>
+<li>GetInteractionsByTypeAndDate()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a6589054039ca97b2980729e9c6d725d1">Library.Customer</a></li>
+<li>GetInteractionsByTypeName()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a5b8c7fa508647dae266dcf885fbdb6ac">Library.Customer</a></li>
+<li>GetLastInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#ad09f3f6a9de5bd22ffe336d0d6d759d8">Library.Customer</a></li>
+<li>GetPendingResponses()&#160;:&#160;<a class="el" href="class_library_1_1_seller_manager.html#ad7d3b8a72271d0c61ddef3fdb2044e77">Library.SellerManager</a></li>
+<li>GetRecentInteractions()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#ada04b804202f403a6e213d434a45de98">Library.Customer</a></li>
+<li>GetSalesBetween()&#160;:&#160;<a class="el" href="class_library_1_1_seller_manager.html#a615868f495ed3126871947c9411e7355">Library.SellerManager</a></li>
+<li>getSalesByCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_seller.html#a3d1b12941285ca518b3f889f7e836bf9">Library.Seller</a></li>
+<li>GetTotalSales()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ae123049386749a8520e9e8d111b5ee1b">Library.Facade</a></li>
+<li>getTotalSales()&#160;:&#160;<a class="el" href="class_library_1_1_seller.html#a259404f2a0f9f0b1a033e6a7755c4146">Library.Seller</a></li>
+<li>GetUnansweredCustomers()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a56bc1e18a701a5b92e7bc6c984bd9d67">Library.CustomerManager</a></li>
+<li>GetUnansweredCustomersFormatted()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a6803c79546b67f26f4581391bc905f45">Library.Facade</a></li>
+<li>GetUnansweredInteractions()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a250956cb990d31f43843e76ada8474e4">Library.Customer</a></li>
+<li>GetUpcomingMeetings()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a591a506544b5c6b3970fc85abe6d5d61">Library.Customer</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_h" name="index_h"></a>- h -</h3><ul>
+<li>HasQuote()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a16646296a38a63e9e1fb602c7b9f0172">Library.Customer</a></li>
+<li>HasSale()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a016ef1e617686529283e4a2827c6d4c9">Library.Customer</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>InactiveCustomersCommnad()&#160;:&#160;<a class="el" href="class_library_1_1_tracking_and_inactivity_command.html#ac691d27feb3cd8f8bfffed11ff4c1bde">Library.TrackingAndInactivityCommand</a></li>
+<li>Interaction()&#160;:&#160;<a class="el" href="class_library_1_1_interaction.html#afae79509edf147d0b47963ecbd7096e7">Library.Interaction</a></li>
+<li>InteractionNotFoundException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_interaction_not_found_exception.html#a710c47ff0082f6f73a86c3bea7b7659a">Library.Exceptions.InteractionNotFoundException</a></li>
+<li>InvalidDateRangeException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_invalid_date_range_exception.html#a4ad23af931ceb8225fb247942e53c16f">Library.Exceptions.InvalidDateRangeException</a></li>
+<li>InvalidFieldException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_invalid_field_exception.html#af2ec5b990026544d2ff626f63d1c5063">Library.Exceptions.InvalidFieldException</a></li>
+<li>IsValidMail()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#ae653e7b22ee5effbe19adc985ada0840">Library.Customer</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>LastInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#af45abb42940ff1d44d44c11a053564e9">Library.Facade</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>Mail()&#160;:&#160;<a class="el" href="class_library_1_1_mail.html#a18f1c0dd0bcfab858f5f8812781fb85a">Library.Mail</a></li>
+<li>MailRegister()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a638b2e1c5e9d19b5c979387c854cf0f5">Library.Facade</a></li>
+<li>MailRegisterCommand()&#160;:&#160;<a class="el" href="class_library_1_1_register_interaction_command.html#a624fa0eb9236ea1daa697ca4bacab43a">Library.RegisterInteractionCommand</a></li>
+<li>MarkAsActive()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#aa691db7ee26e1e145626d395ebfebb0b">Library.Customer</a></li>
+<li>MarkAsPending()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a890ee611dacf42682fdfe19720ad7bad">Library.Customer</a></li>
+<li>MarkAsResponded()&#160;:&#160;<a class="el" href="class_library_1_1_interaction.html#acb7e570375858eb1fadf6437546bf647">Library.Interaction</a></li>
+<li>MarkLastReceivedAsResponded()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a44a8573cbb50a12fed8109c664f91181">Library.Customer</a></li>
+<li>Meeting()&#160;:&#160;<a class="el" href="class_library_1_1_meeting.html#aa1d38c2496475c248ed47c7f2a20ce51">Library.Meeting</a></li>
+<li>MeetingRegister()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#abcd9db1ac9160bf724bde67c41445bcf">Library.Facade</a></li>
+<li>MeetingRegisterCommand()&#160;:&#160;<a class="el" href="class_library_1_1_register_interaction_command.html#adc2fdd89ce1c94c58930dd2959d8712b">Library.RegisterInteractionCommand</a></li>
+<li>Message()&#160;:&#160;<a class="el" href="class_library_1_1_message.html#ac5d0efe242ed11d84ea808fff7efe14d">Library.Message</a></li>
+<li>MessageRegister()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a56970b8cef019328b7fd4c5b89626312">Library.Facade</a></li>
+<li>MessageRegisterCommand()&#160;:&#160;<a class="el" href="class_library_1_1_register_interaction_command.html#a968a884e2d92da74d5a2aa736297dddb">Library.RegisterInteractionCommand</a></li>
+<li>Modify()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ac4b2020b29e5124b33213033e57dc55a">Library.CustomerManager</a></li>
+<li>ModifyCustomer()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#aba4d44733ba28109c2f810d8e88f6892">Library.Facade</a></li>
+<li>ModifyCustomerById()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a2daaab7b6cda6c17d01826b951438e9a">Library.CustomerManagementCommand</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>Note()&#160;:&#160;<a class="el" href="class_note.html#af54e12f6303eb0dc4236db3c8a7db94b">Note</a></li>
+<li>NotExistingCustomerException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_not_existing_customer_exception.html#a83a3e645a74b2222169d53b13d2ddff6">Library.Exceptions.NotExistingCustomerException</a></li>
+<li>NotExistingTagException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_not_existing_tag_exception.html#a74d17cadd23f9ff1726bab3268732df4">Library.Exceptions.NotExistingTagException</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_p" name="index_p"></a>- p -</h3><ul>
+<li>ParseDate()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a4cabdcdf75e54f65e83ba3bdea0c096c">Library.Facade</a></li>
+<li>ParseDouble()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#afdfab129f6ab0ff3d6d1f320675f56f3">Library.Facade</a></li>
+<li>ParseExchangeType()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a645e8345079f1537587995e2a08d0aa5">Library.Facade</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_q" name="index_q"></a>- q -</h3><ul>
+<li>Quote()&#160;:&#160;<a class="el" href="class_library_1_1_quote.html#a22bf8c31659f0a2b81a9252830c03bcb">Library.Quote</a></li>
+<li>QuoteNotFoundException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_quote_not_found_exception.html#a92b05eeb6592313dee6a14e5c4af4628">Library.Exceptions.QuoteNotFoundException</a></li>
+<li>QuoteRegister()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#aac19002118b7d52d1dd8ff324976309b">Library.Facade</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_r" name="index_r"></a>- r -</h3><ul>
+<li>RegisterInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a9dd66e553127cfe84c1dddd7692c533b">Library.CustomerManager</a></li>
+<li>RegisterSaleCommand()&#160;:&#160;<a class="el" href="class_library_1_1_commercial_activity_command.html#ac7fe82bc61d230fe2eff8799f30a5a29">Library.CommercialActivityCommand</a></li>
+<li>RemoveTag()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a8ac3f18f21af81a93eba18e9b3c5ad80">Library.Customer</a></li>
+<li>RespondToInteraction()&#160;:&#160;<a class="el" href="class_library_1_1_seller.html#a0ec3c706cdfa69ba5fe28d86773024da">Library.Seller</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_s" name="index_s"></a>- s -</h3><ul>
+<li>Sale()&#160;:&#160;<a class="el" href="class_library_1_1_sale.html#a36a11aea3debd8ccdf22e8e6c4404248">Library.Sale</a></li>
+<li>SaleFromQuote()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a0958912cf5f53e874d43c80595601058">Library.Facade</a></li>
+<li>SaleRegisterCommand()&#160;:&#160;<a class="el" href="class_library_1_1_commercial_activity_command.html#a65479eb1ede23fa7f18077fdc490dc2e">Library.CommercialActivityCommand</a></li>
+<li>SearchByFamilyName()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ad8117fc0e5599c8c12cdfb19e72d38f9">Library.CustomerManager</a></li>
+<li>SearchById()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#a94d90aec80231d6a3cff1f857b383294">Library.CustomerManager</a>, <a class="el" href="class_library_1_1_seller_manager.html#ae3a855f4e00a08f34ff7e2777d0a3216">Library.SellerManager</a></li>
+<li>SearchByMail()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ac1ea37f842bcaa19612ed0f172aa90ac">Library.CustomerManager</a></li>
+<li>SearchByName()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ab90fe15ea636be25cad0ab1a7568a221">Library.CustomerManager</a></li>
+<li>SearchByPhone()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#aea12e36766a4367392da9db53b553cd7">Library.CustomerManager</a></li>
+<li>SearchCostumer_ByFamilyName()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#aeae333ae95040de57487b85bd704b406">Library.Facade</a></li>
+<li>SearchCostumer_ByMail()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a7a231447e4cdd6aedd415354a5c46701">Library.Facade</a></li>
+<li>SearchCostumer_ByName()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a066b3652fd82aef449285b590f7d70fe">Library.Facade</a></li>
+<li>SearchCostumer_ByPhone()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ae75b266441051bb824b2da867a828b2a">Library.Facade</a></li>
+<li>SearchCustomer_ById()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a8e617b67edd0f34daf8426822bb46f07">Library.Facade</a></li>
+<li>SearchCustomerByFamilyNameCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a9ab00cf9cb9e4b8477a74fb7bc50dca4">Library.CustomerManagementCommand</a></li>
+<li>SearchCustomerByIdCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a4b200df9f432cd6416fabb081f8e1dca">Library.CustomerManagementCommand</a></li>
+<li>SearchCustomerByMailCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#ac91380de032e0022ce96a89cf33784d4">Library.CustomerManagementCommand</a></li>
+<li>SearchCustomerByNameCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#aec26203d67308f0cbe066697d9cbff18">Library.CustomerManagementCommand</a></li>
+<li>SearchCustomerByPhoneCommand()&#160;:&#160;<a class="el" href="class_library_1_1_customer_management_command.html#a595327c17bf1104e55b2f6d2e00e5e67">Library.CustomerManagementCommand</a></li>
+<li>SearchSeller_ById()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#ac0e286eca1ecbe7c29ac034a9e64b9b2">Library.Facade</a></li>
+<li>SearchSellerByIdCommand()&#160;:&#160;<a class="el" href="class_library_1_1_seller_command.html#a9548a58f7423408da4d071e63108971e">Library.SellerCommand</a></li>
+<li>Seller()&#160;:&#160;<a class="el" href="class_library_1_1_seller.html#a75d021602f5e1e08520e9af7e3daa122">Library.Seller</a></li>
+<li>SellerManager()&#160;:&#160;<a class="el" href="class_library_1_1_seller_manager.html#a0521c6c6b50a8384b501862cdf2c0a4c">Library.SellerManager</a></li>
+<li>SellerNotFoundException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_seller_not_found_exception.html#a4aaa6a9e8dcdcebba485904c50b8b580">Library.Exceptions.SellerNotFoundException</a></li>
+<li>SellerNullException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_seller_null_exception.html#aacfa41697227a00f3dedeb8b9417c417">Library.Exceptions.SellerNullException</a></li>
+<li>ShowCustomers_BySellerId()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a6b5162e6627bcc7b565851c9bc4a5f6c">Library.Facade</a></li>
+<li>StartAsync()&#160;:&#160;<a class="el" href="class_discord_bot_1_1_services_1_1_bot.html#a1932ab7db8ea428f2696456d150284f5">DiscordBot.Services.Bot</a>, <a class="el" href="interface_discord_bot_1_1_services_1_1_i_bot.html#a96b6fb0d9757526d47dc4014f7eeebc8">DiscordBot.Services.IBot</a></li>
+<li>StopAsync()&#160;:&#160;<a class="el" href="class_discord_bot_1_1_services_1_1_bot.html#a93099a5c0efb956689e36db326b588e6">DiscordBot.Services.Bot</a>, <a class="el" href="interface_discord_bot_1_1_services_1_1_i_bot.html#aafcf300cd974c127c112b4d293b3c532">DiscordBot.Services.IBot</a></li>
+<li>SuspendedSellerException()&#160;:&#160;<a class="el" href="class_library_1_1_exceptions_1_1_suspended_seller_exception.html#a555744403a629282e3b793b6d1c9a287">Library.Exceptions.SuspendedSellerException</a></li>
+<li>SuspendSeller()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a71854cb3ab6c658a63e8d255222e37a6">Library.Facade</a>, <a class="el" href="class_library_1_1_seller_manager.html#a2b7ede245b6448c165112cc7fab475d4">Library.SellerManager</a></li>
+<li>SuspendSellerCommand()&#160;:&#160;<a class="el" href="class_library_1_1_seller_command.html#aacec2cefb645f38200462a1283e8ec1d">Library.SellerCommand</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_t" name="index_t"></a>- t -</h3><ul>
+<li>Tag()&#160;:&#160;<a class="el" href="class_library_1_1_tag.html#acbeae6267bcfb9a1c4a685b2acbf2103">Library.Tag</a></li>
+<li>TagExists()&#160;:&#160;<a class="el" href="class_library_1_1_customer_manager.html#ae3d76dbdac8f0e9d1065dd54d09021dd">Library.CustomerManager</a></li>
+<li>ToString()&#160;:&#160;<a class="el" href="class_library_1_1_customer.html#a3e144cbc41d310bed58e6e57d9a9b15e">Library.Customer</a>, <a class="el" href="class_library_1_1_interaction.html#a7eae0e0a72bf8f97133a71f47e5792ca">Library.Interaction</a>, <a class="el" href="class_library_1_1_quote.html#a7994537f547f77b374507e95999fe02e">Library.Quote</a>, <a class="el" href="class_library_1_1_sale.html#a7491a9c8e83754b227e9dc390047df1a">Library.Sale</a>, <a class="el" href="class_library_1_1_tag.html#ac19014cf8313fff900327b1d8a0f4c25">Library.Tag</a>, <a class="el" href="class_note.html#a7a9b50bec2b7f09426244f1d5f6848d9">Note</a></li>
+<li>TotalSalesCommand()&#160;:&#160;<a class="el" href="class_library_1_1_commercial_activity_command.html#afe71ede5f46b158150b68aa5bef51435">Library.CommercialActivityCommand</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_u" name="index_u"></a>- u -</h3><ul>
+<li>UnansweredCustomersAsync()&#160;:&#160;<a class="el" href="class_library_1_1_tracking_and_inactivity_command.html#a83ac1d81e52321b9eb0c3702a48709ec">Library.TrackingAndInactivityCommand</a></li>
+<li>UnansweredInteractions()&#160;:&#160;<a class="el" href="class_library_1_1_facade.html#a8e9163b4abe332ffd85a9406ee727d2c">Library.Facade</a></li>
+<li>User()&#160;:&#160;<a class="el" href="class_library_1_1_user.html#ab11b83edebc9357d00e23433250613af">Library.User</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_v" name="index_v"></a>- v -</h3><ul>
+<li>ViewAllInteractionsCommand()&#160;:&#160;<a class="el" href="class_library_1_1_view_interactions_command.html#a60bb2a52c8cf4174f4ee5cda893789d0">Library.ViewInteractionsCommand</a></li>
+<li>ViewInteractionsByDateCommand()&#160;:&#160;<a class="el" href="class_library_1_1_view_interactions_command.html#a2a1a462c1200d5e60ae4bbacf459c31d">Library.ViewInteractionsCommand</a></li>
+<li>ViewInteractionsByTypeAndDateCommand()&#160;:&#160;<a class="el" href="class_library_1_1_view_interactions_command.html#a9e2d25352351a93ba383f3f7e872c13f">Library.ViewInteractionsCommand</a></li>
+<li>ViewInteractionsByTypeCommand()&#160;:&#160;<a class="el" href="class_library_1_1_view_interactions_command.html#a28889e8387208a467b7114727378af60">Library.ViewInteractionsCommand</a></li>
+</ul>
+
+
+<h3 class="doxsection"><a id="index_w" name="index_w"></a>- w -</h3><ul>
+<li>Write()&#160;:&#160;<a class="el" href="class_library_1_1_file_writer.html#ae66eeface19d1e84992251825a0b8dc4">Library.FileWriter</a>, <a class="el" href="interface_library_1_1_i_writer.html#a30163f62ecd76ca39a46dc954b9a482b">Library.IWriter</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['facade_2ecs_0',['Facade.cs',['../_facade_8cs.html',1,'']]],
-  ['facadetest_2ecs_1',['FacadeTest.cs',['../_facade_test_8cs.html',1,'']]],
-  ['filewriter_2ecs_2',['FileWriter.cs',['../_file_writer_8cs.html',1,'']]]
+  ['exceptions_2ecs_0',['Exceptions.cs',['../_exceptions_8cs.html',1,'']]],
+  ['exchangetype_2ecs_1',['ExchangeType.cs',['../_exchange_type_8cs.html',1,'']]]
 ];

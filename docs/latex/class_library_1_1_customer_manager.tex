@@ -10,13 +10,13 @@ Administra la colección global de clientes del sistema. Provee métodos para CR
 \item 
 \mbox{\hyperlink{class_library_1_1_customer_manager_ae5e99383ec2a0358fd4292bd8f6138d4}{Customer\+Manager}} ()
 \item 
-\mbox{\hyperlink{class_library_1_1_customer}{Customer}} \mbox{\hyperlink{class_library_1_1_customer_manager_aab8863f2c849f06edb3b5a37e947775b}{Search\+By\+Name}} (string name)
+List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_ab90fe15ea636be25cad0ab1a7568a221}{Search\+By\+Name}} (string name)
 \item 
 \mbox{\hyperlink{class_library_1_1_customer}{Customer}} \mbox{\hyperlink{class_library_1_1_customer_manager_ac1ea37f842bcaa19612ed0f172aa90ac}{Search\+By\+Mail}} (string mail)
 \item 
-\mbox{\hyperlink{class_library_1_1_customer}{Customer}} \mbox{\hyperlink{class_library_1_1_customer_manager_ad26bf522cb518c0a5e27d5da133c86e1}{Search\+By\+Family\+Name}} (string familyname)
-\item 
 \mbox{\hyperlink{class_library_1_1_customer}{Customer}} \mbox{\hyperlink{class_library_1_1_customer_manager_aea12e36766a4367392da9db53b553cd7}{Search\+By\+Phone}} (string phone)
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_ad8117fc0e5599c8c12cdfb19e72d38f9}{Search\+By\+Family\+Name}} (string familyname)
 \item 
 \mbox{\hyperlink{class_library_1_1_customer}{Customer}} \mbox{\hyperlink{class_library_1_1_customer_manager_a94d90aec80231d6a3cff1f857b383294}{Search\+By\+Id}} (string id)
 \item 
@@ -37,11 +37,19 @@ List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyper
 void \mbox{\hyperlink{class_library_1_1_customer_manager_ab1d2c974be1dd9f20edc99850fad0456}{Assign\+Customer\+To\+Seller}} (\mbox{\hyperlink{class_library_1_1_customer}{Customer}} customer, \mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
 \item 
 List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_a0a735c63e50f4517557942b29b341c4e}{Get\+Customer\+Interactions}} (\mbox{\hyperlink{class_library_1_1_customer}{Customer}} customer)
+\item 
+bool \mbox{\hyperlink{class_library_1_1_customer_manager_ae3d76dbdac8f0e9d1065dd54d09021dd}{Tag\+Exists}} (string id)
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_manager_a4fae16e6267570560653b08783ac06e1}{Create\+Tag}} (string id, string name, string description)
+\item 
+void \mbox{\hyperlink{class_library_1_1_customer_manager_adeb5ffe4838f102999677371fc322964}{Add\+Tag\+To\+Customer}} (string customer\+Id, string tag\+Id)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Properties}
 \begin{DoxyCompactItemize}
 \item 
 List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_aebd2a6f334a94b20399c517f670b7c79}{Customers}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_tag}{Tag}} $>$ \mbox{\hyperlink{class_library_1_1_customer_manager_ac1481b52694d6c17a800d7132788cba0}{Tags}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \end{DoxyCompactItemize}
 
 
@@ -68,11 +76,23 @@ Library.\+Customer\+Manager.\+Customer\+Manager (\begin{DoxyParamCaption}{}{}\en
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_aa4ef992979334a70543b13aec3a20948} 
 void Library.\+Customer\+Manager.\+Add\+Customer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_customer}{Customer}}}]{customer}{}\end{DoxyParamCaption})}
 
+\Hypertarget{class_library_1_1_customer_manager_adeb5ffe4838f102999677371fc322964}\index{Library.CustomerManager@{Library.CustomerManager}!AddTagToCustomer@{AddTagToCustomer}}
+\index{AddTagToCustomer@{AddTagToCustomer}!Library.CustomerManager@{Library.CustomerManager}}
+\doxysubsubsection{\texorpdfstring{AddTagToCustomer()}{AddTagToCustomer()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_adeb5ffe4838f102999677371fc322964} 
+void Library.\+Customer\+Manager.\+Add\+Tag\+To\+Customer (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{tag\+Id}{}\end{DoxyParamCaption})}
+
 \Hypertarget{class_library_1_1_customer_manager_ab1d2c974be1dd9f20edc99850fad0456}\index{Library.CustomerManager@{Library.CustomerManager}!AssignCustomerToSeller@{AssignCustomerToSeller}}
 \index{AssignCustomerToSeller@{AssignCustomerToSeller}!Library.CustomerManager@{Library.CustomerManager}}
 \doxysubsubsection{\texorpdfstring{AssignCustomerToSeller()}{AssignCustomerToSeller()}}
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ab1d2c974be1dd9f20edc99850fad0456} 
 void Library.\+Customer\+Manager.\+Assign\+Customer\+To\+Seller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_customer}{Customer}}}]{customer}{, }\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_manager_a4fae16e6267570560653b08783ac06e1}\index{Library.CustomerManager@{Library.CustomerManager}!CreateTag@{CreateTag}}
+\index{CreateTag@{CreateTag}!Library.CustomerManager@{Library.CustomerManager}}
+\doxysubsubsection{\texorpdfstring{CreateTag()}{CreateTag()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_a4fae16e6267570560653b08783ac06e1} 
+void Library.\+Customer\+Manager.\+Create\+Tag (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{description}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_library_1_1_customer_manager_a045be0f378c3989714a90ae7c30c384e}\index{Library.CustomerManager@{Library.CustomerManager}!Delete@{Delete}}
 \index{Delete@{Delete}!Library.CustomerManager@{Library.CustomerManager}}
@@ -133,11 +153,11 @@ void Library.\+Customer\+Manager.\+Register\+Interaction (\begin{DoxyParamCaptio
 
 Registra una interacción entre un cliente y un vendedor. Actualiza el estado del cliente según el tipo de intercambio (Recibido o Enviado) y asocia la interacción a ambos. 
 
-\Hypertarget{class_library_1_1_customer_manager_ad26bf522cb518c0a5e27d5da133c86e1}\index{Library.CustomerManager@{Library.CustomerManager}!SearchByFamilyName@{SearchByFamilyName}}
+\Hypertarget{class_library_1_1_customer_manager_ad8117fc0e5599c8c12cdfb19e72d38f9}\index{Library.CustomerManager@{Library.CustomerManager}!SearchByFamilyName@{SearchByFamilyName}}
 \index{SearchByFamilyName@{SearchByFamilyName}!Library.CustomerManager@{Library.CustomerManager}}
 \doxysubsubsection{\texorpdfstring{SearchByFamilyName()}{SearchByFamilyName()}}
-{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ad26bf522cb518c0a5e27d5da133c86e1} 
-\mbox{\hyperlink{class_library_1_1_customer}{Customer}} Library.\+Customer\+Manager.\+Search\+By\+Family\+Name (\begin{DoxyParamCaption}\item[{string}]{familyname}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ad8117fc0e5599c8c12cdfb19e72d38f9} 
+List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ Library.\+Customer\+Manager.\+Search\+By\+Family\+Name (\begin{DoxyParamCaption}\item[{string}]{familyname}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_library_1_1_customer_manager_a94d90aec80231d6a3cff1f857b383294}\index{Library.CustomerManager@{Library.CustomerManager}!SearchById@{SearchById}}
 \index{SearchById@{SearchById}!Library.CustomerManager@{Library.CustomerManager}}
@@ -151,17 +171,23 @@ Registra una interacción entre un cliente y un vendedor. Actualiza el estado de
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ac1ea37f842bcaa19612ed0f172aa90ac} 
 \mbox{\hyperlink{class_library_1_1_customer}{Customer}} Library.\+Customer\+Manager.\+Search\+By\+Mail (\begin{DoxyParamCaption}\item[{string}]{mail}{}\end{DoxyParamCaption})}
 
-\Hypertarget{class_library_1_1_customer_manager_aab8863f2c849f06edb3b5a37e947775b}\index{Library.CustomerManager@{Library.CustomerManager}!SearchByName@{SearchByName}}
+\Hypertarget{class_library_1_1_customer_manager_ab90fe15ea636be25cad0ab1a7568a221}\index{Library.CustomerManager@{Library.CustomerManager}!SearchByName@{SearchByName}}
 \index{SearchByName@{SearchByName}!Library.CustomerManager@{Library.CustomerManager}}
 \doxysubsubsection{\texorpdfstring{SearchByName()}{SearchByName()}}
-{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_aab8863f2c849f06edb3b5a37e947775b} 
-\mbox{\hyperlink{class_library_1_1_customer}{Customer}} Library.\+Customer\+Manager.\+Search\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ab90fe15ea636be25cad0ab1a7568a221} 
+List$<$ \mbox{\hyperlink{class_library_1_1_customer}{Customer}} $>$ Library.\+Customer\+Manager.\+Search\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_library_1_1_customer_manager_aea12e36766a4367392da9db53b553cd7}\index{Library.CustomerManager@{Library.CustomerManager}!SearchByPhone@{SearchByPhone}}
 \index{SearchByPhone@{SearchByPhone}!Library.CustomerManager@{Library.CustomerManager}}
 \doxysubsubsection{\texorpdfstring{SearchByPhone()}{SearchByPhone()}}
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_aea12e36766a4367392da9db53b553cd7} 
 \mbox{\hyperlink{class_library_1_1_customer}{Customer}} Library.\+Customer\+Manager.\+Search\+By\+Phone (\begin{DoxyParamCaption}\item[{string}]{phone}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_customer_manager_ae3d76dbdac8f0e9d1065dd54d09021dd}\index{Library.CustomerManager@{Library.CustomerManager}!TagExists@{TagExists}}
+\index{TagExists@{TagExists}!Library.CustomerManager@{Library.CustomerManager}}
+\doxysubsubsection{\texorpdfstring{TagExists()}{TagExists()}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ae3d76dbdac8f0e9d1065dd54d09021dd} 
+bool Library.\+Customer\+Manager.\+Tag\+Exists (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
 
 
 
@@ -173,6 +199,12 @@ Registra una interacción entre un cliente y un vendedor. Actualiza el estado de
 \doxysubsubsection{\texorpdfstring{Customers}{Customers}}
 {\footnotesize\ttfamily \label{class_library_1_1_customer_manager_aebd2a6f334a94b20399c517f670b7c79} 
 List$<$\mbox{\hyperlink{class_library_1_1_customer}{Customer}}$>$ Library.\+Customer\+Manager.\+Customers\hspace{0.3cm}{\ttfamily [get]}}
+
+\Hypertarget{class_library_1_1_customer_manager_ac1481b52694d6c17a800d7132788cba0}\index{Library.CustomerManager@{Library.CustomerManager}!Tags@{Tags}}
+\index{Tags@{Tags}!Library.CustomerManager@{Library.CustomerManager}}
+\doxysubsubsection{\texorpdfstring{Tags}{Tags}}
+{\footnotesize\ttfamily \label{class_library_1_1_customer_manager_ac1481b52694d6c17a800d7132788cba0} 
+List$<$\mbox{\hyperlink{class_library_1_1_tag}{Tag}}$>$ Library.\+Customer\+Manager.\+Tags\hspace{0.3cm}{\ttfamily [get]}}
 
 
 

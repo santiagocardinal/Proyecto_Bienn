@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['unansweredinteractions_0',['UnansweredInteractions',['../class_library_1_1_facade.html#a8e9163b4abe332ffd85a9406ee727d2c',1,'Library::Facade']]],
-  ['unansweredinteractions_5freturnserrormessage_1',['UnansweredInteractions_ReturnsErrorMessage',['../class_library_1_1_tests_1_1_facade_tests.html#a21953df622c510e22eb8cb3076fc513c',1,'Library::Tests::FacadeTests']]],
-  ['unansweredinteractions_5freturnsmessage_2',['UnansweredInteractions_ReturnsMessage',['../class_library_1_1_tests_1_1_facade_tests.html#abdcae05929874194ed1e1eb0e588e105',1,'Library::Tests::FacadeTests']]],
-  ['unansweredinteractions_5freturnsreport_3',['UnansweredInteractions_ReturnsReport',['../class_library_1_1_tests_1_1_facade_tests.html#a2b35691aec1d45a77a2b66b8381ecaf3',1,'Library::Tests::FacadeTests']]],
-  ['user_4',['User',['../class_library_1_1_user.html#ab11b83edebc9357d00e23433250613af',1,'Library::User']]]
+  ['quote_0',['Quote',['../class_library_1_1_quote.html#a22bf8c31659f0a2b81a9252830c03bcb',1,'Library::Quote']]],
+  ['quotenotfoundexception_1',['QuoteNotFoundException',['../class_library_1_1_exceptions_1_1_quote_not_found_exception.html#a92b05eeb6592313dee6a14e5c4af4628',1,'Library::Exceptions::QuoteNotFoundException']]],
+  ['quoteregister_2',['QuoteRegister',['../class_library_1_1_facade.html#aac19002118b7d52d1dd8ff324976309b',1,'Library::Facade']]]
 ];

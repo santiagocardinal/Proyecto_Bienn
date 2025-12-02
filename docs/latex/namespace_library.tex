@@ -1,10 +1,5 @@
 \doxysection{Library Namespace Reference}
 \hypertarget{namespace_library}{}\label{namespace_library}\index{Library@{Library}}
-\doxysubsubsection*{Namespaces}
-\begin{DoxyCompactItemize}
-\item 
-namespace \mbox{\hyperlink{namespace_library_1_1_tests}{Tests}}
-\end{DoxyCompactItemize}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -14,10 +9,18 @@ class \mbox{\hyperlink{class_library_1_1_call}{Call}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_class1}{Class1}}
 \item 
+class {\bfseries Command\+Helper}
+\item 
+class \mbox{\hyperlink{class_library_1_1_commercial_activity_command}{Commercial\+Activity\+Command}}
+\item 
 class \mbox{\hyperlink{class_library_1_1_customer}{Customer}}
 \begin{DoxyCompactList}\small\item\em Representa a un cliente del sistema, con su información personal, etiquetas e historial de interacciones. Contiene comportamientos para gestionar su estado y sus relaciones. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_library_1_1_customer_management_command}{Customer\+Management\+Command}}
+\begin{DoxyCompactList}\small\item\em Comando para crear un nuevo cliente desde Discord. Uso\+: !create\+Customer ID Nombre Apellido \doxylink{class_library_1_1_mail}{Mail} Teléfono Genero yyyy-\/\+MM-\/dd. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_library_1_1_customer_manager}{Customer\+Manager}}
 \begin{DoxyCompactList}\small\item\em Administra la colección global de clientes del sistema. Provee métodos para CRUD, búsquedas, registro de interacciones y generación de reportes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_library_1_1_dashboard_command}{Dashboard\+Command}}
+\begin{DoxyCompactList}\small\item\em Panel de resumen general del sistema. Muestra clientes totales, interacciones recientes y reuniones próximas. Uso\+: !dashboard. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_library_1_1_dashboard_summary}{Dashboard\+Summary}}
 \begin{DoxyCompactList}\small\item\em Representa un resumen general del sistema (dashboard). Es un DTO (Data Transfer Object) que agrupa información relevante sobre\+: \end{DoxyCompactList}\item 
 class {\bfseries Exceptions}
@@ -28,8 +31,6 @@ class \mbox{\hyperlink{class_library_1_1_file_writer}{File\+Writer}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}}
 \item 
-class \mbox{\hyperlink{class_library_1_1_interaction_regular}{Interaction\+Regular}}
-\item 
 interface \mbox{\hyperlink{interface_library_1_1_i_writer}{IWriter}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_mail}{Mail}}
@@ -38,19 +39,35 @@ class \mbox{\hyperlink{class_library_1_1_meeting}{Meeting}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_message}{Message}}
 \item 
+class \mbox{\hyperlink{class_library_1_1_ping_command}{Ping\+Command}}
+\begin{DoxyCompactList}\small\item\em Esta clase implementa el comando \textquotesingle{}ping\textquotesingle{} del bot. Este comando retorna \textquotesingle{}pong\textquotesingle{}. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_library_1_1_quote}{Quote}}
+\item 
+class \mbox{\hyperlink{class_library_1_1_register_interaction_command}{Register\+Interaction\+Command}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_sale}{Sale}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_seller}{Seller}}
 \begin{DoxyCompactList}\small\item\em Representa a un vendedor del sistema. Gestiona sus clientes, interacciones y ventas, además de su estado de suspensión. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_library_1_1_seller_command}{Seller\+Command}}
+\item 
 class \mbox{\hyperlink{class_library_1_1_seller_manager}{Seller\+Manager}}
 \begin{DoxyCompactList}\small\item\em Administra la colección global de vendedores del sistema. Se encarga de crear, eliminar, suspender y consultar vendedores, además de gestionar sus interacciones pendientes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_library_1_1_show_customers_by_seller_id_command}{Show\+Customers\+By\+Seller\+Id\+Command}}
+\begin{DoxyCompactList}\small\item\em Comando para mostrar todos los clientes asignados a un vendedor. Uso\+: !show\+Customers\+By\+Seller\+Id V1. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_library_1_1_singleton-1-g}{Singleton$<$ T $>$}}
 \item 
 class \mbox{\hyperlink{class_library_1_1_tag}{Tag}}
 \item 
+class \mbox{\hyperlink{class_library_1_1_tag_command}{Tag\+Command}}
+\item 
+class \mbox{\hyperlink{class_library_1_1_tracking_and_inactivity_command}{Tracking\+And\+Inactivity\+Command}}
+\begin{DoxyCompactList}\small\item\em Comando para listar todos los clientes que no tienen interacciones en un rango de días especificado. Uso\+: !inactive\+Customers 30. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_library_1_1_user}{User}}
+\item 
+class \mbox{\hyperlink{class_library_1_1_user_info_command}{User\+Info\+Command}}
+\begin{DoxyCompactList}\small\item\em Esta clase implementa el comando \textquotesingle{}userinfo\textquotesingle{}, alias \textquotesingle{}who\textquotesingle{} o \textquotesingle{}whois\textquotesingle{} del bot. Este comando retorna información sobre el usuario que envía el mensaje o sobre otro usuario si se incluye como parámetro. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_library_1_1_view_interactions_command}{View\+Interactions\+Command}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}

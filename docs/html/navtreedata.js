@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Chatbot CRM", "index.html", [
+  [ "C4W-BOT", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ],
       [ "Package Members", "namespacemembers.html", [
@@ -38,7 +38,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Properties", "functions_prop.html", null ]
       ] ]
@@ -52,9 +52,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_admin_8cs.html",
-"class_library_1_1_seller.html#a75d021602f5e1e08520e9af7e3daa122",
-"class_library_1_1_tests_1_1_exceptions_tests.html#a77697662dd5dd38e8acd9fc26c6fc17a",
-"class_library_1_1_tests_1_1_seller_manager_tests.html#a299f35e3b71ecda54bd350fc9943ca67"
+"class_library_1_1_interaction.html#a53c4c2cd65b8f6b7ebbe08ef00dd9a7e",
+"namespaces.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

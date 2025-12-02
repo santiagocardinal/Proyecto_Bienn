@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['validdata_0',['ValidData',['../class_library_1_1_tests_1_1_user_tests.html#a881aee5d12de769464651299f71f796d',1,'Library::Tests::UserTests']]],
-  ['validid_1',['ValidId',['../class_library_1_1_tests_1_1_user_tests.html#aa2d3607a28c02e9b7c755dbdd2fba819',1,'Library::Tests::UserTests']]],
-  ['validmail_2',['ValidMail',['../class_library_1_1_tests_1_1_user_tests.html#a79c4563aac90bf4ca55b510b8fb1d6ce',1,'Library::Tests::UserTests']]],
-  ['validphone_3',['ValidPhone',['../class_library_1_1_tests_1_1_user_tests.html#af369d537855c31678a0ea9ce613ff0ea',1,'Library::Tests::UserTests']]]
+  ['registerinteraction_0',['RegisterInteraction',['../class_library_1_1_customer_manager.html#a9dd66e553127cfe84c1dddd7692c533b',1,'Library::CustomerManager']]],
+  ['registersalecommand_1',['RegisterSaleCommand',['../class_library_1_1_commercial_activity_command.html#ac7fe82bc61d230fe2eff8799f30a5a29',1,'Library::CommercialActivityCommand']]],
+  ['removetag_2',['RemoveTag',['../class_library_1_1_customer.html#a8ac3f18f21af81a93eba18e9b3c5ad80',1,'Library::Customer']]],
+  ['respondtointeraction_3',['RespondToInteraction',['../class_library_1_1_seller.html#a0ec3c706cdfa69ba5fe28d86773024da',1,'Library::Seller']]]
 ];

@@ -8,18 +8,30 @@ Clase fachada que centraliza las operaciones de clientes, vendedores e interacci
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-string \mbox{\hyperlink{class_library_1_1_facade_a9db9756e3a9355e961b977bf2a33150e}{Add\+Note\+To\+Interaction}} (string customer\+Id, string interaction\+Topic, Date\+Time interaction\+Date, \mbox{\hyperlink{class_note}{Note}} note)
+string \mbox{\hyperlink{class_library_1_1_facade_a85104c951b4a8deba41e997b3f4338cc}{Get\+All\+Customer\+Interactions}} (string customer\+Id)
+\begin{DoxyCompactList}\small\item\em Obtiene todas las interacciones de un cliente sin filtros. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_library_1_1_facade_a48710accb5ca100102ff5b85ea48d405}{Get\+Customer\+Interactions\+By\+Type}} (string customer\+Id, string interaction\+Type)
 \item 
-List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_facade_a7615dad3cffd13c4062901d71f1e3bd6}{Get\+Customer\+Interactions}} (string customer\+Id, string interaction\+Type=null, Date\+Time? date=null)
+string \mbox{\hyperlink{class_library_1_1_facade_a7aa7e4e94627200bb8ca371d3faa6f19}{Get\+Customer\+Interactions\+By\+Date}} (string customer\+Id, string date\+Str)
+\item 
+string \mbox{\hyperlink{class_library_1_1_facade_ad403856f79c17ab4ad7e94f27ed5956b}{Get\+Customer\+Interactions\+By\+Type\+And\+Date}} (string customer\+Id, string interaction\+Type, string date\+Str)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_a019cbd2bc3d426294fabaf24888b4ec2}{Create\+Customer}} (string id, string name, string family\+Name, string mail, string phone, string gender, Date\+Time birth\+Date)
+static Date\+Time \mbox{\hyperlink{class_library_1_1_facade_a4cabdcdf75e54f65e83ba3bdea0c096c}{Parse\+Date}} (string date\+String)
+\item 
+static double \mbox{\hyperlink{class_library_1_1_facade_afdfab129f6ab0ff3d6d1f320675f56f3}{Parse\+Double}} (string value)
+\item 
+static \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} \mbox{\hyperlink{class_library_1_1_facade_a645e8345079f1537587995e2a08d0aa5}{Parse\+Exchange\+Type}} (string type\+String)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a3c240d872c9a6efff8b56af334fb82a7}{Create\+Customer}} (string id, string name, string family\+Name, string mail, string phone, string gender, string birth\+Date)
 \begin{DoxyCompactList}\small\item\em Crea un nuevo cliente a partir de los datos ingresados y lo agrega al sistema. Devuelve un mensaje de éxito o el mensaje de la excepción lanzada. \end{DoxyCompactList}\item 
 static string \mbox{\hyperlink{class_library_1_1_facade_ad76de5f199da8f7647daa470e381f458}{Delete\+Customer}} (string id)
 \begin{DoxyCompactList}\small\item\em Elimina un cliente del sistema según su ID. Verifica primero si el ID es válido y si el cliente existe. \end{DoxyCompactList}\item 
 static string \mbox{\hyperlink{class_library_1_1_facade_aba4d44733ba28109c2f810d8e88f6892}{Modify\+Customer}} (string id, string field, string new\+Value)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a8e617b67edd0f34daf8426822bb46f07}{Search\+Customer\+\_\+\+By\+Id}} (string id)
 \item 
 static string \mbox{\hyperlink{class_library_1_1_facade_a066b3652fd82aef449285b590f7d70fe}{Search\+Costumer\+\_\+\+By\+Name}} (string name)
 \item 
@@ -33,26 +45,50 @@ static string \mbox{\hyperlink{class_library_1_1_facade_a6b5162e6627bcc7b565851c
 \begin{DoxyCompactList}\small\item\em Muestra todos los clientes asociados a un vendedor específico. Devuelve un listado con los nombres o un mensaje si no hay clientes asignados. \end{DoxyCompactList}\item 
 static string \mbox{\hyperlink{class_library_1_1_facade_a6952548a8b4b185191af9edf31af883a}{Add\+Customer}} (\mbox{\hyperlink{class_library_1_1_customer}{Customer}} customer)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_ad792518f01dcffdce68c4e50fd4663db}{Add\+Tag\+\_\+\+Customer}} (string customer\+Id, string tag\+Id, string tag\+Name, string tag\+Description)
+static string \mbox{\hyperlink{class_library_1_1_facade_a4cc5e3390f29f06de059fdcc28901d29}{Create\+Tag}} (string tag\+Id, string tag\+Name, string tag\+Description)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a8271039e2e4770560fe4f9cb0a83323e}{Add\+Tag\+\_\+\+Customer}} (string customer\+Id, string tag\+Id)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_ac1eb07b29b76bf428c6bc4270cfffa92}{Add\+Note\+To\+Interaction}} (string customer\+Id, string interaction\+Type, string interaction\+Topic, string interaction\+Date)
 \item 
 static string \mbox{\hyperlink{class_library_1_1_facade_af45abb42940ff1d44d44c11a053564e9}{Last\+Interaction}} (string customer\+Id)
 \item 
 static string \mbox{\hyperlink{class_library_1_1_facade_a8e9163b4abe332ffd85a9406ee727d2c}{Unanswered\+Interactions}} (string customer\+Id)
 \item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a0cdffef8abebe5fe7d9ef33446e264a5}{Create\+Seller}} (string id, string name, string mail, string phone)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_ac0e286eca1ecbe7c29ac034a9e64b9b2}{Search\+Seller\+\_\+\+By\+Id}} (string id)
+\item 
 static string \mbox{\hyperlink{class_library_1_1_facade_ae1e3f94bac06533dd422a2b47d9780be}{Assign\+Customer}} (string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Asigna un cliente a un vendedor para distribuir el trabajo en el equipo. Historia de usuario\+: Como vendedor, quiero poder asignar un cliente a otro vendedor para distribuir el trabajo en el equipo. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_afe8e96092d3080a3367892dd69354331}{Exchange\+Customer}} (string customer\+Id, string old\+Seller\+Id, string new\+Seller\+Id)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_a23e537fa239b444e77ba938b700bc66c}{Call\+Register}} (Date\+Time date, string topic, \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} type, string customer\+Id, string seller\+Id)
+static string \mbox{\hyperlink{class_library_1_1_facade_a9753d8166c340b82c49028bd96fb7239}{Call\+Register}} (string date\+Str, string topic, string type\+Str, string customer\+Id, string seller\+Id)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_a613df49984353a063e16062b5ced4bd0}{Meeting\+Register}} (string place, Date\+Time date, string topic, \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} type, string customer\+Id, string seller\+Id)
+static string \mbox{\hyperlink{class_library_1_1_facade_abcd9db1ac9160bf724bde67c41445bcf}{Meeting\+Register}} (string place, string date\+Str, string topic, string type\+Str, string customer\+Id, string seller\+Id)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_afa781080dc14769229a093cad8ff6af8}{Message\+Register}} (Date\+Time date, string topic, \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} type, string customer\+Id, string seller\+Id)
+static string \mbox{\hyperlink{class_library_1_1_facade_a56970b8cef019328b7fd4c5b89626312}{Message\+Register}} (string date\+Str, string topic, string type\+Str, string customer\+Id, string seller\+Id)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_abdd61f590e23e8e8cc8c5ace8ac97bd6}{Mail\+Register}} (Date\+Time date, string topic, \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} type, string customer\+Id, string seller\+Id)
+static string \mbox{\hyperlink{class_library_1_1_facade_a638b2e1c5e9d19b5c979387c854cf0f5}{Mail\+Register}} (string date\+Str, string topic, string type\+Str, string customer\+Id, string seller\+Id)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_a794ca72995657e7cc331cca696fc6a4d}{Quote\+Register}} (Date\+Time date, string topic, \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} type, double amount, string description, string customer\+Id, string seller\+Id)
+static string \mbox{\hyperlink{class_library_1_1_facade_aac19002118b7d52d1dd8ff324976309b}{Quote\+Register}} (string date\+Str, string topic, string type\+Str, string amount\+Str, string description, string customer\+Id, string seller\+Id)
 \item 
-static string \mbox{\hyperlink{class_library_1_1_facade_a9e3d4401506f59695363871db9f61a0c}{Sale\+From\+Quote}} (string seller\+Id, string customer\+Id, Date\+Time date, string topic, \mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} type, double amount, string product)
-\begin{DoxyCompactList}\small\item\em Genera una venta a partir de una cotización previa (\doxylink{class_library_1_1_quote}{Quote}). Verifica que la cotización coincida con los datos provistos antes de crear la venta. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static string \mbox{\hyperlink{class_library_1_1_facade_a0958912cf5f53e874d43c80595601058}{Sale\+From\+Quote}} (string date\+Str, string topic, string type\+Str, string amount\+Str, string product, string customer\+Id, string seller\+Id)
+\begin{DoxyCompactList}\small\item\em Genera una venta a partir de una cotización previa (\doxylink{class_library_1_1_quote}{Quote}). Verifica que la cotización coincida con los datos provistos antes de crear la venta. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a71854cb3ab6c658a63e8d255222e37a6}{Suspend\+Seller}} (string seller\+Id)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a0b23c642e7afd7e1eca9d5a9a4be4543}{Enable\+Seller}} (string seller\+Id)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_adc0a3814a62079182aba7d7d7ae50871}{Delete\+Seller}} (string seller\+Id)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_ae123049386749a8520e9e8d111b5ee1b}{Get\+Total\+Sales}} (string start\+Str, string end\+Str)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a693288c281f29e44a68732c4f5390b3e}{Get\+Inactive\+Customers\+Formatted}} (int days)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a6803c79546b67f26f4581391bc905f45}{Get\+Unanswered\+Customers\+Formatted}} (int days)
+\item 
+static string \mbox{\hyperlink{class_library_1_1_facade_a42ecb96fc07f0d2668156b850a76d43d}{Get\+Dashboard\+Formatted}} ()
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -74,17 +110,17 @@ Clase fachada que centraliza las operaciones de clientes, vendedores e interacci
 {\footnotesize\ttfamily \label{class_library_1_1_facade_a6952548a8b4b185191af9edf31af883a} 
 string Library.\+Facade.\+Add\+Customer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_customer}{Customer}}}]{customer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_a9db9756e3a9355e961b977bf2a33150e}\index{Library.Facade@{Library.Facade}!AddNoteToInteraction@{AddNoteToInteraction}}
+\Hypertarget{class_library_1_1_facade_ac1eb07b29b76bf428c6bc4270cfffa92}\index{Library.Facade@{Library.Facade}!AddNoteToInteraction@{AddNoteToInteraction}}
 \index{AddNoteToInteraction@{AddNoteToInteraction}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{AddNoteToInteraction()}{AddNoteToInteraction()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a9db9756e3a9355e961b977bf2a33150e} 
-string Library.\+Facade.\+Add\+Note\+To\+Interaction (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{interaction\+Topic}{, }\item[{Date\+Time}]{interaction\+Date}{, }\item[{\mbox{\hyperlink{class_note}{Note}}}]{note}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_ac1eb07b29b76bf428c6bc4270cfffa92} 
+string Library.\+Facade.\+Add\+Note\+To\+Interaction (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{interaction\+Type}{, }\item[{string}]{interaction\+Topic}{, }\item[{string}]{interaction\+Date}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_ad792518f01dcffdce68c4e50fd4663db}\index{Library.Facade@{Library.Facade}!AddTag\_Customer@{AddTag\_Customer}}
+\Hypertarget{class_library_1_1_facade_a8271039e2e4770560fe4f9cb0a83323e}\index{Library.Facade@{Library.Facade}!AddTag\_Customer@{AddTag\_Customer}}
 \index{AddTag\_Customer@{AddTag\_Customer}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{AddTag\_Customer()}{AddTag\_Customer()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_ad792518f01dcffdce68c4e50fd4663db} 
-string Library.\+Facade.\+Add\+Tag\+\_\+\+Customer (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{tag\+Id}{, }\item[{string}]{tag\+Name}{, }\item[{string}]{tag\+Description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a8271039e2e4770560fe4f9cb0a83323e} 
+string Library.\+Facade.\+Add\+Tag\+\_\+\+Customer (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{tag\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{class_library_1_1_facade_ae1e3f94bac06533dd422a2b47d9780be}\index{Library.Facade@{Library.Facade}!AssignCustomer@{AssignCustomer}}
 \index{AssignCustomer@{AssignCustomer}!Library.Facade@{Library.Facade}}
@@ -92,21 +128,37 @@ string Library.\+Facade.\+Add\+Tag\+\_\+\+Customer (\begin{DoxyParamCaption}\ite
 {\footnotesize\ttfamily \label{class_library_1_1_facade_ae1e3f94bac06533dd422a2b47d9780be} 
 string Library.\+Facade.\+Assign\+Customer (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_a23e537fa239b444e77ba938b700bc66c}\index{Library.Facade@{Library.Facade}!CallRegister@{CallRegister}}
+
+
+Asigna un cliente a un vendedor para distribuir el trabajo en el equipo. Historia de usuario\+: Como vendedor, quiero poder asignar un cliente a otro vendedor para distribuir el trabajo en el equipo. 
+
+\Hypertarget{class_library_1_1_facade_a9753d8166c340b82c49028bd96fb7239}\index{Library.Facade@{Library.Facade}!CallRegister@{CallRegister}}
 \index{CallRegister@{CallRegister}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{CallRegister()}{CallRegister()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a23e537fa239b444e77ba938b700bc66c} 
-string Library.\+Facade.\+Call\+Register (\begin{DoxyParamCaption}\item[{Date\+Time}]{date}{, }\item[{string}]{topic}{, }\item[{\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}}}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a9753d8166c340b82c49028bd96fb7239} 
+string Library.\+Facade.\+Call\+Register (\begin{DoxyParamCaption}\item[{string}]{date\+Str}{, }\item[{string}]{topic}{, }\item[{string}]{type\+Str}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_a019cbd2bc3d426294fabaf24888b4ec2}\index{Library.Facade@{Library.Facade}!CreateCustomer@{CreateCustomer}}
+\Hypertarget{class_library_1_1_facade_a3c240d872c9a6efff8b56af334fb82a7}\index{Library.Facade@{Library.Facade}!CreateCustomer@{CreateCustomer}}
 \index{CreateCustomer@{CreateCustomer}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{CreateCustomer()}{CreateCustomer()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a019cbd2bc3d426294fabaf24888b4ec2} 
-string Library.\+Facade.\+Create\+Customer (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{family\+Name}{, }\item[{string}]{mail}{, }\item[{string}]{phone}{, }\item[{string}]{gender}{, }\item[{Date\+Time}]{birth\+Date}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a3c240d872c9a6efff8b56af334fb82a7} 
+string Library.\+Facade.\+Create\+Customer (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{family\+Name}{, }\item[{string}]{mail}{, }\item[{string}]{phone}{, }\item[{string}]{gender}{, }\item[{string}]{birth\+Date}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
 Crea un nuevo cliente a partir de los datos ingresados y lo agrega al sistema. Devuelve un mensaje de éxito o el mensaje de la excepción lanzada. 
+
+\Hypertarget{class_library_1_1_facade_a0cdffef8abebe5fe7d9ef33446e264a5}\index{Library.Facade@{Library.Facade}!CreateSeller@{CreateSeller}}
+\index{CreateSeller@{CreateSeller}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{CreateSeller()}{CreateSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a0cdffef8abebe5fe7d9ef33446e264a5} 
+string Library.\+Facade.\+Create\+Seller (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{name}{, }\item[{string}]{mail}{, }\item[{string}]{phone}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_a4cc5e3390f29f06de059fdcc28901d29}\index{Library.Facade@{Library.Facade}!CreateTag@{CreateTag}}
+\index{CreateTag@{CreateTag}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{CreateTag()}{CreateTag()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a4cc5e3390f29f06de059fdcc28901d29} 
+string Library.\+Facade.\+Create\+Tag (\begin{DoxyParamCaption}\item[{string}]{tag\+Id}{, }\item[{string}]{tag\+Name}{, }\item[{string}]{tag\+Description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{class_library_1_1_facade_ad76de5f199da8f7647daa470e381f458}\index{Library.Facade@{Library.Facade}!DeleteCustomer@{DeleteCustomer}}
 \index{DeleteCustomer@{DeleteCustomer}!Library.Facade@{Library.Facade}}
@@ -118,11 +170,75 @@ string Library.\+Facade.\+Delete\+Customer (\begin{DoxyParamCaption}\item[{strin
 
 Elimina un cliente del sistema según su ID. Verifica primero si el ID es válido y si el cliente existe. 
 
-\Hypertarget{class_library_1_1_facade_a7615dad3cffd13c4062901d71f1e3bd6}\index{Library.Facade@{Library.Facade}!GetCustomerInteractions@{GetCustomerInteractions}}
-\index{GetCustomerInteractions@{GetCustomerInteractions}!Library.Facade@{Library.Facade}}
-\doxysubsubsection{\texorpdfstring{GetCustomerInteractions()}{GetCustomerInteractions()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a7615dad3cffd13c4062901d71f1e3bd6} 
-List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Library.\+Facade.\+Get\+Customer\+Interactions (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{interaction\+Type}{ = {\ttfamily null}, }\item[{Date\+Time?}]{date}{ = {\ttfamily null}}\end{DoxyParamCaption})}
+\Hypertarget{class_library_1_1_facade_adc0a3814a62079182aba7d7d7ae50871}\index{Library.Facade@{Library.Facade}!DeleteSeller@{DeleteSeller}}
+\index{DeleteSeller@{DeleteSeller}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{DeleteSeller()}{DeleteSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_adc0a3814a62079182aba7d7d7ae50871} 
+string Library.\+Facade.\+Delete\+Seller (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_a0b23c642e7afd7e1eca9d5a9a4be4543}\index{Library.Facade@{Library.Facade}!EnableSeller@{EnableSeller}}
+\index{EnableSeller@{EnableSeller}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{EnableSeller()}{EnableSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a0b23c642e7afd7e1eca9d5a9a4be4543} 
+string Library.\+Facade.\+Enable\+Seller (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_afe8e96092d3080a3367892dd69354331}\index{Library.Facade@{Library.Facade}!ExchangeCustomer@{ExchangeCustomer}}
+\index{ExchangeCustomer@{ExchangeCustomer}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{ExchangeCustomer()}{ExchangeCustomer()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_afe8e96092d3080a3367892dd69354331} 
+string Library.\+Facade.\+Exchange\+Customer (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{old\+Seller\+Id}{, }\item[{string}]{new\+Seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_a85104c951b4a8deba41e997b3f4338cc}\index{Library.Facade@{Library.Facade}!GetAllCustomerInteractions@{GetAllCustomerInteractions}}
+\index{GetAllCustomerInteractions@{GetAllCustomerInteractions}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetAllCustomerInteractions()}{GetAllCustomerInteractions()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a85104c951b4a8deba41e997b3f4338cc} 
+string Library.\+Facade.\+Get\+All\+Customer\+Interactions (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Obtiene todas las interacciones de un cliente sin filtros. 
+
+\Hypertarget{class_library_1_1_facade_a7aa7e4e94627200bb8ca371d3faa6f19}\index{Library.Facade@{Library.Facade}!GetCustomerInteractionsByDate@{GetCustomerInteractionsByDate}}
+\index{GetCustomerInteractionsByDate@{GetCustomerInteractionsByDate}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetCustomerInteractionsByDate()}{GetCustomerInteractionsByDate()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a7aa7e4e94627200bb8ca371d3faa6f19} 
+string Library.\+Facade.\+Get\+Customer\+Interactions\+By\+Date (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{date\+Str}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_facade_a48710accb5ca100102ff5b85ea48d405}\index{Library.Facade@{Library.Facade}!GetCustomerInteractionsByType@{GetCustomerInteractionsByType}}
+\index{GetCustomerInteractionsByType@{GetCustomerInteractionsByType}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetCustomerInteractionsByType()}{GetCustomerInteractionsByType()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a48710accb5ca100102ff5b85ea48d405} 
+string Library.\+Facade.\+Get\+Customer\+Interactions\+By\+Type (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{interaction\+Type}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_facade_ad403856f79c17ab4ad7e94f27ed5956b}\index{Library.Facade@{Library.Facade}!GetCustomerInteractionsByTypeAndDate@{GetCustomerInteractionsByTypeAndDate}}
+\index{GetCustomerInteractionsByTypeAndDate@{GetCustomerInteractionsByTypeAndDate}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetCustomerInteractionsByTypeAndDate()}{GetCustomerInteractionsByTypeAndDate()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_ad403856f79c17ab4ad7e94f27ed5956b} 
+string Library.\+Facade.\+Get\+Customer\+Interactions\+By\+Type\+And\+Date (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{interaction\+Type}{, }\item[{string}]{date\+Str}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_facade_a42ecb96fc07f0d2668156b850a76d43d}\index{Library.Facade@{Library.Facade}!GetDashboardFormatted@{GetDashboardFormatted}}
+\index{GetDashboardFormatted@{GetDashboardFormatted}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetDashboardFormatted()}{GetDashboardFormatted()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a42ecb96fc07f0d2668156b850a76d43d} 
+string Library.\+Facade.\+Get\+Dashboard\+Formatted (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_a693288c281f29e44a68732c4f5390b3e}\index{Library.Facade@{Library.Facade}!GetInactiveCustomersFormatted@{GetInactiveCustomersFormatted}}
+\index{GetInactiveCustomersFormatted@{GetInactiveCustomersFormatted}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetInactiveCustomersFormatted()}{GetInactiveCustomersFormatted()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a693288c281f29e44a68732c4f5390b3e} 
+string Library.\+Facade.\+Get\+Inactive\+Customers\+Formatted (\begin{DoxyParamCaption}\item[{int}]{days}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_ae123049386749a8520e9e8d111b5ee1b}\index{Library.Facade@{Library.Facade}!GetTotalSales@{GetTotalSales}}
+\index{GetTotalSales@{GetTotalSales}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetTotalSales()}{GetTotalSales()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_ae123049386749a8520e9e8d111b5ee1b} 
+string Library.\+Facade.\+Get\+Total\+Sales (\begin{DoxyParamCaption}\item[{string}]{start\+Str}{, }\item[{string}]{end\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_a6803c79546b67f26f4581391bc905f45}\index{Library.Facade@{Library.Facade}!GetUnansweredCustomersFormatted@{GetUnansweredCustomersFormatted}}
+\index{GetUnansweredCustomersFormatted@{GetUnansweredCustomersFormatted}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{GetUnansweredCustomersFormatted()}{GetUnansweredCustomersFormatted()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a6803c79546b67f26f4581391bc905f45} 
+string Library.\+Facade.\+Get\+Unanswered\+Customers\+Formatted (\begin{DoxyParamCaption}\item[{int}]{days}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{class_library_1_1_facade_af45abb42940ff1d44d44c11a053564e9}\index{Library.Facade@{Library.Facade}!LastInteraction@{LastInteraction}}
 \index{LastInteraction@{LastInteraction}!Library.Facade@{Library.Facade}}
@@ -130,23 +246,23 @@ List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ Librar
 {\footnotesize\ttfamily \label{class_library_1_1_facade_af45abb42940ff1d44d44c11a053564e9} 
 string Library.\+Facade.\+Last\+Interaction (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_abdd61f590e23e8e8cc8c5ace8ac97bd6}\index{Library.Facade@{Library.Facade}!MailRegister@{MailRegister}}
+\Hypertarget{class_library_1_1_facade_a638b2e1c5e9d19b5c979387c854cf0f5}\index{Library.Facade@{Library.Facade}!MailRegister@{MailRegister}}
 \index{MailRegister@{MailRegister}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{MailRegister()}{MailRegister()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_abdd61f590e23e8e8cc8c5ace8ac97bd6} 
-string Library.\+Facade.\+Mail\+Register (\begin{DoxyParamCaption}\item[{Date\+Time}]{date}{, }\item[{string}]{topic}{, }\item[{\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}}}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a638b2e1c5e9d19b5c979387c854cf0f5} 
+string Library.\+Facade.\+Mail\+Register (\begin{DoxyParamCaption}\item[{string}]{date\+Str}{, }\item[{string}]{topic}{, }\item[{string}]{type\+Str}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_a613df49984353a063e16062b5ced4bd0}\index{Library.Facade@{Library.Facade}!MeetingRegister@{MeetingRegister}}
+\Hypertarget{class_library_1_1_facade_abcd9db1ac9160bf724bde67c41445bcf}\index{Library.Facade@{Library.Facade}!MeetingRegister@{MeetingRegister}}
 \index{MeetingRegister@{MeetingRegister}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{MeetingRegister()}{MeetingRegister()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a613df49984353a063e16062b5ced4bd0} 
-string Library.\+Facade.\+Meeting\+Register (\begin{DoxyParamCaption}\item[{string}]{place}{, }\item[{Date\+Time}]{date}{, }\item[{string}]{topic}{, }\item[{\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}}}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_abcd9db1ac9160bf724bde67c41445bcf} 
+string Library.\+Facade.\+Meeting\+Register (\begin{DoxyParamCaption}\item[{string}]{place}{, }\item[{string}]{date\+Str}{, }\item[{string}]{topic}{, }\item[{string}]{type\+Str}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_afa781080dc14769229a093cad8ff6af8}\index{Library.Facade@{Library.Facade}!MessageRegister@{MessageRegister}}
+\Hypertarget{class_library_1_1_facade_a56970b8cef019328b7fd4c5b89626312}\index{Library.Facade@{Library.Facade}!MessageRegister@{MessageRegister}}
 \index{MessageRegister@{MessageRegister}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{MessageRegister()}{MessageRegister()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_afa781080dc14769229a093cad8ff6af8} 
-string Library.\+Facade.\+Message\+Register (\begin{DoxyParamCaption}\item[{Date\+Time}]{date}{, }\item[{string}]{topic}{, }\item[{\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}}}]{type}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a56970b8cef019328b7fd4c5b89626312} 
+string Library.\+Facade.\+Message\+Register (\begin{DoxyParamCaption}\item[{string}]{date\+Str}{, }\item[{string}]{topic}{, }\item[{string}]{type\+Str}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{class_library_1_1_facade_aba4d44733ba28109c2f810d8e88f6892}\index{Library.Facade@{Library.Facade}!ModifyCustomer@{ModifyCustomer}}
 \index{ModifyCustomer@{ModifyCustomer}!Library.Facade@{Library.Facade}}
@@ -154,17 +270,35 @@ string Library.\+Facade.\+Message\+Register (\begin{DoxyParamCaption}\item[{Date
 {\footnotesize\ttfamily \label{class_library_1_1_facade_aba4d44733ba28109c2f810d8e88f6892} 
 string Library.\+Facade.\+Modify\+Customer (\begin{DoxyParamCaption}\item[{string}]{id}{, }\item[{string}]{field}{, }\item[{string}]{new\+Value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_a794ca72995657e7cc331cca696fc6a4d}\index{Library.Facade@{Library.Facade}!QuoteRegister@{QuoteRegister}}
+\Hypertarget{class_library_1_1_facade_a4cabdcdf75e54f65e83ba3bdea0c096c}\index{Library.Facade@{Library.Facade}!ParseDate@{ParseDate}}
+\index{ParseDate@{ParseDate}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{ParseDate()}{ParseDate()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a4cabdcdf75e54f65e83ba3bdea0c096c} 
+Date\+Time Library.\+Facade.\+Parse\+Date (\begin{DoxyParamCaption}\item[{string}]{date\+String}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_afdfab129f6ab0ff3d6d1f320675f56f3}\index{Library.Facade@{Library.Facade}!ParseDouble@{ParseDouble}}
+\index{ParseDouble@{ParseDouble}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{ParseDouble()}{ParseDouble()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_afdfab129f6ab0ff3d6d1f320675f56f3} 
+double Library.\+Facade.\+Parse\+Double (\begin{DoxyParamCaption}\item[{string}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_a645e8345079f1537587995e2a08d0aa5}\index{Library.Facade@{Library.Facade}!ParseExchangeType@{ParseExchangeType}}
+\index{ParseExchangeType@{ParseExchangeType}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{ParseExchangeType()}{ParseExchangeType()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a645e8345079f1537587995e2a08d0aa5} 
+\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}} Library.\+Facade.\+Parse\+Exchange\+Type (\begin{DoxyParamCaption}\item[{string}]{type\+String}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_aac19002118b7d52d1dd8ff324976309b}\index{Library.Facade@{Library.Facade}!QuoteRegister@{QuoteRegister}}
 \index{QuoteRegister@{QuoteRegister}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{QuoteRegister()}{QuoteRegister()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a794ca72995657e7cc331cca696fc6a4d} 
-string Library.\+Facade.\+Quote\+Register (\begin{DoxyParamCaption}\item[{Date\+Time}]{date}{, }\item[{string}]{topic}{, }\item[{\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}}}]{type}{, }\item[{double}]{amount}{, }\item[{string}]{description}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_aac19002118b7d52d1dd8ff324976309b} 
+string Library.\+Facade.\+Quote\+Register (\begin{DoxyParamCaption}\item[{string}]{date\+Str}{, }\item[{string}]{topic}{, }\item[{string}]{type\+Str}{, }\item[{string}]{amount\+Str}{, }\item[{string}]{description}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_library_1_1_facade_a9e3d4401506f59695363871db9f61a0c}\index{Library.Facade@{Library.Facade}!SaleFromQuote@{SaleFromQuote}}
+\Hypertarget{class_library_1_1_facade_a0958912cf5f53e874d43c80595601058}\index{Library.Facade@{Library.Facade}!SaleFromQuote@{SaleFromQuote}}
 \index{SaleFromQuote@{SaleFromQuote}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{SaleFromQuote()}{SaleFromQuote()}}
-{\footnotesize\ttfamily \label{class_library_1_1_facade_a9e3d4401506f59695363871db9f61a0c} 
-string Library.\+Facade.\+Sale\+From\+Quote (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{, }\item[{string}]{customer\+Id}{, }\item[{Date\+Time}]{date}{, }\item[{string}]{topic}{, }\item[{\mbox{\hyperlink{namespace_library_a53fbb4e13c0ce7d50b374a8ebeb17b95}{Exchange\+Type}}}]{type}{, }\item[{double}]{amount}{, }\item[{string}]{product}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a0958912cf5f53e874d43c80595601058} 
+string Library.\+Facade.\+Sale\+From\+Quote (\begin{DoxyParamCaption}\item[{string}]{date\+Str}{, }\item[{string}]{topic}{, }\item[{string}]{type\+Str}{, }\item[{string}]{amount\+Str}{, }\item[{string}]{product}{, }\item[{string}]{customer\+Id}{, }\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -194,6 +328,18 @@ string Library.\+Facade.\+Search\+Costumer\+\_\+\+By\+Name (\begin{DoxyParamCapt
 {\footnotesize\ttfamily \label{class_library_1_1_facade_ae75b266441051bb824b2da867a828b2a} 
 string Library.\+Facade.\+Search\+Costumer\+\_\+\+By\+Phone (\begin{DoxyParamCaption}\item[{string}]{phone}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\Hypertarget{class_library_1_1_facade_a8e617b67edd0f34daf8426822bb46f07}\index{Library.Facade@{Library.Facade}!SearchCustomer\_ById@{SearchCustomer\_ById}}
+\index{SearchCustomer\_ById@{SearchCustomer\_ById}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{SearchCustomer\_ById()}{SearchCustomer\_ById()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a8e617b67edd0f34daf8426822bb46f07} 
+string Library.\+Facade.\+Search\+Customer\+\_\+\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_library_1_1_facade_ac0e286eca1ecbe7c29ac034a9e64b9b2}\index{Library.Facade@{Library.Facade}!SearchSeller\_ById@{SearchSeller\_ById}}
+\index{SearchSeller\_ById@{SearchSeller\_ById}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{SearchSeller\_ById()}{SearchSeller\_ById()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_ac0e286eca1ecbe7c29ac034a9e64b9b2} 
+string Library.\+Facade.\+Search\+Seller\+\_\+\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{class_library_1_1_facade_a6b5162e6627bcc7b565851c9bc4a5f6c}\index{Library.Facade@{Library.Facade}!ShowCustomers\_BySellerId@{ShowCustomers\_BySellerId}}
 \index{ShowCustomers\_BySellerId@{ShowCustomers\_BySellerId}!Library.Facade@{Library.Facade}}
 \doxysubsubsection{\texorpdfstring{ShowCustomers\_BySellerId()}{ShowCustomers\_BySellerId()}}
@@ -203,6 +349,12 @@ string Library.\+Facade.\+Show\+Customers\+\_\+\+By\+Seller\+Id (\begin{DoxyPara
 
 
 Muestra todos los clientes asociados a un vendedor específico. Devuelve un listado con los nombres o un mensaje si no hay clientes asignados. 
+
+\Hypertarget{class_library_1_1_facade_a71854cb3ab6c658a63e8d255222e37a6}\index{Library.Facade@{Library.Facade}!SuspendSeller@{SuspendSeller}}
+\index{SuspendSeller@{SuspendSeller}!Library.Facade@{Library.Facade}}
+\doxysubsubsection{\texorpdfstring{SuspendSeller()}{SuspendSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_facade_a71854cb3ab6c658a63e8d255222e37a6} 
+string Library.\+Facade.\+Suspend\+Seller (\begin{DoxyParamCaption}\item[{string}]{seller\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{class_library_1_1_facade_a8e9163b4abe332ffd85a9406ee727d2c}\index{Library.Facade@{Library.Facade}!UnansweredInteractions@{UnansweredInteractions}}
 \index{UnansweredInteractions@{UnansweredInteractions}!Library.Facade@{Library.Facade}}

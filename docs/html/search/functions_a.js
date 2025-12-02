@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['registerinteraction_0',['RegisterInteraction',['../class_library_1_1_customer_manager.html#a9dd66e553127cfe84c1dddd7692c533b',1,'Library::CustomerManager']]],
-  ['registerinteraction_5fnullcustomer_5fthrowsexception_1',['RegisterInteraction_NullCustomer_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#aad7e3ceb49a92277eb2e57f478bb5cb3',1,'Library::Tests::CustomerManagerTests']]],
-  ['registerinteraction_5fnullinteraction_5fthrowsargumentnullexception_2',['RegisterInteraction_NullInteraction_ThrowsArgumentNullException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#ad0e1ba08b0ff0d3615f685e1ea91a2fb',1,'Library::Tests::CustomerManagerTests']]],
-  ['registerinteraction_5fnullseller_5fthrowsexception_3',['RegisterInteraction_NullSeller_ThrowsException',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a8fb31cadeea48cadd5aef723acba0bca',1,'Library::Tests::CustomerManagerTests']]],
-  ['registerinteraction_5freceivedtype_5fmarkscustomeraspending_4',['RegisterInteraction_ReceivedType_MarksCustomerAsPending',['../class_library_1_1_tests_1_1_customer_manager_tests.html#a47502643f4690562b2686bee3cc24dcd',1,'Library::Tests::CustomerManagerTests']]],
-  ['registerinteraction_5fsenttype_5fmarkscustomerasactive_5',['RegisterInteraction_SentType_MarksCustomerAsActive',['../class_library_1_1_tests_1_1_customer_manager_tests.html#aef5204d32a1404bb11573fffc0e6cf6b',1,'Library::Tests::CustomerManagerTests']]],
-  ['registerinteraction_5fvalidinteraction_5faddstocustomer_6',['RegisterInteraction_ValidInteraction_AddsToCustomer',['../class_library_1_1_tests_1_1_customer_manager_tests.html#aded34540942b65eb27562424582f18cf',1,'Library::Tests::CustomerManagerTests']]],
-  ['removetag_7',['RemoveTag',['../class_library_1_1_customer.html#a8ac3f18f21af81a93eba18e9b3c5ad80',1,'Library::Customer']]],
-  ['respondtointeraction_8',['RespondToInteraction',['../class_library_1_1_seller.html#a0ec3c706cdfa69ba5fe28d86773024da',1,'Library::Seller']]]
+  ['mail_0',['Mail',['../class_library_1_1_mail.html#a18f1c0dd0bcfab858f5f8812781fb85a',1,'Library::Mail']]],
+  ['mailregister_1',['MailRegister',['../class_library_1_1_facade.html#a638b2e1c5e9d19b5c979387c854cf0f5',1,'Library::Facade']]],
+  ['mailregistercommand_2',['MailRegisterCommand',['../class_library_1_1_register_interaction_command.html#a624fa0eb9236ea1daa697ca4bacab43a',1,'Library::RegisterInteractionCommand']]],
+  ['markasactive_3',['MarkAsActive',['../class_library_1_1_customer.html#aa691db7ee26e1e145626d395ebfebb0b',1,'Library::Customer']]],
+  ['markaspending_4',['MarkAsPending',['../class_library_1_1_customer.html#a890ee611dacf42682fdfe19720ad7bad',1,'Library::Customer']]],
+  ['markasresponded_5',['MarkAsResponded',['../class_library_1_1_interaction.html#acb7e570375858eb1fadf6437546bf647',1,'Library::Interaction']]],
+  ['marklastreceivedasresponded_6',['MarkLastReceivedAsResponded',['../class_library_1_1_customer.html#a44a8573cbb50a12fed8109c664f91181',1,'Library::Customer']]],
+  ['meeting_7',['Meeting',['../class_library_1_1_meeting.html#aa1d38c2496475c248ed47c7f2a20ce51',1,'Library::Meeting']]],
+  ['meetingregister_8',['MeetingRegister',['../class_library_1_1_facade.html#abcd9db1ac9160bf724bde67c41445bcf',1,'Library::Facade']]],
+  ['meetingregistercommand_9',['MeetingRegisterCommand',['../class_library_1_1_register_interaction_command.html#adc2fdd89ce1c94c58930dd2959d8712b',1,'Library::RegisterInteractionCommand']]],
+  ['message_10',['Message',['../class_library_1_1_message.html#ac5d0efe242ed11d84ea808fff7efe14d',1,'Library::Message']]],
+  ['messageregister_11',['MessageRegister',['../class_library_1_1_facade.html#a56970b8cef019328b7fd4c5b89626312',1,'Library::Facade']]],
+  ['messageregistercommand_12',['MessageRegisterCommand',['../class_library_1_1_register_interaction_command.html#a968a884e2d92da74d5a2aa736297dddb',1,'Library::RegisterInteractionCommand']]],
+  ['modify_13',['Modify',['../class_library_1_1_customer_manager.html#ac4b2020b29e5124b33213033e57dc55a',1,'Library::CustomerManager']]],
+  ['modifycustomer_14',['ModifyCustomer',['../class_library_1_1_facade.html#aba4d44733ba28109c2f810d8e88f6892',1,'Library::Facade']]],
+  ['modifycustomerbyid_15',['ModifyCustomerById',['../class_library_1_1_customer_management_command.html#a2daaab7b6cda6c17d01826b951438e9a',1,'Library::CustomerManagementCommand']]]
 ];

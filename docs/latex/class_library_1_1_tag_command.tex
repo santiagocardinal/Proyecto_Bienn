@@ -1,0 +1,45 @@
+\doxysection{Library.\+Tag\+Command Class Reference}
+\hypertarget{class_library_1_1_tag_command}{}\label{class_library_1_1_tag_command}\index{Library.TagCommand@{Library.TagCommand}}
+Inheritance diagram for Library.\+Tag\+Command\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_library_1_1_tag_command}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_library_1_1_tag_command_ab28145610f155ae153258982ca998f36}{Create\+Tag\+Command}} (string tag\+Id, string tag\+Name, \mbox{[}Remainder\mbox{]} string tag\+Description)
+\begin{DoxyCompactList}\small\item\em Comando para crear una etiqueta (\doxylink{class_library_1_1_tag}{Tag}). Uso\+: !create\+Tag T1 VIP "{}\+Cliente muy importante"{}. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_library_1_1_tag_command_a8262c14644e1ab33013a4b461980c85e}{Add\+Tag\+Command}} (string customer\+Id, string tag\+Id)
+\begin{DoxyCompactList}\small\item\em Comando para agregar una etiqueta (tag) a un cliente. Uso\+: !add\+Tag C1 T1 Interesado "{}\+Cliente mostró interés en el producto"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_library_1_1_tag_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_1_1_tag_command_a8262c14644e1ab33013a4b461980c85e}\index{Library.TagCommand@{Library.TagCommand}!AddTagCommand@{AddTagCommand}}
+\index{AddTagCommand@{AddTagCommand}!Library.TagCommand@{Library.TagCommand}}
+\doxysubsubsection{\texorpdfstring{AddTagCommand()}{AddTagCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_tag_command_a8262c14644e1ab33013a4b461980c85e} 
+async Task Library.\+Tag\+Command.\+Add\+Tag\+Command (\begin{DoxyParamCaption}\item[{string}]{customer\+Id}{, }\item[{string}]{tag\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Comando para agregar una etiqueta (tag) a un cliente. Uso\+: !add\+Tag C1 T1 Interesado "{}\+Cliente mostró interés en el producto"{}. 
+
+\Hypertarget{class_library_1_1_tag_command_ab28145610f155ae153258982ca998f36}\index{Library.TagCommand@{Library.TagCommand}!CreateTagCommand@{CreateTagCommand}}
+\index{CreateTagCommand@{CreateTagCommand}!Library.TagCommand@{Library.TagCommand}}
+\doxysubsubsection{\texorpdfstring{CreateTagCommand()}{CreateTagCommand()}}
+{\footnotesize\ttfamily \label{class_library_1_1_tag_command_ab28145610f155ae153258982ca998f36} 
+async Task Library.\+Tag\+Command.\+Create\+Tag\+Command (\begin{DoxyParamCaption}\item[{string}]{tag\+Id}{, }\item[{string}]{tag\+Name}{, }\item[{\mbox{[}\+Remainder\mbox{]} string}]{tag\+Description}{}\end{DoxyParamCaption})}
+
+
+
+Comando para crear una etiqueta (\doxylink{class_library_1_1_tag}{Tag}). Uso\+: !create\+Tag T1 VIP "{}\+Cliente muy importante"{}. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+P2/\+Proyecto\+\_\+\+Bienn/src/\+Discord\+Bot/\+Commands/\mbox{\hyperlink{_tag_command_8cs}{Tag\+Command.\+cs}}\end{DoxyCompactItemize}

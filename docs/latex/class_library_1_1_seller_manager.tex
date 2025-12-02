@@ -16,9 +16,19 @@ void \mbox{\hyperlink{class_library_1_1_seller_manager_a9875fe407df8419380c4d7c4
 \item 
 void \mbox{\hyperlink{class_library_1_1_seller_manager_a2b7ede245b6448c165112cc7fab475d4}{Suspend\+Seller}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
 \item 
+void \mbox{\hyperlink{class_library_1_1_seller_manager_aca1e7356424e40d26f3e5f84e6a9f246}{Enable\+Seller}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
+\item 
 List$<$ \mbox{\hyperlink{class_library_1_1_interaction}{Interaction}} $>$ \mbox{\hyperlink{class_library_1_1_seller_manager_ad7d3b8a72271d0c61ddef3fdb2044e77}{Get\+Pending\+Responses}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
 \begin{DoxyCompactList}\small\item\em Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen respuesta. Lanza una excepción si el vendedor no existe. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_library_1_1_seller}{Seller}}? \mbox{\hyperlink{class_library_1_1_seller_manager_a8f5a7e672d0ffae75cb6dd99a49a521d}{Search\+By\+Id}} (string id)
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}} \mbox{\hyperlink{class_library_1_1_seller_manager_ae3a855f4e00a08f34ff7e2777d0a3216}{Search\+By\+Id}} (string id)
+\item 
+void \mbox{\hyperlink{class_library_1_1_seller_manager_aaa6fd1c9f4a6b699210af50514e07ed7}{Ensure\+Seller\+Is\+Active}} (\mbox{\hyperlink{class_library_1_1_seller}{Seller}} seller)
+\item 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}} \mbox{\hyperlink{class_library_1_1_seller_manager_a1eccb569d2daf6601f34c1b45a2cdd7e}{Get\+Active\+Seller}} (string id)
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_sale}{Sale}} $>$ \mbox{\hyperlink{class_library_1_1_seller_manager_a0b095995a3313bd1f42958c0f0ca0e71}{Get\+All\+Sales}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_library_1_1_sale}{Sale}} $>$ \mbox{\hyperlink{class_library_1_1_seller_manager_a615868f495ed3126871947c9411e7355}{Get\+Sales\+Between}} (Date\+Time start, Date\+Time end)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Properties}
 \begin{DoxyCompactItemize}
@@ -56,6 +66,30 @@ void Library.\+Seller\+Manager.\+Create\+Seller (\begin{DoxyParamCaption}\item[{
 {\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a9875fe407df8419380c4d7c4d6e606cd} 
 void Library.\+Seller\+Manager.\+Delete\+Seller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
 
+\Hypertarget{class_library_1_1_seller_manager_aca1e7356424e40d26f3e5f84e6a9f246}\index{Library.SellerManager@{Library.SellerManager}!EnableSeller@{EnableSeller}}
+\index{EnableSeller@{EnableSeller}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{EnableSeller()}{EnableSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_aca1e7356424e40d26f3e5f84e6a9f246} 
+void Library.\+Seller\+Manager.\+Enable\+Seller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_aaa6fd1c9f4a6b699210af50514e07ed7}\index{Library.SellerManager@{Library.SellerManager}!EnsureSellerIsActive@{EnsureSellerIsActive}}
+\index{EnsureSellerIsActive@{EnsureSellerIsActive}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{EnsureSellerIsActive()}{EnsureSellerIsActive()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_aaa6fd1c9f4a6b699210af50514e07ed7} 
+void Library.\+Seller\+Manager.\+Ensure\+Seller\+Is\+Active (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_library_1_1_seller}{Seller}}}]{seller}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_a1eccb569d2daf6601f34c1b45a2cdd7e}\index{Library.SellerManager@{Library.SellerManager}!GetActiveSeller@{GetActiveSeller}}
+\index{GetActiveSeller@{GetActiveSeller}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{GetActiveSeller()}{GetActiveSeller()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a1eccb569d2daf6601f34c1b45a2cdd7e} 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}} Library.\+Seller\+Manager.\+Get\+Active\+Seller (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_a0b095995a3313bd1f42958c0f0ca0e71}\index{Library.SellerManager@{Library.SellerManager}!GetAllSales@{GetAllSales}}
+\index{GetAllSales@{GetAllSales}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{GetAllSales()}{GetAllSales()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a0b095995a3313bd1f42958c0f0ca0e71} 
+List$<$ \mbox{\hyperlink{class_library_1_1_sale}{Sale}} $>$ Library.\+Seller\+Manager.\+Get\+All\+Sales (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
 \Hypertarget{class_library_1_1_seller_manager_ad7d3b8a72271d0c61ddef3fdb2044e77}\index{Library.SellerManager@{Library.SellerManager}!GetPendingResponses@{GetPendingResponses}}
 \index{GetPendingResponses@{GetPendingResponses}!Library.SellerManager@{Library.SellerManager}}
 \doxysubsubsection{\texorpdfstring{GetPendingResponses()}{GetPendingResponses()}}
@@ -74,11 +108,17 @@ Devuelve la lista de interacciones recibidas por el vendedor que aún no tienen 
 \begin{DoxyReturn}{Returns}
 Lista de interacciones pendientes de respuesta.
 \end{DoxyReturn}
-\Hypertarget{class_library_1_1_seller_manager_a8f5a7e672d0ffae75cb6dd99a49a521d}\index{Library.SellerManager@{Library.SellerManager}!SearchById@{SearchById}}
+\Hypertarget{class_library_1_1_seller_manager_a615868f495ed3126871947c9411e7355}\index{Library.SellerManager@{Library.SellerManager}!GetSalesBetween@{GetSalesBetween}}
+\index{GetSalesBetween@{GetSalesBetween}!Library.SellerManager@{Library.SellerManager}}
+\doxysubsubsection{\texorpdfstring{GetSalesBetween()}{GetSalesBetween()}}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a615868f495ed3126871947c9411e7355} 
+List$<$ \mbox{\hyperlink{class_library_1_1_sale}{Sale}} $>$ Library.\+Seller\+Manager.\+Get\+Sales\+Between (\begin{DoxyParamCaption}\item[{Date\+Time}]{start}{, }\item[{Date\+Time}]{end}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_library_1_1_seller_manager_ae3a855f4e00a08f34ff7e2777d0a3216}\index{Library.SellerManager@{Library.SellerManager}!SearchById@{SearchById}}
 \index{SearchById@{SearchById}!Library.SellerManager@{Library.SellerManager}}
 \doxysubsubsection{\texorpdfstring{SearchById()}{SearchById()}}
-{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_a8f5a7e672d0ffae75cb6dd99a49a521d} 
-\mbox{\hyperlink{class_library_1_1_seller}{Seller}}? Library.\+Seller\+Manager.\+Search\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{class_library_1_1_seller_manager_ae3a855f4e00a08f34ff7e2777d0a3216} 
+\mbox{\hyperlink{class_library_1_1_seller}{Seller}} Library.\+Seller\+Manager.\+Search\+By\+Id (\begin{DoxyParamCaption}\item[{string}]{id}{}\end{DoxyParamCaption})}
 
 \Hypertarget{class_library_1_1_seller_manager_a2b7ede245b6448c165112cc7fab475d4}\index{Library.SellerManager@{Library.SellerManager}!SuspendSeller@{SuspendSeller}}
 \index{SuspendSeller@{SuspendSeller}!Library.SellerManager@{Library.SellerManager}}

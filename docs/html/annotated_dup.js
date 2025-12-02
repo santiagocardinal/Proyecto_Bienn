@@ -1,51 +1,43 @@
 var annotated_dup =
 [
+    [ "DiscordBot", "namespace_discord_bot.html", [
+      [ "Services", "namespace_discord_bot_1_1_services.html", [
+        [ "Bot", "class_discord_bot_1_1_services_1_1_bot.html", "class_discord_bot_1_1_services_1_1_bot" ],
+        [ "IBot", "interface_discord_bot_1_1_services_1_1_i_bot.html", "interface_discord_bot_1_1_services_1_1_i_bot" ]
+      ] ]
+    ] ],
     [ "Library", "namespace_library.html", [
-      [ "Tests", "namespace_library_1_1_tests.html", [
-        [ "AdminTests", "class_library_1_1_tests_1_1_admin_tests.html", "class_library_1_1_tests_1_1_admin_tests" ],
-        [ "CallTests", "class_library_1_1_tests_1_1_call_tests.html", "class_library_1_1_tests_1_1_call_tests" ],
-        [ "CustomerManagerTests", "class_library_1_1_tests_1_1_customer_manager_tests.html", "class_library_1_1_tests_1_1_customer_manager_tests" ],
-        [ "CustomerTest", "class_library_1_1_tests_1_1_customer_test.html", "class_library_1_1_tests_1_1_customer_test" ],
-        [ "ExceptionsTests", "class_library_1_1_tests_1_1_exceptions_tests.html", "class_library_1_1_tests_1_1_exceptions_tests" ],
-        [ "ExchangeTypeTests", "class_library_1_1_tests_1_1_exchange_type_tests.html", "class_library_1_1_tests_1_1_exchange_type_tests" ],
-        [ "FacadeTests", "class_library_1_1_tests_1_1_facade_tests.html", "class_library_1_1_tests_1_1_facade_tests" ],
-        [ "InteractionTest", "class_library_1_1_tests_1_1_interaction_test.html", "class_library_1_1_tests_1_1_interaction_test" ],
-        [ "MailTests", "class_library_1_1_tests_1_1_mail_tests.html", "class_library_1_1_tests_1_1_mail_tests" ],
-        [ "MeetingTest", "class_library_1_1_tests_1_1_meeting_test.html", "class_library_1_1_tests_1_1_meeting_test" ],
-        [ "MessageTests", "class_library_1_1_tests_1_1_message_tests.html", "class_library_1_1_tests_1_1_message_tests" ],
-        [ "NoteTests", "class_library_1_1_tests_1_1_note_tests.html", "class_library_1_1_tests_1_1_note_tests" ],
-        [ "QuoteTest", "class_library_1_1_tests_1_1_quote_test.html", "class_library_1_1_tests_1_1_quote_test" ],
-        [ "SellerManagerTests", "class_library_1_1_tests_1_1_seller_manager_tests.html", "class_library_1_1_tests_1_1_seller_manager_tests" ],
-        [ "SellerTests", "class_library_1_1_tests_1_1_seller_tests.html", "class_library_1_1_tests_1_1_seller_tests" ],
-        [ "TagTest", "class_library_1_1_tests_1_1_tag_test.html", "class_library_1_1_tests_1_1_tag_test" ],
-        [ "Tests", "class_library_1_1_tests_1_1_tests.html", "class_library_1_1_tests_1_1_tests" ],
-        [ "UserTests", "class_library_1_1_tests_1_1_user_tests.html", "class_library_1_1_tests_1_1_user_tests" ]
-      ] ],
       [ "Admin", "class_library_1_1_admin.html", "class_library_1_1_admin" ],
       [ "Call", "class_library_1_1_call.html", "class_library_1_1_call" ],
       [ "Class1", "class_library_1_1_class1.html", null ],
+      [ "CommercialActivityCommand", "class_library_1_1_commercial_activity_command.html", "class_library_1_1_commercial_activity_command" ],
       [ "Customer", "class_library_1_1_customer.html", "class_library_1_1_customer" ],
+      [ "CustomerManagementCommand", "class_library_1_1_customer_management_command.html", "class_library_1_1_customer_management_command" ],
       [ "CustomerManager", "class_library_1_1_customer_manager.html", "class_library_1_1_customer_manager" ],
+      [ "DashboardCommand", "class_library_1_1_dashboard_command.html", "class_library_1_1_dashboard_command" ],
       [ "DashboardSummary", "class_library_1_1_dashboard_summary.html", "class_library_1_1_dashboard_summary" ],
       [ "Facade", "class_library_1_1_facade.html", "class_library_1_1_facade" ],
       [ "FileWriter", "class_library_1_1_file_writer.html", "class_library_1_1_file_writer" ],
       [ "Interaction", "class_library_1_1_interaction.html", "class_library_1_1_interaction" ],
-      [ "InteractionRegular", "class_library_1_1_interaction_regular.html", "class_library_1_1_interaction_regular" ],
       [ "IWriter", "interface_library_1_1_i_writer.html", "interface_library_1_1_i_writer" ],
       [ "Mail", "class_library_1_1_mail.html", "class_library_1_1_mail" ],
       [ "Meeting", "class_library_1_1_meeting.html", "class_library_1_1_meeting" ],
       [ "Message", "class_library_1_1_message.html", "class_library_1_1_message" ],
+      [ "PingCommand", "class_library_1_1_ping_command.html", "class_library_1_1_ping_command" ],
       [ "Quote", "class_library_1_1_quote.html", "class_library_1_1_quote" ],
+      [ "RegisterInteractionCommand", "class_library_1_1_register_interaction_command.html", "class_library_1_1_register_interaction_command" ],
       [ "Sale", "class_library_1_1_sale.html", "class_library_1_1_sale" ],
       [ "Seller", "class_library_1_1_seller.html", "class_library_1_1_seller" ],
+      [ "SellerCommand", "class_library_1_1_seller_command.html", "class_library_1_1_seller_command" ],
       [ "SellerManager", "class_library_1_1_seller_manager.html", "class_library_1_1_seller_manager" ],
+      [ "ShowCustomersBySellerIdCommand", "class_library_1_1_show_customers_by_seller_id_command.html", "class_library_1_1_show_customers_by_seller_id_command" ],
       [ "Singleton< T >", "class_library_1_1_singleton-1-g.html", null ],
       [ "Tag", "class_library_1_1_tag.html", "class_library_1_1_tag" ],
-      [ "User", "class_library_1_1_user.html", "class_library_1_1_user" ]
+      [ "TagCommand", "class_library_1_1_tag_command.html", "class_library_1_1_tag_command" ],
+      [ "TrackingAndInactivityCommand", "class_library_1_1_tracking_and_inactivity_command.html", "class_library_1_1_tracking_and_inactivity_command" ],
+      [ "User", "class_library_1_1_user.html", "class_library_1_1_user" ],
+      [ "UserInfoCommand", "class_library_1_1_user_info_command.html", "class_library_1_1_user_info_command" ],
+      [ "ViewInteractionsCommand", "class_library_1_1_view_interactions_command.html", "class_library_1_1_view_interactions_command" ]
     ] ],
-    [ "Program", "namespace_program.html", [
-      [ "Program", "class_program_1_1_program.html", null ]
-    ] ],
-    [ "Note", "class_note.html", "class_note" ],
-    [ "SaleTest", "class_sale_test.html", "class_sale_test" ]
+    [ "Note", "class_note.html", "class_note" ]
 ];
