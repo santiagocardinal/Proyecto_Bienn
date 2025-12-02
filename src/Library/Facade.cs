@@ -316,18 +316,19 @@ public class Facade
     // ---------------------------------------------------------
     //   NOTAS A INTERACCIONES
     // ---------------------------------------------------------
-    public static string AddNoteToInteraction(string customerId, string interactionTopic, DateTime interactionDate,
-        Note note)
+    public static string AddNoteToInteraction(string customerId, string interactionType, string interactionTopic, string interactionDate)
     {
         try
         {
+            DateTime date = ParseDate(interactionDate);
+            ExchangeType type = ParseExchangeType(interactionType);
             Customer customer = cm.SearchById(customerId);
+            Note note = new Note(interactionTopic, date, type);
 
             if (customer == null)
                 throw new Exceptions.NotExistingCustomerException();
 
-            Interaction interaction = customer.Interactions
-                .FirstOrDefault(i => i.Topic == interactionTopic && i.Date == interactionDate);
+            Interaction interaction = customer.FindInteraction(interactionTopic, date, type);
 
             if (interaction == null)
                 throw new Exceptions.InteractionNotFoundException();

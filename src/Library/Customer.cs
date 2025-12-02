@@ -383,6 +383,20 @@ public class Customer
         return false;
     }
     
+    public Interaction FindInteraction(string topic, DateTime date, ExchangeType type)
+    {
+        foreach (var interaction in _interactions)
+        {
+            if (interaction.Topic == topic && 
+                interaction.Date.Date == date.Date && 
+                interaction.Type == type)
+            {
+                return interaction;
+            }
+        }
+        return null;
+    }
+    
     
     public override string ToString()
     {
