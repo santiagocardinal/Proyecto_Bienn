@@ -118,5 +118,15 @@ public class SellerCommand : ModuleBase<SocketCommandContext>
         string result = Facade.EnableSeller(sellerId);
         await ReplyAsync(result);
     }
+   
+    //DEFENSA LUCIA RODRIGUEZ, COMANDO DISCORD :)
+    [Command("getTopSellerBonus")]
+    [Summary("Muestra el vendedor con más ventas y su bono correspondiente.")]
+    public async Task GetTopSellerBonusCommand()
+    {
+        string result = Facade.GetTopSellerBonus();
+        await ReplyAsync(result);
+    }
 }
+
 
