@@ -694,4 +694,54 @@ public class FacadeTests
         // Assert
         Assert.That(result.Count, Is.EqualTo(0));
     }
+    
+    //DEFENSA LUCIA RODRIGUEZ, FACADE TEST :)
+    [Test]
+    public void GetTopSellerBonus_ReturnsBonus()
+    {
+        // Arrange
+        Facade.sm.Sellers.Clear();
+        Facade.cm.Customers.Clear();
+    
+        Seller s = new Seller("Valentina", "v@mail.com", "099368936", "S1");
+        Facade.sm.CreateSeller(s);
+
+        Customer c = new Customer("C1", "Bruno", "Lopez", "b@mail.com", "090359103", "M", DateTime.Now.AddYears(-30));
+        Facade.cm.AddCustomer(c);
+
+        Quote q = new Quote(DateTime.Now, "Cot", ExchangeType.Sent, c, 200, "desc");
+        Sale sale1 = new Sale("P1", q, DateTime.Now, "Cot", ExchangeType.Sent, c);
+        Sale sale2 = new Sale("P2", q, DateTime.Now, "Cot", ExchangeType.Sent, c);
+
+        s.AddInteraction(sale1);
+        s.AddInteraction(sale2);
+
+        // Act
+        string result = Facade.GetTopSellerBonus();
+
+        // Assert
+        Assert.That(result, Does.Contain("Bono correspondiente: $200"));
+    }
+    
+    [Test]
+    public void GetTopSellerBonus_NoQuotes_ReturnsErrorMessage()
+    {
+        // Arrange
+        Facade.sm.Sellers.Clear();
+        Facade.cm.Customers.Clear();
+
+        Seller s = new Seller("Valentina", "v@mail.com", "099368936", "S1");
+        Facade.sm.CreateSeller(s);
+
+        Customer c = new Customer("C1", "Bruno", "Lopez", "b@mail.com", "090359103", "M", DateTime.Now.AddYears(-30));
+        Facade.cm.AddCustomer(c);
+
+        // Act
+        string result = Facade.GetTopSellerBonus();
+
+        // Assert
+        Assert.That(result, Does.Contain("No hay cotizaciones registradas"));
+    }
+
+    
 }

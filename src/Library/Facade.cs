@@ -1010,4 +1010,34 @@ public class Facade
             return "Error al obtener el dashboard: " + ex.Message;
         }
     }
+    
+    /// DEFENSA LUCÍA RODRÍGUEZ, FACADE :)
+    public static string GetTopSellerBonus()
+    {
+        try
+        {
+            Seller topSeller = sm.GetTopSeller();
+
+            if (topSeller == null)
+                return "No hay vendedores registrados.";
+
+            int cantidadVentas = topSeller.getTotalSales().Count;
+
+            if (cantidadVentas == 0)
+                return "Ningún vendedor tiene ventas registradas.";
+
+            int bono = cantidadVentas * 100;
+
+            return
+                $"Vendedor con más ventas*\n" +
+                $"Nombre: {topSeller.Name}\n" +
+                $"ID: {topSeller.Id}\n" +
+                $"Ventas totales: {cantidadVentas}\n" +
+                $"Bono: ${bono}";
+        }
+        catch (Exception ex)
+        {
+            return "Error al obtener el vendedor con más ventas: " + ex.Message;
+        }
+    }
 }

@@ -260,4 +260,52 @@ public class SellerManagerTests
         Assert.That(found, Is.Not.Null);
         Assert.That(found, Is.EqualTo(_testSeller));
     }
+    
+    //DEFENSA LUCÍA RODRÍGUEZ, SELLER MANAGER TEST :)
+    [Test]
+    public void GetTopSeller_ReturnsSellerWithMostSales()
+    {
+        // Arrange
+        Seller s1 = new Seller("Mauricio", "m@mail.com", "099222550", "S1");
+        Seller s2 = new Seller("Claudia", "c@mail.com", "098423717", "S2");
+
+        SellerManager sm = new SellerManager();
+        sm.CreateSeller(s1);
+        sm.CreateSeller(s2);
+
+        // Cliente 
+        Customer c = new Customer("C1", "Lucia", "Rodriguez", "l@mail.com", "091969684", "F", DateTime.Now.AddYears(-20));
+
+        // Venta 1 para s1
+        Quote q1 = new Quote(DateTime.Now, "T1", ExchangeType.Sent, c, 100, "desc");
+        Sale sale1 = new Sale("Prod", q1, DateTime.Now, "T1", ExchangeType.Sent, c);
+        s1.AddInteraction(sale1);
+
+        // Venta 2 para s2
+        Sale sale2 = new Sale("Prod2", q1, DateTime.Now, "T1", ExchangeType.Sent, c);
+        Sale sale3 = new Sale("Prod3", q1, DateTime.Now, "T1", ExchangeType.Sent, c);
+        s2.AddInteraction(sale2);
+        s2.AddInteraction(sale3);
+
+        // Act
+        Seller result = sm.GetTopSeller();
+
+        // Assert
+        Assert.That(result, Is.EqualTo(s2));
+    }
+    
+    [Test]
+    public void GetTopSeller_ReturnsNull_WhenNoSellersExist()
+    {
+        // Arrange
+        SellerManager sm = new SellerManager();   
+
+        // Act
+        Seller? result = sm.GetTopSeller();
+
+        // Assert
+        Assert.That(result, Is.Null);
+    }
+
+    
 }

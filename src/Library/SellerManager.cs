@@ -137,5 +137,15 @@ public class SellerManager
             .Where(s => s.Date >= start && s.Date <= end)
             .ToList();
     }
+    
+    /// DEFENSA LUCÍA RODRÍGUEZ, SELLER MANAGER :)
+    public Seller GetTopSeller()
+    {
+        if (sellers.Count == 0)
+            return null;
 
+        return sellers
+            .OrderByDescending(s => s.getTotalSales().Count)
+            .FirstOrDefault();
+    }
 }
