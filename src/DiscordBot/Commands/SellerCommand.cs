@@ -118,5 +118,24 @@ public class SellerCommand : ModuleBase<SocketCommandContext>
         string result = Facade.EnableSeller(sellerId);
         await ReplyAsync(result);
     }
+    
+    //  Dado que en nuestro código la verificación de Admin es a nivel de Discord, dejo el comando que hace la verificación 
+    //  y llama al método en caso de ser admin
+    
+    [Command("mostSales")]
+    [Summary("Devuelve el Seller con más interacciones y el total del bono (solo administradores).")]
+    public async Task MostSalesCommand(string sellerId)
+    {
+        var user = Context.User as SocketGuildUser;
+
+        if (user == null || !user.GuildPermissions.Administrator)
+        {
+            await ReplyAsync("No tienes permisos para habilitar vendedores.");
+            return;
+        }
+
+        string result = Facade.GetSellerMostSales();
+        await ReplyAsync(result);
+    }
 }
 

@@ -15,6 +15,14 @@ public class Seller : User
     private bool isSuspended;
     private List<Customer> customer;
     private List<Interaction> interactions;
+    private int bonus;
+
+
+    public int Bonus
+    {
+        get { return bonus; }
+        set { bonus = value; }
+    }
     
     public bool IsSuspended
     {
@@ -91,5 +99,28 @@ public class Seller : User
         {
             interaction.MarkAsResponded();
         }
+    }
+
+    //Metodo para obtener el numero total de ventas
+    public int GetSalesAmount()
+    {
+        int cantSales = 0;
+        
+        foreach (var inter in interactions)
+        {
+            if (inter is Sale sale)
+                cantSales++;
+        }
+
+        if (cantSales == 0)
+            throw new Exception("No hay ventas registradas");
+            
+        return cantSales;
+    }
+
+    //Metodo para setear el valor total del bonus
+    public void GetBonus(int bonus)
+    {
+        this.Bonus = bonus;
     }
 }

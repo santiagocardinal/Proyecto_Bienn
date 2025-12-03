@@ -138,4 +138,48 @@ public class SellerManager
             .ToList();
     }
 
+    /*
+     * Este método se encarga de revisar su lista de vendedores y devolver el vendedor que cuenta con la mayor cantidad
+     * de ventas, cada vendedor cuenta con un método que devuelve esa cantidad.
+     */
+    public Seller GetSellerWithMostInteractions()
+    {
+        Seller sellerInt;
+        Seller finalSeller = null;
+        
+        int mostSales = 0;
+        int largoLista = sellers.Count;
+        
+        if (largoLista==0)
+            throw new Exception("No hay vendedores registrados");
+            
+        for (int i = 0; i < largoLista; i++)
+        {
+            sellerInt = sellers[i];
+            if (sellerInt.GetSalesAmount() > mostSales)
+            {
+                mostSales = sellerInt.GetSalesAmount();
+                finalSeller = sellerInt;
+            }
+            else
+            {
+                mostSales = mostSales;
+            }
+        }
+        return finalSeller;
+    }
+
+    /*
+     * Este método a partir del objeto vendedor que recibe se encarga de asignarle el valor del bono según su
+     * cantidad de ventas
+     */
+    public int GiveBonus(Seller seller)
+    {
+        int cantInteracciones = seller.GetSalesAmount();
+
+        int bonusAmount = cantInteracciones * 100;
+        seller.GetBonus(bonusAmount);
+
+        return bonusAmount;
+    }
 }

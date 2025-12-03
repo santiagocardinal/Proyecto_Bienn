@@ -1,9 +1,13 @@
+using System.Runtime.CompilerServices;
+
 namespace Library.Tests;
 
 public class FacadeTests
 {
    private Customer _testCustomer;
    private Seller _testSeller;
+   
+   private SellerManager _testSellerManager;
 
     [SetUp]
     public void Setup()
@@ -693,5 +697,126 @@ public class FacadeTests
 
         // Assert
         Assert.That(result.Count, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void GetSellerMostInteractionWithSales()
+    {
+        string fecha1 = "2025-11-30";
+        string fecha2 = "2025-11-2";
+        string fecha3 = "2024-11-2";
+        string fecha4 = "2024-01-2";
+        
+        
+        string type = "sent";
+        string topic = "compra";
+
+        Facade.cm.AddCustomer(new Customer("C1", "Juan", "Perez", "mail@mail.com", "099", "M", DateTime.Now));
+        Facade.cm.AddCustomer(new Customer("C2", "Lucia", "Rodriguez", "lu@mail.com", "0990", "F", DateTime.Now));
+        
+        Facade.sm.CreateSeller(new Seller("Carlos", "carlos@mail.com", "099111222", "S1"));
+        Facade.sm.CreateSeller(new Seller("Raul", "Raul@mail.com", "026025014", "S2"));
+
+        Facade.AssignCustomer("C1", "S1");
+        Facade.AssignCustomer("C2", "S2");
+
+        Facade.QuoteRegister(fecha1, topic, type, "1500", "algo", "C1", "S1");
+        Facade.SaleFromQuote(fecha1, topic, type, "1500", "algo", "C1", "S1");
+        
+        Facade.QuoteRegister(fecha2, "algo", type, "2000", "algo3", "C2", "S2");
+        Facade.SaleFromQuote(fecha2, "algo", type, "2000", "algo3", "C2", "S2");
+        
+        Facade.QuoteRegister(fecha3, "masventa", type, "3000", "algo5", "C2", "S2");
+        Facade.SaleFromQuote(fecha3, "masventa", type, "3000", "algo5", "C2", "S2");
+
+        string result = Facade.GetSellerMostSales();
+        
+        Assert.That(result, Is.EqualTo("El seller S2 tuvo el mayor numero de ventas: 2,\n Obtuvo un bonus de $200"));
+        
+    }
+    
+    [Test]
+    public void GetSellerMostInteractionZeroSellers()
+    {
+        string result = Facade.GetSellerMostSales();
+        Assert.That(result, Is.EqualTo("No hay vendedores registrados"));
+        
+    }
+    
+    [Test]
+    public void GetSellerMostInteractionZeroSales()
+    {
+        string fecha = "2025-11-30";
+        string type = "sent";
+            
+        Facade.cm.AddCustomer(new Customer("C1", "Juan", "Perez", "mail@mail.com", "099", "M", DateTime.Now));
+        Facade.sm.CreateSeller(new Seller("Carlos", "carlos@mail.com", "099111222", "S1"));
+        Facade.AssignCustomer("C1", "S1");
+        Facade.MailRegister(fecha, "Compra", type, "C1", "S1");
+        
+        string result = Facade.GetSellerMostSales();
+        Assert.That(result, Is.EqualTo("No hay ventas registradas"));
+        
+    }
+    
+    
+    [Test]
+    public void GetSellerMostInteractionEqualSales()
+    {
+        string fecha1 = "2025-11-30";
+        string fecha2 = "2025-11-2";
+        string fecha3 = "2024-11-2";
+        string fecha4 = "2024-01-2";
+        
+        
+        string type = "sent";
+        string topic = "compra";
+
+        Facade.cm.AddCustomer(new Customer("C1", "Juan", "Perez", "mail@mail.com", "099", "M", DateTime.Now));
+        Facade.cm.AddCustomer(new Customer("C2", "Lucia", "Rodriguez", "lu@mail.com", "0990", "F", DateTime.Now));
+        
+        Facade.sm.CreateSeller(new Seller("Carlos", "carlos@mail.com", "099111222", "S1"));
+        Facade.sm.CreateSeller(new Seller("Raul", "Raul@mail.com", "026025014", "S2"));
+
+        Facade.AssignCustomer("C1", "S1");
+        Facade.AssignCustomer("C2", "S2");
+
+        Facade.QuoteRegister(fecha1, topic, type, "1500", "algo", "C1", "S1");
+        Facade.SaleFromQuote(fecha1, topic, type, "1500", "algo", "C1", "S1");
+        
+        Facade.QuoteRegister(fecha2, "algo", type, "2000", "algo3", "C2", "S2");
+        Facade.SaleFromQuote(fecha2, "algo", type, "2000", "algo3", "C2", "S2");
+        
+        string result = Facade.GetSellerMostSales();
+        Assert.That(result, Is.EqualTo("El seller S1 tuvo el mayor numero de ventas: 1,\n Obtuvo un bonus de $100"));
+
+    }
+    
+    
+    [Test]
+    public void GetMostInteractionsOneSeller()
+    {
+        string fecha1 = "2025-11-30";
+        string fecha2 = "2025-11-2";
+        
+        
+        string type = "sent";
+        string topic = "compra";
+
+        Facade.cm.AddCustomer(new Customer("C1", "Juan", "Perez", "mail@mail.com", "099", "M", DateTime.Now));
+        
+        Facade.sm.CreateSeller(new Seller("Carlos", "carlos@mail.com", "099111222", "S1"));
+
+        Facade.AssignCustomer("C1", "S1");
+
+        Facade.QuoteRegister(fecha1, topic, type, "1500", "algo", "C1", "S1");
+        Facade.SaleFromQuote(fecha1, topic, type, "1500", "algo", "C1", "S1");
+        
+        Facade.QuoteRegister(fecha2, "algo", type, "2000", "algo3", "C1", "S1");
+        Facade.SaleFromQuote(fecha2, "algo", type, "2000", "algo3", "C1", "S1");
+        
+        string result = Facade.GetSellerMostSales();
+        Assert.That(result, Is.EqualTo("El seller S1 tuvo el mayor numero de ventas: 2,\n Obtuvo un bonus de $200"));
+
     }
 }

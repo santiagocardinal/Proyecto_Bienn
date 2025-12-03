@@ -1009,5 +1009,30 @@ public class Facade
         {
             return "Error al obtener el dashboard: " + ex.Message;
         }
+
+    }
+
+    /*
+     * Se verifica admin en Discord pot medio del comando y luego se ejecuta este método
+     * Metodo en fachada que se encarga de llamar a los metodos que obtienen al vendedor con mayor ventas y asignarle el valor del bono
+     * Este método es el que se llama desde discord para mostrar el msj 
+     */
+    public static string GetSellerMostSales()
+    {
+        try
+        {   
+            Seller seller = sm.GetSellerWithMostInteractions();
+            string mensaje = $"El seller {seller.Id} tuvo el mayor numero de ventas: {seller.GetSalesAmount()},\n ";
+        
+            int bonus = sm.GiveBonus(seller);
+            mensaje += $"Obtuvo un bonus de ${bonus}";
+            
+            return mensaje;
+        }
+        catch (Exception e)
+        {
+            return e.Message;
+        }
+        
     }
 }
