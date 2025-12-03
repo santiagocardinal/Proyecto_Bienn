@@ -1009,5 +1009,19 @@ public class Facade
         {
             return "Error al obtener el dashboard: " + ex.Message;
         }
+        
+    }
+    //---------------------------DEFENSA---------------------------------
+
+    public static string GetBestSellers()
+    {
+        try
+        {
+            return sm.GetBestSellers();
+        }
+        catch (Exception ex)
+        {
+            return "Error al encontrar el meejor vendedor" + ex.Message;
+        }
     }
 }

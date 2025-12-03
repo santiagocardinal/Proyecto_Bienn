@@ -118,5 +118,14 @@ public class SellerCommand : ModuleBase<SocketCommandContext>
         string result = Facade.EnableSeller(sellerId);
         await ReplyAsync(result);
     }
+    //--------------------------DEFENSA----------------------------------  
+
+    [Command("getBestSeller")]
+    [Summary("Comando que permite saber cual vendedor posee mas ventas en comparacion con todos los vendedores.")]
+    public async Task GetBestSeller()
+    {
+        string result = Facade.GetBestSellers();
+        await ReplyAsync(result);
+    }
 }
 

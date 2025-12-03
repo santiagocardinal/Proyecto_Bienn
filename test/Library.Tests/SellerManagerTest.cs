@@ -260,4 +260,110 @@ public class SellerManagerTests
         Assert.That(found, Is.Not.Null);
         Assert.That(found, Is.EqualTo(_testSeller));
     }
+    //--------------------------DEFENSA----------------------------------    
+
+    [Test]
+    public void GetBestSellersSameAmount()
+    {
+        // Arrange
+        SellerManager sm = new SellerManager();
+        Seller s1 = new Seller("Carlos", "carlos@gmail.com", "111", "S1");
+        Seller s2 = new Seller("Pedro", "pedro@gmail.com", "222", "S2");
+        Sale sale1 = new Sale("Laptop", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "HP"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale2 = new Sale("Piscina", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "Piscinas"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        s1.Interactions.Add(sale1);
+        s2.Interactions.Add(sale2);
+        sm.CreateSeller(s1);
+        sm.CreateSeller(s2);
+
+        // Act
+        string resultado = sm.GetBestSellers();
+        
+        // Assert
+        Assert.That(resultado.Contains(s1.Name)); //AMbos tienen la misma cantidad de ventas, pero el programa agarra solo el primero.
+        Assert.That(resultado, Is.Not.EqualTo(s2.Name));
+        Assert.That(s1.Name, Is.EqualTo("Carlos"));
+        Assert.That(s2.Name, Is.EqualTo("Pedro"));
+        Assert.That(resultado, Is.Not.Null);
+    }
+    [Test]
+    public void DifferentAmount()
+    {
+        // Arrange
+        SellerManager sm = new SellerManager();
+        Seller s1 = new Seller("Carlos", "carlos@gmail.com", "111", "S1");
+        Seller s2 = new Seller("Pedro", "pedro@gmail.com", "222", "S2");
+        Sale sale1 = new Sale("Laptop", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "HP"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale2 = new Sale("Piscina", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 500.0, "Piscinas"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale3 = new Sale("Celulares", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "HP"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        s1.Interactions.Add(sale1);
+        s2.Interactions.Add(sale2);
+        s1.Interactions.Add(sale3);
+        sm.CreateSeller(s1);
+        sm.CreateSeller(s2);
+        
+        // Act
+        string resultado = sm.GetBestSellers();
+
+        // Assert
+        Assert.That(resultado, Is.EqualTo(s1.Name));
+        Assert.That(s1.Name, Is.EqualTo("Carlos"));
+        Assert.That(s2.Name, Is.EqualTo("Pedro"));
+        Assert.That(resultado, Is.Not.Null);
+        Assert.That(sm,Is.Not.Null);
+    }
+    [Test]
+    public void WithoutSellers()
+    {
+        // Arrange
+        SellerManager sm = new SellerManager();
+        Seller s1 = new Seller("Carlos", "carlos@gmail.com", "111", "S1");
+        Seller s2 = new Seller("Pedro", "pedro@gmail.com", "222", "S2");
+        Sale sale1 = new Sale("Laptop", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "HP"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale2 = new Sale("Piscina", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 500.0, "Piscinas"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale3 = new Sale("Celulares", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "HP"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        s1.Interactions.Add(sale1);
+        s2.Interactions.Add(sale2);
+        s1.Interactions.Add(sale3);
+        
+        // Act
+        string resultado = sm.GetBestSellers();
+
+        // Assert
+        Assert.That(resultado, Is.EqualTo("No hay vendedores cargados, por lo tanto no se puede determinar quién vendió más."));
+        
+    }
+    [Test]
+    public void MultipleSellers()
+    {
+        // Arrange
+        SellerManager sm = new SellerManager();
+        Seller s1 = new Seller("Carlos", "carlos@gmail.com", "111", "S1");
+        Seller s2 = new Seller("Pedro", "pedro@gmail.com", "222", "S2");
+        Seller s3 = new Seller("Juan", "juan@gmail.com", "333", "S3");
+        Sale sale1 = new Sale("Laptop", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "HP"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale2 = new Sale("Piscina", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5000.0, "Piscinas"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale3 = new Sale("Lapiz", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 99000.0, "Piscinas"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+        Sale sale4 = new Sale("Goma", new Quote(DateTime.Now, "Venta", ExchangeType.Received, _testCustomer, 5.0, "Piscinas"), DateTime.Now, "Venta", ExchangeType.Received, _testCustomer);
+
+        s1.Interactions.Add(sale1);
+        s2.Interactions.Add(sale2);
+        s3.Interactions.Add(sale3);
+        s3.Interactions.Add(sale3);
+        sm.CreateSeller(s1);
+        sm.CreateSeller(s2);
+        sm.CreateSeller(s3);
+
+        // Act
+        string resultado = sm.GetBestSellers();
+        
+        // Assert
+        Assert.That(resultado.Contains(s3.Name));
+        Assert.That(resultado, Is.Not.EqualTo(s2.Name));
+        Assert.That(resultado, Is.Not.EqualTo(s1.Name));
+        Assert.That(s1.Name, Is.EqualTo("Carlos"));
+        Assert.That(s2.Name, Is.EqualTo("Pedro"));
+        Assert.That(s3.Name, Is.EqualTo("Juan"));
+        Assert.That(resultado, Is.Not.Null);
+    }
 }
